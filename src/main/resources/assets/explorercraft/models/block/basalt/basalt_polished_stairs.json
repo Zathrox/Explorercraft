@@ -1,0 +1,9 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "explorercraft:block/basalt/basalt_polished",
+        "top": "explorercraft:block/basalt/basalt_polished",
+        "side": "explorercraft:block/basalt/basalt_polished"
+    }
+}
+

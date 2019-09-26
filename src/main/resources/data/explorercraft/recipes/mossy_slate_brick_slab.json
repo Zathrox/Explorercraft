@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "explorercraft:slate_mossy"
+    }
+  },
+  "result": {
+    "item": "explorercraft:slate_mossy_slab",
+    "count": 6
+  }
+}

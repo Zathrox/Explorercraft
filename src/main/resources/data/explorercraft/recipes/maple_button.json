@@ -1,0 +1,12 @@
+{
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "explorercraft:maple_planks"
+    }
+  ],
+  "result": {
+    "item": "explorercraft:maple_button"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

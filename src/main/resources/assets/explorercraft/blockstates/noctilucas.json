@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "age=0": { "model": "explorercraft:block/plants/noctiluca_stage0" },
+        "age=1": { "model": "explorercraft:block/plants/noctiluca_stage0" },
+        "age=2": { "model": "explorercraft:block/plants/noctiluca_stage1" },
+        "age=3": { "model": "explorercraft:block/plants/noctiluca_stage1" },
+        "age=4": { "model": "explorercraft:block/plants/noctiluca_stage2" },
+        "age=5": { "model": "explorercraft:block/plants/noctiluca_stage2" },
+        "age=6": { "model": "explorercraft:block/plants/noctiluca_stage2" },
+        "age=7": { "model": "explorercraft:block/plants/noctiluca_stage3" }
+    }
+}

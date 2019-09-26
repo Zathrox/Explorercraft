@@ -1,0 +1,106 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "explorercraft:models/staff/wizard_staff",
+		"particle": "explorercraft:models/staff/wizard_staff"
+	},
+	"elements": [
+		{
+			"name": "Staff_1",
+			"from": [7, 0, 7],
+			"to": [9, 19, 9],
+			"faces": {
+				"north": {"uv": [0, 0.5, 0.5, 5.25], "texture": "#0"},
+				"east": {"uv": [1.5, 0.5, 2, 5.25], "texture": "#0"},
+				"south": {"uv": [1, 0.5, 1.5, 5.25], "texture": "#0"},
+				"west": {"uv": [0.5, 0.5, 1, 5.25], "texture": "#0"},
+				"up": {"uv": [0.5, 0, 1, 0.5], "texture": "#0"},
+				"down": {"uv": [1, 0, 1.5, 0.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Staff_2",
+			"from": [7, 19, 8.5],
+			"to": [9, 27, 10.5],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 23, 8]},
+			"faces": {
+				"north": {"uv": [2, 0.5, 2.5, 2.5], "texture": "#0"},
+				"east": {"uv": [3.5, 0.5, 4, 2.5], "texture": "#0"},
+				"south": {"uv": [2.5, 0.5, 3, 2.5], "texture": "#0"},
+				"west": {"uv": [3, 0.5, 3.5, 2.5], "texture": "#0"},
+				"up": {"uv": [2.5, 0, 3, 0.5], "texture": "#0"},
+				"down": {"uv": [3, 0, 3.5, 0.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Staff_3",
+			"from": [7, 27.5, 6.5],
+			"to": [9, 29.5, 11.5],
+			"rotation": {"angle": 45, "axis": "x", "origin": [1, 26.5, 8]},
+			"faces": {
+				"north": {"uv": [4.5, 0, 5, 0.5], "texture": "#0"},
+				"east": {"uv": [5.5, 0.5, 6, 1.75], "rotation": 90, "texture": "#0"},
+				"south": {"uv": [5, 0, 5.5, 0.5], "texture": "#0"},
+				"west": {"uv": [4.5, 0.5, 5, 1.75], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [4, 0.5, 4.5, 1.75], "texture": "#0"},
+				"down": {"uv": [5, 0.5, 5.5, 1.75], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Staff_4",
+			"from": [7, 27.5, 4.5],
+			"to": [9, 29.5, 9.5],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 27.5, 6]},
+			"faces": {
+				"north": {"uv": [6.5, 0, 7, 0.5], "rotation": 90, "texture": "#0"},
+				"east": {"uv": [7, 0.5, 7.5, 1.75], "rotation": 90, "texture": "#0"},
+				"south": {"uv": [7, 0, 7.5, 0.5], "rotation": 90, "texture": "#0"},
+				"west": {"uv": [6.5, 0.5, 7, 1.75], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [6, 0.5, 6.5, 1.75], "texture": "#0"},
+				"down": {"uv": [7, 0.5, 7.5, 1.75], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Staff_5",
+			"from": [7, 25, 6],
+			"to": [9, 27, 8],
+			"faces": {
+				"north": {"uv": [8, 0.5, 8.5, 1], "rotation": 180, "texture": "#0"},
+				"east": {"uv": [9.5, 0.5, 10, 1], "rotation": 180, "texture": "#0"},
+				"south": {"uv": [9, 0.5, 9.5, 1], "rotation": 180, "texture": "#0"},
+				"west": {"uv": [8.5, 0.5, 9, 1], "rotation": 180, "texture": "#0"},
+				"up": {"uv": [8.5, 0, 9, 0.5], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [9, 0, 9.5, 0.5], "rotation": 180, "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, -8.25, 0]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, -8.25, 0]
+		},
+		"firstperson_righthand": {
+			"translation": [0, -8.75, 0]
+		},
+		"firstperson_lefthand": {
+			"translation": [0, -8.75, 0]
+		},
+		"ground": {
+			"rotation": [46, 0, 1.25],
+			"translation": [3.75, 0, -2.75],
+			"scale": [0.7, 0.7, 0.7]
+		},
+		"gui": {
+			"rotation": [48, 44, -83],
+			"translation": [-4, -3, 0],
+			"scale": [0.7, 0.7, 0.7]
+		},
+		"fixed": {
+			"rotation": [101, 49, -99],
+			"translation": [-3.25, -4, -0.75],
+			"scale": [0.7, 0.7, 0.7]
+		}
+	}
+}

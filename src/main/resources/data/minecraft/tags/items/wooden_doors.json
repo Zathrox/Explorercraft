@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "explorercraft:ash_door",
+    "explorercraft:bamboo_door",
+    "explorercraft:cherry_door",
+    "explorercraft:maple_door"
+  ]
+}

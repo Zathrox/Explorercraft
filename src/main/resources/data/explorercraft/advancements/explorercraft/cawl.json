@@ -1,0 +1,27 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:cawl_bowl"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.cawl.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.cawl.description"
+        },
+        "hidden": false
+    },   
+    "parent": "explorercraft:explorercraft/leek",
+    "criteria": {
+        "rice": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:cawl_bowl"
+                    }
+                ]
+            }
+        }
+    }
+}

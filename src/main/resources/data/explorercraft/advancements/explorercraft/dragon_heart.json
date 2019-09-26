@@ -1,0 +1,28 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:dragon_heart"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.dragon_heart.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.dragon_heart.description"
+        },
+        "hidden": true
+    },
+    
+    "parent": "explorercraft:explorercraft/slate",
+    "criteria": {
+        "rice": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:dragon_heart"
+                    }
+                ]
+            }
+        }
+    }
+}

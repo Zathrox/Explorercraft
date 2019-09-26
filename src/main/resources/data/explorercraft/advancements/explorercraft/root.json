@@ -1,0 +1,20 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:ruby"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.root.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.root.description"
+        },
+        "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+        "show_toast": true
+    },
+    "criteria": {
+        "explorercraft": {
+            "trigger": "minecraft:tick"
+        }
+    }
+}

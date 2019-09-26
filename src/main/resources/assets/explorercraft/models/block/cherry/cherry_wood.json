@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "explorercraft:block/cherry/cherry_log",
+    "side": "explorercraft:block/cherry/cherry_log"
+  }
+}

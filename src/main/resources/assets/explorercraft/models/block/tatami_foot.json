@@ -1,0 +1,7 @@
+{
+  "parent": "explorercraft:block/tatami",
+  "textures": {
+    "particle": "explorercraft:block/tatami_foot",
+    "texture": "explorercraft:block/tatami_foot"
+  }
+}

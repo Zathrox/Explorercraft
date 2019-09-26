@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "explorercraft:block/slate/slate_tile_slab" },
+    "type=top": { "model": "explorercraft:block/slate/slate_tile_slab_top" },
+    "type=double": { "model": "explorercraft:block/slate/slate_tile" }
+  }
+}

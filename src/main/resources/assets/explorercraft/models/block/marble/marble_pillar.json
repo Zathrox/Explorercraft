@@ -1,0 +1,7 @@
+{
+   "parent": "block/cube_column",
+   "textures": {
+        "end": "explorercraft:block/marble/marble_polished",
+        "side": "explorercraft:block/marble/marble_pillar"
+   }
+}

@@ -1,0 +1,27 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:rice_straw"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.rice_straw.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.rice_straw.description"
+        },
+        "hidden": false
+    },   
+    "parent": "explorercraft:explorercraft/rice",
+    "criteria": {
+        "rice": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:tatami"
+                    }
+                ]
+            }
+        }
+    }
+}

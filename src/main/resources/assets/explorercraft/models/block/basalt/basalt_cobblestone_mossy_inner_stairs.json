@@ -1,0 +1,9 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "explorercraft:block/basalt/basalt_cobblestone_mossy",
+        "top": "explorercraft:block/basalt/basalt_cobblestone_mossy",
+        "side": "explorercraft:block/basalt/basalt_cobblestone_mossy"
+    }
+}
+

@@ -1,0 +1,9 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "explorercraft:block/basalt/basalt",
+        "top": "explorercraft:block/basalt/basalt",
+        "side": "explorercraft:block/basalt/basalt"
+    }
+}
+

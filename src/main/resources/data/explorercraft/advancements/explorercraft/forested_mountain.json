@@ -1,0 +1,23 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:oak_log"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.forested_mountain.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.forested_mountain.description"
+        },
+        "hidden": true
+    },
+    "parent": "explorercraft:explorercraft/exploring_time",
+    "criteria": {
+        "forested_mountain": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "explorercraft:forested_mountain"
+            }
+        }
+    }
+}

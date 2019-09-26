@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "explorercraft:ash_planks",
+    "explorercraft:bamboo_planks",
+    "explorercraft:bamboo_planks_vertical",
+    "explorercraft:cherry_planks",
+    "explorercraft:maple_planks"
+  ]
+}

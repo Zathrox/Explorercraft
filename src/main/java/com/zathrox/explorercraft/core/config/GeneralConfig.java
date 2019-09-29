@@ -8,13 +8,13 @@ public class GeneralConfig {
     public static ForgeConfigSpec.BooleanValue swimmingHorse;
 
     public static void init(ForgeConfigSpec.Builder common, ForgeConfigSpec.Builder client) {
-        client.push("Vanilla Tweaks");
-        client.comment("Control how the vanilla tweaks to the game handle");
-        swimmingHorse = client
+        common.push("Vanilla Tweaks");
+        common.comment("Control how the vanilla tweaks to the game handle");
+        swimmingHorse = common
                 .comment("Allow Swimming Horses")
                 .translation(Explorercraft.MOD_ID + ".config.swimmingHorse")
                 .define("swimmingHorse", true);
-        client.pop();
+        common.pop();
     }
 
 }

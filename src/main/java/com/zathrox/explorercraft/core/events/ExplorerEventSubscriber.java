@@ -326,9 +326,9 @@ public final class ExplorerEventSubscriber {
                 setup(new HorseArmorItem(8, new ResourceLocation(Explorercraft.MOD_ID, "textures/entities/horse/armor/horse_armor_jade.png"), new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT).maxStackSize(1)), 	"jade_horse_armor"),
                 setup(new HorseArmorItem(10, new ResourceLocation(Explorercraft.MOD_ID, "textures/entities/horse/armor/horse_armor_ruby.png"), new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT).maxStackSize(1)), 	"ruby_horse_armor"),
 
-                setup(new BlockNamedItem(ExplorerBlocks.RICE_BASE, new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), "rice"),
-                setup(new BlockNamedItem(ExplorerBlocks.LEEKS, new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), "leek"),
-                setup(new BlockNamedItem(ExplorerBlocks.NOCTILUCAS, new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), "noctiluca"),
+                setup(new BlockNamedItem(ExplorerBlocks.RICE_TOP, new Item.Properties().food(ExplorerFoods.RICE).group(ExplorerItemGroups.EXPLORERCRAFT)), "rice"),
+                setup(new BlockNamedItem(ExplorerBlocks.LEEKS, new Item.Properties().food(ExplorerFoods.LEEK).group(ExplorerItemGroups.EXPLORERCRAFT)), "leek"),
+                setup(new BlockNamedItem(ExplorerBlocks.NOCTILUCAS, new Item.Properties().food(ExplorerFoods.NOCTILUCA).group(ExplorerItemGroups.EXPLORERCRAFT)), "noctiluca"),
                 setup(new Item((new Item.Properties()).group(ExplorerItemGroups.EXPLORERCRAFT).food(ExplorerFoods.DRIED_FRUIT)), "dried_fruits"),
                 setup(new Item((new Item.Properties()).group(ExplorerItemGroups.EXPLORERCRAFT).food(ExplorerFoods.CHEESE)), "cheese"),
                 setup(new Item((new Item.Properties()).group(ExplorerItemGroups.EXPLORERCRAFT).food(ExplorerFoods.WELSH_CAKES).rarity(ExplorerRarity.WELSH)) , "welsh_cakes"),

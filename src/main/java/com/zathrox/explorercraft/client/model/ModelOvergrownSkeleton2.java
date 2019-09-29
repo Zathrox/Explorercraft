@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ModelOvergrownSkeleton2<T extends MobEntity & IRangedAttackMob> extends BipedModel<T> {
 
-    public final RendererModel bipedHeadInner;
+    private final RendererModel bipedHeadInner;
     private final RendererModel bipedRightArmLayer;
     private final RendererModel leaves;
     private final RendererModel mushroom;
@@ -29,7 +29,7 @@ public class ModelOvergrownSkeleton2<T extends MobEntity & IRangedAttackMob> ext
     public ModelOvergrownSkeleton2(float modelSize, boolean armoured) {
         textureWidth = 64;
         textureHeight = 64;
-        // TODO: 04/09/2019 - Fix Armor rendering
+
         if (!armoured) {
 
             this.bipedBody = new RendererModel(this,16, 48);
@@ -144,8 +144,6 @@ public class ModelOvergrownSkeleton2<T extends MobEntity & IRangedAttackMob> ext
 
     }
 
-
-    @Override
     public void postRenderArm(float scale, HandSide side) {
         float f = side == HandSide.RIGHT ? 1.0F : -1.0F;
         RendererModel renderermodel = this.getArmForSide(side);

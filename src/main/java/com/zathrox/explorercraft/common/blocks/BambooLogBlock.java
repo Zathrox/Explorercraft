@@ -7,10 +7,7 @@ import net.minecraft.block.FourWayBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.fluid.IFluidState;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.LeadItem;
+import net.minecraft.item.*;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.IProperty;
 import net.minecraft.state.StateContainer;
@@ -32,10 +29,11 @@ public class BambooLogBlock extends FourWayBlock implements IPlantable {
 
     public BambooLogBlock(Block.Properties p_i48399_1_) {
         super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, p_i48399_1_);
-        this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)((BlockState)((BlockState)this.stateContainer.getBaseState()).with(NORTH, false)).with(EAST, false)).with(SOUTH, false)).with(WEST, false)).with(WATERLOGGED, false));
+        this.setDefaultState(this.stateContainer.getBaseState().with(NORTH, false).with(EAST, false).with(SOUTH, false).with(WEST, false).with(WATERLOGGED, false));
         this.renderShapes = this.makeShapes(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
     }
 
+    @Override
     public VoxelShape getRenderShape(BlockState p_196247_1_, IBlockReader p_196247_2_, BlockPos p_196247_3_) {
         return this.renderShapes[this.getIndex(p_196247_1_)];
     }
@@ -43,6 +41,11 @@ public class BambooLogBlock extends FourWayBlock implements IPlantable {
     @Override
     public boolean allowsMovement(BlockState p_196266_1_, IBlockReader p_196266_2_, BlockPos p_196266_3_, PathType p_196266_4_) {
         return false;
+    }
+
+    @Override
+    public float getPlayerRelativeBlockHardness(BlockState state, PlayerEntity player, IBlockReader worldIn, BlockPos pos) {
+        return player.getHeldItemMainhand().getItem() instanceof SwordItem ? 1.0F : super.getPlayerRelativeBlockHardness(state, player, worldIn, pos);
     }
 
     public boolean func_220111_a(BlockState p_220111_1_, boolean p_220111_2_, Direction p_220111_3_) {

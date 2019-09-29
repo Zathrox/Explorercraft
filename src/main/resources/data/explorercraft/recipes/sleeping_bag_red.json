@@ -1,6 +1,7 @@
 
 {
   "type": "minecraft:crafting_shapeless",
+  "group": "sleeping_bag",
   "ingredients": [
     {
       "item": "explorercraft:sleeping_bag_leather"

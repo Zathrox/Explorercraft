@@ -45,7 +45,6 @@ import java.util.Random;
 
 public class WizardEntity extends AbstractVillagerEntity implements IMerchant
 {
-	// TODO: 25/09/2019 == Create new generic trading list with one or two random rare trades
     private static final DataParameter<Boolean> SWINGING_ARMS = EntityDataManager.<Boolean>createKey(WizardEntity.class, DataSerializers.BOOLEAN);
     private static final DataParameter<Boolean> ATTACKING = EntityDataManager.<Boolean>createKey(WizardEntity.class, DataSerializers.BOOLEAN);
     public int spellTime;

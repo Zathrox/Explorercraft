@@ -4,6 +4,7 @@ import com.zathrox.explorercraft.core.config.EntityConfig;
 import com.zathrox.explorercraft.core.registry.ExplorerEntities;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.SkeletonEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
@@ -26,8 +27,14 @@ public class InfestedSkeletonEntity extends SkeletonEntity {
 
     private static void processSpawning(Biome biome) {
         if(biome.getCategory() == Biome.Category.JUNGLE && biome.getPrecipitation() != Biome.RainType.SNOW && EntityConfig.infested_skeleton_enabled.get()) {
-            biome.getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(ExplorerEntities.OVERGROWN_SKELETON, 15, 1, 1));
+            biome.getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(ExplorerEntities.INFESTED_SKELETON, 15, 1, 1));
         }
+    }
+
+    @Override
+    protected void registerAttributes() {
+        super.registerAttributes();
+        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(17.0D);
     }
 
     protected AbstractArrowEntity func_213624_b(ItemStack p_213624_1_, float p_213624_2_) {

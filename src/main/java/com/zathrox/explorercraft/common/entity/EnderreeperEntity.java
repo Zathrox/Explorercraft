@@ -185,7 +185,6 @@ public class EnderreeperEntity extends CreeperEntity
         }
     }
 
-    @OnlyIn(Dist.CLIENT)
     private void spawnLingeringCloud() {
         Collection<EffectInstance> collection = this.getActivePotionEffects();
         if (!collection.isEmpty()) {

@@ -19,6 +19,7 @@ public class ExplorerFoods {
     public static final Food RICE_STEW;
     public static final Food WELSH_CAKES;
     public static final Food WELSH_RAREBIT;
+    public static final Food NOCTILUCA;
 
 
 
@@ -32,12 +33,13 @@ public class ExplorerFoods {
         CHEESE = (new Food.Builder()).hunger(2).saturation(0.3F).setAlwaysEdible().build();
         COOKED_LAMB_SHANK = (new Food.Builder()).hunger(6).saturation(0.8F).meat().build();
         DRIED_FRUIT = (new Food.Builder()).hunger(1).saturation(0.3F).fastToEat().build();
-        LEEK = (new Food.Builder()).hunger(1).saturation(0.3F).effect(new EffectInstance(Effects.REGENERATION, 100, 1), 1.0F).build();
+        LEEK = (new Food.Builder()).hunger(1).saturation(0.3F).build();
         LEEK_STEW = buildStew(6);
         LAMB_SHANK = (new Food.Builder()).hunger(2).saturation(0.3F).meat().build();
-        RICE = (new Food.Builder()).hunger(2).saturation(0.1F).build();
+        RICE = (new Food.Builder()).hunger(1).saturation(0.1F).build();
         RICE_STEW = buildStew(6);
         WELSH_CAKES = (new Food.Builder()).hunger(2).saturation(0.1F).build();
-        WELSH_RAREBIT = (new Food.Builder()).hunger(8).saturation(0.3F).build();
+        WELSH_RAREBIT = (new Food.Builder()).hunger(8).saturation(0.5F).build();
+        NOCTILUCA = (new Food.Builder()).hunger(1).saturation(0.3F).effect(new EffectInstance(Effects.WATER_BREATHING, 50, 1), 1.0F).build();
     }
 }

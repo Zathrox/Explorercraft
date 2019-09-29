@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "explorercraft:cawl_bowl"
+    ]
+  },
+  "criteria": {
+    "has_lamb_shank": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:lamb_shank_cooked"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "explorercraft:cawl_bowl"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_lamb_shank",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -22,14 +22,19 @@ public class InfestedSkeletonModel<T extends MobEntity & IRangedAttackMob> exten
     private final RendererModel R_Leg;
     private final RendererModel L_Leg;*/
     private final RendererModel bipedHeadInner;
-    private final RendererModel bipedRightArmLayer;
-    private final RendererModel leaves;
-    private final RendererModel leavesB;
-    private final RendererModel mushroom;
-    private final RendererModel leaves2;
-    private final RendererModel brown_mushroom;
+    private final RendererModel bipedBodyLayer;
+    private final RendererModel headLeaves;
+    private final RendererModel rotLeaf2;
+    private final RendererModel rotLeaf;
+    private final RendererModel redMushroom;
+    private final RendererModel legLeaves;
+    private final RendererModel legrotLeaf2;
+    private final RendererModel lgroLeaf;
 
-    // TODO: 04/09/2019 - Fix Mushroom Textures/Issues
+    private final RendererModel brown_mushroom;
+    private RendererModel bipedRightArmLayer;
+
+
     public InfestedSkeletonModel() {
         this(0.0F, false);
     }
@@ -69,45 +74,75 @@ public class InfestedSkeletonModel<T extends MobEntity & IRangedAttackMob> exten
             this.bipedLeftLeg.addBox(-1.0F, 0.0F, -1.0F, 2, 12, 2, modelSize);
             this.bipedLeftLeg.setRotationPoint(2.0F, 12.0F, 0.0F);
 
-
+            //- Arm Vines
+            this.bipedRightArmLayer = new RendererModel(this, 0, 16);
+            this.bipedRightArmLayer.addBox(-1.0F, -1.0F, -1.0F, 2, 12, 2, 0.1F);
+            this.bipedRightArm.addChild(this.bipedRightArmLayer);
 
         }
-
         //- Head Inner
         this.bipedHeadInner = new RendererModel(this, 0, 0);
         this.bipedHeadInner.addBox(-4.0F, -8.0F, -4.0F, 8, 8, 8, -0.2F);
         this.bipedHead.addChild(this.bipedHeadInner);
 
-        this.bipedRightArmLayer = new RendererModel(this, 0, 16);
-        this.bipedRightArmLayer.addBox(-1.0F, -1.0F, -1.0F, 2, 12, 2, 0.1f);
-        this.bipedRightArm.addChild(this.bipedRightArmLayer);
+        //- Red Mushroom
+        redMushroom = new RendererModel(this);
+        redMushroom.setRotationPoint(-3.75F, -7.4167F, 3.0F);
+        setRotationAngle(redMushroom, 0.0F, 0.0F, -0.4363F);
+        bipedHead.addChild(redMushroom);
+        redMushroom.cubeList.add(new ModelBox(redMushroom, 40, 29, -0.25F, -1.5833F, -0.5F, 1, 2, 1, 0.0F, false));
+        redMushroom.cubeList.add(new ModelBox(redMushroom, 48, 27, -1.75F, -2.5833F, -2.0F, 4, 1, 4, 0.0F, false));
+        redMushroom.cubeList.add(new ModelBox(redMushroom, 48, 22, -1.25F, -3.0833F, -1.5F, 3, 1, 3, 0.0F, false));
 
-        leaves = new RendererModel(this, 54, 27);
-        leavesB = new RendererModel(this,54, 22);
-        leaves.setRotationPoint(1.6667F, -7.6667F, 1.3333F);
-        leavesB.setRotationPoint(1.6667F, -7.6667F, 1.3333F);
-        this.bipedHead.addChild(leaves);
-        this.bipedHead.addChild(leavesB);
-        this.leaves.addBox(-1.6667F, -4.3333F, 0.6667F, 5, 5, 0, 0.0F);
-        this.leavesB.addBox(0.8333F, -4.3333F, -1.8333F, 0, 5, 5, 0.0F);
-        //leaves.cubeList.add(new ModelBox(leaves, 54, 27, -1.6667F, -4.3333F, 0.6667F, 5, 5, 0, 0.0F, false));
-        //leaves.cubeList.add(new ModelBox(leaves, 54, 22, 0.8333F, -4.3333F, -1.8333F, 0, 5, 5, 0.0F, false));
+        //- Back Vines
+        this.bipedBodyLayer = new RendererModel(this, 16, 16);
+        this.bipedBodyLayer.addBox(-4.0F, 0F, -1.9F, 8, 12, 4, 0.0F);
+        this.bipedBody.addChild(this.bipedBodyLayer);
 
-        mushroom = new RendererModel(this);
-        mushroom.setRotationPoint(0.0F, 24.0F, 0.0F);
-        this.bipedHead.addChild(mushroom);
 
-        leaves2 = new RendererModel(this);
-        leaves2.setRotationPoint(-1.3333F, 11.3333F, -0.6667F);
-        this.bipedRightLeg.addChild(leaves2);
-        leaves2.cubeList.add(new ModelBox(leaves2, 54, 27, -1.6667F, -4.3333F, 0.6667F, 5, 5, 0, 0.0F, false));
-        leaves2.cubeList.add(new ModelBox(leaves2, 54, 22, 0.8333F, -4.3333F, -1.8333F, 0, 5, 5, 0.0F, false));
+
+        //- Head Leaves
+        headLeaves = new RendererModel(this);
+        headLeaves.setRotationPoint(1.6667F, -7.6667F, 1.3333F);
+        bipedHead.addChild(headLeaves);
+        headLeaves.cubeList.add(new ModelBox(headLeaves, 54, 59, -1.6667F, -4.3333F, 0.6667F, 5, 5, 0, 0.0F, false));
+        headLeaves.cubeList.add(new ModelBox(headLeaves, 54, 54, 0.8333F, -4.3333F, -1.8333F, 0, 5, 5, 0.0F, false));
+
+        rotLeaf2 = new RendererModel(this);
+        rotLeaf2.setRotationPoint(0.8333F, -1.8333F, 0.6667F);
+        setRotationAngle(rotLeaf2, -0.4363F, 0.5236F, 0.0F);
+        headLeaves.addChild(rotLeaf2);
+        rotLeaf2.cubeList.add(new ModelBox(rotLeaf2, 54, 54, 0.0F, -2.75F, -1.5F, 0, 5, 5, 0.0F, false));
+
+        rotLeaf = new RendererModel(this);
+        rotLeaf.setRotationPoint(0.8333F, -1.8333F, 0.6667F);
+        setRotationAngle(rotLeaf, 0.0F, 2.0944F, 0.0F);
+        headLeaves.addChild(rotLeaf);
+        rotLeaf.cubeList.add(new ModelBox(rotLeaf, 54, 54, 0.0F, -2.75F, -2.5F, 0, 5, 5, 0.0F, false));
+
+        legLeaves = new RendererModel(this);
+        legLeaves.setRotationPoint(-1.3333F, 11.3333F, -0.6667F);
+        bipedRightLeg.addChild(legLeaves);
+        legLeaves.cubeList.add(new ModelBox(legLeaves, 54, 59, -1.6667F, -4.3333F, 0.6667F, 5, 5, 0, 0.0F, false));
+        legLeaves.cubeList.add(new ModelBox(legLeaves, 54, 54, 0.8333F, -4.3333F, -1.8333F, 0, 5, 5, 0.0F, false));
+
+        legrotLeaf2 = new RendererModel(this);
+        legrotLeaf2.setRotationPoint(0.8333F, -1.8333F, 0.6667F);
+        setRotationAngle(legrotLeaf2, -0.4363F, 0.5236F, 0.0F);
+        legLeaves.addChild(legrotLeaf2);
+        legrotLeaf2.cubeList.add(new ModelBox(legrotLeaf2, 54, 54, 0.0F, -2.75F, -1.5F, 0, 5, 5, 0.0F, false));
+
+        lgroLeaf = new RendererModel(this);
+        lgroLeaf.setRotationPoint(0.8333F, -1.8333F, 0.6667F);
+        setRotationAngle(lgroLeaf, 0.0F, 2.0944F, 0.0F);
+        legLeaves.addChild(lgroLeaf);
+        lgroLeaf.cubeList.add(new ModelBox(lgroLeaf, 54, 54, 0.0F, -2.75F, -2.5F, 0, 5, 5, 0.0F, false));
 
         brown_mushroom = new RendererModel(this);
         brown_mushroom.setRotationPoint(-2.0F, 5.0F, 0.0F);
         this.bipedBody.addChild(brown_mushroom);
-        brown_mushroom.cubeList.add(new ModelBox(brown_mushroom, 30, 35, -4.0F, 1.0F, -2.0F, 8, 8, 5, -2.5F, false));
-        brown_mushroom.cubeList.add(new ModelBox(brown_mushroom, 35, 32, -2.5F, 1.0F, -3.5F, 5, 8, 8, -2.5F, false));
+        brown_mushroom.cubeList.add(new ModelBox(brown_mushroom, 38, 43, -4.0F, 1.0F, -2.0F, 8, 8, 5, -2.5F, false));
+        brown_mushroom.cubeList.add(new ModelBox(brown_mushroom, 38, 32, -2.5F, 1.0F, -3.5F, 5, 8, 8, -2.5F, false));
 
     }
 
@@ -150,6 +185,11 @@ public class InfestedSkeletonModel<T extends MobEntity & IRangedAttackMob> exten
 
     }
 
+    public void setRotationAngle(RendererModel rendererModel, float x, float y, float z) {
+        rendererModel.rotateAngleX = x;
+        rendererModel.rotateAngleY = y;
+        rendererModel.rotateAngleZ = z;
+    }
 
     @Override
     public void postRenderArm(float scale, HandSide side) {

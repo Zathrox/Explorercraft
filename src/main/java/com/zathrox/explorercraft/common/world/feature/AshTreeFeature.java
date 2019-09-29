@@ -243,9 +243,9 @@ public class AshTreeFeature extends AbstractTreeFeature<NoFeatureConfig> {
     private int checkLocation(Set<BlockPos> p_208528_1_, IWorldGenerationReader worldIn, BlockPos position, int height, MutableBoundingBox p_208528_5_) {
 
         BlockPos worldHeight = worldIn.getHeight(Heightmap.Type.WORLD_SURFACE, position);
-        if (worldHeight.getY() <= 100) {
-            return -1;
-        }
+        //if (worldHeight.getY() <= 100) {
+        //    return -1;
+        //}
         BlockPos down = position.down();
         int l2 = 1;
         for (int i3 = down.getX()- l2; i3 <= down.getX()+1 + l2; ++i3)

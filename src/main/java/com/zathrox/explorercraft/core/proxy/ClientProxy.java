@@ -3,9 +3,11 @@ package com.zathrox.explorercraft.core.proxy;
 import com.zathrox.explorercraft.client.ClientForgeEventSubscriber;
 import com.zathrox.explorercraft.client.render.EnderreeperRenderer;
 import com.zathrox.explorercraft.client.render.InfestedSkeletonRenderer;
+import com.zathrox.explorercraft.client.render.InfestedZombieRenderer;
 import com.zathrox.explorercraft.client.render.WizardRenderer;
 import com.zathrox.explorercraft.common.entity.EnderreeperEntity;
 import com.zathrox.explorercraft.common.entity.InfestedSkeletonEntity;
+import com.zathrox.explorercraft.common.entity.InfestedZombieEntity;
 import com.zathrox.explorercraft.common.entity.WizardEntity;
 import com.zathrox.explorercraft.core.Explorercraft;
 import com.zathrox.explorercraft.core.config.Config;
@@ -54,6 +56,7 @@ public class ClientProxy  extends CommonProxy {
         Explorercraft.LOGGER.debug("ClientProxy clientSetup method");
 
         RenderingRegistry.registerEntityRenderingHandler(InfestedSkeletonEntity.class, manager -> new InfestedSkeletonRenderer(manager));
+        RenderingRegistry.registerEntityRenderingHandler(InfestedZombieEntity.class, manager -> new InfestedZombieRenderer(manager));
         RenderingRegistry.registerEntityRenderingHandler(EnderreeperEntity.class, manager -> new EnderreeperRenderer(manager));
         RenderingRegistry.registerEntityRenderingHandler(WizardEntity.class, manager -> new WizardRenderer(manager));
 

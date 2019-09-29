@@ -3,15 +3,23 @@ package com.zathrox.explorercraft.core.registry;
 import com.google.common.collect.Lists;
 import com.zathrox.explorercraft.common.entity.EnderreeperEntity;
 import com.zathrox.explorercraft.common.entity.InfestedSkeletonEntity;
+import com.zathrox.explorercraft.common.entity.InfestedZombieEntity;
 import com.zathrox.explorercraft.common.entity.WizardEntity;
 import com.zathrox.explorercraft.core.Explorercraft;
 import com.zathrox.explorercraft.core.config.EntityConfig;
 import net.minecraft.entity.*;
 import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.passive.RabbitEntity;
+import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SpawnEggItem;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.ListNBT;
+import net.minecraft.tags.TagCollection;
+import net.minecraft.tileentity.BannerPattern;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.Heightmap;
@@ -27,10 +35,12 @@ public class ExplorerEntities {
     private static List<EntityType> entities = Lists.newArrayList();
     private static List<Item> spawnEggs = Lists.newArrayList();
 
-    public static final EntityType<InfestedSkeletonEntity> OVERGROWN_SKELETON = createEntity(InfestedSkeletonEntity.class, InfestedSkeletonEntity::new, EntityClassification.MONSTER, "infested_skeleton", 0.6F, 1.99F, 16777215, 10092400);
+    public static final EntityType<InfestedSkeletonEntity> INFESTED_SKELETON = createEntity(InfestedSkeletonEntity.class, InfestedSkeletonEntity::new, EntityClassification.MONSTER, "infested_skeleton", 0.6F, 1.99F, 16777215, 10092400);
+    public static final EntityType<InfestedZombieEntity> INFESTED_ZOMBIE = createEntity(InfestedZombieEntity.class, InfestedZombieEntity::new, EntityClassification.MONSTER, "infested_zombie", 0.6F, 1.99F, 16777234, 10092500);
     //public static final EntityType<EntityOvergrownSkeleton2> OVERGROWN_SKELETON2 = createEntity(EntityOvergrownSkeleton2.class, EntityOvergrownSkeleton2::new, EntityClassification.MONSTER, "overgrown_skeleton2", 0.6F, 1.99F, 14562431, 13484272);
     public static final EntityType<EnderreeperEntity> ENDERREEPER = createEntity(EnderreeperEntity.class, EnderreeperEntity::new, EntityClassification.MONSTER, "enderreeper", 0.6F, 1.99F, 3801171, 7078066);
     public static final EntityType<WizardEntity> WIZARD = createEntity(WizardEntity.class, WizardEntity::new, EntityClassification.MONSTER, "wizard", 0.6F, 1.99F, 4869992, 16433238);
+    public static final EntityType<RabbitEntity> KILLER_RABBIT = createEntity(RabbitEntity.class, RabbitEntity::new, EntityClassification.CREATURE, "killer_rabbit", 0.6F, 1.99F, 4869992, 16433238);
 
 
     private static <T extends Entity> EntityType<T> createEntity(Class<T> entityClass, EntityType.IFactory<T> factory, EntityClassification entityClassification, String name, float width, float height, int eggPrimary, int eggSecondary) {
@@ -57,10 +67,12 @@ public class ExplorerEntities {
             event.getRegistry().register(entity);
         }
 
-        EntitySpawnPlacementRegistry.register(OVERGROWN_SKELETON, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
+        EntitySpawnPlacementRegistry.register(INFESTED_SKELETON, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
+        EntitySpawnPlacementRegistry.register(INFESTED_ZOMBIE, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
         //EntitySpawnPlacementRegistry.register(OVERGROWN_SKELETON2, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
         EntitySpawnPlacementRegistry.register(ENDERREEPER, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
         EntitySpawnPlacementRegistry.register(WIZARD, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::func_223315_a);
+        EntitySpawnPlacementRegistry.register(KILLER_RABBIT, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::func_223315_a);
     }
 
     @SubscribeEvent
@@ -82,12 +94,15 @@ public class ExplorerEntities {
         }
     }
 
+    // TODO: 27/09/2019 Zombie Spawn + Copy Rabbit with killer rabbit type enabled all the time
     public static void registerEntityWorldSpawns() {
+
         if(EntityConfig.enderreeper_enabled.get()) {
-            registerEntityWorldSpawn(ENDERREEPER, 1, 1, 1, Biomes.THE_END);
+            registerEntityWorldSpawn(ENDERREEPER, 3, 1, 1, Biomes.THE_END);
+            registerEntityWorldSpawn(ENDERREEPER, 6, 1, 1, Biomes.END_BARRENS, Biomes.SMALL_END_ISLANDS, Biomes.END_HIGHLANDS, Biomes.END_MIDLANDS);
         }
         if(EntityConfig.infested_skeleton_enabled.get()) {
-            registerEntityWorldSpawn(OVERGROWN_SKELETON, 1, 4, 4, Biomes.JUNGLE, Biomes.JUNGLE_EDGE, Biomes.JUNGLE_HILLS, Biomes.BAMBOO_JUNGLE, Biomes.BAMBOO_JUNGLE_HILLS, Biomes.MODIFIED_JUNGLE_EDGE, Biomes.MODIFIED_JUNGLE, ExplorerBiomes.BAMBOO_FOREST);
+            registerEntityWorldSpawn(INFESTED_SKELETON, 1, 4, 4, Biomes.JUNGLE, Biomes.JUNGLE_EDGE, Biomes.JUNGLE_HILLS, Biomes.BAMBOO_JUNGLE, Biomes.BAMBOO_JUNGLE_HILLS, Biomes.MODIFIED_JUNGLE_EDGE, Biomes.MODIFIED_JUNGLE, ExplorerBiomes.BAMBOO_FOREST);
         }
     }
 }

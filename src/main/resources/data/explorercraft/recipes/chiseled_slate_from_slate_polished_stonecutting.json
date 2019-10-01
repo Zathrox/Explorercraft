@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "explorercraft:slate_bricks"
+    "item": "explorercraft:slate_polished"
   },
   "result": "explorercraft:slate_chiseled",
   "count": 1

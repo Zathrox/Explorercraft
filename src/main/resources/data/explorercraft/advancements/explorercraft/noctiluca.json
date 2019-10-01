@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "explorercraft:noctiluca"
+    },
+    "title": {
+      "translate": "advancements.explorercraft.noctiluca.title"
+    },
+    "description": {
+      "translate": "advancements.explorercraft.noctiluca.description"
+    },
+    "hidden": true
+  },
+  "parent": "explorercraft:explorercraft/root",
+  "rewards": {
+    "experience": 50
+  },
+  "criteria": {
+    "rice": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:noctiluca"
+          }
+        ]
+      }
+    }
+  }
+}

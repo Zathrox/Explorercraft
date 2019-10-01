@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "explorercraft:chiseled_marble"
+    ]
+  },
+  "criteria": {
+    "has_stone_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:marble_bricks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "explorercraft:chiseled_marble"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_stone_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

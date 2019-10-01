@@ -20,6 +20,9 @@ public class ExplorerFoods {
     public static final Food WELSH_CAKES;
     public static final Food WELSH_RAREBIT;
     public static final Food NOCTILUCA;
+    public static final Food ONIGIRI;
+    public static final Food SALMON_SUSHI;
+    public static final Food TAMAGO_SUSHI;
 
 
 
@@ -41,5 +44,8 @@ public class ExplorerFoods {
         WELSH_CAKES = (new Food.Builder()).hunger(2).saturation(0.1F).build();
         WELSH_RAREBIT = (new Food.Builder()).hunger(8).saturation(0.5F).build();
         NOCTILUCA = (new Food.Builder()).hunger(1).saturation(0.3F).effect(new EffectInstance(Effects.WATER_BREATHING, 50, 1), 1.0F).build();
+        ONIGIRI = (new Food.Builder()).hunger(3).saturation(0.5F).build();
+        SALMON_SUSHI = (new Food.Builder()).hunger(7).saturation(0.9F).build();
+        TAMAGO_SUSHI = (new Food.Builder()).hunger(6).saturation(0.6F).build();
     }
 }

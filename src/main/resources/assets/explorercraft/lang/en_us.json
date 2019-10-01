@@ -41,6 +41,9 @@
   "advancements.explorercraft.snowdonia.title": "Snowdonia Discovered!",
   "advancements.explorercraft.snowdonia.description": "The Land of Song!",
 
+  "advancements.explorercraft.noctiluca.title": "Noctiluca Discovered!",
+  "advancements.explorercraft.noctiluca.description": "This deep sea pearl almost looks edible?!",
+
   "advancements.explorercraft.slate.title": "Slate Discovered!",
   "advancements.explorercraft.slate.description": "Welcome to the Valleys!",
   "advancements.explorercraft.welshcakes.title": "Make Welsh cakes!",
@@ -72,6 +75,8 @@
   "advancements.explorercraft.rice.description": "Make a tasty bowl of rice!",
   "advancements.explorercraft.rice_straw.title": "Nobility Awaits!",
   "advancements.explorercraft.rice_straw.description": "Craft Tatami mats!",
+  "advancements.explorercraft.rice_connoisseur.title": "A Rice Connoisseur!",
+  "advancements.explorercraft.rice_connoisseur.description": "Consume every rice dish!",
 
   "advancements.explorercraft.bamboo1.title": "Bamboo Planks!",
   "advancements.explorercraft.bamboo1.description": "Six flat pieces for a floor!",
@@ -313,6 +318,10 @@
   "item.explorercraft.leek_bowl": "Leek Soup",
   "item.explorercraft.cawl_bowl": "Cawl",
   "item.explorercraft.rice_straw": "Rice Straw",
+  "block.explorercraft.rice_straw_block": "Rice Straw Bale",
+  "item.explorercraft.onigiri": "Onigiri",
+  "item.explorercraft.salmon_sushi": "Salmon Sushi",
+  "item.explorercraft.tamago_sushi": "Tamago Sushi",
 
   "item.explorercraft.welsh_shield": "Shield of Cymru",
   "item.explorercraft.wizard_hat": "Wizard Hat",

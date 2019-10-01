@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y": { "model": "explorercraft:block/rice_straw_block" },
+        "axis=z": { "model": "explorercraft:block/rice_straw_block", "x": 90 },
+        "axis=x": { "model": "explorercraft:block/rice_straw_block", "x": 90, "y": 90 }
+    }
+}

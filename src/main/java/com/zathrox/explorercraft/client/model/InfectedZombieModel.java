@@ -9,7 +9,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class InfestedZombieModel <T extends MonsterEntity> extends BipedModel<T> {
+public class InfectedZombieModel<T extends MonsterEntity> extends BipedModel<T> {
 
     private  RendererModel bipedHeadInner;
     private  RendererModel leaves;
@@ -32,11 +32,11 @@ public class InfestedZombieModel <T extends MonsterEntity> extends BipedModel<T>
     private RendererModel bipedBodyLayer;
     private RendererModel bipedRightLayer;
 
-    public InfestedZombieModel() {
+    public InfectedZombieModel() {
         this(0.0F, false);
     }
 
-    public InfestedZombieModel(float modelSize, boolean armoured) {
+    public InfectedZombieModel(float modelSize, boolean armoured) {
         super(modelSize, 0.0F, 64,  armoured? 32 : 64);
 
 

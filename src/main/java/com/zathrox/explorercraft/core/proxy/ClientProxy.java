@@ -2,36 +2,28 @@ package com.zathrox.explorercraft.core.proxy;
 
 import com.zathrox.explorercraft.client.ClientForgeEventSubscriber;
 import com.zathrox.explorercraft.client.render.EnderreeperRenderer;
-import com.zathrox.explorercraft.client.render.InfestedSkeletonRenderer;
-import com.zathrox.explorercraft.client.render.InfestedZombieRenderer;
+import com.zathrox.explorercraft.client.render.InfectedSkeletonRenderer;
+import com.zathrox.explorercraft.client.render.InfectedZombieRenderer;
 import com.zathrox.explorercraft.client.render.WizardRenderer;
 import com.zathrox.explorercraft.common.entity.EnderreeperEntity;
-import com.zathrox.explorercraft.common.entity.InfestedSkeletonEntity;
-import com.zathrox.explorercraft.common.entity.InfestedZombieEntity;
+import com.zathrox.explorercraft.common.entity.InfectedSkeletonEntity;
+import com.zathrox.explorercraft.common.entity.InfectedZombieEntity;
 import com.zathrox.explorercraft.common.entity.WizardEntity;
 import com.zathrox.explorercraft.core.Explorercraft;
 import com.zathrox.explorercraft.core.config.Config;
 import com.zathrox.explorercraft.core.registry.ExplorerBiomes;
 import com.zathrox.explorercraft.core.registry.ExplorerBlocks;
-import net.minecraft.block.ShearableDoublePlantBlock;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
-import net.minecraft.item.DyeColor;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.state.properties.DoubleBlockHalf;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GrassColors;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ColorHandlerEvent;
-import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -55,8 +47,8 @@ public class ClientProxy  extends CommonProxy {
     private void clientSetup(FMLClientSetupEvent event) {
         Explorercraft.LOGGER.debug("ClientProxy clientSetup method");
 
-        RenderingRegistry.registerEntityRenderingHandler(InfestedSkeletonEntity.class, manager -> new InfestedSkeletonRenderer(manager));
-        RenderingRegistry.registerEntityRenderingHandler(InfestedZombieEntity.class, manager -> new InfestedZombieRenderer(manager));
+        RenderingRegistry.registerEntityRenderingHandler(InfectedSkeletonEntity.class, manager -> new InfectedSkeletonRenderer(manager));
+        RenderingRegistry.registerEntityRenderingHandler(InfectedZombieEntity.class, manager -> new InfectedZombieRenderer(manager));
         RenderingRegistry.registerEntityRenderingHandler(EnderreeperEntity.class, manager -> new EnderreeperRenderer(manager));
         RenderingRegistry.registerEntityRenderingHandler(WizardEntity.class, manager -> new WizardRenderer(manager));
 

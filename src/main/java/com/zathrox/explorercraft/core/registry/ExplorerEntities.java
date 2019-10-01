@@ -2,24 +2,18 @@ package com.zathrox.explorercraft.core.registry;
 
 import com.google.common.collect.Lists;
 import com.zathrox.explorercraft.common.entity.EnderreeperEntity;
-import com.zathrox.explorercraft.common.entity.InfestedSkeletonEntity;
-import com.zathrox.explorercraft.common.entity.InfestedZombieEntity;
+import com.zathrox.explorercraft.common.entity.InfectedSkeletonEntity;
+import com.zathrox.explorercraft.common.entity.InfectedZombieEntity;
 import com.zathrox.explorercraft.common.entity.WizardEntity;
 import com.zathrox.explorercraft.core.Explorercraft;
 import com.zathrox.explorercraft.core.config.EntityConfig;
 import net.minecraft.entity.*;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.RabbitEntity;
-import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SpawnEggItem;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.ListNBT;
-import net.minecraft.tags.TagCollection;
-import net.minecraft.tileentity.BannerPattern;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.Heightmap;
@@ -35,8 +29,8 @@ public class ExplorerEntities {
     private static List<EntityType> entities = Lists.newArrayList();
     private static List<Item> spawnEggs = Lists.newArrayList();
 
-    public static final EntityType<InfestedSkeletonEntity> INFESTED_SKELETON = createEntity(InfestedSkeletonEntity.class, InfestedSkeletonEntity::new, EntityClassification.MONSTER, "infested_skeleton", 0.6F, 1.99F, 16777215, 10092400);
-    public static final EntityType<InfestedZombieEntity> INFESTED_ZOMBIE = createEntity(InfestedZombieEntity.class, InfestedZombieEntity::new, EntityClassification.MONSTER, "infested_zombie", 0.6F, 1.99F, 16777234, 10092500);
+    public static final EntityType<InfectedSkeletonEntity> INFECTED_SKELETON = createEntity(InfectedSkeletonEntity.class, InfectedSkeletonEntity::new, EntityClassification.MONSTER, "infected_skeleton", 0.6F, 1.99F, 16777215, 10092400);
+    public static final EntityType<InfectedZombieEntity> INFECTED_ZOMBIE = createEntity(InfectedZombieEntity.class, InfectedZombieEntity::new, EntityClassification.MONSTER, "infected_zombie", 0.6F, 1.99F, 16777234, 10092500);
     //public static final EntityType<EntityOvergrownSkeleton2> OVERGROWN_SKELETON2 = createEntity(EntityOvergrownSkeleton2.class, EntityOvergrownSkeleton2::new, EntityClassification.MONSTER, "overgrown_skeleton2", 0.6F, 1.99F, 14562431, 13484272);
     public static final EntityType<EnderreeperEntity> ENDERREEPER = createEntity(EnderreeperEntity.class, EnderreeperEntity::new, EntityClassification.MONSTER, "enderreeper", 0.6F, 1.99F, 3801171, 7078066);
     public static final EntityType<WizardEntity> WIZARD = createEntity(WizardEntity.class, WizardEntity::new, EntityClassification.MONSTER, "wizard", 0.6F, 1.99F, 4869992, 16433238);
@@ -56,7 +50,7 @@ public class ExplorerEntities {
         entity.setRegistryName(location);
 
         entities.add(entity);
-        spawnEggs.add(createSpawnEggForEntity(entity, eggPrimary, eggSecondary, ItemGroup.MISC));
+        spawnEggs.add(createSpawnEggForEntity(entity, eggPrimary, eggSecondary, ExplorerItemGroups.EXPLORERCRAFT));
 
         return entity;
     }
@@ -67,12 +61,12 @@ public class ExplorerEntities {
             event.getRegistry().register(entity);
         }
 
-        EntitySpawnPlacementRegistry.register(INFESTED_SKELETON, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
-        EntitySpawnPlacementRegistry.register(INFESTED_ZOMBIE, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
+        EntitySpawnPlacementRegistry.register(INFECTED_SKELETON, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
+        EntitySpawnPlacementRegistry.register(INFECTED_ZOMBIE, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
         //EntitySpawnPlacementRegistry.register(OVERGROWN_SKELETON2, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
         EntitySpawnPlacementRegistry.register(ENDERREEPER, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
         EntitySpawnPlacementRegistry.register(WIZARD, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::func_223315_a);
-        EntitySpawnPlacementRegistry.register(KILLER_RABBIT, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::func_223315_a);
+        //EntitySpawnPlacementRegistry.register(KILLER_RABBIT, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::func_223315_a);
     }
 
     @SubscribeEvent
@@ -101,8 +95,12 @@ public class ExplorerEntities {
             registerEntityWorldSpawn(ENDERREEPER, 3, 1, 1, Biomes.THE_END);
             registerEntityWorldSpawn(ENDERREEPER, 6, 1, 1, Biomes.END_BARRENS, Biomes.SMALL_END_ISLANDS, Biomes.END_HIGHLANDS, Biomes.END_MIDLANDS);
         }
-        if(EntityConfig.infested_skeleton_enabled.get()) {
-            registerEntityWorldSpawn(INFESTED_SKELETON, 1, 4, 4, Biomes.JUNGLE, Biomes.JUNGLE_EDGE, Biomes.JUNGLE_HILLS, Biomes.BAMBOO_JUNGLE, Biomes.BAMBOO_JUNGLE_HILLS, Biomes.MODIFIED_JUNGLE_EDGE, Biomes.MODIFIED_JUNGLE, ExplorerBiomes.BAMBOO_FOREST);
+        if(EntityConfig.infected_skeleton_enabled.get()) {
+            registerEntityWorldSpawn(INFECTED_SKELETON, 90, 4, 4, Biomes.DARK_FOREST, Biomes.DARK_FOREST, Biomes.JUNGLE, Biomes.JUNGLE_EDGE, Biomes.JUNGLE_HILLS, Biomes.BAMBOO_JUNGLE, Biomes.BAMBOO_JUNGLE_HILLS, Biomes.MODIFIED_JUNGLE_EDGE, Biomes.MODIFIED_JUNGLE, ExplorerBiomes.BAMBOO_FOREST);
+        }
+
+        if(EntityConfig.infected_skeleton_enabled.get()) {
+            registerEntityWorldSpawn(INFECTED_ZOMBIE, 95, 4, 4, Biomes.DARK_FOREST, Biomes.DARK_FOREST, Biomes.JUNGLE, Biomes.JUNGLE_EDGE, Biomes.JUNGLE_HILLS, Biomes.BAMBOO_JUNGLE, Biomes.BAMBOO_JUNGLE_HILLS, Biomes.MODIFIED_JUNGLE_EDGE, Biomes.MODIFIED_JUNGLE, ExplorerBiomes.BAMBOO_FOREST);
         }
     }
 }

@@ -1,8 +1,8 @@
 package com.zathrox.explorercraft.client.render.layer;
 
 import com.mojang.blaze3d.platform.GlStateManager;
-import com.zathrox.explorercraft.client.model.InfestedSkeletonModel;
-import com.zathrox.explorercraft.common.entity.InfestedSkeletonEntity;
+import com.zathrox.explorercraft.client.model.InfectedSkeletonModel;
+import com.zathrox.explorercraft.common.entity.InfectedSkeletonEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
@@ -14,9 +14,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class MushroomLayer<T extends InfestedSkeletonEntity> extends LayerRenderer<T, InfestedSkeletonModel<T>> {
+public class MushroomLayer<T extends InfectedSkeletonEntity> extends LayerRenderer<T, InfectedSkeletonModel<T>> {
 
-    public MushroomLayer(IEntityRenderer<T, InfestedSkeletonModel<T>> p_i50931_1_) {
+    public MushroomLayer(IEntityRenderer<T, InfectedSkeletonModel<T>> p_i50931_1_) {
         super(p_i50931_1_);
     }
 
@@ -43,7 +43,7 @@ public class MushroomLayer<T extends InfestedSkeletonEntity> extends LayerRender
             GlStateManager.popMatrix();
             GlStateManager.popMatrix();
             GlStateManager.pushMatrix();
-            ((InfestedSkeletonModel)this.getEntityModel()).bipedHead.postRender(0.0625F);
+            ((InfectedSkeletonModel)this.getEntityModel()).bipedHead.postRender(0.0625F);
             GlStateManager.scalef(1.0F, -1.0F, 1.0F);
             GlStateManager.translatef(0.0F, 0.7F, -0.2F);
             GlStateManager.rotatef(12.0F, 0.0F, 1.0F, 0.0F);

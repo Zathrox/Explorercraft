@@ -15,19 +15,19 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class InfestedSkeletonEntity extends SkeletonEntity {
+public class InfectedSkeletonEntity extends SkeletonEntity {
 
-    public InfestedSkeletonEntity(EntityType<? extends SkeletonEntity> p_i50194_1_, World p_i50194_2_) {
+    public InfectedSkeletonEntity(EntityType<? extends SkeletonEntity> p_i50194_1_, World p_i50194_2_) {
         super(p_i50194_1_, p_i50194_2_);
     }
 
     public static void addSpawn() {
-        ForgeRegistries.BIOMES.getValues().stream().forEach(InfestedSkeletonEntity::processSpawning);
+        ForgeRegistries.BIOMES.getValues().stream().forEach(InfectedSkeletonEntity::processSpawning);
     }
 
     private static void processSpawning(Biome biome) {
-        if(biome.getCategory() == Biome.Category.JUNGLE && biome.getPrecipitation() != Biome.RainType.SNOW && EntityConfig.infested_skeleton_enabled.get()) {
-            biome.getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(ExplorerEntities.INFESTED_SKELETON, 15, 1, 1));
+        if(biome.getCategory() == Biome.Category.JUNGLE && biome.getPrecipitation() != Biome.RainType.SNOW && EntityConfig.infected_skeleton_enabled.get()) {
+            biome.getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(ExplorerEntities.INFECTED_SKELETON, 15, 1, 1));
         }
     }
 

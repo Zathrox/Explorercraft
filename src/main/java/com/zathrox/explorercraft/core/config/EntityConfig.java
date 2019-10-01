@@ -5,7 +5,8 @@ import net.minecraftforge.common.ForgeConfigSpec;
 public class EntityConfig {
 
     public static ForgeConfigSpec.BooleanValue enderreeper_enabled;
-    public static ForgeConfigSpec.BooleanValue infested_skeleton_enabled;
+    public static ForgeConfigSpec.BooleanValue infected_skeleton_enabled;
+    public static ForgeConfigSpec.BooleanValue infected_zombie_enabled;
     public static ForgeConfigSpec.BooleanValue wizard_enabled;
 
     public static void init(ForgeConfigSpec.Builder common, ForgeConfigSpec.Builder client) {
@@ -14,8 +15,11 @@ public class EntityConfig {
         enderreeper_enabled = common
                 .comment("Decide if you want the Enderreeper to spawn in your world (The End Dimension)")
                 .define("entity.enderreeper_enabled", true);
-        infested_skeleton_enabled = common
-                .comment("Decide if you want the Infested Skeleton to spawn in your world")
+        infected_skeleton_enabled = common
+                .comment("Decide if you want the Infected Skeleton to spawn in your world")
+                .define("entity.infested_skeleton_enabled", true);
+        infected_zombie_enabled = common
+                .comment("Decide if you want the Infected Zombie to spawn in your world")
                 .define("entity.infested_skeleton_enabled", true);
         common.pop();
     }

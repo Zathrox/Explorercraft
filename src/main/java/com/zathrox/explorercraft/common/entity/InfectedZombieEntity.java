@@ -1,7 +1,6 @@
 package com.zathrox.explorercraft.common.entity;
 
 import net.minecraft.entity.*;
-import net.minecraft.entity.monster.HuskEntity;
 import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -11,13 +10,10 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
-import java.util.Random;
-
-public class InfestedZombieEntity extends ZombieEntity {
-    public InfestedZombieEntity(EntityType<? extends InfestedZombieEntity> p_i50204_1_, World p_i50204_2_) {
+public class InfectedZombieEntity extends ZombieEntity {
+    public InfectedZombieEntity(EntityType<? extends InfectedZombieEntity> p_i50204_1_, World p_i50204_2_) {
         super(p_i50204_1_, p_i50204_2_);
     }
 

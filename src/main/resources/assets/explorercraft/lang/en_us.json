@@ -21,8 +21,8 @@
   "entity.explorercraft.wizard": "Wizard",
   "item.explorercraft.enderreeper_spawn_egg": "Enderreeper Spawn Egg",
   "item.explorercraft.wizard_spawn_egg": "Wizard Spawn Egg",
-  "item.explorercraft.infested_skeleton_spawn_egg": "Infested Skeleton Spawn Egg",
-  "item.explorercraft.infested_zombie_spawn_egg": "Infested Zombie Spawn Egg",
+  "item.explorercraft.infected_skeleton_spawn_egg": "Infected Skeleton Spawn Egg",
+  "item.explorercraft.infected_zombie_spawn_egg": "Infected Zombie Spawn Egg",
 
   "//": "== Advancements",
   "advancements.explorercraft.root.title": "Explorercraft",
@@ -307,6 +307,7 @@
   "item.explorercraft.rice": "Rice",
   "item.explorercraft.leek": "Leek",
   "item.explorercraft.noctiluca": "Noctiluca",
+  "item.explorercraft.cheese": "Cheese",
   "item.explorercraft.cheese": "Cheese",
   "item.explorercraft.dried_fruits": "Dried Fruits",
   "item.explorercraft.welsh_cakes": "Welsh Cakes",

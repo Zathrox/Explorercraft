@@ -88,6 +88,33 @@
           "condition": "minecraft:killed_by_player"
         }
       ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:vine"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:red_mushroom"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:brown_mushroom"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:killed_by_player"
+        },
+        {
+          "condition": "minecraft:random_chance_with_looting",
+          "chance": 0.005,
+          "looting_multiplier": 0.01
+        }
+      ]
     }
   ]
 }

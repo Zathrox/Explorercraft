@@ -1,7 +1,7 @@
 package com.zathrox.explorercraft.client.render.layer;
 
 import com.mojang.blaze3d.platform.GlStateManager;
-import com.zathrox.explorercraft.client.model.InfestedSkeletonModel;
+import com.zathrox.explorercraft.client.model.InfectedSkeletonModel;
 import com.zathrox.explorercraft.core.Explorercraft;
 import net.minecraft.client.renderer.entity.IEntityRenderer;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class OvergrownLayer<T extends MobEntity & IRangedAttackMob, M extends EntityModel<T>> extends LayerRenderer<T, M> {
     private static final ResourceLocation OVERGROWN_TEXTURES = new ResourceLocation(Explorercraft.MOD_ID, "textures/entity/skeleton/overgrown_overlay.png");
-    private final InfestedSkeletonModel<T> layerModel = new InfestedSkeletonModel(0.0F, true);
+    private final InfectedSkeletonModel<T> layerModel = new InfectedSkeletonModel(0.0F, true);
 
     public OvergrownLayer(IEntityRenderer<T, M> p_i50919_1_) {
         super(p_i50919_1_);

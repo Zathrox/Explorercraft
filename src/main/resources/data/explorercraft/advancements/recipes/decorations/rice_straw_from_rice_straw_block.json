@@ -31,8 +31,9 @@
     },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "explorercraft:rice_straw_from_rice_straw_block"
+      "conditions":
+      {
+        "recipe": "explorercraft:rice_straw_from_rice_straw_block"
       }
     }
   },

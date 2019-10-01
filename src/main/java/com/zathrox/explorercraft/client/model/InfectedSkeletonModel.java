@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class InfestedSkeletonModel<T extends MobEntity & IRangedAttackMob> extends BipedModel<T> {
+public class InfectedSkeletonModel<T extends MobEntity & IRangedAttackMob> extends BipedModel<T> {
 
     /*private final RendererModel Body;
     private final RendererModel Head;
@@ -35,11 +35,11 @@ public class InfestedSkeletonModel<T extends MobEntity & IRangedAttackMob> exten
     private RendererModel bipedRightArmLayer;
 
 
-    public InfestedSkeletonModel() {
+    public InfectedSkeletonModel() {
         this(0.0F, false);
     }
 
-    public InfestedSkeletonModel(float modelSize, boolean armoured) {
+    public InfectedSkeletonModel(float modelSize, boolean armoured) {
 
         super(modelSize, 0.0F, 64, 32);
 

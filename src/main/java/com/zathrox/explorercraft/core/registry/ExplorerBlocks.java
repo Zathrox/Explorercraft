@@ -50,6 +50,7 @@ public class ExplorerBlocks {
     public static final Block POTTED_GREEN_MUSHROOM = ExplorerUtil._null();
     public static final Block RICE_TOP = ExplorerUtil._null();
     public static final Block RICE_BASE = ExplorerUtil._null();
+    public static final Block RICE_STRAW_BLOCK = ExplorerUtil._null();
     public static final Block DRAGON_HEART = ExplorerUtil._null();
     public static final Block TALL_CATTAIL = ExplorerUtil._null();
     public static final Block CATTAIL = ExplorerUtil._null();

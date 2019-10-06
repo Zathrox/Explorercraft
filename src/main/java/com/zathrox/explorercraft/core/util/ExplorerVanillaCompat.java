@@ -2,11 +2,13 @@ package com.zathrox.explorercraft.core.util;
 
 import com.google.common.collect.Maps;
 import com.zathrox.explorercraft.core.registry.ExplorerBlocks;
+import com.zathrox.explorercraft.core.registry.ExplorerItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ComposterBlock;
 import net.minecraft.block.FireBlock;
 import net.minecraft.item.AxeItem;
+import net.minecraft.item.Items;
 import net.minecraft.util.IItemProvider;
 
 public class ExplorerVanillaCompat {
@@ -83,6 +85,9 @@ public class ExplorerVanillaCompat {
         registerFlammable(ExplorerBlocks.DAFFODIL, 60, 100);
         registerFlammable(ExplorerBlocks.LEEK_WILD, 60, 100);
         registerFlammable(ExplorerBlocks.LUPINE, 60, 100);
+        registerFlammable(ExplorerBlocks.CATTAIL, 60, 100);
+        registerFlammable(ExplorerBlocks.TALL_CATTAIL, 60, 100);
+        registerFlammable(ExplorerBlocks.RICE_STRAW_BLOCK, 60, 100);
 
 
 
@@ -101,6 +106,7 @@ public class ExplorerVanillaCompat {
         //Compostable Blocks
         registerCompostable(0.3F, ExplorerBlocks.LEEKS);
         registerCompostable(0.3F, ExplorerBlocks.DAFFODIL);
+        registerCompostable(0.3F, ExplorerBlocks.LUPINE);
         registerCompostable(0.3F, ExplorerBlocks.ASH_LEAVES);
         registerCompostable(0.3F, ExplorerBlocks.ASH_SAPLING);
         registerCompostable(0.3F, ExplorerBlocks.BAMBOO_LEAVES);
@@ -111,6 +117,22 @@ public class ExplorerVanillaCompat {
         registerCompostable(0.3F, ExplorerBlocks.MAPLE_SAPLING);
         registerCompostable(0.3F, ExplorerBlocks.WILLOW_LEAVES);
         registerCompostable(0.3F, ExplorerBlocks.WILLOW_SAPLING);
+        registerCompostable(0.65F, ExplorerBlocks.GREEN_MUSHROOM);
+        registerCompostable(0.65F, ExplorerBlocks.PINK_MUSHROOM);
+        registerCompostable(0.85F, ExplorerBlocks.RICE_STRAW_BLOCK);
+        registerCompostable(0.65F, ExplorerItems.RICE_STRAW);
+        registerCompostable(0.65F, ExplorerItems.RICE_BOWL);
+        registerCompostable(0.3F, ExplorerItems.RICE);
+        registerCompostable(0.65F, ExplorerItems.LEEK_BOWL);
+        registerCompostable(0.65F, ExplorerItems.CAWL_BOWL);
+        registerCompostable(0.65F, ExplorerItems.WELSH_CAKES);
+        registerCompostable(0.65F, ExplorerItems.WELSH_RAREBIT);
+        registerCompostable(0.65F, ExplorerBlocks.WILLOW);
+        registerCompostable(0.65F, ExplorerBlocks.CATTAIL);
+        registerCompostable(0.65F, ExplorerBlocks.NOCTILUCAS);
+        registerCompostable(0.65F, ExplorerBlocks.TALL_CATTAIL);
+        registerCompostable(0.65F, ExplorerItems.CHEESE);
+        registerCompostable(0.65F, ExplorerItems.DRIED_FRUITS);
 
 
     }

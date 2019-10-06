@@ -229,7 +229,12 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant
                 new ItemsForGemTrade(ExplorerBlocks.BAMBOO_SAPLING, 5, 1, 8, 1),
                 new ItemsForGemTrade(ExplorerBlocks.CHERRY_SAPLING, 5, 1, 8, 1),
                 new ItemsForGemTrade(ExplorerBlocks.MAPLE_SAPLING, 5, 1, 8, 1),
-                new ItemsForGemTrade(ExplorerBlocks.NOCTILUCAS, 5, 1, 8, 1)
+                new ItemsForGemTrade(ExplorerBlocks.WILLOW_SAPLING, 5, 1, 8, 1),
+                new ItemsForGemTrade(ExplorerBlocks.LUPINE, 5, 1, 8, 1),
+                new ItemsForGemTrade(ExplorerBlocks.GREEN_MUSHROOM, 5, 1, 8, 1),
+                new ItemsForGemTrade(ExplorerBlocks.PINK_MUSHROOM, 5, 1, 8, 1),
+                new ItemsForGemTrade(ExplorerBlocks.NOCTILUCAS, 5, 1, 8, 1),
+                new ItemsForGemTrade(ExplorerItems.WELSHFLAG_BANNER_PATTERN, 20, 1, 1, 1)
         };
         return tradeListCommon;
 

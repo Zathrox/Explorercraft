@@ -31,9 +31,9 @@ public class BiomeConfig {
                 .translation(Explorercraft.MOD_ID + ".config.spawnSnowdonia")
                 .define("spawnSnowdonia", true);
         spawnFungalForest = common
-                .comment("Spawn Infected Forests in Overworld")
-                .translation(Explorercraft.MOD_ID + ".config.spawnInfectedForest")
-                .define("spawnInfectedForest", true);
+                .comment("Spawn Fungal Forests in Overworld")
+                .translation(Explorercraft.MOD_ID + ".config.spawnFungalForest")
+                .define("spawnFungalForest", true);
         common.pop();
 
         common.push("Biome Controllers");
@@ -50,9 +50,9 @@ public class BiomeConfig {
                 .translation(Explorercraft.MOD_ID + ".config.snowdoniaWeight")
                 .defineInRange("snowdoniaWeight", 10, 0,100);
         fungalForestWeight = common
-                .comment("Infected Forest Weight")
-                .translation(Explorercraft.MOD_ID + ".config.infectedForestWeight")
-                .defineInRange("infectedForestWeight", 10, 0,100);
+                .comment("Fungal Forests Weight")
+                .translation(Explorercraft.MOD_ID + ".config.fungalForestWeight")
+                .defineInRange("fungalForestWeight", 8, 0,100);
         common.pop();
     }
 

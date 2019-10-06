@@ -8,9 +8,9 @@ import net.minecraftforge.registries.ObjectHolder;
 @ObjectHolder(Explorercraft.MOD_ID)
 public class ExplorerItems {
 
-    public static final Item RUBY = ExplorerUtil._null();
-    public static final Item AMETHYST = ExplorerUtil._null();
-    public static final Item JADE = ExplorerUtil._null();
+    public static Item RUBY = ExplorerUtil._null();
+    public static Item AMETHYST = ExplorerUtil._null();
+    public static Item JADE = ExplorerUtil._null();
 
     public static final Item AMETHYST_AXE = ExplorerUtil._null();
     public static final Item AMETHYST_HOE = ExplorerUtil._null();

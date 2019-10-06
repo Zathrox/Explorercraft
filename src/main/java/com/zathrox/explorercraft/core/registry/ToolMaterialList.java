@@ -1,8 +1,10 @@
 package com.zathrox.explorercraft.core.registry;
 
+import com.zathrox.explorercraft.core.events.ExplorerEventSubscriber;
 import com.zathrox.explorercraft.core.registry.ExplorerItems;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 
 public enum ToolMaterialList implements IItemTier {
@@ -27,9 +29,9 @@ public enum ToolMaterialList implements IItemTier {
      *	GOLD(0, 32, 12.0F, 0.0F, 22);
      */
 
-    private float attackDamage, efficiency;
-    private int durability, harvestLevel, enchantability;
-    private Item repairMaterial;
+    private final float attackDamage, efficiency;
+    private final int durability, harvestLevel, enchantability;
+    private Ingredient repairMaterial;
 
     private ToolMaterialList(float attackDamage, float efficiency, int durability, int harvestLevel, int enchantability, Item repairMaterial)
     {
@@ -38,7 +40,7 @@ public enum ToolMaterialList implements IItemTier {
         this.durability = durability;
         this.harvestLevel = harvestLevel;
         this.enchantability = enchantability;
-        this.repairMaterial = repairMaterial;
+        this.repairMaterial = Ingredient.fromItems(repairMaterial);
     }
 
     @Override
@@ -68,6 +70,6 @@ public enum ToolMaterialList implements IItemTier {
 
     @Override
     public Ingredient getRepairMaterial() {
-        return Ingredient.fromItems(this.repairMaterial);
+        return this.repairMaterial;
     }
 }

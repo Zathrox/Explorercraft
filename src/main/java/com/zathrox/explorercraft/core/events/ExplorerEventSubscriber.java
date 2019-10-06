@@ -6,7 +6,6 @@ import com.zathrox.explorercraft.common.blocks.trees.*;
 import com.zathrox.explorercraft.common.items.WizardHatItem;
 import com.zathrox.explorercraft.common.items.WizardStaffItem;
 import com.zathrox.explorercraft.common.tileentity.TileEntitySleepingBag;
-import com.zathrox.explorercraft.common.world.ExplorercraftFeatureList;
 import com.zathrox.explorercraft.core.Explorercraft;
 import com.zathrox.explorercraft.core.interfaces.NoAutomaticItemBlock;
 import com.zathrox.explorercraft.core.registry.*;
@@ -16,11 +15,9 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.potion.Effects;
-import net.minecraft.tileentity.BannerPattern;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.world.gen.feature.Feature;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -83,6 +80,9 @@ public final class ExplorerEventSubscriber {
         final Block willow_sapling;
         final Block green_mushroom;
         final Block pink_mushroom;
+
+
+
 
 
         // Register all your blocks inside this registerAll call
@@ -339,10 +339,11 @@ public final class ExplorerEventSubscriber {
     @SubscribeEvent
     public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
         final IForgeRegistry<Item> registry = event.getRegistry();
+
         registry.registerAll(
-                setup(new Item(new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), "amethyst"),
-                setup(new Item(new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), "jade"),
-                setup(new Item(new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), "ruby"),
+                setup(ExplorerItems.AMETHYST = new Item(new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), "amethyst"),
+                setup(ExplorerItems.JADE = new Item(new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), "jade"),
+                setup(ExplorerItems.RUBY = new Item(new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), "ruby"),
 
                 setup(new AxeItem(ToolMaterialList.AMETHYST, 6.0f, -3.1F, new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), 	"amethyst_axe"),
                 setup(new HoeItem(ToolMaterialList.AMETHYST, -1.0F, new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), 		        		"amethyst_hoe"),

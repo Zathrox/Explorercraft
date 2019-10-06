@@ -40,8 +40,8 @@ public class ExplorerFoods {
         LEEK_STEW = buildStew(6);
         LAMB_SHANK = (new Food.Builder()).hunger(2).saturation(0.3F).meat().build();
         RICE = (new Food.Builder()).hunger(1).saturation(0.1F).build();
-        RICE_STEW = buildStew(6);
-        WELSH_CAKES = (new Food.Builder()).hunger(2).saturation(0.1F).build();
+        RICE_STEW = buildStew(7);
+        WELSH_CAKES = (new Food.Builder()).hunger(4).saturation(0.3F).build();
         WELSH_RAREBIT = (new Food.Builder()).hunger(8).saturation(0.5F).build();
         NOCTILUCA = (new Food.Builder()).hunger(1).saturation(0.3F).effect(new EffectInstance(Effects.WATER_BREATHING, 50, 1), 1.0F).build();
         ONIGIRI = (new Food.Builder()).hunger(3).saturation(0.5F).build();

@@ -1,0 +1,45 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:infected_willow_log"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.infected_willow.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.infected_willow.description"
+        },
+        "hidden": true
+    },
+    
+  "parent": "explorercraft:explorercraft/fungal_forest",
+  "rewards": {
+    "recipes": [
+      "explorercraft:infected_willow_planks"
+    ]
+  },
+  "criteria": {
+    "has_stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:infected_willow_log"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "explorercraft:infected_willow_planks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_stone",
+      "has_the_recipe"
+    ]
+  ]
+}

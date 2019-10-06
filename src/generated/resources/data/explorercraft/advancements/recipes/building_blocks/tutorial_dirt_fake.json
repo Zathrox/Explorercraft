@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "explorercraft:tutorial_dirt_fake"
+    ]
+  },
+  "criteria": {
+    "has_storage_blocks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:storage_blocks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "explorercraft:tutorial_dirt_fake"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_storage_blocks",
+      "has_the_recipe"
+    ]
+  ]
+}

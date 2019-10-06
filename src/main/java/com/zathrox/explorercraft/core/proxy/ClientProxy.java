@@ -1,14 +1,8 @@
 package com.zathrox.explorercraft.core.proxy;
 
 import com.zathrox.explorercraft.client.ClientForgeEventSubscriber;
-import com.zathrox.explorercraft.client.render.EnderreeperRenderer;
-import com.zathrox.explorercraft.client.render.InfectedSkeletonRenderer;
-import com.zathrox.explorercraft.client.render.InfectedZombieRenderer;
-import com.zathrox.explorercraft.client.render.WizardRenderer;
-import com.zathrox.explorercraft.common.entity.EnderreeperEntity;
-import com.zathrox.explorercraft.common.entity.InfectedSkeletonEntity;
-import com.zathrox.explorercraft.common.entity.InfectedZombieEntity;
-import com.zathrox.explorercraft.common.entity.WizardEntity;
+import com.zathrox.explorercraft.client.render.*;
+import com.zathrox.explorercraft.common.entity.*;
 import com.zathrox.explorercraft.core.Explorercraft;
 import com.zathrox.explorercraft.core.config.Config;
 import com.zathrox.explorercraft.core.registry.ExplorerBiomes;
@@ -49,6 +43,7 @@ public class ClientProxy  extends CommonProxy {
 
         RenderingRegistry.registerEntityRenderingHandler(InfectedSkeletonEntity.class, manager -> new InfectedSkeletonRenderer(manager));
         RenderingRegistry.registerEntityRenderingHandler(InfectedZombieEntity.class, manager -> new InfectedZombieRenderer(manager));
+        RenderingRegistry.registerEntityRenderingHandler(InfectedCreeperEntity.class, manager -> new InfectedCreeperRenderer(manager));
         RenderingRegistry.registerEntityRenderingHandler(EnderreeperEntity.class, manager -> new EnderreeperRenderer(manager));
         RenderingRegistry.registerEntityRenderingHandler(WizardEntity.class, manager -> new WizardRenderer(manager));
 
@@ -58,11 +53,9 @@ public class ClientProxy  extends CommonProxy {
     private void registerBlockColours(ColorHandlerEvent.Block event) {
         BlockColors blockColors = event.getBlockColors();
 
-
-
         blockColors.register((state, world, pos, tint_index) -> {
                     return world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.get(0.5D, 1.0D);
-                }, ExplorerBlocks.BAMBOO_LEAVES);
+                }, ExplorerBlocks.LOTUS_FLOWER, ExplorerBlocks.SHORT_GRASS, ExplorerBlocks.WILLOW_LEAVES, ExplorerBlocks.WILLOW);
 
     }
 
@@ -70,8 +63,20 @@ public class ClientProxy  extends CommonProxy {
         ItemColors itemColors = event.getItemColors();
 
         itemColors.register((stack, tintIndex) -> {
-            return ExplorerBiomes.BAMBOO_FOREST.getGrassColor((BlockPos) null);
-        }, ExplorerBlocks.BAMBOO_LEAVES);
+            return ExplorerBiomes.FUNGAL_FOREST.getGrassColor((BlockPos) null);
+        }, ExplorerBlocks.LOTUS_FLOWER);
+
+        itemColors.register((stack, tintIndex) -> {
+            return GrassColors.get(0.5D, 1.0D);
+        }, ExplorerBlocks.WILLOW_LEAVES, ExplorerBlocks.WILLOW);
+
+        itemColors.register((stack, tintIndex) -> {
+            return GrassColors.get(0.5D, 1.0D);
+        }, ExplorerBlocks.SHORT_GRASS);
+
+        itemColors.register((stack, tintIndex) -> {
+            return GrassColors.get(0.5D, 1.0D);
+        }, ExplorerBlocks.SHORT_GRASS);
     }
 
     @Override

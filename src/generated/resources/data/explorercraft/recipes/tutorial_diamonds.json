@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TTT",
+    "TXT",
+    "TTT"
+  ],
+  "key": {
+    "T": {
+      "item": "minecraft:dirt"
+    },
+    "X": {
+      "item": "explorercraft:mud"
+    }
+  },
+  "result": {
+    "item": "minecraft:diamond",
+    "count": 5
+  }
+}

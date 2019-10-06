@@ -2,10 +2,7 @@ package com.zathrox.explorercraft.core.events;
 
 import com.google.common.base.Preconditions;
 import com.zathrox.explorercraft.common.blocks.*;
-import com.zathrox.explorercraft.common.blocks.trees.AshTree;
-import com.zathrox.explorercraft.common.blocks.trees.BambooTree;
-import com.zathrox.explorercraft.common.blocks.trees.CherryTree;
-import com.zathrox.explorercraft.common.blocks.trees.MapleTree;
+import com.zathrox.explorercraft.common.blocks.trees.*;
 import com.zathrox.explorercraft.common.items.WizardHatItem;
 import com.zathrox.explorercraft.common.items.WizardStaffItem;
 import com.zathrox.explorercraft.common.tileentity.TileEntitySleepingBag;
@@ -19,9 +16,12 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.potion.Effects;
+import net.minecraft.tileentity.BannerPattern;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -65,6 +65,7 @@ public final class ExplorerEventSubscriber {
         final Block slatePolished;
         final Block slateTile;
         final Block daffodil;
+        final Block lupine;
         final Block leek_wild;
         final Block basaltCobblestone;
         final Block basaltCobblestoneMossy;
@@ -73,10 +74,15 @@ public final class ExplorerEventSubscriber {
         final Block bamboo;
         final Block cherry;
         final Block maple;
+        final Block willow;
+        final Block infected_willow;
         final Block ash_sapling;
         final Block bamboo_sapling;
         final Block cherry_sapling;
         final Block maple_sapling;
+        final Block willow_sapling;
+        final Block green_mushroom;
+        final Block pink_mushroom;
 
 
         // Register all your blocks inside this registerAll call
@@ -98,14 +104,27 @@ public final class ExplorerEventSubscriber {
                 setup(new NoctilucaBlock(Block.Properties.create(Material.OCEAN_PLANT).doesNotBlockMovement().tickRandomly().sound(SoundType.WET_GRASS)), "noctilucas"),
                 setup(new RiceBaseBlock(Block.Properties.create(Material.OCEAN_PLANT).doesNotBlockMovement().sound(SoundType.WET_GRASS)), "rice_base"),
                 setup(new RiceBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.WET_GRASS)), "rice_top"),
+                setup(new LotusStemBlock(Block.Properties.create(Material.OCEAN_PLANT).doesNotBlockMovement().sound(SoundType.WET_GRASS)), "lotus_stem"),
+                setup(new LotusFlowerBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().sound(SoundType.PLANT)), "lotus_flower"),
                 setup(daffodil = new FlowerBlock(Effects.HASTE, 6, Block.Properties.create(Material.PLANTS).doesNotBlockMovement().sound(SoundType.PLANT)), "daffodil"),
                 setup(new FlowerPotBlock(daffodil, Block.Properties.create(Material.MISCELLANEOUS)),"potted_daffodil"),
                 setup(leek_wild = new LeekWildBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement()), "leek_wild"),
                 setup(new FlowerPotBlock(leek_wild, Block.Properties.create(Material.MISCELLANEOUS)),"potted_wild_leek"),
+                setup(lupine = new FlowerBlock(Effects.NIGHT_VISION, 6, Block.Properties.create(Material.PLANTS).doesNotBlockMovement().sound(SoundType.PLANT)), "lupine"),
+                setup(new FlowerPotBlock(lupine, Block.Properties.create(Material.MISCELLANEOUS)),"potted_lupine"),
+                setup(new ShortGrassBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().sound(SoundType.PLANT)), "short_grass"),
+                setup(new VineBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.2F).sound(SoundType.PLANT)), "willow"),
+                setup(new CattailBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().sound(SoundType.PLANT)), "cattail"),
+                setup(new TallCattailBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().sound(SoundType.PLANT)), "tall_cattail"),
+                setup(green_mushroom = new MushroomBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().sound(SoundType.PLANT).lightValue(6)), "green_mushroom"),
+                setup(new FlowerPotBlock(green_mushroom, Block.Properties.create(Material.MISCELLANEOUS).lightValue(6)),"potted_green_mushroom"),
+                setup(pink_mushroom = new MushroomBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().sound(SoundType.PLANT).lightValue(8)), "pink_mushroom"),
+                setup(new FlowerPotBlock(pink_mushroom, Block.Properties.create(Material.MISCELLANEOUS).lightValue(8)),"potted_pink_mushroom"),
                 setup(new TatamiBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(0.2F, 0.3F).sound(SoundType.WOOD)), "tatami"),
                 setup(new TatamiHalfBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(0.2F, 0.3F).sound(SoundType.WOOD)), "tatami_half"),
                 setup(new DragonHeartBlock(Block.Properties.create(Material.DRAGON_EGG, MaterialColor.BLACK).hardnessAndResistance(3.0F, 9.0F).lightValue(1)), "dragon_heart"),
                 setup(new HayBlock(Block.Properties.create(Material.ORGANIC, MaterialColor.YELLOW).hardnessAndResistance(0.5F).sound(SoundType.PLANT)), "rice_straw_block"),
+                setup(new MudBlock(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).harvestLevel(0).harvestTool(ToolType.SHOVEL).sound(new SoundType(1.0F, 0.5F, SoundEvents.BLOCK_SLIME_BLOCK_BREAK, SoundEvents.BLOCK_SLIME_BLOCK_STEP, SoundEvents.BLOCK_SLIME_BLOCK_PLACE, SoundEvents.BLOCK_SLIME_BLOCK_HIT, SoundEvents.BLOCK_SLIME_BLOCK_FALL))), "mud"),
 
                 setup(basalt = new Block(Block.Properties.create(ROCK).hardnessAndResistance(1.5F, 6.0F)), "basalt"),
                 setup(basaltPolished = new Block(Block.Properties.create(ROCK, MaterialColor.STONE).hardnessAndResistance(1.5F, 6.0F)), "basalt_polished"),
@@ -203,6 +222,41 @@ public final class ExplorerEventSubscriber {
                 setup(new TrapDoorExplorerBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(3.0F).sound(SoundType.WOOD)), "maple_trapdoor"),
                 setup(new RotatedPillarBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "maple_wood"),
                 setup(new RotatedPillarBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "maple_stripped_wood"),
+
+                setup(new WoodButtonExplorerBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.WOOD)), "willow_button"),
+                setup(new DoorExplorerBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(3.0F).sound(SoundType.WOOD)), "willow_door"),
+                setup(new FenceBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "willow_fence"),
+                setup(new FenceGateBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "willow_fence_gate"),
+                setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "willow_leaves"),
+                setup(new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.QUARTZ).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "willow_log"),
+                setup(new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.QUARTZ).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "willow_stripped_log"),
+                setup(willow = new Block(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "willow_planks"),
+                setup(new PressurePlateExplorerBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.create(Material.WOOD, MaterialColor.WOOD).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.WOOD)), "willow_pressure_plate"),
+                setup(willow_sapling = new SaplingExplorerBlock(new WillowTree(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)), "willow_sapling"),
+                setup(new FlowerPotBlock(willow_sapling, Block.Properties.create(Material.MISCELLANEOUS)),"potted_willow_sapling"),
+                setup(new SlabBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "willow_slab"),
+                setup(new StairsExplorerBlock(willow.getDefaultState(), Block.Properties.from(willow)), "willow_stairs"),
+
+                setup(new TrapDoorExplorerBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(3.0F).sound(SoundType.WOOD)), "willow_trapdoor"),
+                setup(new RotatedPillarBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "willow_wood"),
+                setup(new RotatedPillarBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "willow_stripped_wood"),
+
+                setup(new WoodButtonExplorerBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.WOOD)), "infected_willow_button"),
+                setup(new DoorExplorerBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(3.0F).sound(SoundType.WOOD)), "infected_willow_door"),
+                setup(new FenceBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "infected_willow_fence"),
+                setup(new FenceGateBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "infected_willow_fence_gate"),
+                //setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "infected_willow_leaves"),
+                setup(new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.QUARTZ).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "infected_willow_log"),
+                setup(new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.QUARTZ).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "infected_willow_stripped_log"),
+                setup(infected_willow = new Block(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "infected_willow_planks"),
+                setup(new PressurePlateExplorerBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.create(Material.WOOD, MaterialColor.WOOD).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.WOOD)), "infected_willow_pressure_plate"),
+                //setup(infected_willow_sapling = new SaplingExplorerBlock(new WillowTree(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)), "infected_willow_sapling"),
+                //setup(new FlowerPotBlock(willow_sapling, Block.Properties.create(Material.MISCELLANEOUS)),"potted_infected_willow_sapling"),
+                setup(new SlabBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "infected_willow_slab"),
+                setup(new StairsExplorerBlock(infected_willow.getDefaultState(), Block.Properties.from(infected_willow)), "infected_willow_stairs"),
+                setup(new TrapDoorExplorerBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(3.0F).sound(SoundType.WOOD)), "infected_willow_trapdoor"),
+                setup(new RotatedPillarBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "infected_willow_wood"),
+                setup(new RotatedPillarBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "infected_willow_stripped_wood"),
 
                 //=== SLABS BLOCKS
                 setup(new SlabBlock(Block.Properties.create(ROCK).hardnessAndResistance(1.5F, 6.0F)), "basalt_slab"),
@@ -327,9 +381,10 @@ public final class ExplorerEventSubscriber {
                 setup(new HorseArmorItem(8, new ResourceLocation(Explorercraft.MOD_ID, "textures/entities/horse/armor/horse_armor_jade.png"), new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT).maxStackSize(1)), 	"jade_horse_armor"),
                 setup(new HorseArmorItem(10, new ResourceLocation(Explorercraft.MOD_ID, "textures/entities/horse/armor/horse_armor_ruby.png"), new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT).maxStackSize(1)), 	"ruby_horse_armor"),
 
-                setup(new BlockNamedItem(ExplorerBlocks.RICE_TOP, new Item.Properties().food(ExplorerFoods.RICE).group(ExplorerItemGroups.EXPLORERCRAFT)), "rice"),
+                setup(new BlockNamedItem(ExplorerBlocks.RICE_BASE, new Item.Properties().food(ExplorerFoods.RICE).group(ExplorerItemGroups.EXPLORERCRAFT)), "rice"),
                 setup(new BlockNamedItem(ExplorerBlocks.LEEKS, new Item.Properties().food(ExplorerFoods.LEEK).group(ExplorerItemGroups.EXPLORERCRAFT)), "leek"),
                 setup(new BlockNamedItem(ExplorerBlocks.NOCTILUCAS, new Item.Properties().food(ExplorerFoods.NOCTILUCA).group(ExplorerItemGroups.EXPLORERCRAFT)), "noctiluca"),
+                setup(new BlockNamedItem(ExplorerBlocks.LOTUS_STEM, new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), "lotus_flower"),
                 setup(new Item((new Item.Properties()).group(ExplorerItemGroups.EXPLORERCRAFT).food(ExplorerFoods.DRIED_FRUIT)), "dried_fruits"),
                 setup(new Item((new Item.Properties()).group(ExplorerItemGroups.EXPLORERCRAFT).food(ExplorerFoods.CHEESE)), "cheese"),
                 setup(new Item((new Item.Properties()).group(ExplorerItemGroups.EXPLORERCRAFT).food(ExplorerFoods.WELSH_CAKES).rarity(ExplorerRarity.WELSH)) , "welsh_cakes"),
@@ -346,8 +401,8 @@ public final class ExplorerEventSubscriber {
                 setup(new ShieldItem(new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT).rarity(ExplorerRarity.WELSH).maxDamage(336)), "welsh_shield"),
                 setup(new WizardHatItem(ArmorMaterialList.WIZARD_HAT, EquipmentSlotType.HEAD, new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), 	"wizard_hat"),
                 setup(new WizardStaffItem(new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT).maxStackSize(1).maxDamage(99).rarity(ExplorerRarity.WELSH)), "wizard_staff"),
-                setup(new BannerPatternItem(ExplorerBannerPattern.WELSH_FLAG, new Item.Properties().maxStackSize(1).group(ExplorerItemGroups.EXPLORERCRAFT)), "welshflag_banner_pattern")
-                //setup(new BannerPatternItem(BannerPattern.create("WELSH_DRAGON", "welshdragon", "dra", new ItemStack(ExplorerItems.RUBY)), new Item.Properties().maxStackSize(1).group(ExplorerItemGroups.EXPLORERCRAFT)), "welshdragon_banner_pattern")
+                setup(new BannerPatternItem(ExplorerBannerPattern.WELSH_FLAG, (new Item.Properties().maxStackSize(1).group(ExplorerItemGroups.EXPLORERCRAFT).rarity(ExplorerRarity.WELSH))), "welshflag_banner_pattern")
+                //setup(new BannerPatternItem(ExplorerBannerPattern.WELSH_DRAGON, (new Item.Properties().maxStackSize(1).group(ExplorerItemGroups.EXPLORERCRAFT))), "welshdragon_banner_pattern")
                 //setup(new BannerPatternItem(ExplorerBannerPattern.WALES, new Item.Properties().maxStackSize(1).group(ExplorerItemGroups.EXPLORERCRAFT)), "wales_banner_pattern")
         );
 
@@ -392,11 +447,11 @@ public final class ExplorerEventSubscriber {
         LOGGER.debug("Registered TileEntityTypes");
     }
 
-
+    /*
     @SubscribeEvent
     public void onRegisterFeatures(RegistryEvent.Register<Feature<?>> event) {
         ExplorercraftFeatureList.registerFeatures(event.getRegistry());
-    }
+    }*/
 
     @Nonnull
     private static <T extends IForgeRegistryEntry<T>> T setup(@Nonnull final T entry, @Nonnull final String name) {

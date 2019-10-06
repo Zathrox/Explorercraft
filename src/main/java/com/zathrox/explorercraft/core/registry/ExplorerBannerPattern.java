@@ -12,20 +12,22 @@ public class ExplorerBannerPattern {
 
     private static List<BannerPattern> patterns = new ArrayList<>();
 
-    public static BannerPattern WELSH_FLAG = BannerPattern.create("WELSH_FLAG", "welshflag", "flag", new ItemStack(ExplorerItems.LEEK));
-    public static BannerPattern WELSH_DRAGON = BannerPattern.create("WELSH_DRAGON", "welshdragon", "dra", new ItemStack(ExplorerItems.RUBY));
-    public static BannerPattern WALES = BannerPattern.create("WALES", "wales", "wal", new ItemStack(ExplorerItems.RUBY));
+    public static BannerPattern WELSH_FLAG; /*= BannerPattern.create("WELSH_FLAG", "welshflag", "flag", new ItemStack(ExplorerItems.LEEK));*/
+    //public static BannerPattern WELSH_DRAGON; /*= BannerPattern.create("WELSH_DRAGON", "welshdragon", "dra", new ItemStack(ExplorerItems.RUBY));*/
+    public static BannerPattern WALES; /*= BannerPattern.create("WALES", "wales", "wal", new ItemStack(ExplorerItems.RUBY));*/
 
     public static void init(){
-        WELSH_FLAG = banner("welshflag",  new ItemStack(ExplorerItems.RUBY));
-        System.out.println("BANNERS ADDED");
+        WELSH_FLAG = banner("WELSH_FLAG", "welshflag", "flag", new ItemStack(ExplorerItems.LEEK));
+        //WELSH_DRAGON = banner("WELSH_DRAGON", "welshdragon", "dra",  new ItemStack(ExplorerItems.RUBY));
+        //WALES = banner("WALES", "wales", "wal", new ItemStack(ExplorerBlocks.DAFFODIL));
+        BannerPattern.field_222480_O = BannerPattern.field_222480_O + 1;
         //banner(WELSH_DRAGON);
         //banner(WALES);
     }
 
-    public static BannerPattern banner(String name, ItemStack craftingStack){
+    public static BannerPattern banner(String enumName, String fileName, String hashname, ItemStack craftingStack){
 
-        final BannerPattern pattern = BannerPattern.create(name.toUpperCase(), Explorercraft.MOD_ID + "_" + name, Explorercraft.MOD_ID + "_" + name, craftingStack);
+        final BannerPattern pattern = BannerPattern.create(enumName, fileName, hashname, craftingStack);
         patterns.add(pattern);
         return pattern;
 

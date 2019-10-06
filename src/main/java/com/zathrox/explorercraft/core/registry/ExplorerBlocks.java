@@ -41,22 +41,35 @@ public class ExplorerBlocks {
     public static final Block LEEKS = ExplorerUtil._null();
     public static final Block LEEK_WILD = ExplorerUtil._null();
     public static final Block DAFFODIL = ExplorerUtil._null();
+    public static final Block LUPINE = ExplorerUtil._null();
+    public static final Block POTTED_LUPINE = ExplorerUtil._null();
+    public static final Block SHORT_GRASS = ExplorerUtil._null();
     public static final Block POTTED_DAFFODIL = ExplorerUtil._null();
     public static final Block POTTED_WILD_LEEK = ExplorerUtil._null();
+    public static final Block POTTED_PINK_MUSHROOM = ExplorerUtil._null();
+    public static final Block POTTED_GREEN_MUSHROOM = ExplorerUtil._null();
     public static final Block RICE_TOP = ExplorerUtil._null();
     public static final Block RICE_BASE = ExplorerUtil._null();
     public static final Block DRAGON_HEART = ExplorerUtil._null();
+    public static final Block TALL_CATTAIL = ExplorerUtil._null();
+    public static final Block CATTAIL = ExplorerUtil._null();
+    public static final Block GREEN_MUSHROOM = ExplorerUtil._null();
+    public static final Block PINK_MUSHROOM = ExplorerUtil._null();
+
 
     public static final Block TATAMI  = ExplorerUtil._null();
     public static final Block TATAMI_HALF  = ExplorerUtil._null();
 
     public static final Block NOCTILUCAS  = ExplorerUtil._null();
-
+    public static final Block MUD  = ExplorerUtil._null();
+    public static final Block LOTUS_FLOWER = ExplorerUtil._null();
+    public static final Block LOTUS_STEM = ExplorerUtil._null();
 
 
     //=========== BASALT BLOCKS ============//
     public static final Block BASALT = ExplorerUtil._null();
     public static final Block BASALT_COBBLESTONE = ExplorerUtil._null();
+    public static final Block BASALT_COBBLESTONE_MOSSY = ExplorerUtil._null();
     public static final Block BASALT_POLISHED = ExplorerUtil._null();
     public static final Block BASALT_BRICKS = ExplorerUtil._null();
     public static final Block BASALT_MOSSY = null;
@@ -127,9 +140,13 @@ public class ExplorerBlocks {
     public static final Block ASH_STRIPPED_LOG = ExplorerUtil._null();
     public static final Block CHERRY_STRIPPED_LOG = ExplorerUtil._null();
     public static final Block MAPLE_STRIPPED_LOG = ExplorerUtil._null();
+    public static final Block WILLOW_STRIPPED_LOG = ExplorerUtil._null();
+    public static final Block INFECTED_WILLOW_STRIPPED_LOG = ExplorerUtil._null();
     public static final Block ASH_STRIPPED_WOOD = ExplorerUtil._null();
     public static final Block CHERRY_STRIPPED_WOOD = ExplorerUtil._null();
     public static final Block MAPLE_STRIPPED_WOOD = ExplorerUtil._null();
+    public static final Block WILLOW_STRIPPED_WOOD = ExplorerUtil._null();
+    public static final Block INFECTED_WILLOW_STRIPPED_WOOD = ExplorerUtil._null();
 
     public static final Block BAMBOO_LEAVES = ExplorerUtil._null();
     public static final Block BAMBOO_LOG = ExplorerUtil._null();
@@ -145,11 +162,25 @@ public class ExplorerBlocks {
     public static final Block MAPLE_LOG = null;
     public static final Block MAPLE_WOOD = null;
 
+    public static final Block WILLOW_PLANKS = ExplorerUtil._null();
+    public static final Block WILLOW_LOG = ExplorerUtil._null();
+    public static final Block WILLOW_WOOD = ExplorerUtil._null();
+    public static final Block WILLOW_LEAVES = ExplorerUtil._null();
+    public static final Block WILLOW_SAPLING = ExplorerUtil._null();
+    public static final Block WILLOW = ExplorerUtil._null();
+
+    public static final Block INFECTED_WILLOW_PLANKS = ExplorerUtil._null();
+    public static final Block INFECTED_WILLOW_LOG = ExplorerUtil._null();
+    public static final Block INFECTED_WILLOW_WOOD = ExplorerUtil._null();
+
+
     //=========== SLABS ============//
     public static final Block ASH_SLAB = null;
     public static final Block BAMBOO_SLAB= null;
     public static final Block CHERRY_SLAB = null;
     public static final Block MAPLE_SLAB = null;
+    public static final Block INFECTED_WILLOW_SLAB = null;
+    public static final Block WILLOW_SLAB = null;
 
 
     //=========== STAIRS ============//
@@ -157,12 +188,16 @@ public class ExplorerBlocks {
     public static final Block BAMBOO_STAIRS = null;
     public static final Block CHERRY_STAIRS = null;
     public static final Block MAPLE_STAIRS = null;
+    public static final Block INFECTED_WILLOW_STAIRS = null;
+    public static final Block WILLOW_STAIRS = null;
 
     //=========== FENCES ============//
     public static final Block ASH_FENCE = null;
     public static final Block BAMBOO_FENCE = null;
     public static final Block CHERRY_FENCE = null;
     public static final Block MAPLE_FENCE = null;
+    public static final Block WILLOW_FENCE = null;
+    public static final Block INFECTED_WILLOW_FENCE = null;
 
 
     //=========== FENCE GATES ============//
@@ -170,6 +205,8 @@ public class ExplorerBlocks {
     public static final Block BAMBOO_FENCE_GATE = null;
     public static final Block CHERRY_FENCE_GATE = null;
     public static final Block MAPLE_FENCE_GATE = null;
+    public static final Block WILLOW_FENCE_GATE = null;
+    public static final Block INFECTED_WILLOW_FENCE_GATE = null;
 
 
 

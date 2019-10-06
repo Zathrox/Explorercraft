@@ -8,10 +8,12 @@ public class BiomeConfig {
     public static ForgeConfigSpec.BooleanValue spawnBambooForest;
     public static ForgeConfigSpec.BooleanValue spawnForestedMountain;
     public static ForgeConfigSpec.BooleanValue spawnSnowdonia;
+    public static ForgeConfigSpec.BooleanValue spawnFungalForest;
 
     public static ForgeConfigSpec.IntValue bambooForestWeight;
     public static ForgeConfigSpec.IntValue forestedMountainWeight;
     public static ForgeConfigSpec.IntValue snowdoniaWeight;
+    public static ForgeConfigSpec.IntValue fungalForestWeight;
 
     public static void init(ForgeConfigSpec.Builder common, ForgeConfigSpec.Builder client) {
         common.push("Spawn Biomes");
@@ -28,6 +30,10 @@ public class BiomeConfig {
                 .comment("Spawn Snowdonia in Overworld")
                 .translation(Explorercraft.MOD_ID + ".config.spawnSnowdonia")
                 .define("spawnSnowdonia", true);
+        spawnFungalForest = common
+                .comment("Spawn Infected Forests in Overworld")
+                .translation(Explorercraft.MOD_ID + ".config.spawnInfectedForest")
+                .define("spawnInfectedForest", true);
         common.pop();
 
         common.push("Biome Controllers");
@@ -43,6 +49,10 @@ public class BiomeConfig {
                 .comment("Snowdonia Weight")
                 .translation(Explorercraft.MOD_ID + ".config.snowdoniaWeight")
                 .defineInRange("snowdoniaWeight", 10, 0,100);
+        fungalForestWeight = common
+                .comment("Infected Forest Weight")
+                .translation(Explorercraft.MOD_ID + ".config.infectedForestWeight")
+                .defineInRange("infectedForestWeight", 10, 0,100);
         common.pop();
     }
 

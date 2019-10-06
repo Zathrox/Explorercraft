@@ -58,6 +58,7 @@ public class ExplorerItems {
     public static final Item DRIED_FRUITS = null;
     public static final Item CHEESE = null;
     public static final Item NOCTILUCA = null;
+    public static final Item LOTUS_FLOWER = null;
 
     public static final Item WELSH_CAKES = null;
     public static final Item WELSH_RAREBIT = null;
@@ -75,7 +76,7 @@ public class ExplorerItems {
 
 
 
-    //public static final Item WELSHFLAG_BANNER_PATTERN = ExplorerUtil._null();
+    public static final Item WELSHFLAG_BANNER_PATTERN = ExplorerUtil._null();
     //public static final Item WALES_BANNER_PATTERN = ExplorerUtil._null();
     //public static final Item WELSHDRAGON_BANNER_PATTERN = ExplorerUtil._null();
 

@@ -34,6 +34,12 @@
             "conditions": {
                 "biome": "explorercraft:forested_mountain"
             }
+        },
+        "infected_forest": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "explorercraft:fungal_forest"
+            }
         }
     }
 }

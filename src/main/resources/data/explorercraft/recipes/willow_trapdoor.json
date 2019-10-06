@@ -1,0 +1,17 @@
+{
+  "group": "wooden_trapdoor",
+  "key": {
+    "#": {
+      "item": "explorercraft:willow_planks"
+    }
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "item": "explorercraft:willow_trapdoor"
+  },
+  "type": "minecraft:crafting_shaped"
+}

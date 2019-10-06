@@ -2,6 +2,7 @@ package com.zathrox.explorercraft.core.registry;
 
 import com.zathrox.explorercraft.common.world.biome.BiomeBambooForest;
 import com.zathrox.explorercraft.common.world.biome.BiomeForestedMountains;
+import com.zathrox.explorercraft.common.world.biome.BiomeFungalForest;
 import com.zathrox.explorercraft.common.world.biome.BiomeSnowdonia;
 import com.zathrox.explorercraft.core.Explorercraft;
 import com.zathrox.explorercraft.core.config.BiomeConfig;
@@ -24,6 +25,8 @@ public class ExplorerBiomes {
     public static final Biome FORESTED_MOUNTAIN = null;
     @ObjectHolder("snowdonia")
     public static final Biome SNOWDONIA = null;
+    @ObjectHolder("fungal_forest")
+    public static final Biome FUNGAL_FOREST = null;
 
     @Mod.EventBusSubscriber(modid = Explorercraft.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static abstract class Registration {
@@ -35,18 +38,20 @@ public class ExplorerBiomes {
             registry.register(new BiomeBambooForest().setRegistryName(new ResourceLocation(Explorercraft.MOD_ID, "bamboo_forest")));
             registry.register(new BiomeForestedMountains().setRegistryName(new ResourceLocation(Explorercraft.MOD_ID, "forested_mountain")));
             registry.register(new BiomeSnowdonia().setRegistryName(new ResourceLocation(Explorercraft.MOD_ID, "snowdonia")));
+            registry.register(new BiomeFungalForest().setRegistryName(new ResourceLocation(Explorercraft.MOD_ID, "fungal_forest")));
 
         }
 
     }
 
     public static void registerBiomes() {
-        addBiomesToManager(BAMBOO_FOREST, "bamboo_forest", BiomeConfig.bambooForestWeight.get(), false, BiomeConfig.spawnBambooForest.get(), BiomeManager.BiomeType.COOL, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.WET);
-        addBiomesToManager(FORESTED_MOUNTAIN, "forested_mountain", BiomeConfig.forestedMountainWeight.get(), false, BiomeConfig.spawnForestedMountain.get(), BiomeManager.BiomeType.WARM, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.FOREST);
-        addBiomesToManager(SNOWDONIA, "snowdonia", BiomeConfig.snowdoniaWeight.get(), false, BiomeConfig.spawnSnowdonia.get(), BiomeManager.BiomeType.COOL, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.WET);
+        addBiomesToManager(BAMBOO_FOREST, BiomeConfig.bambooForestWeight.get(), false, BiomeConfig.spawnBambooForest.get(), BiomeManager.BiomeType.COOL, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.WET);
+        addBiomesToManager(FORESTED_MOUNTAIN, BiomeConfig.forestedMountainWeight.get(), false, BiomeConfig.spawnForestedMountain.get(), BiomeManager.BiomeType.WARM, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.FOREST);
+        addBiomesToManager(SNOWDONIA,  BiomeConfig.snowdoniaWeight.get(), false, BiomeConfig.spawnSnowdonia.get(), BiomeManager.BiomeType.COOL, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.WET);
+        addBiomesToManager(FUNGAL_FOREST, BiomeConfig.fungalForestWeight.get(), false, BiomeConfig.spawnFungalForest.get(), BiomeManager.BiomeType.WARM, BiomeDictionary.Type.WET, BiomeDictionary.Type.SWAMP, BiomeDictionary.Type.FOREST);
     }
 
-    public static void addBiomesToManager(Biome biome, String name, int weight, Boolean village, Boolean allowed, BiomeManager.BiomeType biomeType, BiomeDictionary.Type... types) {
+    public static void addBiomesToManager(Biome biome, int weight, Boolean village, Boolean allowed, BiomeManager.BiomeType biomeType, BiomeDictionary.Type... types) {
 
         if (allowed)
         {

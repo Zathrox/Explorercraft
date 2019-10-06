@@ -1,0 +1,33 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:lotus_flower"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.lotus_flower.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.lotus_flower.description"
+        },
+        "hidden": true
+    },
+    
+  "parent": "explorercraft:explorercraft/fungal_forest",
+  "criteria": {
+    "has_flower": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:lotus_flower"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_flower"
+    ]
+  ]
+}

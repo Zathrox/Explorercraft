@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "explorercraft:basalt_bricks"
+    },
+    {
+      "item": "explorercraft:willow"
+    }
+  ],
+  "result": {
+    "item": "explorercraft:basalt_mossy"
+  }
+}

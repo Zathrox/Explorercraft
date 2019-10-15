@@ -3,17 +3,16 @@ package com.zathrox.explorercraft.common.world;
 import com.zathrox.explorercraft.core.config.OreGenConfig;
 import com.zathrox.explorercraft.core.registry.ExplorerBiomes;
 import com.zathrox.explorercraft.core.registry.ExplorerBlocks;
+import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.GenerationStage.Decoration;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.LakesConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig.FillerBlockType;
-import net.minecraft.world.gen.placement.ChanceConfig;
-import net.minecraft.world.gen.placement.CountConfig;
-import net.minecraft.world.gen.placement.CountRangeConfig;
-import net.minecraft.world.gen.placement.Placement;
+import net.minecraft.world.gen.placement.*;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class OreGeneration {
@@ -37,6 +36,7 @@ public class OreGeneration {
                 biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, ExplorerBlocks.RUBY_ORE.getDefaultState(), 8), Placement.COUNT_RANGE, new CountRangeConfig(2, 0, 0, 50)));
                 biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, ExplorerBlocks.RUBY_ORE.getDefaultState(), 4), Placement.COUNT_RANGE, new CountRangeConfig(10, 70, 0, 200)));
             }
+
             //biome.addFeature(Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(FillerBlockType.NATURAL_STONE, ExplorerBlocks.JADE_ORE.getDefaultState(), 20), Placement.COUNT_RANGE, new CountRangeConfig(20, 5, 0, 100)));
             //biome.addFeature(Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(FillerBlockType.NATURAL_STONE, ExplorerBlocks.RUBY_ORE.getDefaultState(), 20), Placement.COUNT_RANGE, new CountRangeConfig(20, 5, 0, 100)));
         }
@@ -45,4 +45,6 @@ public class OreGeneration {
 
 
     }
+
+
 }

@@ -36,7 +36,7 @@ public class ExplorerFoods {
         CHEESE = (new Food.Builder()).hunger(2).saturation(0.3F).setAlwaysEdible().build();
         COOKED_LAMB_SHANK = (new Food.Builder()).hunger(6).saturation(0.8F).meat().build();
         DRIED_FRUIT = (new Food.Builder()).hunger(1).saturation(0.3F).fastToEat().build();
-        LEEK = (new Food.Builder()).hunger(1).saturation(0.3F).build();
+        LEEK = (new Food.Builder()).hunger(3).saturation(0.6F).build();
         LEEK_STEW = buildStew(6);
         LAMB_SHANK = (new Food.Builder()).hunger(2).saturation(0.3F).meat().build();
         RICE = (new Food.Builder()).hunger(1).saturation(0.1F).build();

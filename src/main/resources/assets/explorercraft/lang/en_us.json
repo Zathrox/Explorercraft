@@ -20,6 +20,7 @@
   "//": "== Monsters",
   "entity.explorercraft.enderreeper": "Enderreeper",
   "entity.explorercraft.wizard": "Wizard",
+  "entity.explorercraft.brush_stooge": "Brush Stooge",
   "entity.explorercraft.infected_creeper": "Creeping",
   "entity.explorercraft.infected_skeleton": "Infected Skeleton",
   "entity.explorercraft.infected_zombie": "Infected Zombie",
@@ -27,6 +28,7 @@
 
   "item.explorercraft.enderreeper_spawn_egg": "Enderreeper Spawn Egg",
   "item.explorercraft.wizard_spawn_egg": "Wizard Spawn Egg",
+  "item.explorercraft.brush_stooge_spawn_egg": "Brush Stooge Spawn Egg",
   "item.explorercraft.infected_skeleton_spawn_egg": "Infected Skeleton Spawn Egg",
   "item.explorercraft.infected_zombie_spawn_egg": "Infected Zombie Spawn Egg",
   "item.explorercraft.infected_creeper_spawn_egg": "Creeping Spawn Egg",
@@ -50,7 +52,7 @@
   "advancements.explorercraft.fungal_forest.title": "Fungal Forest Discovered!",
   "advancements.explorercraft.fungal_forest.description": "A perilous land of shrooms and poison!",
 
-  "advancements.explorercraft.infection_purge.title": "Purge the infected monsters!",
+  "advancements.explorercraft.infection_purge.title": "Purge the infected!",
   "advancements.explorercraft.infection_purge.description": "Find and destroy all infected monsters!",
 
   "advancements.explorercraft.infected_willow.title": "Infected Wood Discovered!",
@@ -179,6 +181,7 @@
   "item.explorercraft.jade_pickaxe": "Jade Pickaxe",
   "item.explorercraft.jade_shovel": "Jade Shovel",
   "item.explorercraft.jade_sword": "Jade Sword",
+  "item.explorercraft.jade_bow": "Jade Longbow",
 
   "//": "== Earth Blocks",
   "block.explorercraft.basalt": "Basalt",
@@ -262,6 +265,7 @@
   "block.explorercraft.green_mushroom": "Green Glowshroom",
   "block.explorercraft.tall_cattail": "Tall Cattails",
   "block.explorercraft.cattail": "Cattails",
+  "block.explorercraft.willow": "Willow",
   "item.explorercraft.lotus_flower": "Lotus Flower",
 
   "//": "== Trees and Woods",

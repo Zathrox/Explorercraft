@@ -18,6 +18,14 @@
     "experience": 100
   },
   "criteria": {
+    "explorercraft:brush_stooge": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "explorercraft:brush_stooge"
+        }
+      }
+    },
     "explorercraft:infected_creeper": {
       "trigger": "minecraft:player_killed_entity",
       "conditions": {
@@ -44,6 +52,9 @@
     }
   },
   "requirements": [
+    [
+      "explorercraft:brush_stooge"
+    ],
     [
       "explorercraft:infected_creeper"
     ],

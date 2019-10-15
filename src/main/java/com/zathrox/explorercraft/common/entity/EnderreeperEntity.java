@@ -346,10 +346,16 @@ public class EnderreeperEntity extends CreeperEntity
             return flag;
         } else {
             for(int i = 0; i < 64; ++i) {
-                this.switchWithEntity(source.getTrueSource().getEntity(), true, source, amount);
-                //if (this.teleportRandomly()) {
+                if(source != DamageSource.FIREWORKS ) {
+                    this.switchWithEntity(source.getTrueSource().getEntity(), true, source, amount);
+                    //if (this.teleportRandomly()) {
                     return true;
-                //}
+                    //}
+                } else {
+                    this.teleportRandomly();
+                    return true;
+                }
+
             }
 
             return false;

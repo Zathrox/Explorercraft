@@ -54,25 +54,23 @@ public class TallCattailBlock extends BushBlock {
     @Override
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         Block block = state.getBlock();
-        if (block == this) {
-            return true;
-        } else {
-            if (block == ExplorerBlocks.MUD) {
-                BlockPos blockpos = pos;
 
-                for(Direction direction : Direction.Plane.HORIZONTAL) {
-                    BlockState blockstate = worldIn.getBlockState(blockpos.offset(direction, 1));
-                    IFluidState ifluidstate = worldIn.getFluidState(blockpos.offset(direction, 1));
-                    BlockState blockstate1 = worldIn.getBlockState(blockpos.offset(direction, 2));
-                    IFluidState ifluidstate1 = worldIn.getFluidState(blockpos.offset(direction, 2));
-                    if (ifluidstate.isTagged(FluidTags.WATER) || blockstate.getBlock() == Blocks.FROSTED_ICE || ifluidstate1.isTagged(FluidTags.WATER) || blockstate1.getBlock() == Blocks.FROSTED_ICE) {
-                        return true;
-                    }
+        if (block == ExplorerBlocks.MUD) {
+            BlockPos blockpos = pos;
+
+            for(Direction direction : Direction.Plane.HORIZONTAL) {
+                BlockState blockstate = worldIn.getBlockState(blockpos.offset(direction, 1));
+                IFluidState ifluidstate = worldIn.getFluidState(blockpos.offset(direction, 1));
+                BlockState blockstate1 = worldIn.getBlockState(blockpos.offset(direction, 2));
+                IFluidState ifluidstate1 = worldIn.getFluidState(blockpos.offset(direction, 2));
+                if (ifluidstate.isTagged(FluidTags.WATER) || blockstate.getBlock() == Blocks.FROSTED_ICE || ifluidstate1.isTagged(FluidTags.WATER) || blockstate1.getBlock() == Blocks.FROSTED_ICE) {
+                    return true;
                 }
             }
-
-            return false;
         }
+
+        return false;
+
     }
 
     @Override

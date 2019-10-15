@@ -1,5 +1,6 @@
 package com.zathrox.explorercraft.common.blocks;
 
+import com.zathrox.explorercraft.common.entity.BrushStoogeEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
@@ -20,7 +21,8 @@ public class MudBlock extends Block
     @Override
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
     {
-        entityIn.setMotion(entityIn.getMotion().mul(0.5D, 1.0D, 0.5D));
+        if(!(entityIn.getEntity() instanceof BrushStoogeEntity))
+            entityIn.setMotion(entityIn.getMotion().mul(0.5D, 1.0D, 0.5D));
     }
 
     @Override

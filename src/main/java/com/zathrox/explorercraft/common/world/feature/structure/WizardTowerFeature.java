@@ -96,18 +96,6 @@ public class WizardTowerFeature extends Feature<NoFeatureConfig> {
         }
 
         return false;
-        /*
-        if (canSpawnHere(worldIn, pos.down(), 12, 10, 20) && worldHeight.getY() >= 100) {
-
-            PlacementSettings placementSettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk(null);
-            template.addBlocksToWorldChunk(worldIn, pos, placementSettings);
-
-            System.out.println(pos);
-            return true;
-        } else {
-
-            return false;
-        }*/
 
     }
 

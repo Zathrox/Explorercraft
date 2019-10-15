@@ -59,6 +59,7 @@ public class ExplorerItems {
     public static final Item CHEESE = null;
     public static final Item NOCTILUCA = null;
     public static final Item LOTUS_FLOWER = null;
+    public static final Item SALMON_SUSHI = null;
 
     public static final Item WELSH_CAKES = null;
     public static final Item WELSH_RAREBIT = null;
@@ -72,6 +73,7 @@ public class ExplorerItems {
     public static final Item WIZARD_HAT = ExplorerUtil._null();
     public static final Item WIZARD_STAFF = null;
     public static final Item WELSH_SHIELD = null;
+    public static final Item JADE_BOW = null;
 
 
 

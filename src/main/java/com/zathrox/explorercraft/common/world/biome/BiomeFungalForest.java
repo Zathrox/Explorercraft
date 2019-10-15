@@ -2,6 +2,7 @@ package com.zathrox.explorercraft.common.world.biome;
 
 import com.google.common.collect.Lists;
 import com.zathrox.explorercraft.common.world.ExplorercraftFeatureList;
+import com.zathrox.explorercraft.core.config.EntityConfig;
 import com.zathrox.explorercraft.core.registry.ExplorerBlocks;
 import com.zathrox.explorercraft.core.registry.ExplorerEntities;
 import net.minecraft.block.BlockState;
@@ -33,8 +34,8 @@ public class BiomeFungalForest extends Biome {
         DefaultBiomeFeatures.addStoneVariants(this);
         DefaultBiomeFeatures.addOres(this);
         DefaultBiomeFeatures.addSwampClayDisks(this);
-        //== World Generation
 
+        //== World Generation
         this.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.DISK, new SphereReplaceConfig(Blocks.MYCELIUM.getDefaultState(), 4, 2, Lists.newArrayList(new BlockState[]{Blocks.DIRT.getDefaultState(), Blocks.GRASS_BLOCK.getDefaultState()})), Placement.COUNT_TOP_SOLID, new FrequencyConfig(2)));
 
         //== Vegatation
@@ -54,7 +55,7 @@ public class BiomeFungalForest extends Biome {
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.BUSH, new BushConfig(ExplorerBlocks.PINK_MUSHROOM.getDefaultState()), Placement.COUNT_CHANCE_HEIGHTMAP, new HeightWithChanceConfig(4, 0.325F)));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, createDecoratedFeature(Feature.SEAGRASS, new SeaGrassConfig(64, 0.6D), Placement.TOP_SOLID_HEIGHTMAP, IPlacementConfig.NO_PLACEMENT_CONFIG));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ExplorercraftFeatureList.LOTUS_FLOWERS, IFeatureConfig.NO_FEATURE_CONFIG, Placement.TOP_SOLID_HEIGHTMAP, new NoPlacementConfig()));
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ExplorercraftFeatureList.LUPINE_FLOWERS, IFeatureConfig.NO_FEATURE_CONFIG, Placement.COUNT_HEIGHTMAP_32, new FrequencyConfig(2)));
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ExplorercraftFeatureList.LUPINE_FLOWERS, IFeatureConfig.NO_FEATURE_CONFIG, Placement.COUNT_HEIGHTMAP_32, new FrequencyConfig(1)));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.BUSH, new BushConfig(ExplorerBlocks.CATTAIL.getDefaultState()), Placement.COUNT_HEIGHTMAP_DOUBLE, new FrequencyConfig(10)));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ExplorercraftFeatureList.TALL_CATTAIL, new DoublePlantConfig(ExplorerBlocks.TALL_CATTAIL.getDefaultState()), Placement.COUNT_HEIGHTMAP_32, new FrequencyConfig(8)));
 
@@ -67,10 +68,11 @@ public class BiomeFungalForest extends Biome {
 
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.MOOSHROOM, 8, 1, 4));
         this.addSpawn(EntityClassification.AMBIENT, new SpawnListEntry(EntityType.BAT, 10, 8, 8));
-        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(ExplorerEntities.INFECTED_ZOMBIE, 100, 4, 4));
-        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(ExplorerEntities.INFECTED_SKELETON, 95, 4, 4));
-        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(ExplorerEntities.INFECTED_CREEPER, 100, 4, 4));
-        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.SLIME, 100, 1, 4));
+        if(EntityConfig.brush_stooge_enabled.get()) this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(ExplorerEntities.BRUSH_STOOGE, 100, 2, 8));
+        if(EntityConfig.infected_zombie_enabled.get()) this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(ExplorerEntities.INFECTED_ZOMBIE, 100, 4, 4));
+        if(EntityConfig.infected_skeleton_enabled.get()) this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(ExplorerEntities.INFECTED_SKELETON, 95, 4, 4));
+        if(EntityConfig.infected_creeper_enabled.get()) this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(ExplorerEntities.INFECTED_CREEPER, 100, 4, 4));
+        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.SLIME, 100, 1, 4));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.WITCH, 50, 1, 2));
     }
 

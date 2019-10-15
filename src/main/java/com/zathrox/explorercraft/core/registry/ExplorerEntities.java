@@ -6,7 +6,6 @@ import com.zathrox.explorercraft.core.Explorercraft;
 import com.zathrox.explorercraft.core.config.EntityConfig;
 import net.minecraft.entity.*;
 import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.RabbitEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SpawnEggItem;
@@ -26,11 +25,13 @@ public class ExplorerEntities {
     private static List<EntityType> entities = Lists.newArrayList();
     private static List<Item> spawnEggs = Lists.newArrayList();
 
+    public static final EntityType<BrushStoogeEntity> BRUSH_STOOGE = createEntity(BrushStoogeEntity.class, BrushStoogeEntity::new, EntityClassification.MONSTER, "brush_stooge", 0.4F, 0.7F, 16777215, 10092400);
     public static final EntityType<InfectedSkeletonEntity> INFECTED_SKELETON = createEntity(InfectedSkeletonEntity.class, InfectedSkeletonEntity::new, EntityClassification.MONSTER, "infected_skeleton", 0.6F, 1.99F, 16777215, 10092400);
     public static final EntityType<InfectedZombieEntity> INFECTED_ZOMBIE = createEntity(InfectedZombieEntity.class, InfectedZombieEntity::new, EntityClassification.MONSTER, "infected_zombie", 0.6F, 1.99F, 16777234, 10092500);
     public static final EntityType<InfectedCreeperEntity> INFECTED_CREEPER = createEntity(InfectedCreeperEntity.class, InfectedCreeperEntity::new, EntityClassification.MONSTER, "infected_creeper", 0.6F, 1.7F, 894731, 0xdc1c1c);
 
     //public static final EntityType<EntityOvergrownSkeleton2> OVERGROWN_SKELETON2 = createEntity(EntityOvergrownSkeleton2.class, EntityOvergrownSkeleton2::new, EntityClassification.MONSTER, "overgrown_skeleton2", 0.6F, 1.99F, 14562431, 13484272);
+    public static final EntityType<EnderGhastEntity> ENDERGHAST = createEntity(EnderGhastEntity.class, EnderGhastEntity::new, EntityClassification.MONSTER, "enderghast", 10F, 4.5F, 4801171, 6078066);
     public static final EntityType<EnderreeperEntity> ENDERREEPER = createEntity(EnderreeperEntity.class, EnderreeperEntity::new, EntityClassification.MONSTER, "enderreeper", 0.6F, 1.99F, 3801171, 7078066);
     public static final EntityType<WizardEntity> WIZARD = createEntity(WizardEntity.class, WizardEntity::new, EntityClassification.MONSTER, "wizard", 0.6F, 1.99F, 4869992, 16433238);
     //public static final EntityType<RabbitEntity> KILLER_RABBIT = createEntity(RabbitEntity.class, RabbitEntity::new, EntityClassification.CREATURE, "killer_rabbit", 0.6F, 1.99F, 4869992, 16433238);
@@ -60,11 +61,13 @@ public class ExplorerEntities {
             event.getRegistry().register(entity);
         }
 
+        EntitySpawnPlacementRegistry.register(BRUSH_STOOGE, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
         EntitySpawnPlacementRegistry.register(INFECTED_SKELETON, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
         EntitySpawnPlacementRegistry.register(INFECTED_ZOMBIE, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
         EntitySpawnPlacementRegistry.register(INFECTED_CREEPER, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
         //EntitySpawnPlacementRegistry.register(OVERGROWN_SKELETON2, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
         EntitySpawnPlacementRegistry.register(ENDERREEPER, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
+        EntitySpawnPlacementRegistry.register(ENDERGHAST, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, EnderGhastEntity::spawnConditions);
         EntitySpawnPlacementRegistry.register(WIZARD, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::func_223315_a);
         //EntitySpawnPlacementRegistry.register(KILLER_RABBIT, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::func_223315_a);
     }
@@ -92,8 +95,12 @@ public class ExplorerEntities {
     public static void registerEntityWorldSpawns() {
 
         if(EntityConfig.enderreeper_enabled.get()) {
-            registerEntityWorldSpawn(ENDERREEPER, 3, 1, 1, Biomes.THE_END);
-            registerEntityWorldSpawn(ENDERREEPER, 6, 1, 1, Biomes.END_BARRENS, Biomes.SMALL_END_ISLANDS, Biomes.END_HIGHLANDS, Biomes.END_MIDLANDS);
+            registerEntityWorldSpawn(ENDERREEPER, 5, 1, 2, Biomes.THE_END);
+            registerEntityWorldSpawn(ENDERREEPER, 8, 1, 2, Biomes.END_BARRENS, Biomes.SMALL_END_ISLANDS, Biomes.END_HIGHLANDS, Biomes.END_MIDLANDS);
+        }
+        if(EntityConfig.enderreeper_enabled.get()) {
+            registerEntityWorldSpawn(ENDERGHAST, 15, 4, 4, Biomes.THE_END);
+            registerEntityWorldSpawn(ENDERGHAST, 25, 4, 4, Biomes.END_BARRENS, Biomes.SMALL_END_ISLANDS, Biomes.END_HIGHLANDS, Biomes.END_MIDLANDS);
         }
         if(EntityConfig.infected_skeleton_enabled.get()) {
             registerEntityWorldSpawn(INFECTED_SKELETON, 90, 4, 4, Biomes.DARK_FOREST, Biomes.DARK_FOREST, Biomes.JUNGLE, Biomes.JUNGLE_EDGE, Biomes.JUNGLE_HILLS, Biomes.BAMBOO_JUNGLE, Biomes.BAMBOO_JUNGLE_HILLS, Biomes.MODIFIED_JUNGLE_EDGE, Biomes.MODIFIED_JUNGLE, ExplorerBiomes.BAMBOO_FOREST);
@@ -105,6 +112,10 @@ public class ExplorerEntities {
 
         if(EntityConfig.infected_creeper_enabled.get()) {
             registerEntityWorldSpawn(INFECTED_CREEPER, 80, 4, 4, Biomes.DARK_FOREST, Biomes.DARK_FOREST, Biomes.JUNGLE, Biomes.JUNGLE_EDGE, Biomes.JUNGLE_HILLS, Biomes.BAMBOO_JUNGLE, Biomes.BAMBOO_JUNGLE_HILLS, Biomes.MODIFIED_JUNGLE_EDGE, Biomes.MODIFIED_JUNGLE, ExplorerBiomes.BAMBOO_FOREST);
+        }
+
+        if(EntityConfig.brush_stooge_enabled.get()) {
+            registerEntityWorldSpawn(BRUSH_STOOGE, 88, 2, 8, Biomes.DARK_FOREST, Biomes.DARK_FOREST, Biomes.JUNGLE, Biomes.JUNGLE_EDGE, Biomes.JUNGLE_HILLS, Biomes.BAMBOO_JUNGLE, Biomes.BAMBOO_JUNGLE_HILLS, Biomes.MODIFIED_JUNGLE_EDGE, Biomes.MODIFIED_JUNGLE, ExplorerBiomes.BAMBOO_FOREST);
         }
     }
 }

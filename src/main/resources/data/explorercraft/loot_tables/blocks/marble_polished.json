@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "explorercraft:marble_bricks"
+          "name": "explorercraft:marble_polished"
         }
       ],
       "conditions": [

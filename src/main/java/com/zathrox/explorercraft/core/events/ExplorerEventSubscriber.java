@@ -3,6 +3,7 @@ package com.zathrox.explorercraft.core.events;
 import com.google.common.base.Preconditions;
 import com.zathrox.explorercraft.common.blocks.*;
 import com.zathrox.explorercraft.common.blocks.trees.*;
+import com.zathrox.explorercraft.common.items.JadeBowItem;
 import com.zathrox.explorercraft.common.items.WizardHatItem;
 import com.zathrox.explorercraft.common.items.WizardStaffItem;
 import com.zathrox.explorercraft.common.tileentity.TileEntitySleepingBag;
@@ -12,6 +13,7 @@ import com.zathrox.explorercraft.core.registry.*;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.potion.Effects;
@@ -377,6 +379,8 @@ public final class ExplorerEventSubscriber {
                 setup(new ArmorItem(ArmorMaterialList.RUBY_ARMOR, EquipmentSlotType.CHEST, new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), 	"ruby_chestplate"),
                 setup(new ArmorItem(ArmorMaterialList.RUBY_ARMOR, EquipmentSlotType.LEGS, new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), 	"ruby_leggings"),
                 setup(new ArmorItem(ArmorMaterialList.RUBY_ARMOR, EquipmentSlotType.FEET, new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)), 	"ruby_boots"),
+
+                setup(new JadeBowItem(new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT).maxDamage(684)), 	"jade_bow"),
 
                 setup(new HorseArmorItem(5, new ResourceLocation(Explorercraft.MOD_ID, "textures/entities/horse/armor/horse_armor_amethyst.png"), new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT).maxStackSize(1)), 	"amethyst_horse_armor"),
                 setup(new HorseArmorItem(8, new ResourceLocation(Explorercraft.MOD_ID, "textures/entities/horse/armor/horse_armor_jade.png"), new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT).maxStackSize(1)), 	"jade_horse_armor"),

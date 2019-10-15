@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "explorercraft:basalt_bricks"
+          "name": "explorercraft:basalt_polished"
         }
       ],
       "conditions": [

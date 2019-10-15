@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:gems/amethyst",
+    "#forge:gems/jade",
+    "#forge:gems/ruby"
+  ]
+}

@@ -1,17 +1,32 @@
 package com.zathrox.explorercraft.core.util;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.zathrox.explorercraft.core.registry.ExplorerBlocks;
 import com.zathrox.explorercraft.core.registry.ExplorerItems;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ComposterBlock;
 import net.minecraft.block.FireBlock;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.merchant.villager.VillagerProfession;
+import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraft.item.AxeItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.MerchantOffer;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.IItemProvider;
+import net.minecraft.util.Util;
+
+import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Random;
 
 public class ExplorerVanillaCompat {
+
 
     public static void setup() {
 

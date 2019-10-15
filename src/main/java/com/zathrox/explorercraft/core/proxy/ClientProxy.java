@@ -41,10 +41,12 @@ public class ClientProxy  extends CommonProxy {
     private void clientSetup(FMLClientSetupEvent event) {
         Explorercraft.LOGGER.debug("ClientProxy clientSetup method");
 
+        RenderingRegistry.registerEntityRenderingHandler(BrushStoogeEntity.class, manager -> new BrushStoogeRenderer(manager));
+        RenderingRegistry.registerEntityRenderingHandler(EnderreeperEntity.class, manager -> new EnderreeperRenderer(manager));
+        RenderingRegistry.registerEntityRenderingHandler(EnderGhastEntity.class, manager -> new EnderGhastRenderer(manager));
         RenderingRegistry.registerEntityRenderingHandler(InfectedSkeletonEntity.class, manager -> new InfectedSkeletonRenderer(manager));
         RenderingRegistry.registerEntityRenderingHandler(InfectedZombieEntity.class, manager -> new InfectedZombieRenderer(manager));
         RenderingRegistry.registerEntityRenderingHandler(InfectedCreeperEntity.class, manager -> new InfectedCreeperRenderer(manager));
-        RenderingRegistry.registerEntityRenderingHandler(EnderreeperEntity.class, manager -> new EnderreeperRenderer(manager));
         RenderingRegistry.registerEntityRenderingHandler(WizardEntity.class, manager -> new WizardRenderer(manager));
 
         MinecraftForge.EVENT_BUS.register(new ClientForgeEventSubscriber());

@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "explorercraft:slate_bricks"
+          "name": "explorercraft:slate_polished"
         }
       ],
       "conditions": [

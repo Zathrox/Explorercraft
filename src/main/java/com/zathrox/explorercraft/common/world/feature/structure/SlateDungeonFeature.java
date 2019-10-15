@@ -93,6 +93,7 @@ public class SlateDungeonFeature extends Feature<NoFeatureConfig> {
             System.out.println("SD_BASE SPAWNED AT: " + pos);
             int offset = 16;
             if (northChance.nextInt(2) == 0) {
+                assert vertical_tunnel != null;
                 vertical_tunnel.addBlocksToWorldChunk(worldIn, pos.north(7), placementSettings);
                 spawnRoom(worldIn, pos.north(offset), placementSettings, 5 ,templateManager);
             }

@@ -1,0 +1,6 @@
+{
+    "parent": "explorercraft:item/jade_bow",
+    "textures": {
+        "layer0": "explorercraft:item/jade_bow_pulling_0"
+    }
+}

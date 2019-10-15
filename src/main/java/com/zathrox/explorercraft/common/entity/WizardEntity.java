@@ -3,6 +3,7 @@ package com.zathrox.explorercraft.common.entity;
 import com.zathrox.explorercraft.core.registry.ExplorerBannerPattern;
 import com.zathrox.explorercraft.core.registry.ExplorerBlocks;
 import com.zathrox.explorercraft.core.registry.ExplorerItems;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
@@ -13,6 +14,7 @@ import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
@@ -36,6 +38,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.BasicTrade;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -51,7 +54,6 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant
 	
     public WizardEntity(EntityType<? extends WizardEntity> type, World worldIn) {
         super(type, worldIn);
-
         this.stepHeight = 1.0F;
     }
 
@@ -144,19 +146,29 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant
         return false;
     }
 
+    @Override
+    public MerchantOffers getOffers() {
+        if (this.offers == null) {
+            this.offers = new MerchantOffers();
+            this.populateTradeData();
+        } else if (rand.nextInt(5) == 0) {
+            this.offers.clear();
+            this.populateTradeData();
+        }
+        return this.offers;
+    }
 
     @Override
     protected void populateTradeData() {
-
-
         if (getRareLoot() != null && getCommonLoot() != null) {
             MerchantOffers offers = this.getOffers();
+            offers.clear();
             int maxTrades = this.rand.nextInt(5) + 5;
             this.addTrades(offers, getCommonLoot(), maxTrades);
             int i = this.rand.nextInt(getRareLoot().size());
             MerchantOffer rareOffer = getRareLoot().get(i);
             if (rareOffer != null) {
-                offers.add(rareOffer);
+                    offers.add(rareOffer);
             }
         }
 
@@ -245,7 +257,7 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant
         return tradeList;*/
     }
 
-    static class ItemsForGemTrade implements VillagerTrades.ITrade {
+    public static class ItemsForGemTrade implements VillagerTrades.ITrade {
         private final ItemStack field_221208_a;
         private final int amount;
         private final int field_221210_c;

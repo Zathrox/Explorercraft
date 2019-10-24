@@ -54,16 +54,14 @@ public class EnderreeperEntity extends CreeperEntity
         this.setPathPriority(PathNodeType.WATER, -1.0F);
     }
 
-    /*//==== Spawning ====//
+    //==== Spawning ====//
     public static void addSpawn() {
         ForgeRegistries.BIOMES.getValues().stream().forEach(EnderreeperEntity::processSpawning);
     }
 
     private static void processSpawning(Biome biome) {
-        if(biome.getCategory() == Biome.Category.THEEND && EntityConfig.enderreeper_enabled.get()) {
-            biome.getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(ExplorerEntities.ENDERREEPER, 5, 1, 1));
-        }
-    }*/
+        biome.getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(ExplorerEntities.ENDERREEPER, 10, 1, 2));
+    }
 
     //==== AI - GOALS - GENERAL ====//
     @Override

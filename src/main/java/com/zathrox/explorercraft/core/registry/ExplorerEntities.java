@@ -16,6 +16,7 @@ import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 
@@ -98,9 +99,16 @@ public class ExplorerEntities {
             registerEntityWorldSpawn(ENDERREEPER, 5, 1, 2, Biomes.THE_END);
             registerEntityWorldSpawn(ENDERREEPER, 8, 1, 2, Biomes.END_BARRENS, Biomes.SMALL_END_ISLANDS, Biomes.END_HIGHLANDS, Biomes.END_MIDLANDS);
         }
-        if(EntityConfig.enderreeper_enabled.get()) {
-            registerEntityWorldSpawn(ENDERGHAST, 15, 4, 4, Biomes.THE_END);
-            registerEntityWorldSpawn(ENDERGHAST, 25, 4, 4, Biomes.END_BARRENS, Biomes.SMALL_END_ISLANDS, Biomes.END_HIGHLANDS, Biomes.END_MIDLANDS);
+        if(EntityConfig.enderreeper_overworld_spawn_enabled.get()) {
+            EnderreeperEntity.addSpawn();
+        }
+        if(EntityConfig.enderreeper_nether_spawn_enabled.get()) {
+            registerEntityWorldSpawn(ENDERREEPER, 5, 1, 2, Biomes.NETHER);
+        }
+
+        if(EntityConfig.enderghast_enabled.get()) {
+            registerEntityWorldSpawn(ENDERGHAST, 10, 1, 4, Biomes.THE_END);
+            registerEntityWorldSpawn(ENDERGHAST, 15, 1, 4, Biomes.END_BARRENS, Biomes.SMALL_END_ISLANDS, Biomes.END_HIGHLANDS, Biomes.END_MIDLANDS);
         }
         if(EntityConfig.infected_skeleton_enabled.get()) {
             registerEntityWorldSpawn(INFECTED_SKELETON, 90, 4, 4, Biomes.DARK_FOREST, Biomes.DARK_FOREST, Biomes.JUNGLE, Biomes.JUNGLE_EDGE, Biomes.JUNGLE_HILLS, Biomes.BAMBOO_JUNGLE, Biomes.BAMBOO_JUNGLE_HILLS, Biomes.MODIFIED_JUNGLE_EDGE, Biomes.MODIFIED_JUNGLE, ExplorerBiomes.BAMBOO_FOREST);

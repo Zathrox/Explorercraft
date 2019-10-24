@@ -10,7 +10,7 @@
       "item": "minecraft:stick"
     },
     "X": {
-      "item": "explorercraft:jade"
+      "tag": "forge:gems/jade"
     }
   },
   "result": {

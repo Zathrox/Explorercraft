@@ -1,9 +1,17 @@
 CHANGELOG:
 
-3.2.2
+Patch 3.2.2:
 + added Custom Villager Trades (might be conflict with other mods)
 + tweaked world generation of the Slate Dungeon code (possible fix to an issue someone was having)
 + Fixed Polished Basalt, Marble and Slate all dropping bricks and not polished variants - no idea how that slipped through and for how long!
 + Tweaked and changed functionality of the Wizard Trading - the initial wizard I spawned in the structure, all his trades were duplicated, so now the wizard has poor memory and randomly changes his mind on what he's selling! :P
 + added Jade Longbow added
 + added Enderghast to the End
+
+Patch 3.2.3:
+- Removed a config conflict where disabling the enderreeper disabled both the enderghast + enderreeper and the enderghast config did nothing
++ Added new rare spawns to the enderreeper spawning in the overworld and nether biome, similar to the enderman (these are configurable)
++ Special thanks to MasterSloth1 for providing me with OreDict variants of my tools/armors recipes which allow for other mod gems to be used to make explorercraft tools!
++ Added Russian translation
++ Modified Enderghast spawns slightly
++ Added Enderghast Spawn egg to language file

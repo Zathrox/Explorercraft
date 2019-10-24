@@ -10,7 +10,7 @@
       "item": "minecraft:stick"
     },
     "X": {
-      "item": "explorercraft:amethyst"
+      "tag": "forge:gems/amethyst"
     }
   },
   "result": {

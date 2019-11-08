@@ -6,6 +6,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 public class GeneralConfig {
 
     public static ForgeConfigSpec.BooleanValue swimmingHorse;
+    public static ForgeConfigSpec.IntValue ashTreeRarity;
 
     public static void init(ForgeConfigSpec.Builder common, ForgeConfigSpec.Builder client) {
         common.push("Vanilla Tweaks");
@@ -14,6 +15,9 @@ public class GeneralConfig {
                 .comment("Allow Swimming Horses")
                 .translation(Explorercraft.MOD_ID + ".config.swimmingHorse")
                 .define("swimmingHorse", true);
+        ashTreeRarity = common.comment("Ash Tree Rarity")
+                .translation(Explorercraft.MOD_ID + ".config.ashTreeRarity")
+                .defineInRange("ashTreeRarity", 25, 0,100);
         common.pop();
     }
 

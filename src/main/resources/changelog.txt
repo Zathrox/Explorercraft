@@ -15,3 +15,9 @@ Patch 3.2.3:
 + Added Russian translation
 + Modified Enderghast spawns slightly
 + Added Enderghast Spawn egg to language file
+
+Patch 3.2.4:
++ Changed Gem Blocks languages file to match vanilla: Block of Gem
++ Added wizard/wizard tower weights, to increase the chance of them spawning
++ Tweaked some loot-tables to reduce conflicts
++ Added Ash-Tree rarity, increase to add more ashtrees to spawn (careful though, higher values will cause lag/dodgy world gen)

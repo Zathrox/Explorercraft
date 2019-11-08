@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:chest",
+  "__comment": "This table is injected as its own pool into minecraft:chests/shipwreck_supply",
   "pools": [
     {
       "name": "main",

@@ -12,7 +12,7 @@ public class EntityConfig {
     public static ForgeConfigSpec.BooleanValue infected_creeper_enabled;
     public static ForgeConfigSpec.BooleanValue infected_skeleton_enabled;
     public static ForgeConfigSpec.BooleanValue infected_zombie_enabled;
-    public static ForgeConfigSpec.BooleanValue wizard_enabled;
+    public static ForgeConfigSpec.IntValue wizard_weight;
 
     public static void init(ForgeConfigSpec.Builder common, ForgeConfigSpec.Builder client) {
         common.push("Spawn Entities");
@@ -41,6 +41,9 @@ public class EntityConfig {
         infected_zombie_enabled = common
                 .comment("Decide if you want the Infected Zombie to spawn in your world")
                 .define("entity.infested_skeleton_enabled", true);
+        wizard_weight = common
+                .comment("Decide how frequently you want the wizard tower/wizard to spawn in your world (higher spawns increase changes for dodgey worldgen)")
+                .defineInRange("entity.wizard_weight", 12, 0, 50);
         common.pop();
     }
 }

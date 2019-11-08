@@ -140,9 +140,9 @@
   "block.explorercraft.jade_ore": "Jade Ore",
 
   "//": "== Blocks",
-  "block.explorercraft.ruby_block": "Ruby Block",
-  "block.explorercraft.amethyst_block": "Amethyst Block",
-  "block.explorercraft.jade_block": "Jade Block",
+  "block.explorercraft.ruby_block": "Block of Ruby ",
+  "block.explorercraft.amethyst_block": "Block of Amethyst ",
+  "block.explorercraft.jade_block": "Block of Jade",
 
   "//": "== Armour",
   "item.explorercraft.ruby_horse_armor": "Ruby Horse Armor",

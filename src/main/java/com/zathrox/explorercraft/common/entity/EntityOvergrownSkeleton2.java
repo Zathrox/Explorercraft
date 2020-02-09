@@ -30,8 +30,8 @@ public class EntityOvergrownSkeleton2 extends SkeletonEntity {
         }
     }*/
 
-    protected AbstractArrowEntity func_213624_b(ItemStack p_213624_1_, float p_213624_2_) {
-        AbstractArrowEntity lvt_3_1_ = super.func_213624_b(p_213624_1_, p_213624_2_);
+    protected AbstractArrowEntity fireArrow(ItemStack p_213624_1_, float p_213624_2_) {
+        AbstractArrowEntity lvt_3_1_ = super.fireArrow(p_213624_1_, p_213624_2_);
         if (lvt_3_1_ instanceof ArrowEntity) {
             ((ArrowEntity)lvt_3_1_).addEffect(new EffectInstance(Effects.POISON, 300));
         }

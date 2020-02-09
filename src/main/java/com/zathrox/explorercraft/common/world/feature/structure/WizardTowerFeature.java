@@ -17,6 +17,7 @@ import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.template.PlacementSettings;
 import net.minecraft.world.gen.feature.template.Template;
 import net.minecraft.world.gen.feature.template.TemplateManager;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
 import javax.annotation.Nullable;
@@ -39,8 +40,7 @@ public class WizardTowerFeature extends Feature<NoFeatureConfig> {
         int width = 7;
         int depth = 8;
         int height = 20;
-        MinecraftServer mcServer = worldIn.getWorld().getServer();
-        TemplateManager templateManager = mcServer.getWorld(worldIn.getDimension().getType()).getStructureTemplateManager();
+        TemplateManager templateManager = ((ServerWorld)worldIn.getWorld()).getSaveHandler().getStructureTemplateManager();
         Template template = templateManager.getTemplate(new ResourceLocation(Explorercraft.MOD_ID, "wizard_tower_v2"));
 
         if (template == null) {

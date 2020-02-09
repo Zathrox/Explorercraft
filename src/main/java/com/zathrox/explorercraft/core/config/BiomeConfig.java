@@ -40,15 +40,15 @@ public class BiomeConfig {
         common.comment("Various settings for controlling the biomes in the mod: Plains(Default: 10)");
         bambooForestWeight = common.comment("Bamboo Forest Weight")
                 .translation(Explorercraft.MOD_ID + ".config.bambooForestWeight")
-                .defineInRange("bambooForestWeight", 10, 0,100);
+                .defineInRange("bambooForestWeight", 8, 0,100);
         forestedMountainWeight = common
                 .comment("Forested Mountain Weight")
                 .translation(Explorercraft.MOD_ID + ".config.forestedMountainWeight")
-                .defineInRange("forestedMountainWeight", 10, 0,100);
+                .defineInRange("forestedMountainWeight", 8, 0,100);
         snowdoniaWeight = common
                 .comment("Snowdonia Weight")
                 .translation(Explorercraft.MOD_ID + ".config.snowdoniaWeight")
-                .defineInRange("snowdoniaWeight", 10, 0,100);
+                .defineInRange("snowdoniaWeight", 8, 0,100);
         fungalForestWeight = common
                 .comment("Fungal Forests Weight")
                 .translation(Explorercraft.MOD_ID + ".config.fungalForestWeight")

@@ -28,10 +28,10 @@ public class EntityConfig {
                 .define("entity.enderreeper_enabled", true);
         enderreeper_overworld_spawn_enabled = common
                 .comment("Decide if you want the Enderreeper to spawn in the overworld (Similar to the current enderman)")
-                .define("entity.enderreeper_overworld_spawn_enabled", true);
+                .define("entity.enderreeper_overworld_spawn_enabled", false);
         enderreeper_nether_spawn_enabled = common
                 .comment("Decide if you want the Enderreeper to spawn in the Nether (Similar to current endermen)")
-                .define("entity.enderreeper_nether_spawn_enabled", true);
+                .define("entity.enderreeper_nether_spawn_enabled", false);
         infected_creeper_enabled = common
                 .comment("Decide if you want the Infected Creeper to spawn in your world")
                 .define("entity.infected_creeper_enabled", true);
@@ -42,7 +42,7 @@ public class EntityConfig {
                 .comment("Decide if you want the Infected Zombie to spawn in your world")
                 .define("entity.infested_skeleton_enabled", true);
         wizard_weight = common
-                .comment("Decide how frequently you want the wizard tower/wizard to spawn in your world (higher spawns increase changes for dodgey worldgen)")
+                .comment("Decide how frequently you want the wizard tower/wizard to spawn in your world, Wizards will only spawn in a Wizard Tower, no-other places (higher spawns increase changes for dodgey worldgen)")
                 .defineInRange("entity.wizard_weight", 12, 0, 50);
         common.pop();
     }

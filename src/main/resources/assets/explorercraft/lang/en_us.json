@@ -12,7 +12,7 @@
   "item.explorercraft.builder": "Structure Builder",
 
   "//": "== Biomes",
-  "biome.explorercraft.bamboo_forest": "Bamboo Forest",
+  "biome.explorercraft.bamboo_forest": "Bamboo Grove",
   "biome.explorercraft.forested_mountain": "Forested Mountains",
   "biome.explorercraft.snowdonia": "Snowdonia",
   "biome.explorercraft.fungal_forest": "Fungal Forest",
@@ -44,8 +44,8 @@
   "advancements.explorercraft.exploring_time.title": "Exploring Time!",
   "advancements.explorercraft.exploring_time.description": "Discover the hidden biomes!",
 
-  "advancements.explorercraft.bamboo_forest.title": "Bamboo Forest Discovered!",
-  "advancements.explorercraft.bamboo_forest.description": "A vast sea of bamboo!",
+  "advancements.explorercraft.bamboo_forest.title": "Bamboo Grove Discovered!",
+  "advancements.explorercraft.bamboo_forest.description": "A vast grove of bamboo!",
   "advancements.explorercraft.forested_mountain.title": "Forested Mountains Discovered!",
   "advancements.explorercraft.forested_mountain.description": "A glorious mountain to traverse!",
   "advancements.explorercraft.snowdonia.title": "Snowdonia Discovered!",
@@ -286,7 +286,7 @@
   "block.explorercraft.ash_pressure_plate": "Ash Pressure Plate",
   "block.explorercraft.ash_button": "Ash Button",
 
-  "block.explorercraft.bamboo_log": "Bamboo",
+  "block.explorercraft.bamboo_log": "Thick Bamboo",
   "block.explorercraft.bamboo_planks": "Bamboo Planks",
   "block.explorercraft.bamboo_planks_vertical": "Bamboo Wall",
   "block.explorercraft.bamboo_leaves": "Bamboo Leaves",

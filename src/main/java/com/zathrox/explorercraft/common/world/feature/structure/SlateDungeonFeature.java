@@ -16,6 +16,7 @@ import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.template.PlacementSettings;
 import net.minecraft.world.gen.feature.template.Template;
 import net.minecraft.world.gen.feature.template.TemplateManager;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
 import javax.annotation.Nullable;
@@ -43,8 +44,8 @@ public class SlateDungeonFeature extends Feature<NoFeatureConfig> {
         int width = 9;
         int depth = 9;
         int height = 5;
-        MinecraftServer mcServer = worldIn.getWorld().getServer();
-        TemplateManager templateManager = mcServer.getWorld(worldIn.getDimension().getType()).getStructureTemplateManager();
+
+        TemplateManager templateManager = ((ServerWorld)worldIn.getWorld()).getSaveHandler().getStructureTemplateManager();
         Template base = templateManager.getTemplate(new ResourceLocation(Explorercraft.MOD_ID, "slate_dungeon_base"));
         Template vertical_tunnel = templateManager.getTemplate(new ResourceLocation(Explorercraft.MOD_ID, "slate_dungeon_tunnel"));
         Template horizontal_tunnel = templateManager.getTemplate(new ResourceLocation(Explorercraft.MOD_ID, "slate_dungeon_tunnel2"));
@@ -97,7 +98,7 @@ public class SlateDungeonFeature extends Feature<NoFeatureConfig> {
                 vertical_tunnel.addBlocksToWorldChunk(worldIn, pos.north(7), placementSettings);
                 spawnRoom(worldIn, pos.north(offset), placementSettings, 5 ,templateManager);
             }
-            if (eastChance.nextInt(5) == 0) {
+            if (eastChance.nextInt(3) == 0) {
                 horizontal_tunnel.addBlocksToWorldChunk(worldIn, pos.east(9), placementSettings);
                 spawnRoom(worldIn, pos.east(offset), placementSettings, 5 ,templateManager);
             }

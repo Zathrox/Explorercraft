@@ -84,7 +84,7 @@ public class ExplorercraftLootTableProvider implements IDataProvider {
                 .addLootPool(LootPool.builder()
                         .rolls(ConstantRange.of(1))
                         .addEntry(ItemLootEntry.builder(block)
-                                .acceptFunction(SetCount.func_215932_a(ConstantRange.of(2))
+                                .acceptFunction(SetCount.builder(ConstantRange.of(2))
                                 .acceptCondition(BlockStateProperty.builder(block)
                                         .with(SlabBlock.TYPE, SlabType.DOUBLE)))
                                 .acceptCondition(SurvivesExplosion.builder())))
@@ -109,7 +109,7 @@ public class ExplorercraftLootTableProvider implements IDataProvider {
                         .addEntry(ItemLootEntry.builder(block)
                                 .acceptCondition(MatchTool.builder(ItemPredicate.Builder.create()
                                         .enchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.IntBound.atLeast(1))))
-                                ).func_216080_a(ItemLootEntry.builder(itemProvider)
+                                ).alternatively(ItemLootEntry.builder(itemProvider)
                                         .acceptCondition(SurvivesExplosion.builder()))))
                         .build();
 
@@ -123,9 +123,9 @@ public class ExplorercraftLootTableProvider implements IDataProvider {
                         .addEntry(ItemLootEntry.builder(block) //
                                 .acceptCondition(MatchTool.builder(ItemPredicate.Builder.create() //
                                         .enchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.IntBound.atLeast(1)))) //
-                                ).func_216080_a(ItemLootEntry.builder(itemProvider) //
-                                        .acceptFunction(ApplyBonus.func_215869_a(Enchantments.FORTUNE)) //
-                                        .acceptFunction(ExplosionDecay.func_215863_b()))))
+                                ).alternatively(ItemLootEntry.builder(itemProvider) //
+                                        .acceptFunction(ApplyBonus.oreDrops(Enchantments.FORTUNE)) //
+                                        .acceptFunction(ExplosionDecay.builder()))))
                 .build();
     }
 }

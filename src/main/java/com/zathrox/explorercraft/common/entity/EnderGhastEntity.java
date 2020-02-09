@@ -45,7 +45,7 @@ public class EnderGhastEntity extends GhastEntity {
     }
 
     public static boolean spawnConditions(EntityType<EnderGhastEntity> entityType, IWorld world, SpawnReason reason, BlockPos blockPos, Random random) {
-        return world.getDifficulty() != Difficulty.PEACEFUL && random.nextInt(20) == 0 && func_223315_a(entityType, world, reason, blockPos, random);
+        return world.getDifficulty() != Difficulty.PEACEFUL && random.nextInt(20) == 0 && canSpawnOn(entityType, world, reason, blockPos, random);
     }
 
     protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {

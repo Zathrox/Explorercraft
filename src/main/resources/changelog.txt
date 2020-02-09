@@ -21,3 +21,24 @@ Patch 3.2.4:
 + Added wizard/wizard tower weights, to increase the chance of them spawning
 + Tweaked some loot-tables to reduce conflicts
 + Added Ash-Tree rarity, increase to add more ashtrees to spawn (careful though, higher values will cause lag/dodgy world gen)
+
+Patch 3.2.5:
++ Updated to latest and recommended forge
++ Updated Noctiluca Artwork
++ Updated some Jade tools Artwork
++ Renamed "Bamboo Forest" to "Bamboo Grove"
++ Renamed "Bamboo" to "Thick Bamboo" in order to reduce conflicts with Vanilla bamboo
++ Fixed normal minecraft bamboo being planted on top of Thick Bamboo and Bamboo Saplings
+- Disabled Enderreeper spawning in the Overworld/Nether by default (can configure in settings, if you wish to have the monstrosity in your normal worlds)
++ Added Loot-table for Lotus Flowers, can now finally collect them!
++ Added some extra info onto the EntityConfig for Wizards
++ Added Infected Wood crafting recipes (Find the green glowshrooms!)
++ Added Infected Wood recipebook advancements
++ Added Willow loot-table, can now finally collect them! (use shears like vines)
++ Amended text for the bamboo related advancements
++ Decreased all Explorercraft biome weights, making them rarer hopefully!
++ Fixed spawning bug preventing Infected mobs from spawning in Dark Forest Hills
++ Added new spawning rules for the enderreeper, that if enabled for overworld spawning, they wont spawn on mushroom field biomes or in the nether by default
++ Added Slate dungeon rarity options in the general config file
++ Increased the slate dungeon rarity from 2 to 10 (making it more common)
++ Increased chances for east branch of the dungeon to spawn (making the full cross shaped dungeon more common)

@@ -4,6 +4,7 @@ import com.zathrox.explorercraft.common.entity.ai.EnderreeperSwellGoal;
 import com.zathrox.explorercraft.core.config.EntityConfig;
 import com.zathrox.explorercraft.core.registry.ExplorerEntities;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
@@ -17,6 +18,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -24,8 +26,12 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biomes;
+import net.minecraft.world.dimension.DimensionType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
@@ -54,13 +60,17 @@ public class EnderreeperEntity extends CreeperEntity
         this.setPathPriority(PathNodeType.WATER, -1.0F);
     }
 
-    //==== Spawning ====//
+   //==== Spawning ====//
     public static void addSpawn() {
         ForgeRegistries.BIOMES.getValues().stream().forEach(EnderreeperEntity::processSpawning);
     }
 
     private static void processSpawning(Biome biome) {
-        biome.getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(ExplorerEntities.ENDERREEPER, 10, 1, 2));
+
+        if (biome != Biomes.MUSHROOM_FIELDS || biome != Biomes.MUSHROOM_FIELD_SHORE || biome != Biomes.NETHER) {
+            biome.getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(ExplorerEntities.ENDERREEPER, 2, 1, 1));
+        }
+
     }
 
     //==== AI - GOALS - GENERAL ====//

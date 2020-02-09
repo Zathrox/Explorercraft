@@ -7,6 +7,7 @@ public class GeneralConfig {
 
     public static ForgeConfigSpec.BooleanValue swimmingHorse;
     public static ForgeConfigSpec.IntValue ashTreeRarity;
+    public static ForgeConfigSpec.IntValue slateDungeonRarity;
 
     public static void init(ForgeConfigSpec.Builder common, ForgeConfigSpec.Builder client) {
         common.push("Vanilla Tweaks");
@@ -18,6 +19,9 @@ public class GeneralConfig {
         ashTreeRarity = common.comment("Ash Tree Rarity")
                 .translation(Explorercraft.MOD_ID + ".config.ashTreeRarity")
                 .defineInRange("ashTreeRarity", 25, 0,100);
+        slateDungeonRarity = common.comment("Slate Dungeon Rarity")
+                .translation(Explorercraft.MOD_ID + ".config.slateDungeonRarity")
+                .defineInRange("slateDungeonRarity", 10, 0,100);
         common.pop();
     }
 

@@ -94,7 +94,7 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant
         if (lvt_4_1_) {
             itemStack.interactWithEntity(p_184645_1_, this, held);
             return true;
-        } else if (itemStack.getItem() != Items.VILLAGER_SPAWN_EGG && this.isAlive() && !this.func_213716_dX() && !this.isChild()) {
+        } else if (itemStack.getItem() != Items.VILLAGER_SPAWN_EGG && this.isAlive() && !this.hasCustomer() && !this.isChild()) {
             if (held == Hand.MAIN_HAND) {
                 p_184645_1_.addStat(Stats.TALKED_TO_VILLAGER);
             }
@@ -105,7 +105,7 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant
             } else {
                 if (!this.world.isRemote) {
                     this.setCustomer(p_184645_1_);
-                    this.func_213707_a(p_184645_1_, this.getDisplayName(), 1);
+                    this.openMerchantContainer(p_184645_1_, this.getDisplayName(), 1);
                 }
 
                 return true;
@@ -134,8 +134,8 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant
     }
 
     @Override
-    protected void func_213713_b(MerchantOffer merchantOffer) {
-        if (merchantOffer.func_222221_q()) {
+    protected void onVillagerTrade(MerchantOffer merchantOffer) {
+        if (merchantOffer.getDoesRewardExp()) {
             int exp = 3 + this.rand.nextInt(4);
             this.world.addEntity(new ExperienceOrbEntity(this.world, this.posX, this.posY + 0.5D, this.posZ, exp));
         }
@@ -237,7 +237,7 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant
                 new ItemsForGemTrade(ExplorerBlocks.TATAMI, 5, 1, 1, 1),
                 new ItemsForGemTrade(ExplorerItems.WELSHFLAG_BANNER_PATTERN, 5, 1, 1, 1),
                 new ItemsForGemTrade(ExplorerBlocks.DAFFODIL, 1, 1, 8, 1),
-                new ItemsForGemTrade(ExplorerBlocks.ASH_SAPLING, 5, 1, 8, 1),
+                new ItemsForGemTrade(ExplorerBlocks.ASH_SAPLING, 10, 1, 8, 1),
                 new ItemsForGemTrade(ExplorerBlocks.BAMBOO_SAPLING, 5, 1, 8, 1),
                 new ItemsForGemTrade(ExplorerBlocks.CHERRY_SAPLING, 5, 1, 8, 1),
                 new ItemsForGemTrade(ExplorerBlocks.MAPLE_SAPLING, 5, 1, 8, 1),
@@ -367,7 +367,7 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant
     }
 
     protected SoundEvent getAmbientSound() {
-        return this.func_213716_dX() ? SoundEvents.ENTITY_WANDERING_TRADER_TRADE : SoundEvents.ENTITY_WANDERING_TRADER_AMBIENT;
+        return this.hasCustomer() ? SoundEvents.ENTITY_WANDERING_TRADER_TRADE : SoundEvents.ENTITY_WANDERING_TRADER_AMBIENT;
     }
 
     protected SoundEvent getHurtSound(DamageSource p_184601_1_) {

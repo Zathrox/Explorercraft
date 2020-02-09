@@ -62,7 +62,7 @@ public class CommonProxy {
 
     static
     {
-        VillagerTrades.field_221239_a.entrySet().forEach(e ->
+        VillagerTrades.VILLAGER_DEFAULT_TRADES.entrySet().forEach(e ->
         {
             Int2ObjectMap<VillagerTrades.ITrade[]> copy = new Int2ObjectOpenHashMap<>();
             e.getValue().int2ObjectEntrySet().forEach(ent -> copy.put(ent.getIntKey(), Arrays.copyOf(ent.getValue(), ent.getValue().length)));
@@ -315,6 +315,6 @@ public class CommonProxy {
         });
         MinecraftForge.EVENT_BUS.post(new VillagerTradesEvent(mutableTrades, prof));
         mutableTrades.int2ObjectEntrySet().forEach(e -> newProfList.put(e.getIntKey(), e.getValue().toArray(new VillagerTrades.ITrade[0])));
-        VillagerTrades.field_221239_a.put(prof, newProfList);
+        VillagerTrades.VILLAGER_DEFAULT_TRADES.put(prof, newProfList);
     }
 }

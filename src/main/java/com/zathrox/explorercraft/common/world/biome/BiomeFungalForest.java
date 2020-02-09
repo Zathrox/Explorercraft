@@ -59,7 +59,7 @@ public class BiomeFungalForest extends Biome {
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.BUSH, new BushConfig(ExplorerBlocks.CATTAIL.getDefaultState()), Placement.COUNT_HEIGHTMAP_DOUBLE, new FrequencyConfig(10)));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ExplorercraftFeatureList.TALL_CATTAIL, new DoublePlantConfig(ExplorerBlocks.TALL_CATTAIL.getDefaultState()), Placement.COUNT_HEIGHTMAP_32, new FrequencyConfig(8)));
 
-        DefaultBiomeFeatures.func_222329_ae(this);
+        //DefaultBiomeFeatures.func_222329_ae(this); @todo Figure out what this was
         DefaultBiomeFeatures.addSprings(this);
         DefaultBiomeFeatures.addFossils(this);
         this.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Biome.createDecoratedFeature(Feature.FOREST_ROCK, new BlockBlobConfig(Blocks.MOSSY_COBBLESTONE.getDefaultState(), 0), Placement.FOREST_ROCK, new FrequencyConfig(3)));

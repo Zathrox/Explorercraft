@@ -200,7 +200,7 @@ public class EnderreeperEntity extends CreeperEntity
     private void explode() {
         if (!this.world.isRemote) {
             Explosion.Mode explosion$mode = net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.world, this) ? Explosion.Mode.DESTROY : Explosion.Mode.NONE;
-            float f = this.func_225509_J__() ? 2.0F : 1.0F;
+            float f = this.isCharged() ? 2.0F : 1.0F;
             this.dead = true;
             this.playSound(SoundEvents.ENTITY_ENDERMAN_SCREAM, 1.0F, 1.0F);
             this.world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), (float)this.explosionRadius * f, explosion$mode);

@@ -181,7 +181,7 @@ public class EnderGhastEntity extends GhastEntity {
 
             for(int i = 1; i < p_220673_2_; ++i) {
                 axisalignedbb = axisalignedbb.offset(p_220673_1_);
-                if (!this.parentEntity.world.func_226665_a__(this.parentEntity, axisalignedbb)) {
+                if (!this.parentEntity.world.hasNoCollisions(this.parentEntity, axisalignedbb)) {
                     return false;
                 }
             }

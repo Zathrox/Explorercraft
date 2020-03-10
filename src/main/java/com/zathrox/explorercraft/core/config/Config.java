@@ -24,7 +24,6 @@ public class Config {
         OreGenConfig.init(common_builder, client_builder);
         EntityConfig.init(common_builder, client_builder);
 
-
         common_config = common_builder.build();
         client_config = client_builder.build();
 

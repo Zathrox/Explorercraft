@@ -39,6 +39,8 @@ public class ExplorerVanillaCompat {
         registerFlammable(ExplorerBlocks.BAMBOO_STAIRS, 5, 20);
         registerFlammable(ExplorerBlocks.BAMBOO_FENCE, 5, 20);
         registerFlammable(ExplorerBlocks.BAMBOO_FENCE_GATE, 5, 20);
+        registerFlammable(ExplorerBlocks.BAMBOO_DOOR, 5, 20);
+        registerFlammable(ExplorerBlocks.BAMBOO_TRAPDOOR, 5, 20);
 
         registerFlammable(ExplorerBlocks.ASH_LEAVES, 30, 60);
         registerFlammable(ExplorerBlocks.ASH_LOG, 5, 5);
@@ -50,6 +52,8 @@ public class ExplorerVanillaCompat {
         registerFlammable(ExplorerBlocks.ASH_STAIRS, 5, 20);
         registerFlammable(ExplorerBlocks.ASH_FENCE, 5, 20);
         registerFlammable(ExplorerBlocks.ASH_FENCE_GATE, 5, 20);
+        registerFlammable(ExplorerBlocks.ASH_DOOR, 5, 20);
+        registerFlammable(ExplorerBlocks.ASH_TRAPDOOR, 5, 20);
 
         registerFlammable(ExplorerBlocks.CHERRY_LEAVES, 30, 60);
         registerFlammable(ExplorerBlocks.CHERRY_LOG, 5, 5);
@@ -61,6 +65,9 @@ public class ExplorerVanillaCompat {
         registerFlammable(ExplorerBlocks.CHERRY_STAIRS, 5, 20);
         registerFlammable(ExplorerBlocks.CHERRY_FENCE, 5, 20);
         registerFlammable(ExplorerBlocks.CHERRY_FENCE_GATE, 5, 20);
+        registerFlammable(ExplorerBlocks.CHERRY_DOOR, 5, 20);
+        registerFlammable(ExplorerBlocks.CHERRY_TRAPDOOR, 5, 20);
+
 
         registerFlammable(ExplorerBlocks.MAPLE_LEAVES, 30, 60);
         registerFlammable(ExplorerBlocks.MAPLE_LOG, 5, 5);
@@ -72,6 +79,8 @@ public class ExplorerVanillaCompat {
         registerFlammable(ExplorerBlocks.MAPLE_STAIRS, 5, 20);
         registerFlammable(ExplorerBlocks.MAPLE_FENCE, 5, 20);
         registerFlammable(ExplorerBlocks.MAPLE_FENCE_GATE, 5, 20);
+        registerFlammable(ExplorerBlocks.MAPLE_DOOR, 5, 20);
+        registerFlammable(ExplorerBlocks.MAPLE_TRAPDOOR, 5, 20);
 
         registerFlammable(ExplorerBlocks.WILLOW_LEAVES, 30, 60);
         registerFlammable(ExplorerBlocks.WILLOW_LOG, 5, 5);
@@ -83,6 +92,8 @@ public class ExplorerVanillaCompat {
         registerFlammable(ExplorerBlocks.WILLOW_STAIRS, 5, 20);
         registerFlammable(ExplorerBlocks.WILLOW_FENCE, 5, 20);
         registerFlammable(ExplorerBlocks.WILLOW_FENCE_GATE, 5, 20);
+        registerFlammable(ExplorerBlocks.WILLOW_TRAPDOOR, 5, 20);
+        registerFlammable(ExplorerBlocks.WILLOW_DOOR, 5, 20);
 
         registerFlammable(ExplorerBlocks.INFECTED_WILLOW_LOG, 5, 5);
         registerFlammable(ExplorerBlocks.INFECTED_WILLOW_WOOD, 5, 5);
@@ -93,6 +104,8 @@ public class ExplorerVanillaCompat {
         registerFlammable(ExplorerBlocks.INFECTED_WILLOW_STAIRS, 5, 20);
         registerFlammable(ExplorerBlocks.INFECTED_WILLOW_FENCE, 5, 20);
         registerFlammable(ExplorerBlocks.INFECTED_WILLOW_FENCE_GATE, 5, 20);
+        registerFlammable(ExplorerBlocks.INFECTED_WILLOW_DOOR, 5, 20);
+        registerFlammable(ExplorerBlocks.INFECTED_WILLOW_TRAPDOOR, 5, 20);
 
         registerFlammable(ExplorerBlocks.TATAMI, 5, 20);
         registerFlammable(ExplorerBlocks.TATAMI_HALF, 5, 20);

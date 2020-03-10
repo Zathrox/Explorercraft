@@ -1,0 +1,17 @@
+{
+  "group": "bark",
+  "key": {
+    "#": {
+      "item": "explorercraft:ash_log"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 3,
+    "item": "explorercraft:ash_wood"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,16 @@
+{
+  "group": "wooden_slab",
+  "key": {
+    "#": {
+      "item": "explorercraft:ash_planks"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "item": "explorercraft:ash_slab"
+  },
+  "type": "minecraft:crafting_shaped"
+}

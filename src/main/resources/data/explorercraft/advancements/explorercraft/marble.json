@@ -1,0 +1,46 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:marble"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.marble.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.marble.description"
+        },
+        "hidden": true
+    },
+    
+  "parent": "explorercraft:explorercraft/root",
+  "rewards": {
+    "recipes": [
+      "explorercraft:marble_bricks",
+      "explorercraft:marble_polished"
+    ]
+  },
+  "criteria": {
+    "has_stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:marble"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "explorercraft:marble_bricks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_stone",
+      "has_the_recipe"
+    ]
+  ]
+}

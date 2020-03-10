@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "explorercraft:block/willow/willow_slab"
+    }, 
+    "type=double": {
+      "model": "explorercraft:block/willow/willow_planks"
+    }, 
+    "type=top": {
+      "model": "explorercraft:block/willow/willow_slab_top"
+    }
+  }
+}

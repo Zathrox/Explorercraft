@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "explorercraft:block/infected_willow/infected_willow_log",
+    "side": "explorercraft:block/infected_willow/infected_willow_log"
+  }
+}

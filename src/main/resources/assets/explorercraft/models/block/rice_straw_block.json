@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "explorercraft:block/rice_straw_block_top",
+        "side": "explorercraft:block/rice_straw_block_side"
+    }
+}

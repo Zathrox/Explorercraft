@@ -1,0 +1,6 @@
+{
+   "parent": "block/cube_all",
+   "textures": {
+       "all": "explorercraft:block/marble/marble_bricks"
+   }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "explorercraft:marble_polished"
+    }
+  },
+  "result": {
+    "item": "explorercraft:marble_polished_stairs",
+    "count": 4
+  }
+}

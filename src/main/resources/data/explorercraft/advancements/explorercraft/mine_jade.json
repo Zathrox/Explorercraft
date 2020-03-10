@@ -1,0 +1,27 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:jade"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.mine_jade.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.mine_jade.description"
+        },
+        "hidden": true
+    },   
+    "parent": "explorercraft:explorercraft/gem_hunting",
+    "criteria": {
+        "jade_gem": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:jade"
+                    }
+                ]
+            }
+        }
+    }
+}

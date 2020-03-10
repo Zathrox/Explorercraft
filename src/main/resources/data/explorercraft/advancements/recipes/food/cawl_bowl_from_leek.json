@@ -1,0 +1,33 @@
+
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "explorercraft:cawl_bowl"
+    ]
+  },
+  "criteria": {
+    "has_leek": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:leek"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "explorercraft:cawl_bowl"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_leek",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,9 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "explorercraft:block/marble/marble",
+        "top": "explorercraft:block/marble/marble",
+        "side": "explorercraft:block/marble/marble"
+    }
+}
+

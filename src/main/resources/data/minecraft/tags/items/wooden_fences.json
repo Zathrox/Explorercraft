@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "explorercraft:ash_fence",
+    "explorercraft:bamboo_fence",
+    "explorercraft:cherry_fence",
+    "explorercraft:maple_fence",
+    "explorercraft:willow_fence",
+    "explorercraft:infected_willow_fence"
+  ]
+}

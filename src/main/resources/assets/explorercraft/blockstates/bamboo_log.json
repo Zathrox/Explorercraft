@@ -1,0 +1,27 @@
+{
+  "multipart": [
+    {   "apply": { "model": "explorercraft:block/bamboo/bamboo_log" }},
+
+    {   "when": { "north": "true" },
+      "apply": [
+        { "model": "explorercraft:block/bamboo/bamboo_side", "uvlock": true, "weight": 5 },
+        { "model": "explorercraft:block/bamboo/bamboo_side2", "uvlock": true, "weight": 5 } ]
+    },
+
+    {   "when": { "east": "true" },
+      "apply": [
+        { "model": "explorercraft:block/bamboo/bamboo_side", "y": 90, "uvlock": true, "weight": 5 },
+        { "model": "explorercraft:block/bamboo/bamboo_side2", "y": 90, "uvlock": true, "weight": 5 } ]
+    },
+    {   "when": { "south": "true" },
+      "apply": [
+        { "model": "explorercraft:block/bamboo/bamboo_side", "y": 180, "uvlock": true, "weight": 5 },
+        { "model": "explorercraft:block/bamboo/bamboo_side2", "y": 180, "uvlock": true, "weight": 5 } ]
+    },
+    {   "when": { "west": "true" },
+      "apply": [
+        { "model": "explorercraft:block/bamboo/bamboo_side", "y": 270, "uvlock": true, "weight": 5 },
+        { "model": "explorercraft:block/bamboo/bamboo_side2", "y": 270, "uvlock": true, "weight": 5 } ]
+    }
+  ]
+}

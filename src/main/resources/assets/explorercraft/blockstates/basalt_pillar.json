@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":  { "model": "explorercraft:block/basalt/basalt_pillar" },
+        "axis=z":  { "model": "explorercraft:block/basalt/basalt_pillar", "x": 90 },
+        "axis=x":  { "model": "explorercraft:block/basalt/basalt_pillar", "x": 90, "y": 90 }
+    }
+}

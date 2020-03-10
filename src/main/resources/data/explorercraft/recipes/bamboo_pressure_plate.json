@@ -1,0 +1,15 @@
+{
+  "group": "wooden_pressure_plate",
+  "key": {
+    "#": {
+      "item": "explorercraft:bamboo_planks"
+    }
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "item": "explorercraft:bamboo_pressure_plate"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,17 @@
+{
+    "multipart": [
+        {
+            "apply": {
+                "model": "explorercraft:block/plants/lotus_flower"
+            }
+        },
+        {
+            "apply": [
+                { "model": "block/lily_pad" },
+                { "model": "block/lily_pad", "y": 90 },
+                { "model": "block/lily_pad", "y": 180 },
+                { "model": "block/lily_pad", "y": 270 }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "explorercraft:ash_stairs",
+    "explorercraft:bamboo_stairs",
+    "explorercraft:cherry_stairs",
+    "explorercraft:maple_stairs",
+    "explorercraft:infected_willow_stairs",
+    "explorercraft:willow_stairs"
+  ]
+}

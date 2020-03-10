@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "explorercraft:block/bamboo/bamboo_slab"
+    }, 
+    "type=double": {
+      "model": "explorercraft:block/bamboo/bamboo_planks"
+    }, 
+    "type=top": {
+      "model": "explorercraft:block/bamboo/bamboo_slab_top"
+    }
+  }
+}

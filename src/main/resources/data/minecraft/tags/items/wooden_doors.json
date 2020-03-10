@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "explorercraft:ash_door",
+    "explorercraft:bamboo_door",
+    "explorercraft:cherry_door",
+    "explorercraft:maple_door",
+    "explorercraft:willow_door",
+    "explorercraft:infected_willow_door"
+  ]
+}

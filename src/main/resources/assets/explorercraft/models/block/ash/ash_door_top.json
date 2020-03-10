@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_top",
+  "textures": {
+    "bottom": "explorercraft:block/ash/ash_door_bottom",
+    "top": "explorercraft:block/ash/ash_door_top"
+  }
+}

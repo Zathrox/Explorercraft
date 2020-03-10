@@ -1,0 +1,6 @@
+{
+  "parent": "block/leaves",
+  "textures": {
+    "all": "explorercraft:block/willow/willow_leaves"
+  }
+}

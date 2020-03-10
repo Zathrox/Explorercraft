@@ -1,0 +1,8 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "": {
+      "model" : "explorercraft:block/test_block"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "display": {
+    "icon": {
+      "item": "explorercraft:jade_sword"
+    },
+    "title": {
+      "translate": "advancements.explorercraft.infection_purge.title"
+    },
+    "description": {
+      "translate": "advancements.explorercraft.infection_purge.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "explorercraft:explorercraft/fungal_forest",
+  "rewards": {
+    "experience": 100
+  },
+  "criteria": {
+    "explorercraft:brush_stooge": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "explorercraft:brush_stooge"
+        }
+      }
+    },
+    "explorercraft:infected_creeper": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "explorercraft:infected_creeper"
+        }
+      }
+    },
+    "explorercraft:infected_skeleton": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "explorercraft:infected_skeleton"
+        }
+      }
+    },
+    "explorercraft:infected_zombie": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "explorercraft:infected_zombie"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "explorercraft:brush_stooge"
+    ],
+    [
+      "explorercraft:infected_creeper"
+    ],
+    [
+      "explorercraft:infected_skeleton"
+    ],
+    [
+      "explorercraft:infected_zombie"
+    ]
+  ]
+}

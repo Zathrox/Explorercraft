@@ -1,0 +1,7 @@
+{
+   "parent": "explorercraft:block/tatami",
+   "textures": {
+        "particle": "explorercraft:block/tatami_half",
+        "texture": "explorercraft:block/tatami_half"
+   }
+}

@@ -1,0 +1,27 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:amethyst"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.mine_amethyst.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.mine_amethyst.description"
+        },
+        "hidden": true
+    },   
+    "parent": "explorercraft:explorercraft/gem_hunting",
+    "criteria": {
+        "amethyst_gem": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:amethyst"
+                    }
+                ]
+            }
+        }
+    }
+}

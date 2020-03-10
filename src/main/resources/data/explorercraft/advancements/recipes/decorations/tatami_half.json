@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "explorercraft:tatami_half"
+    ]
+  },
+  "criteria": {
+    "has_tatami": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:tatami"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "explorercraft:tatami_half"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_tatami",
+      "has_the_recipe"
+    ]
+  ]
+}

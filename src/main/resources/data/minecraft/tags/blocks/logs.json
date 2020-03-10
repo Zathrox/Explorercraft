@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#explorercraft:ash_logs",
+    "#explorercraft:bamboo_logs",
+    "#explorercraft:cherry_logs",
+    "#explorercraft:infected_willow_logs",
+    "#explorercraft:maple_logs",
+    "#explorercraft:willow_logs"
+  ]
+}

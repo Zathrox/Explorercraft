@@ -1,0 +1,7 @@
+{
+   "parent": "block/cube_column",
+   "textures": {
+        "end": "explorercraft:block/basalt/basalt_polished",
+        "side": "explorercraft:block/basalt/basalt_pillar"
+   }
+}

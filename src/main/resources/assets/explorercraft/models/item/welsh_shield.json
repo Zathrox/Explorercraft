@@ -1,0 +1,11 @@
+{
+    "parent": "explorercraft:item/welsh_shield_model",
+    "overrides": [
+        {
+            "predicate": {
+                "blocking": 1
+            },
+            "model": "explorercraft:item/welsh_shield_blocking"
+        }
+    ]
+}

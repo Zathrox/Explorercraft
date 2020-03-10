@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "explorercraft:block/basalt/basalt_mossy_slab" },
+    "type=top": { "model": "explorercraft:block/basalt/basalt_mossy_slab_top" },
+    "type=double": { "model": "explorercraft:block/basalt/basalt_mossy" }
+  }
+}

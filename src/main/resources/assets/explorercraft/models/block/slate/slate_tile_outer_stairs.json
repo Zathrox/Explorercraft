@@ -1,0 +1,9 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "explorercraft:block/slate/slate_tile",
+        "top": "explorercraft:block/slate/slate_tile",
+        "side": "explorercraft:block/slate/slate_tile"
+    }
+}
+

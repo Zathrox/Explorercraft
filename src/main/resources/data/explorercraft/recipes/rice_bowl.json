@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "explorercraft:rice"
+    },
+    {
+      "item": "explorercraft:rice"
+    },
+    {
+      "item": "explorercraft:rice"
+    },
+    {
+      "item": "explorercraft:rice"
+    },
+    {
+      "item": "explorercraft:rice"
+    },
+    {
+      "item": "explorercraft:rice"
+    }
+  ],
+  "result": {
+    "item": "explorercraft:rice_bowl"
+  }
+}

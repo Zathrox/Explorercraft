@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "explorercraft:potted_daffodil",
+    "explorercraft:potted_wild_leek",
+    "explorercraft:potted_ash_sapling",
+    "explorercraft:potted_bamboo_sapling",
+    "explorercraft:potted_cherry_sapling",
+    "explorercraft:potted_maple_sapling",
+    "explorercraft:potted_willow_sapling",
+    "explorercraft:potted_lupine"
+  ]
+}

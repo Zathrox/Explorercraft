@@ -22,6 +22,7 @@ public class ExplorercraftFeatureList {
     public static final FlowersFeature SNOWDONIA_FLOWERS = new SnowdoniaFlowersFeature(NoFeatureConfig::deserialize);
     public static final FlowersFeature LUPINE_FLOWERS = new LupineFlowerFeature(NoFeatureConfig::deserialize);
     public static final Feature<NoFeatureConfig> WILD_LEEK = new WildLeekFeature(NoFeatureConfig::deserialize);
+    public static final Feature<NoFeatureConfig> SLIME_BLOCK = new SlimeBlockFeature(NoFeatureConfig::deserialize);
     public static final Feature<NoFeatureConfig> ASH_TREE = new AshTreeFeature(NoFeatureConfig::deserialize, false);
     public static final Feature<NoFeatureConfig> BAMBOO_TREE = new BambooTreeFeature(NoFeatureConfig::deserialize, false, true);
     public static final Feature<NoFeatureConfig> CHERRY_TREE = new KwanzanCherryTreeFeature(NoFeatureConfig::deserialize, false);
@@ -40,11 +41,13 @@ public class ExplorercraftFeatureList {
     public static final SurfaceBuilderConfig MUD_SURFACE = new SurfaceBuilderConfig(ExplorerBlocks.MUD.getDefaultState(), ExplorerBlocks.MUD.getDefaultState(), ExplorerBlocks.MUD.getDefaultState());
 
     //public static final Feature<NoFeatureConfig> TEST2 = new TestFeature(NoFeatureConfig::deserialize, false);
-    //public static final Structure<NoFeatureConfig> TEST  = (Structure<NoFeatureConfig>) Structures.register("Test", new TestStructure(NoFeatureConfig::deserialize));
+/*    public static final Structure<NoFeatureConfig> TEST  = (Structure<NoFeatureConfig>) Structures.register("Test", new TestStructure(NoFeatureConfig::deserialize));
 
-    /*public static void registerFeatures(IForgeRegistry<Feature<?>> registry) {
+    public static void registerFeatures(IForgeRegistry<Feature<?>> registry) {
 
+        registry.register(WIZARD_TOWER.setRegistryName(Explorercraft.MOD_ID, "wizard_tower"));
         registry.register(TEST.setRegistryName(Explorercraft.MOD_ID, "test"));
+        Feature.STRUCTURES.put("Wizard_Tower".toLowerCase(Locale.ROOT), (Structure<?>) WIZARD_TOWER);
         Feature.STRUCTURES.put("Test".toLowerCase(Locale.ROOT), TEST);
 
     }*/

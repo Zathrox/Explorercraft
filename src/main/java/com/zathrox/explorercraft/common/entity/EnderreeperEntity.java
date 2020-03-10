@@ -10,6 +10,7 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.CreeperEntity;
+import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
@@ -23,10 +24,13 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.Explosion;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
+import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -36,6 +40,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 import java.util.Collection;
+import java.util.Random;
 import java.util.UUID;
 
 public class EnderreeperEntity extends CreeperEntity
@@ -60,7 +65,18 @@ public class EnderreeperEntity extends CreeperEntity
         this.setPathPriority(PathNodeType.WATER, -1.0F);
     }
 
-   //==== Spawning ====//
+    //==== Spawning ====//
+    public static boolean spawnEnderreeper(EntityType<? extends MonsterEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
+        if (worldIn.getDimension().getType() == DimensionType.THE_END) {
+            return worldIn.getDifficulty() != Difficulty.PEACEFUL && isValidLightLevel(worldIn, pos, randomIn) && canSpawnOn(type, worldIn, reason, pos, randomIn);
+        } else if (worldIn.getDimension().getType() == DimensionType.OVERWORLD && EntityConfig.enderreeper_overworld_spawn_enabled.get()) {
+            addSpawn();
+            return worldIn.getDifficulty() != Difficulty.PEACEFUL && isValidLightLevel(worldIn, pos, randomIn) && canSpawnOn(type, worldIn, reason, pos, randomIn);
+        } else {
+            return false;
+        }
+    }
+
     public static void addSpawn() {
         ForgeRegistries.BIOMES.getValues().stream().forEach(EnderreeperEntity::processSpawning);
     }
@@ -68,7 +84,7 @@ public class EnderreeperEntity extends CreeperEntity
     private static void processSpawning(Biome biome) {
 
         if (biome != Biomes.MUSHROOM_FIELDS || biome != Biomes.MUSHROOM_FIELD_SHORE || biome != Biomes.NETHER) {
-            biome.getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(ExplorerEntities.ENDERREEPER, 2, 1, 1));
+            biome.getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(ExplorerEntities.ENDERREEPER, 1, 1, 1));
         }
 
     }

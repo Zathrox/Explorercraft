@@ -21,31 +21,6 @@ public class WizardRenderer extends LivingRenderer
         super(renderManagerIn, new WizardModel(), 0.75F);
     }
 
-
-	protected void renderName(WizardEntity entity, double x, double y, double z)
-    {
-
-        double d0 = entity.getDistanceSq(this.renderManager.pointedEntity);
-        float f = entity.isSneaking() ? 32.0F : 64.0F;
-
-        if (d0 < (double)(f * f))
-        {
-            String s = entity.getDisplayName().toString();
-            this.renderLivingLabel(entity, s, x, y, z, 64);
-        }
-
-    }
-	
-	public int spellColor(int type)
-	{
-		switch(type)
-		{
-			case 0: return 0xFFFFFF;
-			case 1: return 0xffd800;
-			default: return 0xFFFFFF;
-		}
-	}
-
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 

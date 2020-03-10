@@ -22,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.NonNullList;
+import net.minecraft.world.storage.MapDecoration;
 import net.minecraftforge.common.BasicTrade;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.village.VillagerTradesEvent;
@@ -113,7 +114,6 @@ public class CommonProxy {
 
         addVillagerTrades(VillagerProfession.CLERIC,  ExplorerVillagerUtil.newTradeMap(ImmutableMap.of(3, new VillagerTrades.ITrade[] {
                 new ExplorerVillagerUtil.ItemsForEmeraldsTrade(ExplorerItems.NOCTILUCA, 5, 1, 15)})));
-
 
         /*
          * Override of Villager Trades without the need to overwrite the original villager profession list, it simply injects into the code

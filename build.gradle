@@ -76,7 +76,7 @@ minecraft {
             args '--mod', 'explorercraft', '--all', '--output', "\"" + file("src/generated/resources").toString() + "\""
 
             mods {
-                examplemod {
+                explorercraft {
                     source sourceSets.main
                 }
             }

@@ -1,7 +1,6 @@
 package com.zathrox.explorercraft.core.util;
 
 import com.google.common.collect.ImmutableMap;
-
 import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -204,6 +203,7 @@ public class ExplorerVillagerUtil {
                 itemstack.setDisplayName(new TranslationTextComponent("filled_map." + this.field_221228_b.toLowerCase(Locale.ROOT)));
                 return new MerchantOffer(new ItemStack(Items.EMERALD, this.field_221227_a), new ItemStack(Items.COMPASS), itemstack, this.field_221230_d, this.field_221231_e, 0.2F);
             } else {
+                System.out.println("NO STRUCTURE FOUND: " +  field_221228_b);
                 return null;
             }
         }

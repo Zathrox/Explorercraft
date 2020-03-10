@@ -42,3 +42,13 @@ Patch 3.2.5:
 + Added Slate dungeon rarity options in the general config file
 + Increased the slate dungeon rarity from 2 to 10 (making it more common)
 + Increased chances for east branch of the dungeon to spawn (making the full cross shaped dungeon more common)
+
+Patch 3.2.6:
++ Added some additional code to the enderreeper spawning that should hopefully limit the spawns of it in the dimensions that load overworld biomes into them
++ reduce enderreeper spawns in the end slightly
+
+Patch 3.2.7:
++ Added Chinese(simplified) translation with special thanks to Chiren_Chen for the file
++ Fixed an issue in all language (english, spanish, russian and chinese) files where slate tile slabs didn't have the correct name due to naming conflicts with polished slate slabs
++ Changed the brush stooge spawn egg color to be unique from the infected skeleton
++ Added Slimey Caves - a new visual and rewarding experience for finding a Slime Chunk!

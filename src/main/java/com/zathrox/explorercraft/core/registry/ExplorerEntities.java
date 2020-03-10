@@ -37,7 +37,7 @@ public class ExplorerEntities {
     private static List<EntityType> entities = Lists.newArrayList();
     private static List<Item> spawnEggs = Lists.newArrayList();
 
-    public static final EntityType<BrushStoogeEntity> BRUSH_STOOGE = createEntity(BrushStoogeEntity.class, BrushStoogeEntity::new, EntityClassification.MONSTER, "brush_stooge", 0.4F, 0.7F, 16777215, 10092400);
+    public static final EntityType<BrushStoogeEntity> BRUSH_STOOGE = createEntity(BrushStoogeEntity.class, BrushStoogeEntity::new, EntityClassification.MONSTER, "brush_stooge", 0.4F, 0.7F, 10092400, 16777215);
     public static final EntityType<InfectedSkeletonEntity> INFECTED_SKELETON = createEntity(InfectedSkeletonEntity.class, InfectedSkeletonEntity::new, EntityClassification.MONSTER, "infected_skeleton", 0.6F, 1.99F, 16777215, 10092400);
     public static final EntityType<InfectedZombieEntity> INFECTED_ZOMBIE = createEntity(InfectedZombieEntity.class, InfectedZombieEntity::new, EntityClassification.MONSTER, "infected_zombie", 0.6F, 1.99F, 16777234, 10092500);
     public static final EntityType<InfectedCreeperEntity> INFECTED_CREEPER = createEntity(InfectedCreeperEntity.class, InfectedCreeperEntity::new, EntityClassification.MONSTER, "infected_creeper", 0.6F, 1.7F, 894731, 0xdc1c1c);
@@ -56,7 +56,6 @@ public class ExplorerEntities {
                 .size(width, height).setTrackingRange(64)
                 .setShouldReceiveVelocityUpdates(true)
                 .setUpdateInterval(3)
-
                 .build(location.toString());
 
         entity.setRegistryName(location);
@@ -78,7 +77,7 @@ public class ExplorerEntities {
         EntitySpawnPlacementRegistry.register(INFECTED_ZOMBIE, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
         EntitySpawnPlacementRegistry.register(INFECTED_CREEPER, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
         //EntitySpawnPlacementRegistry.register(OVERGROWN_SKELETON2, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
-        EntitySpawnPlacementRegistry.register(ENDERREEPER, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::func_223325_c);
+        EntitySpawnPlacementRegistry.register(ENDERREEPER, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, EnderreeperEntity::spawnEnderreeper);
         EntitySpawnPlacementRegistry.register(ENDERGHAST, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, EnderGhastEntity::spawnConditions);
         EntitySpawnPlacementRegistry.register(WIZARD, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canSpawnOn);
         //EntitySpawnPlacementRegistry.register(KILLER_RABBIT, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::func_223315_a);
@@ -109,16 +108,12 @@ public class ExplorerEntities {
 
 
         if(EntityConfig.enderreeper_enabled.get()) {
-            registerEntityWorldSpawn(ENDERREEPER, 5, 1, 2, Biomes.THE_END);
-            registerEntityWorldSpawn(ENDERREEPER, 8, 1, 2, Biomes.END_BARRENS, Biomes.SMALL_END_ISLANDS, Biomes.END_HIGHLANDS, Biomes.END_MIDLANDS);
-        }
-        //&& DimensionType.getById(0) == DimensionType.OVERWORLD
-        if(EntityConfig.enderreeper_overworld_spawn_enabled.get()) {
-            EnderreeperEntity.addSpawn();
+            registerEntityWorldSpawn(ENDERREEPER, 2, 1, 1, Biomes.THE_END);
+            registerEntityWorldSpawn(ENDERREEPER, 5, 1, 1, Biomes.END_BARRENS, Biomes.SMALL_END_ISLANDS, Biomes.END_HIGHLANDS, Biomes.END_MIDLANDS);
         }
 
         if(EntityConfig.enderreeper_nether_spawn_enabled.get()) {
-            registerEntityWorldSpawn(ENDERREEPER, 5, 1, 2, Biomes.NETHER);
+            registerEntityWorldSpawn(ENDERREEPER, 2, 1, 2, Biomes.NETHER);
         }
 
         if(EntityConfig.enderghast_enabled.get()) {

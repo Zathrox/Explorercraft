@@ -13,7 +13,6 @@ import com.zathrox.explorercraft.core.registry.*;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.potion.Effects;
@@ -452,8 +451,8 @@ public final class ExplorerEventSubscriber {
         LOGGER.debug("Registered TileEntityTypes");
     }
 
-    /*
-    @SubscribeEvent
+
+    /*@SubscribeEvent
     public void onRegisterFeatures(RegistryEvent.Register<Feature<?>> event) {
         ExplorercraftFeatureList.registerFeatures(event.getRegistry());
     }*/

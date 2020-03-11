@@ -1,0 +1,32 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "explorercraft:basalt_cobblestone_slab_from_basalt_cobblestone_stonecutting"
+        ]
+    },
+    "criteria": {
+        "has_cobblestone": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:basalt_cobblestone"
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "explorercraft:basalt_cobblestone_slab_from_basalt_cobblestone_stonecutting"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_cobblestone",
+            "has_the_recipe"
+        ]
+    ]
+}

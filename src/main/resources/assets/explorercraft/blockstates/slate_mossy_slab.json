@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "type=bottom": {
+            "model": "explorercraft:block/slate/slate_mossy_slab"
+        },
+        "type=top": {
+            "model": "explorercraft:block/slate/slate_mossy_slab_top"
+        },
+        "type=double": {
+            "model": "explorercraft:block/slate/slate_mossy"
+        }
+    }
+}

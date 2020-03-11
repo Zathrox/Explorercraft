@@ -1,0 +1,44 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:jade_boots"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.exploring_time.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.exploring_time.description"
+        },
+        "frame": "challenge"
+    },
+    "parent": "explorercraft:explorercraft/root",
+    "rewards": {
+        "experience": 500
+    },
+    "criteria": {
+        "bamboo_forest": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "explorercraft:bamboo_forest"
+            }
+        },
+        "snowdonia": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "explorercraft:snowdonia"
+            }
+        },
+        "forested_mountain": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "explorercraft:forested_mountain"
+            }
+        },
+        "infected_forest": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "explorercraft:fungal_forest"
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:white_banner",
+            "nbt": "{BlockEntityTag:{Patterns:[{Color:5,Pattern:\"vh\"},{Color:14,Pattern:\"flag\"}]}}"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.banner_heart.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.banner_heart.description"
+        },
+        "hidden": false
+    },
+    "parent": "explorercraft:explorercraft/dragon_heart",
+    "criteria": {
+        "banner_heart": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:white_banner",
+                        "nbt": "{BlockEntityTag:{Patterns:[{Color:5,Pattern:\"vh\"},{Color:14,Pattern:\"flag\"}]}}"
+                    }
+                ]
+            }
+        }
+    }
+}

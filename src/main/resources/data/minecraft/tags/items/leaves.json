@@ -1,0 +1,10 @@
+{
+    "replace": false,
+    "values": [
+        "explorercraft:ash_leaves",
+        "explorercraft:bamboo_leaves",
+        "explorercraft:cherry_leaves",
+        "explorercraft:maple_leaves",
+        "explorercraft:willow_leaves"
+    ]
+}

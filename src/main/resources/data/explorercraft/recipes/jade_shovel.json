@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "X",
+        "#",
+        "#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:stick"
+        },
+        "X": {
+            "tag": "forge:gems/jade"
+        }
+    },
+    "result": {
+        "item": "explorercraft:jade_shovel"
+    }
+}

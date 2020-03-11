@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "explorercraft:slate_polished"
+    },
+    "result": "explorercraft:slate_polished_stairs",
+    "count": 1
+}

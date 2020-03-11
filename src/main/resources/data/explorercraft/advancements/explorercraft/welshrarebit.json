@@ -1,0 +1,27 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:welsh_rarebit"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.welshrarebit.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.welshrarebit.description"
+        },
+        "hidden": false
+    },
+    "parent": "explorercraft:explorercraft/leek",
+    "criteria": {
+        "rice": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:welsh_rarebit"
+                    }
+                ]
+            }
+        }
+    }
+}

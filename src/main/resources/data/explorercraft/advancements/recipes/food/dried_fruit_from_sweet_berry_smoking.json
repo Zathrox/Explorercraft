@@ -1,0 +1,32 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "explorercraft:dried_fruit_from_sweet_berry_smoking"
+        ]
+    },
+    "criteria": {
+        "has_sweet_berry": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:sweet_berries"
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "explorercraft:dried_fruit_from_sweet_berry_smoking"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_sweet_berry",
+            "has_the_recipe"
+        ]
+    ]
+}

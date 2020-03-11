@@ -1,0 +1,45 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:basalt"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.basalt.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.basalt.description"
+        },
+        "hidden": true
+    },
+    "parent": "explorercraft:explorercraft/root",
+    "rewards": {
+        "recipes": [
+            "explorercraft:basalt_bricks",
+            "explorercraft:basalt_polished"
+        ]
+    },
+    "criteria": {
+        "has_stone": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:basalt"
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "explorercraft:basalt_bricks"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_stone",
+            "has_the_recipe"
+        ]
+    ]
+}

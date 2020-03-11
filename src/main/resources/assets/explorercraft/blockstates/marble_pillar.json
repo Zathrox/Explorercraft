@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "axis=y": {
+            "model": "explorercraft:block/marble/marble_pillar"
+        },
+        "axis=z": {
+            "model": "explorercraft:block/marble/marble_pillar",
+            "x": 90
+        },
+        "axis=x": {
+            "model": "explorercraft:block/marble/marble_pillar",
+            "x": 90,
+            "y": 90
+        }
+    }
+}

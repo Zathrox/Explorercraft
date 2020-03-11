@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:chest",
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "weight": 3,
+                    "name": "explorercraft:sleeping_bag_leather"
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "explorercraft:sleeping_bag_red"
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "explorercraft:sleeping_bag_blue"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "explorercraft:mossy_marble_bricks"
+        ]
+    },
+    "criteria": {
+        "has_vine": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:vine"
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "explorercraft:mossy_marble_bricks"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_vine",
+            "has_the_recipe"
+        ]
+    ]
+}

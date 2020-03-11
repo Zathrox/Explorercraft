@@ -1,0 +1,23 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        " ##",
+        " _#",
+        "C  "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:prismarine_shard"
+        },
+        "C": {
+            "item": "minecraft:prismarine_crystals"
+        },
+        "_": {
+            "item": "minecraft:heart_of_the_sea"
+        }
+    },
+    "result": {
+        "item": "minecraft:trident"
+    },
+    "group": "combat"
+}

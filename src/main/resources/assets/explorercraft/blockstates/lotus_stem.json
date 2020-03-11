@@ -1,0 +1,21 @@
+{
+    "variants": {
+        "": [
+            {
+                "model": "explorercraft:block/plants/lotus_stem"
+            },
+            {
+                "model": "explorercraft:block/plants/lotus_stem",
+                "y": 90
+            },
+            {
+                "model": "explorercraft:block/plants/lotus_stem",
+                "y": 180
+            },
+            {
+                "model": "explorercraft:block/plants/lotus_stem",
+                "y": 270
+            }
+        ]
+    }
+}

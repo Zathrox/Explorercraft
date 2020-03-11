@@ -1,0 +1,32 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "explorercraft:basalt_cobblestone_mossy"
+        ]
+    },
+    "criteria": {
+        "has_willow": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:willow"
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "explorercraft:basalt_cobblestone_mossy"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_willow",
+            "has_the_recipe"
+        ]
+    ]
+}

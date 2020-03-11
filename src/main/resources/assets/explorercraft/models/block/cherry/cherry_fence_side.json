@@ -1,0 +1,6 @@
+{
+    "parent": "block/fence_side",
+    "textures": {
+        "texture": "explorercraft:block/cherry/cherry_planks"
+    }
+}

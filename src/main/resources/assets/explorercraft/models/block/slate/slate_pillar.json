@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "explorercraft:block/slate/slate_polished_top",
+        "side": "explorercraft:block/slate/slate_pillar"
+    }
+}

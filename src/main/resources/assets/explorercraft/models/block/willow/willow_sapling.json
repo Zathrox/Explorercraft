@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "explorercraft:block/willow/willow_sapling"
+    }
+}

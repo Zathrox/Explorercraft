@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "axis=x": {
+            "model": "explorercraft:block/infected_willow/infected_willow_stripped_wood",
+            "x": 90,
+            "y": 90
+        },
+        "axis=y": {
+            "model": "explorercraft:block/infected_willow/infected_willow_stripped_wood"
+        },
+        "axis=z": {
+            "model": "explorercraft:block/infected_willow/infected_willow_stripped_wood",
+            "x": 90
+        }
+    }
+}

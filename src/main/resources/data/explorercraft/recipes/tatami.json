@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "XXX",
+        "###",
+        "XXX"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:stick"
+        },
+        "X": {
+            "item": "explorercraft:rice_straw"
+        }
+    },
+    "result": {
+        "item": "explorercraft:tatami",
+        "count": 8
+    }
+}

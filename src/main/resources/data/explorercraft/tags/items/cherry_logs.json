@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "explorercraft:cherry_log",
+        "explorercraft:cherry_wood",
+        "explorercraft:cherry_stripped_log",
+        "explorercraft:cherry_stripped_wood"
+    ]
+}

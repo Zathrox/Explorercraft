@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:bowl"
+        },
+        {
+            "item": "explorercraft:leek"
+        },
+        {
+            "item": "explorercraft:leek"
+        },
+        {
+            "item": "explorercraft:leek"
+        },
+        {
+            "item": "explorercraft:leek"
+        },
+        {
+            "item": "explorercraft:leek"
+        },
+        {
+            "item": "explorercraft:leek"
+        }
+    ],
+    "result": {
+        "item": "explorercraft:leek_bowl"
+    }
+}

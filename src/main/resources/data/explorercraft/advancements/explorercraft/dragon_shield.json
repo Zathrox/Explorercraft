@@ -1,0 +1,27 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:welsh_shield"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.welsh_shield.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.welsh_shield.description"
+        },
+        "hidden": true
+    },
+    "parent": "explorercraft:explorercraft/dragon_heart",
+    "criteria": {
+        "rice": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:welsh_shield"
+                    }
+                ]
+            }
+        }
+    }
+}

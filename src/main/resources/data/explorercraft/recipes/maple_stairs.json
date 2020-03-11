@@ -1,0 +1,18 @@
+{
+    "group": "wooden_stairs",
+    "key": {
+        "#": {
+            "item": "explorercraft:maple_planks"
+        }
+    },
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "result": {
+        "count": 4,
+        "item": "explorercraft:maple_stairs"
+    },
+    "type": "minecraft:crafting_shaped"
+}

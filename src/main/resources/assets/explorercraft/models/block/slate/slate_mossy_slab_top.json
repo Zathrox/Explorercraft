@@ -1,0 +1,9 @@
+{
+    "parent": "block/slab_top",
+    "textures": {
+        "bottom": "explorercraft:block/slate/slate_mossy",
+        "top": "explorercraft:block/slate/slate_mossy",
+        "side": "explorercraft:block/slate/slate_mossy"
+    }
+}
+

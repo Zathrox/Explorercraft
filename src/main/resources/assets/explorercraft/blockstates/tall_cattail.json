@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "half=lower": {
+            "model": "explorercraft:block/plants/tall_cattail_bottom"
+        },
+        "half=upper": {
+            "model": "explorercraft:block/plants/tall_cattail_top"
+        }
+    }
+}

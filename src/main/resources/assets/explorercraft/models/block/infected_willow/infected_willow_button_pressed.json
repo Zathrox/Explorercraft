@@ -1,0 +1,6 @@
+{
+    "parent": "block/button_pressed",
+    "textures": {
+        "texture": "explorercraft:block/infected_willow/infected_willow_planks"
+    }
+}

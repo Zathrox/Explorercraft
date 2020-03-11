@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "explorercraft:marble_bricks"
+        }
+    },
+    "result": {
+        "item": "explorercraft:marble_brick_stairs",
+        "count": 4
+    }
+}

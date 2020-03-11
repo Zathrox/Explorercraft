@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "explorercraft:rice_straw_block"
+        }
+    ],
+    "result": {
+        "item": "explorercraft:rice_straw",
+        "count": 9
+    }
+}

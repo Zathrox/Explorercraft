@@ -1,0 +1,9 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "explorercraft:block/slate/slate",
+        "top": "explorercraft:block/slate/slate",
+        "side": "explorercraft:block/slate/slate"
+    }
+}
+

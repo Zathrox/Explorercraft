@@ -1,0 +1,23 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:bamboo_log"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.bamboo_forest.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.bamboo_forest.description"
+        },
+        "hidden": true
+    },
+    "parent": "explorercraft:explorercraft/exploring_time",
+    "criteria": {
+        "bamboo_forest": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "explorercraft:bamboo_forest"
+            }
+        }
+    }
+}

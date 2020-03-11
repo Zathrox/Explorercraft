@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "sleeping_bag",
+    "ingredients": [
+        {
+            "item": "explorercraft:sleeping_bag_leather"
+        },
+        {
+            "item": "minecraft:gray_dye"
+        }
+    ],
+    "result": {
+        "item": "explorercraft:sleeping_bag_gray"
+    }
+}

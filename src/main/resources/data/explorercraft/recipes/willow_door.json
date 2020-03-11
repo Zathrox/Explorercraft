@@ -1,0 +1,18 @@
+{
+    "group": "wooden_door",
+    "key": {
+        "#": {
+            "item": "explorercraft:willow_planks"
+        }
+    },
+    "pattern": [
+        "##",
+        "##",
+        "##"
+    ],
+    "result": {
+        "count": 3,
+        "item": "explorercraft:willow_door"
+    },
+    "type": "minecraft:crafting_shaped"
+}

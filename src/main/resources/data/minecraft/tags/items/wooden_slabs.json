@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "values": [
+        "explorercraft:ash_slab",
+        "explorercraft:bamboo_slab",
+        "explorercraft:cherry_slab",
+        "explorercraft:maple_slab",
+        "explorercraft:infected_willow_slab",
+        "explorercraft:willow_slab"
+    ]
+}

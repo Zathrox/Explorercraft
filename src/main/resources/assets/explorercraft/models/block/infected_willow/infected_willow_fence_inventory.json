@@ -1,0 +1,6 @@
+{
+    "parent": "block/fence_inventory",
+    "textures": {
+        "texture": "explorercraft:block/infected_willow/infected_willow_planks"
+    }
+}

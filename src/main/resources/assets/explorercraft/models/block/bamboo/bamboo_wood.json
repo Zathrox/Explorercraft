@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "explorercraft:block/bamboo/bamboo_log",
+        "side": "explorercraft:block/bamboo/bamboo_log"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "values": [
+        "explorercraft:ash_button",
+        "explorercraft:bamboo_button",
+        "explorercraft:cherry_button",
+        "explorercraft:maple_button",
+        "explorercraft:willow_button",
+        "explorercraft:infected_willow_button"
+    ]
+}

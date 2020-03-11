@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "explorercraft:block/infected_willow/infected_willow_planks",
+        "side": "explorercraft:block/infected_willow/infected_willow_planks",
+        "top": "explorercraft:block/infected_willow/infected_willow_planks"
+    }
+}

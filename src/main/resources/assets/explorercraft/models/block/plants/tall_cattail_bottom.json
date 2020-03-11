@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "explorercraft:block/plants/tall_cattail_bottom"
+    }
+}

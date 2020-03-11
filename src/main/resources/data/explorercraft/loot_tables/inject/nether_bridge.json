@@ -1,0 +1,86 @@
+{
+    "__comment": "This table is injected as its own pool into minecraft:chests/nether_bridge",
+    "pools": [
+        {
+            "name": "main",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "explorercraft:ruby_horse_armor",
+                    "weight": 8
+                },
+                {
+                    "type": "item",
+                    "name": "explorercraft:amethyst_horse_armor",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "explorercraft:jade_horse_armor",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "explorercraft:ruby",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ],
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "explorercraft:amethyst",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ],
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "explorercraft:jade",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ],
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:emerald",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ],
+                    "weight": 3
+                },
+                {
+                    "type": "empty",
+                    "weight": 72
+                }
+            ]
+        }
+    ]
+}

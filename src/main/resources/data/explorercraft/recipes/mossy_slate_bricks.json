@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "explorercraft:slate_bricks"
+        },
+        {
+            "item": "minecraft:vine"
+        }
+    ],
+    "result": {
+        "item": "explorercraft:slate_mossy"
+    }
+}

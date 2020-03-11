@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "explorercraft:rice"
+        },
+        {
+            "item": "minecraft:egg"
+        },
+        {
+            "item": "minecraft:kelp"
+        }
+    ],
+    "result": {
+        "item": "explorercraft:tamago_sushi"
+    }
+}

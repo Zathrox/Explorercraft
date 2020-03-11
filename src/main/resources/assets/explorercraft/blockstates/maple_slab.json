@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "type=bottom": {
+            "model": "explorercraft:block/maple/maple_slab"
+        },
+        "type=double": {
+            "model": "explorercraft:block/maple/maple_planks"
+        },
+        "type=top": {
+            "model": "explorercraft:block/maple/maple_slab_top"
+        }
+    }
+}

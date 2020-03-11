@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "#H#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "explorercraft:slate"
+        },
+        "H": {
+            "item": "explorercraft:dragon_heart"
+        }
+    },
+    "result": {
+        "item": "explorercraft:slate_welsh",
+        "count": 8
+    }
+}

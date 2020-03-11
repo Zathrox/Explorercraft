@@ -1,0 +1,35 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "explorercraft:tatami"
+        ]
+    },
+    "criteria": {
+        "has_rice_straw": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:rice_straw",
+                        "count": {
+                            "min": 6
+                        }
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "explorercraft:tatami"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_rice_straw",
+            "has_the_recipe"
+        ]
+    ]
+}

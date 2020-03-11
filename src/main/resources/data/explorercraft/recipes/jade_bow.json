@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "J#X",
+        "# X",
+        "J#X"
+    ],
+    "key": {
+        "#": {
+            "item": "explorercraft:cherry_planks"
+        },
+        "X": {
+            "item": "minecraft:string"
+        },
+        "J": {
+            "item": "explorercraft:jade"
+        }
+    },
+    "result": {
+        "item": "explorercraft:jade_bow"
+    }
+}

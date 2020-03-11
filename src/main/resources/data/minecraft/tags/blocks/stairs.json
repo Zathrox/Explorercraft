@@ -1,0 +1,18 @@
+{
+    "replace": false,
+    "values": [
+        "explorercraft:basalt_stairs",
+        "explorercraft:basalt_brick_stairs",
+        "explorercraft:basalt_mossy_stairs",
+        "explorercraft:basalt_cobblestone_stairs",
+        "explorercraft:marble_brick_stairs",
+        "explorercraft:slate_brick_stairs",
+        "explorercraft:slate_tile_stairs",
+        "explorercraft:ash_stairs",
+        "explorercraft:bamboo_stairs",
+        "explorercraft:cherry_stairs",
+        "explorercraft:maple_stairs",
+        "explorercraft:willow_stairs",
+        "explorercraft:infected_willow_stairs"
+    ]
+}

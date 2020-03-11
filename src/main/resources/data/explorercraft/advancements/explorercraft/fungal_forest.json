@@ -1,0 +1,23 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:green_mushroom"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.fungal_forest.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.fungal_forest.description"
+        },
+        "hidden": true
+    },
+    "parent": "explorercraft:explorercraft/exploring_time",
+    "criteria": {
+        "forested_mountain": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "explorercraft:fungal_forest"
+            }
+        }
+    }
+}

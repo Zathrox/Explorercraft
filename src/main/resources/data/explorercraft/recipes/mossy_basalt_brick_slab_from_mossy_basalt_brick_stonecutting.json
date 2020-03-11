@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "explorercraft:basalt_mossy"
+    },
+    "result": "explorercraft:basalt_mossy_slab",
+    "count": 2
+}

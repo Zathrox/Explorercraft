@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "explorercraft:block/willow/willow_stripped_log_top",
+        "side": "explorercraft:block/willow/willow_stripped_log"
+    }
+}

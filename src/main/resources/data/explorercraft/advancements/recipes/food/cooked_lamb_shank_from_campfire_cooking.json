@@ -1,0 +1,32 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "explorercraft:cooked_lamb_shank_from_campfire_cooking"
+        ]
+    },
+    "criteria": {
+        "has_lamb_shank": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:lamb_shank"
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "explorercraft:cooked_lamb_shank_from_campfire_cooking"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_lamb_shank",
+            "has_the_recipe"
+        ]
+    ]
+}

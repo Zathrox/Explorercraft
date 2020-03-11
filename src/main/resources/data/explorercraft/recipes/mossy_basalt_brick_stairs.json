@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "explorercraft:basalt_mossy"
+        }
+    },
+    "result": {
+        "item": "explorercraft:basalt_mossy_stairs",
+        "count": 4
+    }
+}

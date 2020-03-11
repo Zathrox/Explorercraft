@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "type=bottom": {
+            "model": "explorercraft:block/cherry/cherry_slab"
+        },
+        "type=double": {
+            "model": "explorercraft:block/cherry/cherry_planks"
+        },
+        "type=top": {
+            "model": "explorercraft:block/cherry/cherry_slab_top"
+        }
+    }
+}

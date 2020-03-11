@@ -1,0 +1,23 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:slate_chiseled"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.snowdonia.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.snowdonia.description"
+        },
+        "hidden": true
+    },
+    "parent": "explorercraft:explorercraft/exploring_time",
+    "criteria": {
+        "snowdonia": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "explorercraft:snowdonia"
+            }
+        }
+    }
+}

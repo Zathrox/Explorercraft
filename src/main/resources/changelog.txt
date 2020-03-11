@@ -1,0 +1,64 @@
+CHANGELOG:
+
+--------// Explorercraft 1.15.2 // ----------------------------------------------------
+Patch 4.0.0:
++ Initial port of mod, with several fixes to get working on this version (All World Gen is Broken)
++ Fixed rendering issues on plants
++ Wooden Trapdoors + Doors are now flammable!
+@todo Change Tree() code to tree generation code when updated
+
+
+
+--------// Explorercraft 1.14.4 // ----------------------------------------------------
+Patch 3.2.2:
++ added Custom Villager Trades (might be conflict with other mods)
++ tweaked world generation of the Slate Dungeon code (possible fix to an issue someone was having)
++ Fixed Polished Basalt, Marble and Slate all dropping bricks and not polished variants - no idea how that slipped through and for how long!
++ Tweaked and changed functionality of the Wizard Trading - the initial wizard I spawned in the structure, all his trades were duplicated, so now the wizard has poor memory and randomly changes his mind on what he's selling! :P
++ added Jade Longbow added
++ added Enderghast to the End
+
+Patch 3.2.3:
+- Removed a config conflict where disabling the enderreeper disabled both the enderghast + enderreeper and the enderghast config did nothing
++ Added new rare spawns to the enderreeper spawning in the overworld and nether biome, similar to the enderman (these are configurable)
++ Special thanks to MasterSloth1 for providing me with OreDict variants of my tools/armors recipes which allow for other mod gems to be used to make explorercraft tools!
++ Added Russian translation
++ Modified Enderghast spawns slightly
++ Added Enderghast Spawn egg to language file
+
+Patch 3.2.4:
++ Changed Gem Blocks languages file to match vanilla: Block of Gem
++ Added wizard/wizard tower weights, to increase the chance of them spawning
++ Tweaked some loot-tables to reduce conflicts
++ Added Ash-Tree rarity, increase to add more ashtrees to spawn (careful though, higher values will cause lag/dodgy world gen)
+
+Patch 3.2.5:
++ Updated to latest and recommended forge
++ Updated Noctiluca Artwork
++ Updated some Jade tools Artwork
++ Renamed "Bamboo Forest" to "Bamboo Grove"
++ Renamed "Bamboo" to "Thick Bamboo" in order to reduce conflicts with Vanilla bamboo
++ Fixed normal minecraft bamboo being planted on top of Thick Bamboo and Bamboo Saplings
+- Disabled Enderreeper spawning in the Overworld/Nether by default (can configure in settings, if you wish to have the monstrosity in your normal worlds)
++ Added Loot-table for Lotus Flowers, can now finally collect them!
++ Added some extra info onto the EntityConfig for Wizards
++ Added Infected Wood crafting recipes (Find the green glowshrooms!)
++ Added Infected Wood recipebook advancements
++ Added Willow loot-table, can now finally collect them! (use shears like vines)
++ Amended text for the bamboo related advancements
++ Decreased all Explorercraft biome weights, making them rarer hopefully!
++ Fixed spawning bug preventing Infected mobs from spawning in Dark Forest Hills
++ Added new spawning rules for the enderreeper, that if enabled for overworld spawning, they wont spawn on mushroom field biomes or in the nether by default
++ Added Slate dungeon rarity options in the general config file
++ Increased the slate dungeon rarity from 2 to 10 (making it more common)
++ Increased chances for east branch of the dungeon to spawn (making the full cross shaped dungeon more common)
+
+Patch 3.2.6:
++ Added some additional code to the enderreeper spawning that should hopefully limit the spawns of it in the dimensions that load overworld biomes into them
++ reduce enderreeper spawns in the end slightly
+
+Patch 3.2.7:
++ Added Chinese(simplified) translation with special thanks to Chiren_Chen for the file
++ Fixed an issue in all language (english, spanish, russian and chinese) files where slate tile slabs didn't have the correct name due to naming conflicts with polished slate slabs
++ Changed the brush stooge spawn egg color to be unique from the infected skeleton
++ Added Slimey Caves - a new visual and rewarding experience for finding a Slime Chunk!

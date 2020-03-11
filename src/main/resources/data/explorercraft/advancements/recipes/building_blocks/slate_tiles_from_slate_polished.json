@@ -1,0 +1,32 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "explorercraft:slate_tile_from_slate_polished"
+        ]
+    },
+    "criteria": {
+        "has_stone_bricks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:slate_polished"
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "explorercraft:slate_tile_from_slate_polished"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_stone_bricks",
+            "has_the_recipe"
+        ]
+    ]
+}

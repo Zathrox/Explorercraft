@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "explorercraft:leek"
+        },
+        {
+            "item": "minecraft:potato"
+        },
+        {
+            "item": "minecraft:carrot"
+        },
+        {
+            "item": "explorercraft:lamb_shank_cooked"
+        },
+        {
+            "item": "minecraft:bowl"
+        }
+    ],
+    "result": {
+        "item": "explorercraft:cawl_bowl"
+    }
+}

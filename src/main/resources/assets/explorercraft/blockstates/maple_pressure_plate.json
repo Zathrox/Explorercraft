@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "powered=false": {
+            "model": "explorercraft:block/maple/maple_pressure_plate"
+        },
+        "powered=true": {
+            "model": "explorercraft:block/maple/maple_pressure_plate_down"
+        }
+    }
+}

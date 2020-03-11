@@ -1,0 +1,48 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "explorercraft:sleeping_bag",
+            "explorercraft:sleeping_bag_black",
+            "explorercraft:sleeping_bag_blue",
+            "explorercraft:sleeping_bag_brown",
+            "explorercraft:sleeping_bag_cyan",
+            "explorercraft:sleeping_bag_gray",
+            "explorercraft:sleeping_bag_green",
+            "explorercraft:sleeping_bag_light_blue",
+            "explorercraft:sleeping_bag_light_gray",
+            "explorercraft:sleeping_bag_lime",
+            "explorercraft:sleeping_bag_magenta",
+            "explorercraft:sleeping_bag_orange",
+            "explorercraft:sleeping_bag_pink",
+            "explorercraft:sleeping_bag_purple",
+            "explorercraft:sleeping_bag_red",
+            "explorercraft:sleeping_bag_white",
+            "explorercraft:sleeping_bag_yellow"
+        ]
+    },
+    "criteria": {
+        "has_leather": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:leather"
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "explorercraft:sleeping_bag"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_leather",
+            "has_the_recipe"
+        ]
+    ]
+}

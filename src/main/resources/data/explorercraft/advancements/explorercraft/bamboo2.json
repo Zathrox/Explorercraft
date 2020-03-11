@@ -1,0 +1,27 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:bamboo_planks_vertical"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.bamboo2.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.bamboo2.description"
+        },
+        "hidden": false
+    },
+    "parent": "explorercraft:explorercraft/bamboo1",
+    "criteria": {
+        "rice": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:bamboo_planks_vertical"
+                    }
+                ]
+            }
+        }
+    }
+}e

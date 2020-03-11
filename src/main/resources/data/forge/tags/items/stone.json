@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "values": [
+        "explorercraft:basalt",
+        "explorercraft:marble",
+        "explorercraft:slate",
+        "explorercraft:basalt_polished",
+        "explorercraft:marble_polished",
+        "explorercraft:slate_polished"
+    ]
+}

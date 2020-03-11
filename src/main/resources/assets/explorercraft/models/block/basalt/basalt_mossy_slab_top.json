@@ -1,0 +1,9 @@
+{
+    "parent": "block/slab_top",
+    "textures": {
+        "bottom": "explorercraft:block/basalt/basalt_mossy",
+        "top": "explorercraft:block/basalt/basalt_mossy",
+        "side": "explorercraft:block/basalt/basalt_mossy"
+    }
+}
+

@@ -16,7 +16,7 @@
         "bamboo_forest": {
             "trigger": "minecraft:location",
             "conditions": {
-                "biome": "explorercraft:bamboo_forest"
+                "biome": "explorercraft:bamboo_grove"
             }
         }
     }

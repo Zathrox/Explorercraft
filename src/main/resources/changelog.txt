@@ -5,8 +5,10 @@ Patch 4.0.0:
 + Initial port of mod, with several fixes to get working on this version (All World Gen is Broken)
 + Fixed rendering issues on plants
 + Wooden Trapdoors + Doors are now flammable!
-@todo Change Tree() code to tree generation code when updated
-
++ Ash tree saplings now require 9 saplings to spawn, to make it fair on the logs > sapling ratio
++ Minor subtle changes to the way biomes look / generate due to 1.15 changes
++ Wizards now have a random chance to reset / chance trades after a successful trade
++ Wizard trades are now different, new additions, different functionality, now rewards you for exploring!
 
 
 --------// Explorercraft 1.14.4 // ----------------------------------------------------

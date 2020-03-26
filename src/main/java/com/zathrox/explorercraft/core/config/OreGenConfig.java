@@ -7,6 +7,7 @@ public class OreGenConfig {
 
     public static ForgeConfigSpec.BooleanValue spawnBasalt;
     public static ForgeConfigSpec.BooleanValue spawnMarble;
+    public static ForgeConfigSpec.BooleanValue spawnSpawnChunkCaves;
     public static ForgeConfigSpec.BooleanValue spawnAmethyst;
     public static ForgeConfigSpec.BooleanValue spawnJade;
     public static ForgeConfigSpec.BooleanValue spawnRuby;
@@ -27,6 +28,10 @@ public class OreGenConfig {
                 .comment("Spawn Marble in Overworld")
                 .translation(Explorercraft.MOD_ID + ".config.spawnMarble")
                 .define("spawnMarble", true);
+        spawnSpawnChunkCaves = common
+                .comment("Spawn Slime caves in Overworld")
+                .translation(Explorercraft.MOD_ID + ".config.spawnSpawnChunkCaves")
+                .define("spawnSpawnChunkCaves", true);
         spawnAmethyst = common
                 .comment("Spawn Amethysts in Overworld")
                 .translation(Explorercraft.MOD_ID + ".config.spawnAmethyst")

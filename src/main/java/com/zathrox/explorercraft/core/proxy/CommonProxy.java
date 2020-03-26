@@ -7,6 +7,7 @@ import com.zathrox.explorercraft.core.config.Config;
 import com.zathrox.explorercraft.core.data.ExplorercraftDataGenerator;
 import com.zathrox.explorercraft.core.events.ExplorerPlayerEvents;
 import com.zathrox.explorercraft.core.registry.ExplorerBannerPattern;
+import com.zathrox.explorercraft.core.registry.ExplorerBiomes;
 import com.zathrox.explorercraft.core.registry.ExplorerEntities;
 import com.zathrox.explorercraft.core.registry.ExplorerItems;
 import com.zathrox.explorercraft.core.util.ExplorerTrades;
@@ -22,6 +23,7 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.village.VillagerTradesEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -49,6 +51,9 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new ExplorerPlayerEvents());
         MinecraftForge.EVENT_BUS.register(new ExplorercraftDataGenerator());
         ExplorerBannerPattern.init();
+        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ExplorerBiomes.BIOMES.register(modEventBus);
     }
 
     protected InventoryChangeTrigger.Instance hasItem(IItemProvider itemIn) {
@@ -86,7 +91,7 @@ public class CommonProxy {
         //EntityOvergrownSkeleton.addSpawn();
         //EnderreeperEntity.addSpawn();
         ExplorerEntities.registerEntityWorldSpawns();
-        //ExplorerBiomes.registerBiomes();
+        ExplorerBiomes.registerBiomes();
         EnchantmentType.BOW.canEnchantItem(ExplorerItems.JADE_BOW);
     }
 

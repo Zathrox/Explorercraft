@@ -34,6 +34,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 import java.util.EnumSet;
+import java.util.Random;
 
 public class WizardEntity extends AbstractVillagerEntity implements IMerchant {
     private static final DataParameter<Boolean> SWINGING_ARMS = EntityDataManager.createKey(WizardEntity.class, DataSerializers.BOOLEAN);
@@ -119,6 +120,11 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant {
         if (merchantOffer.getDoesRewardExp()) {
             int exp = 3 + this.rand.nextInt(4);
             this.world.addEntity(new ExperienceOrbEntity(this.world, this.getPosX(), this.getPosY() + 0.5D, this.getPosZ(), exp));
+            if (this.rand.nextInt(5) == 0) {
+                this.offers.clear();
+                this.getOffers();
+                this.populateTradeData();
+            }
         }
     }
 

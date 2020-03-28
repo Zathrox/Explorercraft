@@ -30,6 +30,7 @@ public class SnowdoniaBiome extends Biome {
         super((new Builder()).surfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_DIRT_GRAVEL_CONFIG).precipitation(RainType.RAIN).category(Category.FOREST).depth(-0.15F).scale(1.2F).temperature(0.7F).waterColor(4020182).waterFogColor(329011).downfall(0.8F).parent((String)null));
         this.addStructure(Feature.MINESHAFT.withConfiguration(new MineshaftConfig(0.004D, MineshaftStructure.Type.NORMAL)));
         this.addStructure(Feature.STRONGHOLD.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
+        //this.addStructure(ExplorerFeature.WIZARD_TOWER_STRUCTURE.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
 
         this.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, ExplorerFeature.WIZARD_TOWER.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP.configure(new HeightWithChanceConfig(EntityConfig.wizard_weight.get(), 1F))));
         this.addFeature(GenerationStage.Decoration.UNDERGROUND_STRUCTURES, ExplorerFeature.SLATE_DUNGEON.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.DUNGEONS.configure(new ChanceConfig(GeneralConfig.slateDungeonRarity.get()))));

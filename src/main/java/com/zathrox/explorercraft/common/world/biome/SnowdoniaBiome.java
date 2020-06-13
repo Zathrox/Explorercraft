@@ -2,6 +2,8 @@ package com.zathrox.explorercraft.common.world.biome;
 
 import com.google.common.collect.ImmutableList;
 import com.zathrox.explorercraft.common.world.ExplorerFeature;
+import com.zathrox.explorercraft.common.world.ExplorerStructures;
+import com.zathrox.explorercraft.common.world.WorldGeneration;
 import com.zathrox.explorercraft.core.config.EntityConfig;
 import com.zathrox.explorercraft.core.config.GeneralConfig;
 import com.zathrox.explorercraft.core.registry.ExplorerBlocks;
@@ -24,14 +26,17 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class SnowdoniaBiome extends Biome {
 
-    public static final TreeFeatureConfig BIRCHTREE = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.BIRCH_LOG.getDefaultState()), new SimpleBlockStateProvider(Blocks.BIRCH_LEAVES.getDefaultState()), new BlobFoliagePlacer(2, 0))).baseHeight(10).heightRandA(2).foliageHeight(3).ignoreVines().decorators(ImmutableList.of(new BeehiveTreeDecorator(0.02F))).setSapling((net.minecraftforge.common.IPlantable)Blocks.BIRCH_SAPLING).build();
-
     public SnowdoniaBiome(){
         super((new Builder()).surfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_DIRT_GRAVEL_CONFIG).precipitation(RainType.RAIN).category(Category.FOREST).depth(-0.15F).scale(1.2F).temperature(0.7F).waterColor(4020182).waterFogColor(329011).downfall(0.8F).parent((String)null));
         this.addStructure(Feature.MINESHAFT.withConfiguration(new MineshaftConfig(0.004D, MineshaftStructure.Type.NORMAL)));
         this.addStructure(Feature.STRONGHOLD.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
 
-        this.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, ExplorerFeature.WIZARD_TOWER.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP.configure(new HeightWithChanceConfig(EntityConfig.wizard_weight.get(), 1F))));
+/*
+        this.addStructure(ExplorerStructures.WIZARD_TOWER.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
+        this.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, ExplorerStructures.WIZARD_TOWER.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.NOPE.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
+*/
+
+        //this.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, ExplorerFeature.WIZARD_TOWER.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP.configure(new HeightWithChanceConfig(EntityConfig.wizard_weight.get(), 1F))));
         this.addFeature(GenerationStage.Decoration.UNDERGROUND_STRUCTURES, ExplorerFeature.SLATE_DUNGEON.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.DUNGEONS.configure(new ChanceConfig(GeneralConfig.slateDungeonRarity.get()))));
 
         this.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, ExplorerBlocks.SLATE.getDefaultState(), 33)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(20, 0, 0, 80))));

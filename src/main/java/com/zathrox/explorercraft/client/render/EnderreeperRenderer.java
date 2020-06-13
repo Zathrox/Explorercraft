@@ -2,7 +2,6 @@ package com.zathrox.explorercraft.client.render;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.zathrox.explorercraft.client.model.EnderreeperModel;
-import com.zathrox.explorercraft.client.render.layer.EnderreeperChargeLayer;
 import com.zathrox.explorercraft.common.entity.EnderreeperEntity;
 import com.zathrox.explorercraft.core.Explorercraft;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
@@ -14,11 +13,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class EnderreeperRenderer extends MobRenderer<EnderreeperEntity, EnderreeperModel<EnderreeperEntity>> {
+
     private static final ResourceLocation ENDERREEPER_TEXTURES = new ResourceLocation(Explorercraft.MOD_ID + ":textures/entity/creeper/enderreeper.png");
 
     public EnderreeperRenderer(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new EnderreeperModel(), 0.5F);
-        this.addLayer(new EnderreeperChargeLayer(this));
     }
 
     @Override

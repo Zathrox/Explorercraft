@@ -5,6 +5,7 @@ import com.zathrox.explorercraft.core.Explorercraft;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.LivingRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -18,7 +19,7 @@ public class WizardRenderer extends LivingRenderer {
     }
 
     @Override
-    protected boolean canRenderName(Entity entity) {
+    protected boolean canRenderName(LivingEntity entity) {
         return true;
     }
 

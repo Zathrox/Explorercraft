@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.zathrox.explorercraft.common.entity.WizardEntity;
 import com.zathrox.explorercraft.core.registry.ExplorerBlocks;
+import com.zathrox.explorercraft.core.registry.ExplorerEnchantments;
 import com.zathrox.explorercraft.core.registry.ExplorerItems;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -43,75 +44,110 @@ public class ExplorerTrades {
 
     public static final Int2ObjectMap<VillagerTrades.ITrade[]> WIZARD_TRADER = Util.make(() -> {
         VillagerTrades.ITrade[] baseOffers = new VillagerTrades.ITrade[]{
-                new ItemsForGemTrade(Items.SEA_PICKLE, 2, 1, 5, 4),
-                new ItemsForGemTrade(Items.SLIME_BALL, 4, 1, 5, 3),
-                new ItemsForGemTrade(Items.GLOWSTONE, 2, 1, 5, 4),
-                new ItemsForGemTrade(Items.NAUTILUS_SHELL, 5, 1, 5, 3),
-                new ItemsForGemTrade(Items.FERN, 1, 1, 12, 1),
-                new ItemsForGemTrade(Items.SUGAR_CANE, 1, 1, 8, 4),
-                new ItemsForGemTrade(Items.PUMPKIN, 1, 1, 4, 3),
-                new ItemsForGemTrade(Items.KELP, 3, 1, 12, 4),
-                new ItemsForGemTrade(Items.CACTUS, 3, 1, 8, 3),
-                new ItemsForGemTrade(Items.POPPY, 1, 1, 12, 4),
-                new ItemsForGemTrade(Items.BLUE_ORCHID, 1, 1, 8, 2),
-                new ItemsForGemTrade(Items.ALLIUM, 1, 1, 12, 4),
-                new ItemsForGemTrade(Items.AZURE_BLUET, 1, 1, 12, 4),
-                new ItemsForGemTrade(Items.RED_TULIP, 1, 1, 12, 3),
-                new ItemsForGemTrade(Items.ORANGE_TULIP, 1, 1, 12, 4),
-                new ItemsForGemTrade(Items.WHITE_TULIP, 1, 1, 12, 3),
-                new ItemsForGemTrade(Items.PINK_TULIP, 1, 1, 12, 3),
-                new ItemsForGemTrade(Items.OXEYE_DAISY, 1, 1, 12, 4),
-                new ItemsForGemTrade(Items.OXEYE_DAISY, 1, 1, 12, 4),
-                new ItemsForGemTrade(Items.CORNFLOWER, 1, 1, 12, 4),
-                new ItemsForGemTrade(Items.LILY_OF_THE_VALLEY, 1, 1, 7, 4),
-                new ItemsForGemTrade(Items.WHEAT_SEEDS, 1, 1, 12, 4),
-                new ItemsForGemTrade(Items.BEETROOT_SEEDS, 1, 1, 12, 3),
-                new ItemsForGemTrade(Items.PUMPKIN_SEEDS, 1, 1, 12, 3),
-                new ItemsForGemTrade(Items.MELON_SEEDS, 1, 1, 12, 4),
-                new ItemsForGemTrade(Items.ACACIA_SAPLING, 5, 1, 8, 3),
-                new ItemsForGemTrade(Items.BIRCH_SAPLING, 5, 1, 8, 3),
-                new ItemsForGemTrade(Items.DARK_OAK_SAPLING, 5, 1, 8, 4),
-                new ItemsForGemTrade(Items.JUNGLE_SAPLING, 5, 1, 8, 4),
-                new ItemsForGemTrade(Items.OAK_SAPLING, 5, 1, 8, 3),
-                new ItemsForGemTrade(Items.SPRUCE_SAPLING, 5, 1, 8, 3),
-                new ItemsForGemTrade(Items.VINE, 1, 1, 12, 4),
-                new ItemsForGemTrade(Items.BROWN_MUSHROOM, 1, 1, 12, 3),
-                new ItemsForGemTrade(Items.RED_MUSHROOM, 1, 1, 12, 4),
-                new ItemsForGemTrade(Items.LILY_PAD, 1, 2, 5, 4),
-                new ItemsForGemTrade(Items.GUNPOWDER, 1, 1, 8, 4),
+
                 //==== Random Vanilla Sales ===//
-                new ItemsForGemTrade(Items.GHAST_TEAR, 2, 1, 3, 4),
-                new ItemsForGemTrade(Items.FERMENTED_SPIDER_EYE, 1, 1, 3, 4),
-                new ItemsForGemTrade(Items.BAMBOO, 3, 1, 12, 4),
-                new ItemsForGemTrade(Items.CHORUS_FLOWER, 6, 1, 12, 4),
-                //==== Explorercraft Items ===//
-                new ItemsForGemTrade(ExplorerItems.RICE, 2, 1, 5, 4),
-                new ItemsForGemTrade(ExplorerItems.LEEK, 1, 1, 12, 4),
-                new ItemsForGemTrade(ExplorerItems.CHEESE, 1, 1, 12, 4),
-                new ItemsForGemTrade(ExplorerItems.DRIED_FRUITS, 1, 1, 12, 4),
-                new ItemsForGemTrade(ExplorerBlocks.TATAMI, 5, 1, 1, 4),
-                new ItemsForGemTrade(ExplorerItems.WELSHFLAG_BANNER_PATTERN, 5, 1, 1, 4),
-                new ItemsForGemTrade(ExplorerBlocks.DAFFODIL, 1, 1, 8, 4),
-                new ItemsForGemTrade(ExplorerBlocks.ASH_SAPLING, 10, 1, 8, 4),
-                new ItemsForGemTrade(ExplorerBlocks.BAMBOO_SAPLING, 5, 1, 8, 4),
-                new ItemsForGemTrade(ExplorerBlocks.CHERRY_SAPLING, 5, 1, 8, 4),
-                new ItemsForGemTrade(ExplorerBlocks.MAPLE_SAPLING, 5, 1, 8, 4),
-                new ItemsForGemTrade(ExplorerBlocks.WILLOW_SAPLING, 5, 1, 8, 4),
-                new ItemsForGemTrade(ExplorerBlocks.LUPINE, 5, 1, 8, 4),
-                new ItemsForGemTrade(ExplorerBlocks.GREEN_MUSHROOM, 5, 1, 8, 4),
-                new ItemsForGemTrade(ExplorerBlocks.PINK_MUSHROOM, 5, 1, 8, 4),
-                new ItemsForGemTrade(ExplorerBlocks.NOCTILUCAS, 5, 1, 8, 4),
-                new ItemsForGemTrade(ExplorerItems.WELSHFLAG_BANNER_PATTERN, 20, 1, 1, 4)
+                new ItemsForGemTrade(new ItemStack(Items.FERMENTED_SPIDER_EYE, 16), 1, 3, 3, 4),
+                new ItemsForGemTrade(new ItemStack(Items.RABBIT_FOOT, 8), 1, 3, 3, 4),
+                new ItemsForGemTrade(new ItemStack(Items.HONEYCOMB, 32), 1, 3, 4, 4),
+                new ItemsForGemTrade(new ItemStack(Blocks.BEE_NEST, 1), 2, 2, 8, 1),
+                new ItemsForGemTrade(new ItemStack(Items.ACACIA_SAPLING,32), 1, 3, 4, 3),
+                new ItemsForGemTrade(new ItemStack(Items.CACTUS,32), 1, 3, 2, 3),
+                new ItemsForGemTrade(new ItemStack(Items.POPPY,32), 1, 3, 2, 4),
+                new ItemsForGemTrade(new ItemStack(Items.BLUE_ORCHID,32), 1, 3, 2, 2),
+                new ItemsForGemTrade(new ItemStack(Items.ALLIUM,32), 1, 3, 2, 4),
+                new ItemsForGemTrade(new ItemStack(Items.AZURE_BLUET,32), 1, 3, 2, 4),
+                new ItemsForGemTrade(new ItemStack(Items.RED_TULIP,32), 1, 3, 2, 3),
+                new ItemsForGemTrade(new ItemStack(Items.ORANGE_TULIP,32), 1, 3, 2, 4),
+                new ItemsForGemTrade(new ItemStack(Items.WHITE_TULIP,32), 1, 3, 2, 3),
+                new ItemsForGemTrade(new ItemStack(Items.PINK_TULIP,32), 1, 3, 2, 3),
+                new ItemsForGemTrade(new ItemStack(Items.OXEYE_DAISY,32), 1, 3, 2, 4),
+                new ItemsForGemTrade(new ItemStack(Items.OXEYE_DAISY,32), 1, 3, 2, 4),
+                new ItemsForGemTrade(new ItemStack(Items.CORNFLOWER,32), 1, 3, 2, 4),
+                new ItemsForGemTrade(new ItemStack(Items.LILY_OF_THE_VALLEY,32), 1, 3, 2, 4),
+
+                //==== Bamboo Forest ====//
+                new ItemsForGemTrade(new ItemStack(ExplorerItems.RICE, 64), 1, 3, 2, 4),
+                new ItemsForGemTrade(new ItemStack(ExplorerBlocks.CHERRY_SAPLING,32), 1, 3, 4, 4),
+                new ItemsForGemTrade(new ItemStack(ExplorerBlocks.MAPLE_SAPLING,32), 1, 3, 4, 4),
+
+                //==== Snowdonia ====//
+                new ItemsForGemTrade(new ItemStack(ExplorerItems.LEEK, 64), 1, 3, 4, 4),
+                new ItemsForGemTrade(new ItemStack(ExplorerBlocks.DAFFODIL, 32), 1, 3, 4, 4),
+                new ItemsForGemTrade(new ItemStack(ExplorerBlocks.ASH_SAPLING,32), 2, 2, 8, 2),
+
+                //==== Fungal Forest ====//
+                new ItemsForGemTrade(new ItemStack(ExplorerBlocks.WILLOW_SAPLING, 32), 1, 3, 4, 4),
+                new ItemsForGemTrade(new ItemStack(ExplorerBlocks.LUPINE, 32), 1, 3, 4, 4),
+                new ItemsForGemTrade(new ItemStack(ExplorerBlocks.GREEN_MUSHROOM, 16), 1, 3, 4, 4),
+                new ItemsForGemTrade(new ItemStack(ExplorerBlocks.PINK_MUSHROOM, 16), 1, 3, 4, 4),
+                new ItemsForGemTrade(new ItemStack(ExplorerBlocks.LOTUS_FLOWER, 8), 1, 3, 4, 4),
+                new ItemsForGemTrade(new ItemStack(ExplorerBlocks.INFECTED_WILLOW_LOG, 32), 1, 3, 4, 4),
+
+                //==== Nether ====//
+                new ItemsForGemTrade(new ItemStack(Items.GHAST_TEAR, 16), 1, 3, 6, 2),
+                new ItemsForGemTrade(new ItemStack(Items.WITHER_ROSE, 32), 2, 3, 8, 2),
+                new ItemsForGemTrade(new ItemStack(Items.WITHER_SKELETON_SKULL), 8, 1, 15, 2),
+                new ItemsForGemTrade(new ItemStack(Items.GLOWSTONE, 16), 1, 5, 2, 4),
+
+                //==== End ====//
+                new ItemsForGemTrade(new ItemStack(Items.CHORUS_FLOWER, 16), 1, 3, 2, 1),
+                new ItemsForGemTrade(new ItemStack(Items.POPPED_CHORUS_FRUIT, 32), 1, 2, 2, 1),
+                new ItemsForGemTrade(new ItemStack(Items.ENDER_EYE, 4), 1, 2, 4, 2),
+                new ItemsForGemTrade(new ItemStack(Items.SHULKER_SHELL, 2), 4, 1, 12, 4),
+
+                //==== Oceans ====//
+                new ItemsForGemTrade(new ItemStack(Items.DRIED_KELP_BLOCK, 64), 1, 3, 2, 4),
+                new ItemsForGemTrade(new ItemStack(ExplorerBlocks.NOCTILUCAS, 32), 1, 1, 8, 4),
+                new ItemsForGemTrade(new ItemStack(Items.SPONGE, 8), 3, 3, 8, 4),
+                new ItemsForGemTrade(new ItemStack(Items.NAUTILUS_SHELL, 16), 2, 2, 8, 4),
+                new ItemsForGemTrade(new ItemStack(Items.PRISMARINE_CRYSTALS, 32), 2, 3, 4, 4),
+                new ItemsForGemTrade(new ItemStack(Items.PRISMARINE_SHARD, 32), 2, 3, 4, 4),
+
+                //==== Jungle ====//
+                new ItemsForGemTrade(new ItemStack(Items.BAMBOO, 64), 1, 2, 4, 4),
+                new ItemsForGemTrade(new ItemStack(Items.COCOA_BEANS, 32), 1, 2, 4, 4),
+                new ItemsForGemTrade(new ItemStack(Items.JUNGLE_SAPLING, 32), 1, 3, 4, 4),
+
+                //==== Dark Oak Woods ====//
+                new ItemsForGemTrade(new ItemStack(Items.DARK_OAK_SAPLING, 32), 1, 3, 4, 4),
+                new ItemsForGemTrade(new ItemStack(Items.TOTEM_OF_UNDYING), 2, 1, 15, 4),
+
+                //==== Generic ====//
+                // Notch Apple
+                new ItemsForGemTrade(new ItemStack(ExplorerItems.CHEESE, 22), 1, 3, 3, 4),
+                new ItemsForGemTrade(new ItemStack(ExplorerItems.DRIED_FRUITS, 22), 1, 3, 3, 4),
+
+                new ItemsForGemTrade(new ItemStack(Items.MUSIC_DISC_WARD), 2, 1, 12, 1),
+                new ItemsForGemTrade(new ItemStack(Items.MUSIC_DISC_11), 2, 1, 12, 1),
+                new ItemsForGemTrade(new ItemStack(Items.MUSIC_DISC_13), 2, 1, 12, 1),
+                new ItemsForGemTrade(new ItemStack(Items.MUSIC_DISC_BLOCKS), 2, 1, 12, 1),
+                new ItemsForGemTrade(new ItemStack(Items.MUSIC_DISC_CAT), 2, 1, 12, 1),
+                new ItemsForGemTrade(new ItemStack(Items.MUSIC_DISC_CHIRP), 2, 1, 12, 1),
+                new ItemsForGemTrade(new ItemStack(Items.MUSIC_DISC_FAR), 2, 1, 12, 1),
+                new ItemsForGemTrade(new ItemStack(Items.MUSIC_DISC_MALL), 2, 1, 12, 1),
+                new ItemsForGemTrade(new ItemStack(Items.MUSIC_DISC_MELLOHI), 2, 1, 12, 1),
+                new ItemsForGemTrade(new ItemStack(Items.MUSIC_DISC_STAL), 2, 1, 12, 1),
+                new ItemsForGemTrade(new ItemStack(Items.MUSIC_DISC_STRAD), 2, 1, 12, 1),
+                new ItemsForGemTrade(new ItemStack(Items.MUSIC_DISC_WAIT), 2, 1, 12, 1)
         };
-        VillagerTrades.ITrade[] rareOffers = new VillagerTrades.ITrade[]{
+        VillagerTrades.ITrade[] rareOffers = new VillagerTrades.ITrade[] {
+                new ItemsForGemTrade(new ItemStack(Items.ELYTRA), 64, 1, 25, 0),
+                new ItemsForGemTrade(new ItemStack(Items.HEART_OF_THE_SEA, 1), 10, 1, 20, 0),
+                new ItemsForGemTrade(new ItemStack(Items.NETHER_STAR, 1), 64, 1, 25, 0)
+                /*new EnchantedBookForTabletTrade(new ItemStack(Items.ENDER_EYE), 1),
+                new EnchantedBookForTabletTrade(new ItemStack(Items.GHAST_TEAR), 1),
+                new EnchantedBookForTabletTrade(new ItemStack(Items.DARK_OAK_LOG), 1),*/
+        };
+        VillagerTrades.ITrade[] welshOffers = new VillagerTrades.ITrade[] {
                 //new EmeraldForMapTrade(13, "Village", MapDecoration.Type.MONUMENT, 12, 5),
+                new Trade(new ItemStack(Items.PAPER, 22), new ItemStack(Items.RED_DYE, 32), new ItemStack(ExplorerItems.WELSHFLAG_BANNER_PATTERN), 1, 5, 5, true),
                 new Trade(new ItemStack(ExplorerBlocks.DRAGON_HEART), new ItemStack(Items.IRON_INGOT, 64), new ItemStack(ExplorerItems.WELSH_SHIELD), 1, 5, 5, true),
                 new Trade(new ItemStack(ExplorerBlocks.DRAGON_HEART), new ItemStack(Blocks.GRAY_WOOL, 64), new ItemStack(ExplorerItems.WIZARD_HAT), 1, 5, 5, true),
                 new Trade(new ItemStack(ExplorerBlocks.DRAGON_HEART), new ItemStack(ExplorerBlocks.ASH_LOG, 64), new ItemStack(ExplorerItems.WIZARD_STAFF), 1, 5, 5, true),
-                new Trade(new ItemStack(ExplorerBlocks.DRAGON_HEART), new ItemStack(Items.WHITE_BANNER, 1), WizardEntity.createWelshFlagBanner(), 8, 5, 1, false),
-                new Trade(new ItemStack(ExplorerBlocks.DRAGON_HEART), new ItemStack(ExplorerBlocks.SLATE_CHISELED, 64), new ItemStack(ExplorerBlocks.SLATE_WELSH, 64), 1, 5, 5, true),
+                new Trade(new ItemStack(ExplorerBlocks.DRAGON_HEART), new ItemStack(Items.WHITE_BANNER, 1), WizardEntity.createWelshFlagBanner(), 1, 5, 1, false),
+                new Trade(new ItemStack(ExplorerBlocks.DRAGON_HEART), new ItemStack(ExplorerBlocks.SLATE_CHISELED, 64), new ItemStack(ExplorerBlocks.SLATE_WELSH, 64), 1, 5, 5, true)
         };
-        return newTradeMap(ImmutableMap.of(0, baseOffers, 1, rareOffers));
+        return newTradeMap(ImmutableMap.of(0, baseOffers, 1, rareOffers, 2, welshOffers));
     });
 
 
@@ -154,8 +190,47 @@ public class ExplorerTrades {
         }
     }
 
+    static class ItemsForGemTrade implements VillagerTrades.ITrade {
+        private final ItemStack firstBuyStack;
+        private final ItemStack secondBuyStack;
+        private final int sellingAmount;
+        private final int maxUses;
+        private final int experience;
+        private final float priceMultiplier;
+        private final boolean allowFluxation;
 
-    public static class ItemsForGemTrade implements VillagerTrades.ITrade {
+        public ItemsForGemTrade(ItemStack firstBuyStack, int sellingAmount, int maxUses, int experience, float priceMultiplier) {
+            this.firstBuyStack = firstBuyStack;
+            this.secondBuyStack = ItemStack.EMPTY;
+            this.sellingAmount = sellingAmount;
+            this.maxUses = maxUses;
+            this.experience = experience;
+            this.priceMultiplier = priceMultiplier;
+            this.allowFluxation = false;
+        }
+
+        public ItemsForGemTrade(ItemStack firstBuyStack, ItemStack secondBuyStack, int sellingAmount, int maxUses, int experience, float priceMultiplier, boolean allowFluxation) {
+            this.firstBuyStack = firstBuyStack;
+            this.secondBuyStack = secondBuyStack;
+            this.sellingAmount = sellingAmount;
+            this.maxUses = maxUses;
+            this.experience = experience;
+            this.priceMultiplier = priceMultiplier;
+            this.allowFluxation = allowFluxation;
+        }
+
+        @Override
+        public MerchantOffer getOffer(Entity trader, Random rand) {
+            int gem = rand.nextInt(getGems().size());
+            System.out.println("Item: " + this.firstBuyStack.toString());
+            if (!this.secondBuyStack.isEmpty() && allowFluxation) {
+                this.secondBuyStack.setCount(MathHelper.clamp(Math.max(this.secondBuyStack.getCount() - 4, 1) + rand.nextInt(8) + 1, 1, 64));
+            }
+            return new MerchantOffer(this.firstBuyStack, this.secondBuyStack, new ItemStack(getGems().get(gem), this.sellingAmount), this.maxUses, this.experience, this.priceMultiplier);
+        }
+    }
+
+    /*public static class ItemsForGemTrade implements VillagerTrades.ITrade {
         private final ItemStack firstBuyStack;
         private final int amount;
         private final int buyingStack;
@@ -192,7 +267,7 @@ public class ExplorerTrades {
             int j = random.nextInt(getGems().size());
             return new MerchantOffer(new ItemStack(this.firstBuyStack.getItem(), this.amount), new ItemStack(getGems().get(j), this.buyingStack), this.maxUses, this.experience, this.priceMultiplier);
         }
-    }
+    }*/
 
     public static List<Item> getGems() {
         List<Item> gemList = new ArrayList<>();
@@ -203,6 +278,42 @@ public class ExplorerTrades {
         gemList.add(ExplorerItems.RUBY);
         gemList.add(Items.LAPIS_LAZULI);
         return gemList;
+    }
+
+    public static class EnchantedBookForTabletTrade implements VillagerTrades.ITrade {
+        private final ItemStack tablet;
+        private final int value;
+
+        public EnchantedBookForTabletTrade(ItemStack tablet, int value) {
+            this.tablet = tablet;
+            this.value = value;
+        }
+
+        public MerchantOffer getOffer(Entity entity, Random random) {
+            Enchantment enchantment = null;
+            if (this.tablet.getItem() == Items.ENDER_EYE) {
+                enchantment = ExplorerEnchantments.ENDERBANE.get();
+            } else if (this.tablet.getItem() == Items.GHAST_TEAR) {
+                enchantment = ExplorerEnchantments.NETHERBANE.get();
+            } else if (this.tablet.getItem() == Items.DARK_OAK_LOG) {
+                enchantment = ExplorerEnchantments.ILLIAGERBANE.get();
+            } else {
+                enchantment = Registry.ENCHANTMENT.getRandom(random);
+            }
+
+            int i = MathHelper.nextInt(random, enchantment.getMinLevel(), enchantment.getMaxLevel());
+            ItemStack enchantedBook = EnchantedBookItem.getEnchantedItemStack(new EnchantmentData(enchantment, i));
+            int j = 2 + random.nextInt(5 + i * 10) + 3 * i;
+            if (enchantment.isTreasureEnchantment()) {
+                j *= 2;
+            }
+
+            if (j > 64) {
+                j = 64;
+            }
+
+            return new MerchantOffer(new ItemStack(this.tablet.getItem(), j), new ItemStack(Items.BOOK), enchantedBook, 12, this.value, 0.2F);
+        }
     }
 
     /**

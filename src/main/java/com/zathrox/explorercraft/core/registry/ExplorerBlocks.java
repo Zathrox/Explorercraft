@@ -66,6 +66,8 @@ public class ExplorerBlocks {
     public static final Block LOTUS_FLOWER = ExplorerUtil._null();
     public static final Block LOTUS_STEM = ExplorerUtil._null();
 
+    public static final Block SLIMEY_STONE = ExplorerUtil._null();
+    public static final Block DISSOLVED_STONE = ExplorerUtil._null();
 
     //=========== BASALT BLOCKS ============//
     public static final Block BASALT = ExplorerUtil._null();

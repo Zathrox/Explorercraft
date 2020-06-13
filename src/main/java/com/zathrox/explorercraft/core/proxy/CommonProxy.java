@@ -1,26 +1,22 @@
 package com.zathrox.explorercraft.core.proxy;
 
 import com.google.common.collect.ImmutableMap;
-import com.zathrox.explorercraft.common.world.OreGeneration;
+import com.zathrox.explorercraft.common.world.WorldGeneration;
+import com.zathrox.explorercraft.common.world.feature.structure.test.WizardTowerStructureOld;
 import com.zathrox.explorercraft.core.Explorercraft;
 import com.zathrox.explorercraft.core.config.Config;
 import com.zathrox.explorercraft.core.data.ExplorercraftDataGenerator;
 import com.zathrox.explorercraft.core.events.ExplorerPlayerEvents;
-import com.zathrox.explorercraft.core.registry.ExplorerBannerPattern;
-import com.zathrox.explorercraft.core.registry.ExplorerBiomes;
-import com.zathrox.explorercraft.core.registry.ExplorerEntities;
-import com.zathrox.explorercraft.core.registry.ExplorerItems;
+import com.zathrox.explorercraft.core.registry.*;
 import com.zathrox.explorercraft.core.util.ExplorerTrades;
 import com.zathrox.explorercraft.core.util.ExplorerVanillaCompat;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import net.minecraft.advancements.criterion.InventoryChangeTrigger;
-import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
-import net.minecraft.util.IItemProvider;
 import net.minecraft.util.NonNullList;
+import net.minecraft.world.storage.MapDecoration;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -48,16 +44,15 @@ public class CommonProxy {
 
         Config.loadConfig(Config.common_config, FMLPaths.CONFIGDIR.get().resolve("explorercraft-common.toml").toString());
 
-        MinecraftForge.EVENT_BUS.register(new ExplorerPlayerEvents());
         MinecraftForge.EVENT_BUS.register(new ExplorercraftDataGenerator());
         ExplorerBannerPattern.init();
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ExplorerBiomes.BIOMES.register(modEventBus);
-    }
+        ExplorerEnchantments.ENCHANTMENTS.register(modEventBus);
+        MinecraftForge.EVENT_BUS.register(new ExplorerPlayerEvents());
 
-    protected InventoryChangeTrigger.Instance hasItem(IItemProvider itemIn) {
-        return this.hasItem((IItemProvider) ItemPredicate.Builder.create().item(itemIn).build());
+
     }
 
     private static final Map<VillagerProfession, Int2ObjectMap<VillagerTrades.ITrade[]>> VANILLA_TRADES = new HashMap<>();
@@ -74,7 +69,7 @@ public class CommonProxy {
     protected void preInit(FMLCommonSetupEvent event) {
         Explorercraft.LOGGER.debug("CommonProxy preInit method");
 
-        OreGeneration.setup();
+        WorldGeneration.setup();
         ExplorerVanillaCompat.setup();
         this.changeVanillaFields();
 
@@ -88,8 +83,6 @@ public class CommonProxy {
     protected void postInit(InterModProcessEvent event) {
         Explorercraft.LOGGER.debug("CommonProxy postInit method");
 
-        //EntityOvergrownSkeleton.addSpawn();
-        //EnderreeperEntity.addSpawn();
         ExplorerEntities.registerEntityWorldSpawns();
         ExplorerBiomes.registerBiomes();
         EnchantmentType.BOW.canEnchantItem(ExplorerItems.JADE_BOW);
@@ -109,6 +102,9 @@ public class CommonProxy {
 
         addVillagerTrades(VillagerProfession.CLERIC, ExplorerTrades.newTradeMap(ImmutableMap.of(3, new VillagerTrades.ITrade[]{
                 new ExplorerTrades.ItemsForEmeraldsTrade(ExplorerItems.NOCTILUCA, 5, 1, 15)})));
+
+        addVillagerTrades(VillagerProfession.CARTOGRAPHER, ExplorerTrades.newTradeMap(ImmutableMap.of(5, new VillagerTrades.ITrade[]{
+                new ExplorerTrades.EmeraldForMapTrade(14, WizardTowerStructureOld.NAME, MapDecoration.Type.MANSION, 6, 10)})));
 
 
         /*

@@ -9,11 +9,13 @@ import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.advancements.criterion.MinMaxBounds;
 import net.minecraft.advancements.criterion.StatePropertiesPredicate;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DirectoryCache;
 import net.minecraft.data.IDataProvider;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.item.Items;
 import net.minecraft.state.properties.SlabType;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
@@ -71,6 +73,8 @@ public class ExplorercraftLootTableProvider implements IDataProvider {
         registerBlock(ExplorerBlocks.RUBY_BLOCK, addBasicBlockLootTable(ExplorerBlocks.RUBY_BLOCK), consumer);
         registerBlock(ExplorerBlocks.BASALT, addDifferentDropLootTable(ExplorerBlocks.BASALT, ExplorerBlocks.BASALT_COBBLESTONE), consumer);
         registerBlock(ExplorerBlocks.BASALT_SLAB, addSlabBlockLootTable(ExplorerBlocks.BASALT_SLAB), consumer);
+        registerBlock(ExplorerBlocks.SLIMEY_STONE, addDifferentDropLootTable(ExplorerBlocks.SLIMEY_STONE, Blocks.STONE), consumer);
+        registerBlock(ExplorerBlocks.DISSOLVED_STONE, addDifferentDropLootTable(ExplorerBlocks.DISSOLVED_STONE, Items.SLIME_BALL), consumer);
     }
 
 

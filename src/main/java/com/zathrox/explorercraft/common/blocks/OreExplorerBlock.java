@@ -14,13 +14,18 @@ public class OreExplorerBlock extends Block {
         super(properties);
     }
 
-    protected int func_220281_a(Random p_220281_1_) {
+    @Override
+    public int getHarvestLevel(BlockState state) {
+        return super.getHarvestLevel(state);
+    }
+
+    protected int getExperience(Random random) {
         if (this == ExplorerBlocks.AMETHYST_ORE) {
-            return MathHelper.nextInt(p_220281_1_, 3, 7);
+            return MathHelper.nextInt(random, 3, 7);
         } else if (this == ExplorerBlocks.JADE_ORE) {
-            return MathHelper.nextInt(p_220281_1_, 3, 7);
+            return MathHelper.nextInt(random, 3, 7);
         } else {
-            return this == ExplorerBlocks.RUBY_ORE ? MathHelper.nextInt(p_220281_1_, 3, 7) : 0;
+            return this == ExplorerBlocks.RUBY_ORE ? MathHelper.nextInt(random, 3, 7) : 0;
         }
     }
 
@@ -31,6 +36,6 @@ public class OreExplorerBlock extends Block {
 
     @Override
     public int getExpDrop(BlockState state, IWorldReader reader, BlockPos pos, int fortune, int silktouch) {
-        return silktouch == 0 ? this.func_220281_a(RANDOM) : 0;
+        return silktouch == 0 ? this.getExperience(RANDOM) : 0;
     }
 }

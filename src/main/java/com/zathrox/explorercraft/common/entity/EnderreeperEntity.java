@@ -13,6 +13,7 @@ import net.minecraft.entity.monster.CreeperEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -40,11 +41,12 @@ import java.util.Collection;
 import java.util.Random;
 import java.util.UUID;
 
-public class EnderreeperEntity extends CreeperEntity {
+public class EnderreeperEntity extends MonsterEntity {
     //==== Enderman Related Parameters ====//
     private static final UUID ATTACKING_SPEED_BOOST_ID = UUID.fromString("020E0DFB-87AE-4653-9556-831010E291A0");
     private static final AttributeModifier ATTACKING_SPEED_BOOST = (new AttributeModifier(ATTACKING_SPEED_BOOST_ID, "Attacking speed boost", 0.15F, AttributeModifier.Operation.ADDITION)).setSaved(false);
     private static final DataParameter<Boolean> SCREAMING = EntityDataManager.createKey(EnderreeperEntity.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Boolean> IGNITED = EntityDataManager.createKey(CreeperEntity.class, DataSerializers.BOOLEAN);
 
     private int lastCreepySound;
     private int targetChangeTime;
@@ -120,6 +122,7 @@ public class EnderreeperEntity extends CreeperEntity {
         super.registerData();
         this.dataManager.register(SCREAMING, false);
         this.dataManager.register(STATE, -1);
+        this.dataManager.register(IGNITED, false);
     }
 
     @Override
@@ -129,6 +132,14 @@ public class EnderreeperEntity extends CreeperEntity {
         }
 
         super.notifyDataManagerChange(key);
+    }
+
+    public boolean hasIgnited() {
+        return this.dataManager.get(IGNITED);
+    }
+
+    public void ignite() {
+        this.dataManager.set(IGNITED, true);
     }
 
     /**
@@ -145,6 +156,32 @@ public class EnderreeperEntity extends CreeperEntity {
 
         this.isJumping = false;
         super.livingTick();
+    }
+
+    public void writeAdditional(CompoundNBT compound) {
+        super.writeAdditional(compound);
+        compound.putShort("Fuse", (short)this.fuseTime);
+        compound.putByte("ExplosionRadius", (byte)this.explosionRadius);
+        compound.putBoolean("ignited", this.hasIgnited());
+    }
+
+    /**
+     * (abstract) Protected helper method to read subclass entity data from NBT.
+     */
+    public void readAdditional(CompoundNBT compound) {
+        super.readAdditional(compound);
+        if (compound.contains("Fuse", 99)) {
+            this.fuseTime = compound.getShort("Fuse");
+        }
+
+        if (compound.contains("ExplosionRadius", 99)) {
+            this.explosionRadius = compound.getByte("ExplosionRadius");
+        }
+
+        if (compound.getBoolean("ignited")) {
+            this.ignite();
+        }
+
     }
 
     /**
@@ -198,7 +235,7 @@ public class EnderreeperEntity extends CreeperEntity {
     private void explode() {
         if (!this.world.isRemote) {
             Explosion.Mode explosion$mode = net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.world, this) ? Explosion.Mode.DESTROY : Explosion.Mode.NONE;
-            float f = this.isCharged() ? 2.0F : 1.0F;
+            float f = 1.0F;
             this.dead = true;
             this.playSound(SoundEvents.ENTITY_ENDERMAN_SCREAM, 1.0F, 1.0F);
             this.world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), (float) this.explosionRadius * f, explosion$mode);

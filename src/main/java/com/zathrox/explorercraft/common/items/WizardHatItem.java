@@ -3,6 +3,7 @@ package com.zathrox.explorercraft.common.items;
 import com.zathrox.explorercraft.client.model.WizardHatModel;
 import com.zathrox.explorercraft.core.registry.ExplorerItems;
 import net.minecraft.client.renderer.entity.model.BipedModel;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -28,7 +29,7 @@ public class WizardHatItem extends ArmorItem {
     @Override
     public void addInformation(ItemStack p_77624_1_, @Nullable World p_77624_2_, List<ITextComponent> tooltip, ITooltipFlag p_77624_4_) {
         super.addInformation(p_77624_1_, p_77624_2_, tooltip, p_77624_4_);
-        tooltip.add(new StringTextComponent("A very Enchanting hat").applyTextStyle(TextFormatting.DARK_PURPLE));
+        tooltip.add(new StringTextComponent(I18n.format("item.explorercraft.wizard_hat_description")).applyTextStyle(TextFormatting.DARK_PURPLE));
     }
 
     @Nullable

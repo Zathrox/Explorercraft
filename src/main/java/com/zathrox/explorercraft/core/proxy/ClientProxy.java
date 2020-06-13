@@ -42,12 +42,12 @@ public class ClientProxy extends CommonProxy {
         Explorercraft.LOGGER.debug("ClientProxy clientSetup method");
 
         registerRenderLayers();
-        registerEntitRenderer();
+        registerEntityRenderer();
 
         MinecraftForge.EVENT_BUS.register(new ClientForgeEventSubscriber());
     }
 
-    private void registerEntitRenderer() {
+    private void registerEntityRenderer() {
         RenderingRegistry.registerEntityRenderingHandler(ExplorerEntities.BRUSH_STOOGE, BrushStoogeRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ExplorerEntities.ENDERGHAST, EnderGhastRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ExplorerEntities.ENDERREEPER, EnderreeperRenderer::new);
@@ -55,6 +55,7 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(ExplorerEntities.INFECTED_SKELETON, InfectedSkeletonRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ExplorerEntities.INFECTED_ZOMBIE, InfectedZombieRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ExplorerEntities.WIZARD, WizardRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(ExplorerEntities.SKELETAUR, SkeletaurRenderer::new);
 
     }
 
@@ -117,6 +118,8 @@ public class ClientProxy extends CommonProxy {
         RenderTypeLookup.setRenderLayer(ExplorerBlocks.CHERRY_SAPLING, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ExplorerBlocks.MAPLE_SAPLING, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ExplorerBlocks.WILLOW_SAPLING, RenderType.getCutout());
+
+        RenderTypeLookup.setRenderLayer(ExplorerBlocks.DISSOLVED_STONE, RenderType.getTranslucent());
 
     }
 

@@ -8,6 +8,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
 public class WizardStaffItem extends Item {
@@ -25,7 +26,6 @@ public class WizardStaffItem extends Item {
 
             Vec3d aim = playerIn.getLookVec();
             FireballEntity fireball = new FireballEntity(worldIn, playerIn, 1, 1, 1);
-
             fireball.setPosition(playerIn.getPosX() + aim.x * 1.5D, playerIn.getPosY() + 1 + aim.y * 1.5D, playerIn.getPosZ() + 1 + aim.z * 1.5D);
             fireball.accelerationX = aim.x * 0.1;
             fireball.accelerationY = aim.y * 0.1;

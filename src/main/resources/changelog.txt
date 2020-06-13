@@ -1,6 +1,45 @@
 CHANGELOG:
 
 --------// Explorercraft 1.15.2 // ----------------------------------------------------
+Patch 4.0.2:
+todo Drops for blocks / improve texture model / Add wizard trade for dissolved/slimey stone
+todo Improve tree textures + slimey stone
+todo Blacklist food items
+todo - update default villager trades (look at upgrade aquatic for proper forge events)
+todo Clean up config (maybe add wizard config/tower spawns)
+todo add dungeon as a structure
+
+Added noctiluca spawning options in config
+Added in en_GB language (I am British after-all)
+Amended en_US "chiselled" to american "chiseled", if any other noted differences, please forward them to me!
+Fixed rare trade issue with stacks not being read correctly
+Fixed ore harvest level (Jade/Ruby is harvest level 2, Amethyst is harvest level 1)
+Fixed tatami mat only dropping the item, if the head was broken
+
+New mob: Skeletaur!
+- Spawns in the plains biomes at night!
+todo - create entity drops
+
+todo - Write up - Tree bug
+todo - Write up - Rice bug
+
+Patch 4.0.1:
++ Improved slimey slime chunks generation
+++ Now spawns more frequently in swamps and rarely in other biomes (A new reason to actually find a swamp biome!)
++++ New slimy stone and dissolved stone slime blocks
++ Added mob spawning (forgot it in last patch)
++ Fixed multiplayer sleeping bag visual glitch
++ Added some new enchantments (Treasure Enchantments only and some of the functionality for them is limited/no there, so WIP)
++ New Cartographer Trade to get an exploration map that can locate a Wizards Tower (Might lag / delay game while it locates one)
++ Wizard towers now spawn in multiply mountain biomes, not just snowdonia  (In order to reduce the lag/delay, locating one from the map/command)
++ Wizard towers can now be located with /locate
++ Completely reworked the Wizard trades, all trades will now reward some kind of exploration by hunting and farming some kind of rare goodies from around the worlds, with random gem prices for your troubles!
+++ Will now spawn a random amount of normal trades, 2 + random amount of rare trades and 1+random amount of welsh trades
++ Fixed fatal server crashing bug (It was the enderreeper blowing up your servers! Literally, it really was!)
++ Wooden Trapdoors + Doors are now no longer flammable! (didn't realise that they weren't in vanilla, so I thought it was an oversight on my behalf!)
++ Fixed duplicated language bug with Polished and Tile slate slabs
++ Added a localised translation string for the description of the Wizard Hat - can now change it to your local languages!
+
 Patch 4.0.0:
 + Initial port of mod, with several fixes to get working on this version (All World Gen is Broken)
 + Fixed rendering issues on plants

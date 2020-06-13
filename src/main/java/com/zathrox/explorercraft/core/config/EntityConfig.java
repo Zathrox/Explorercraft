@@ -13,6 +13,7 @@ public class EntityConfig {
     public static ForgeConfigSpec.BooleanValue infected_creeper_enabled;
     public static ForgeConfigSpec.BooleanValue infected_skeleton_enabled;
     public static ForgeConfigSpec.BooleanValue infected_zombie_enabled;
+    public static ForgeConfigSpec.BooleanValue skeletaur_enabled;
     public static ForgeConfigSpec.IntValue wizard_weight;
 
     public static void init(ForgeConfigSpec.Builder common, ForgeConfigSpec.Builder client) {
@@ -49,10 +50,14 @@ public class EntityConfig {
                 .comment("Decide if you want the Infected Zombie to spawn in your world")
                 .translation(Explorercraft.MOD_ID + ".config.infected_zombie_enabled")
                 .define("infected_zombie_enabled", true);
+        skeletaur_enabled = common
+                .comment("Decide if you want the Skeletaur to spawn in your world")
+                .translation(Explorercraft.MOD_ID + ".config.skeletaur_enabled")
+                .define("skeletaur_enabled", true);
         wizard_weight = common
                 .comment("Decide how frequently you want the wizard tower/wizard to spawn in your world, Wizards will only spawn in a Wizard Tower, no-other places (higher spawns increase changes for dodgey worldgen)")
                 .translation(Explorercraft.MOD_ID + ".config.wizard_weight")
-                .defineInRange("wizard_weight", 12, 0, 50);
+                .defineInRange("wizard_weight", 5, 0, 50);
         common.pop();
     }
 }

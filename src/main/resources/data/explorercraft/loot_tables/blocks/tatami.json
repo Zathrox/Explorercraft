@@ -6,15 +6,6 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "conditions": [
-                        {
-                            "condition": "minecraft:block_state_property",
-                            "block": "explorercraft:tatami",
-                            "properties": {
-                                "part": "head"
-                            }
-                        }
-                    ],
                     "name": "explorercraft:tatami"
                 }
             ],

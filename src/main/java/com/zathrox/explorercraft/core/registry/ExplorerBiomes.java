@@ -27,7 +27,7 @@ public class ExplorerBiomes {
         addBiomesToManager(BAMBOO_GROVE.get(), BiomeConfig.bambooForestWeight.get(), false, BiomeConfig.spawnBambooForest.get(), BiomeManager.BiomeType.COOL, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.WET);
         addBiomesToManager(FORESTED_MOUNTAIN.get(), BiomeConfig.forestedMountainWeight.get(), false, BiomeConfig.spawnForestedMountain.get(), BiomeManager.BiomeType.WARM, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.FOREST);
         addBiomesToManager(SNOWDONIA.get(),  BiomeConfig.snowdoniaWeight.get(), false, BiomeConfig.spawnSnowdonia.get(), BiomeManager.BiomeType.COOL, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.WET);
-        addBiomesToManager(FUNGAL_FOREST.get(), BiomeConfig.fungalForestWeight.get(), false, BiomeConfig.spawnFungalForest.get(), BiomeManager.BiomeType.WARM, BiomeDictionary.Type.WET, BiomeDictionary.Type.SWAMP, BiomeDictionary.Type.FOREST);
+        addBiomesToManager(FUNGAL_FOREST.get(), BiomeConfig.fungalForestWeight.get(), false, BiomeConfig.spawnFungalForest.get(), BiomeManager.BiomeType.WARM, BiomeDictionary.Type.WET, BiomeDictionary.Type.SWAMP, BiomeDictionary.Type.RARE);
         BiomeDictionary.addTypes(CHERRY_GROVE.get(), BiomeDictionary.Type.DENSE, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.WET);
         //BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(CHERRY_GROVE.get(), 10));
     }
@@ -39,7 +39,6 @@ public class ExplorerBiomes {
             BiomeDictionary.addTypes(biome, types);
             BiomeManager.addSpawnBiome(biome);
             BiomeManager.addBiome(biomeType, new BiomeManager.BiomeEntry(biome, weight));
-
         }
     }
 }

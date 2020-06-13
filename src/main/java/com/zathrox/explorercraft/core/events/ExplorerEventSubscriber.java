@@ -7,6 +7,7 @@ import com.zathrox.explorercraft.common.items.JadeBowItem;
 import com.zathrox.explorercraft.common.items.WizardHatItem;
 import com.zathrox.explorercraft.common.items.WizardStaffItem;
 import com.zathrox.explorercraft.common.tileentity.TileEntitySleepingBag;
+import com.zathrox.explorercraft.common.world.ExplorerFeature;
 import com.zathrox.explorercraft.core.Explorercraft;
 import com.zathrox.explorercraft.core.interfaces.NoAutomaticItemBlock;
 import com.zathrox.explorercraft.core.registry.*;
@@ -19,6 +20,7 @@ import net.minecraft.potion.Effects;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -89,9 +91,9 @@ public final class ExplorerEventSubscriber {
                 setup(new Block(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F)), "amethyst_block"),
                 setup(new Block(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F)), "jade_block"),
                 setup(new Block(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F)), "ruby_block"),
-                setup(new OreExplorerBlock(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F)), "amethyst_ore"),
-                setup(new OreExplorerBlock(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F)), "jade_ore"),
-                setup(new OreExplorerBlock(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F)), "ruby_ore"),
+                setup(new OreExplorerBlock(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F).harvestLevel(1)), "amethyst_ore"),
+                setup(new OreExplorerBlock(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F).harvestLevel(2)), "jade_ore"),
+                setup(new OreExplorerBlock(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F).harvestLevel(2)), "ruby_ore"),
                 setup(new LeekBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)), "leeks"),
                 setup(new NoctilucaBlock(Block.Properties.create(Material.OCEAN_PLANT).doesNotBlockMovement().tickRandomly().sound(SoundType.WET_GRASS)), "noctilucas"),
                 setup(new RiceBaseBlock(Block.Properties.create(Material.OCEAN_PLANT).doesNotBlockMovement().sound(SoundType.WET_GRASS)), "rice_base"),
@@ -117,6 +119,8 @@ public final class ExplorerEventSubscriber {
                 setup(new DragonHeartBlock(Block.Properties.create(Material.DRAGON_EGG, MaterialColor.BLACK).hardnessAndResistance(3.0F, 9.0F).lightValue(1)), "dragon_heart"),
                 setup(new HayBlock(Block.Properties.create(Material.ORGANIC, MaterialColor.YELLOW).hardnessAndResistance(0.5F).sound(SoundType.PLANT)), "rice_straw_block"),
                 setup(new MudBlock(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).harvestLevel(0).harvestTool(ToolType.SHOVEL).sound(new SoundType(1.0F, 0.5F, SoundEvents.BLOCK_SLIME_BLOCK_BREAK, SoundEvents.BLOCK_SLIME_BLOCK_STEP, SoundEvents.BLOCK_SLIME_BLOCK_PLACE, SoundEvents.BLOCK_SLIME_BLOCK_HIT, SoundEvents.BLOCK_SLIME_BLOCK_FALL))), "mud"),
+                setup(new Block(Block.Properties.create(ROCK).hardnessAndResistance(1.5F, 6.0F)), "slimey_stone"),
+                setup(new SlimeBlock(Block.Properties.create(Material.CLAY, MaterialColor.GRASS).slipperiness(0.8F).sound(SoundType.SLIME).notSolid()), "dissolved_stone"),
 
                 setup(basalt = new Block(Block.Properties.create(ROCK).hardnessAndResistance(1.5F, 6.0F)), "basalt"),
                 setup(basaltPolished = new Block(Block.Properties.create(ROCK, MaterialColor.STONE).hardnessAndResistance(1.5F, 6.0F)), "basalt_polished"),
@@ -442,10 +446,10 @@ public final class ExplorerEventSubscriber {
         LOGGER.debug("Registered TileEntityTypes");
     }
 
-    /*
+/*
     @SubscribeEvent
     public void onRegisterFeatures(RegistryEvent.Register<Feature<?>> event) {
-        ExplorercraftFeatureList.registerFeatures(event.getRegistry());
+        ExplorerFeature.registerFeatures(event.getRegistry());
     }*/
 
     @Nonnull

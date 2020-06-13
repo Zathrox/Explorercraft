@@ -23,3 +23,5 @@ run
 
 # Files from Forge MDK
 forge*changelog.txt
+/src/main/resources/data/explorercraft/structures/player_house.nbt
+/src/main/resources/data/explorercraft/structures/small_castle.nbt

@@ -91,7 +91,7 @@ public class SlateDungeonFeature extends Feature<NoFeatureConfig> {
         if (j2 >= 1 && j2 <= 5) {
             PlacementSettings placementSettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk(null);
             base.addBlocksToWorldChunk(worldIn, pos, placementSettings);
-            System.out.println("SD_BASE SPAWNED AT: " + pos);
+            //System.out.println("SD_BASE SPAWNED AT: " + pos);
             int offset = 16;
             if (northChance.nextInt(2) == 0) {
                 assert vertical_tunnel != null;
@@ -125,16 +125,16 @@ public class SlateDungeonFeature extends Feature<NoFeatureConfig> {
         Template flag = templateManager.getTemplate(new ResourceLocation(Explorercraft.MOD_ID, "slate_dungeon_flag"));
         if(roomRotation.nextInt(treasureChance) == 0) {
             treasure.addBlocksToWorldChunk(worldIn, pos, placementSettings);
-            System.out.println("TREASURE SPAWNED AT: " + pos);
+            //System.out.println("TREASURE SPAWNED AT: " + pos);
         } else if(roomRotation.nextInt(treasureChance) == 1) {
             crypt2.addBlocksToWorldChunk(worldIn, pos, placementSettings);
-            System.out.println("MARBLE CRYPT SPAWNED AT: " + pos);
+            //System.out.println("MARBLE CRYPT SPAWNED AT: " + pos);
         } else if(roomRotation.nextInt(treasureChance) == 2) {
             flag.addBlocksToWorldChunk(worldIn, pos, placementSettings);
-            System.out.println("FLAG ROOM SPAWNED AT: " + pos);
+            //System.out.println("FLAG ROOM SPAWNED AT: " + pos);
         } else {
             crypt.addBlocksToWorldChunk(worldIn, pos, placementSettings);
-            System.out.println("CRYPT SPAWNED AT: " + pos);
+            //System.out.println("CRYPT SPAWNED AT: " + pos);
 
         }
     }

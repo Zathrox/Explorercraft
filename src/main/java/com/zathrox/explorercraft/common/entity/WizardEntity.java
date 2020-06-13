@@ -2,13 +2,16 @@ package com.zathrox.explorercraft.common.entity;
 
 import com.zathrox.explorercraft.core.registry.ExplorerBannerPattern;
 import com.zathrox.explorercraft.core.util.ExplorerTrades;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.merchant.IMerchant;
 import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
+import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
@@ -33,8 +36,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
+import java.util.Collections;
 import java.util.EnumSet;
-import java.util.Random;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class WizardEntity extends AbstractVillagerEntity implements IMerchant {
     private static final DataParameter<Boolean> SWINGING_ARMS = EntityDataManager.createKey(WizardEntity.class, DataSerializers.BOOLEAN);
@@ -74,6 +80,73 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant {
         this.dataManager.register(SWINGING_ARMS, Boolean.valueOf(false));
         this.dataManager.register(ATTACKING, Boolean.valueOf(false));
     }
+
+    //Trading
+
+    protected static final int BASE_TRADES = 0;
+    protected static final int RARE_TRADES = 1;
+    protected static final int WELSH_TRADES = 2;
+
+    @Override
+    public MerchantOffers getOffers() {
+        if (this.offers == null) {
+            this.offers = new MerchantOffers();
+            this.populateTradeData();
+        }
+        return this.offers;
+    }
+
+    @Override
+    public void onTrade(MerchantOffer offer) {
+        offer.increaseUses();
+        this.livingSoundTime = -this.getTalkInterval();
+        this.onVillagerTrade(offer);
+        if (this.rand.nextInt(5) == 0) {
+            this.offers.clear();
+            this.getOffers();
+            this.populateTradeData();
+            this.spawnParticles(ParticleTypes.HAPPY_VILLAGER);
+        }
+    }
+
+    @Override
+    protected void onVillagerTrade(MerchantOffer merchantOffer) {
+        if (merchantOffer.getDoesRewardExp()) {
+            int exp = 3 + this.rand.nextInt(4);
+            this.world.addEntity(new ExperienceOrbEntity(this.world, this.getPosX(), this.getPosY() + 0.5D, this.getPosZ(), exp));
+        }
+    }
+
+    @Override
+    public boolean func_213705_dZ() {
+        return false;
+    }
+
+
+    @Override
+    protected void populateTradeData() {
+        MerchantOffers offers = this.getOffers();
+        this.addTrades(offers, ExplorerTrades.WIZARD_TRADER.get(BASE_TRADES), Math.max(4, this.rand.nextInt(6) + 1));
+        this.addTrades(offers, ExplorerTrades.WIZARD_TRADER.get(RARE_TRADES), Math.max(1, this.rand.nextInt(1) + 1));
+        this.addTrades(offers, ExplorerTrades.WIZARD_TRADER.get(WELSH_TRADES), Math.max(1, this.rand.nextInt(2) + 1));
+    }
+
+    @Override
+    protected void addTrades(MerchantOffers offers, @Nullable VillagerTrades.ITrade[] trades, int max) {
+        if (trades == null)
+            return;
+        List<Integer> randomIndexes = IntStream.range(0, trades.length).boxed().collect(Collectors.toList());
+        Collections.shuffle(randomIndexes);
+        randomIndexes = randomIndexes.subList(0, Math.min(trades.length, max));
+        for (Integer index : randomIndexes) {
+            VillagerTrades.ITrade trade = trades[index];
+            MerchantOffer offer = trade.getOffer(this, this.rand);
+            if (offer != null) {
+                offers.add(offer);
+            }
+        }
+    }
+
 
     public boolean processInteract(PlayerEntity player, Hand hand) {
         ItemStack heldItem = player.getHeldItem(hand);
@@ -115,43 +188,6 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant {
         return banner;
     }
 
-    @Override
-    protected void onVillagerTrade(MerchantOffer merchantOffer) {
-        if (merchantOffer.getDoesRewardExp()) {
-            int exp = 3 + this.rand.nextInt(4);
-            this.world.addEntity(new ExperienceOrbEntity(this.world, this.getPosX(), this.getPosY() + 0.5D, this.getPosZ(), exp));
-            if (this.rand.nextInt(5) == 0) {
-                this.offers.clear();
-                this.getOffers();
-                this.populateTradeData();
-            }
-        }
-    }
-
-    @Override
-    public boolean func_213705_dZ() {
-        return false;
-    }
-
-    protected static final int BASE_TRADES = 0;
-    protected static final int RARE_TRADES = 1;
-
-    @Override
-    public MerchantOffers getOffers() {
-        if (this.offers == null) {
-            this.offers = new MerchantOffers();
-            this.populateTradeData();
-        }
-        return this.offers;
-    }
-
-
-    @Override
-    protected void populateTradeData() {
-        MerchantOffers offers = this.getOffers();
-        this.addTrades(offers, ExplorerTrades.WIZARD_TRADER.get(BASE_TRADES), Math.max(4, this.rand.nextInt(6) + 1));
-        this.addTrades(offers, ExplorerTrades.WIZARD_TRADER.get(RARE_TRADES), Math.max(2, this.rand.nextInt(3) + 1));
-    }
 
     @Override
     public void livingTick() {

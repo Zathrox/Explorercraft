@@ -86,6 +86,7 @@ public class FungalForestBiome extends Biome {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public int getFoliageColor() {
         return 5888980;
     }

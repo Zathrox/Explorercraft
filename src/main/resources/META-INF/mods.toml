@@ -19,7 +19,7 @@ displayURL="https://minecraft.curseforge.com/projects/explorercraft-worldexpansi
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="logo.png" #optional
 # A text field displayed in the mod UI
-credits="TheVertExplorer - Created some art assets for the Cymru Expansion, Chiren Chen - for the Chinese Translations, EvilMinecraft Team of Yesteryear for ancient assets/code!, BronGhast014 - Models from Creatures++ Datapack" #optional
+credits="TheVertExplorer - Created art assets for the Cymru Expansion, Suberox - QA Technician work, Radiation - For upgrading the wiki, EvilMinecraft Team of Yesteryear for ancient assets/code!, BronGhast014 - Models from Creatures++ Datapack" #optional
 # A text field displayed in the mod UI
 authors="Zathrox" #optional
 # The description text for the mod (multi line!) (#mandatory)

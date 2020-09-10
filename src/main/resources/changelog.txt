@@ -2,7 +2,6 @@ CHANGELOG:
 
 --------// Explorercraft 1.15.2 // ----------------------------------------------------
 Patch 4.0.3:
-Updated forge to 1.15.37 (latest / last forge version for 1.15.2)
 Added latest chinese translations
 
 Patch 4.0.2:

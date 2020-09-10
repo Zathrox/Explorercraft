@@ -582,7 +582,7 @@ public class ExplorerTrades {
         public MerchantOffer getOffer(Entity p_221182_1_, Random p_221182_2_) {
             ItemStack itemstack = new ItemStack(Items.EMERALD, this.field_221221_c);
             List<Potion> list = Registry.POTION.stream().filter((p_221218_0_) -> {
-                return !p_221218_0_.getEffects().isEmpty() && PotionBrewing.func_222124_a(p_221218_0_);
+                return !p_221218_0_.getEffects().isEmpty() && PotionBrewing.isBrewablePotion(p_221218_0_);
             }).collect(Collectors.toList());
             Potion potion = list.get(p_221182_2_.nextInt(list.size()));
             ItemStack itemstack1 = PotionUtils.addPotionToItemStack(new ItemStack(this.field_221219_a.getItem(), this.field_221220_b), potion);

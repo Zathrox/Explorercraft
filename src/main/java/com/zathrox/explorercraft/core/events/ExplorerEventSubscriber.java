@@ -76,6 +76,7 @@ public final class ExplorerEventSubscriber {
         final Block maple;
         final Block willow;
         final Block infected_willow;
+        final Block infected_willow_pink;
         final Block ash_sapling;
         final Block bamboo_sapling;
         final Block cherry_sapling;
@@ -91,9 +92,9 @@ public final class ExplorerEventSubscriber {
                 setup(new Block(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F)), "amethyst_block"),
                 setup(new Block(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F)), "jade_block"),
                 setup(new Block(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F)), "ruby_block"),
-                setup(new OreExplorerBlock(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F).harvestLevel(1)), "amethyst_ore"),
-                setup(new OreExplorerBlock(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F).harvestLevel(2)), "jade_ore"),
-                setup(new OreExplorerBlock(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F).harvestLevel(2)), "ruby_ore"),
+                setup(new OreExplorerBlock(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F), 1), "amethyst_ore"),
+                setup(new OreExplorerBlock(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F), 2), "jade_ore"),
+                setup(new OreExplorerBlock(Block.Properties.create(ROCK).hardnessAndResistance(3.0F, 3.0F), 2), "ruby_ore"),
                 setup(new LeekBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)), "leeks"),
                 setup(new NoctilucaBlock(Block.Properties.create(Material.OCEAN_PLANT).doesNotBlockMovement().tickRandomly().sound(SoundType.WET_GRASS)), "noctilucas"),
                 setup(new RiceBaseBlock(Block.Properties.create(Material.OCEAN_PLANT).doesNotBlockMovement().sound(SoundType.WET_GRASS)), "rice_base"),
@@ -253,6 +254,22 @@ public final class ExplorerEventSubscriber {
                 setup(new TrapDoorExplorerBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(3.0F).sound(SoundType.WOOD).notSolid()), "infected_willow_trapdoor"),
                 setup(new RotatedPillarBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "infected_willow_wood"),
                 setup(new RotatedPillarBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "infected_willow_stripped_wood"),
+
+
+                setup(new WoodButtonExplorerBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.WOOD)), "infected_willow_pink_button"),
+                setup(new DoorExplorerBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(3.0F).sound(SoundType.WOOD).notSolid()), "infected_willow_pink_door"),
+                setup(new FenceBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "infected_willow_pink_fence"),
+                setup(new FenceGateBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "infected_willow_pink_fence_gate"),
+                setup(new LogBlock(MaterialColor.GREEN, Block.Properties.create(Material.WOOD, MaterialColor.GREEN).hardnessAndResistance(2.0F).sound(SoundType.WOOD).lightValue(1)), "infected_willow_pink_log"),
+                setup(new LogBlock(MaterialColor.GREEN, Block.Properties.create(Material.WOOD, MaterialColor.GREEN).hardnessAndResistance(2.0F).sound(SoundType.WOOD).lightValue(2)), "infected_willow_pink_stripped_log"),
+                setup(infected_willow_pink = new Block(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD).lightValue(3)), "infected_willow_pink_planks"),
+                setup(new PressurePlateExplorerBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.create(Material.WOOD, MaterialColor.WOOD).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.WOOD)), "infected_willow_pink_pressure_plate"),
+                setup(new SlabBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "infected_willow_pink_slab"),
+                setup(new StairsExplorerBlock(infected_willow.getDefaultState(), Block.Properties.from(infected_willow)), "infected_willow_pink_stairs"),
+                setup(new TrapDoorExplorerBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(3.0F).sound(SoundType.WOOD).notSolid()), "infected_willow_pink_trapdoor"),
+                setup(new RotatedPillarBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "infected_willow_pink_wood"),
+                setup(new RotatedPillarBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "infected_willow_pink_stripped_wood"),
+
 
                 //=== SLABS BLOCKS
                 setup(new SlabBlock(Block.Properties.create(ROCK).hardnessAndResistance(1.5F, 6.0F)), "basalt_slab"),

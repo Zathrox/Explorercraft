@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "explorercraft:block/infected_willow_pink/infected_willow_pink_slab"
+    }, 
+    "type=double": {
+      "model": "explorercraft:block/infected_willow_pink/infected_willow_pink_planks"
+    }, 
+    "type=top": {
+      "model": "explorercraft:block/infected_willow_pink/infected_willow_pink_slab_top"
+    }
+  }
+}

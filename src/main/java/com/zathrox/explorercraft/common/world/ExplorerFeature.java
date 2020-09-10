@@ -49,7 +49,7 @@ public class ExplorerFeature {
     public static final BlockClusterFeatureConfig SNOWDONIA_FLOWER_CONFIG = (new BlockClusterFeatureConfig.Builder(new SnowdoniaFlowerBlockStateProvider(), new SimpleBlockPlacer())).tries(64).build();
     public static final BlockClusterFeatureConfig GREEN_GLOWSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(ExplorerBlocks.GREEN_MUSHROOM.getDefaultState()), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
     public static final BlockClusterFeatureConfig PINK_GLOWSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(ExplorerBlocks.PINK_MUSHROOM.getDefaultState()), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
-    public static final BlockClusterFeatureConfig LUPINE_CONFIG = (new BlockClusterFeatureConfig.Builder((new WeightedBlockStateProvider()).func_227407_a_(ExplorerBlocks.LUPINE.getDefaultState(), 2), new SimpleBlockPlacer())).tries(64).build();
+    public static final BlockClusterFeatureConfig LUPINE_CONFIG = (new BlockClusterFeatureConfig.Builder((new WeightedBlockStateProvider()).addWeightedBlockstate(ExplorerBlocks.LUPINE.getDefaultState(), 2), new SimpleBlockPlacer())).tries(64).build();
     public static final BlockClusterFeatureConfig CATTAIL_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(ExplorerBlocks.CATTAIL.getDefaultState()), new SimpleBlockPlacer())).tries(32).build();
     public static final BlockClusterFeatureConfig TALL_CATTAIL_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(ExplorerBlocks.TALL_CATTAIL.getDefaultState()), new DoublePlantBlockPlacer())).tries(64).func_227317_b_().build();
 

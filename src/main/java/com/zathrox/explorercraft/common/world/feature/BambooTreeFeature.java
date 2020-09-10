@@ -24,9 +24,10 @@ public class BambooTreeFeature extends AbstractTreeFeature2<NoFeatureConfig> {
     public BambooTreeFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configIn, boolean extraRandomHeightIn) {
         super(configIn);
         this.useExtraRandomHeight = extraRandomHeightIn;
-        this.setSapling((net.minecraftforge.common.IPlantable) Blocks.BIRCH_SAPLING);
+        this.setSapling((net.minecraftforge.common.IPlantable) ExplorerBlocks.BAMBOO_SAPLING);
     }
 
+    @Override
     public boolean place(Set<BlockPos> changedBlocks, IWorldGenerationReader worldIn, Random rand, BlockPos position, MutableBoundingBox boundsIn) {
         int i = rand.nextInt(10) + 12;
         if (this.useExtraRandomHeight) {
@@ -63,8 +64,6 @@ public class BambooTreeFeature extends AbstractTreeFeature2<NoFeatureConfig> {
             if (!flag) {
                 return false;
             } else if ((isSoil(worldIn, position.down(), getSapling())) && position.getY() < worldIn.getMaxHeight() - i - 1) {
-                this.setDirtAt(worldIn, position.down(), position);
-
                 int m = 4 + rand.nextInt(4);
                 for(int l1 = position.getY() - m + i; l1 <= position.getY() + i; ++l1) { // Height - Default 3
                     int j2 = l1 - (position.getY() + i);

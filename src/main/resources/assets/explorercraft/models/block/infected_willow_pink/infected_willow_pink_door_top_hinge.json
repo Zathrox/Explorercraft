@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_top_rh",
+  "textures": {
+    "bottom": "explorercraft:block/infected_willow_pink/infected_willow_pink_door_bottom",
+    "top": "explorercraft:block/infected_willow_pink/infected_willow_pink_door_top"
+  }
+}

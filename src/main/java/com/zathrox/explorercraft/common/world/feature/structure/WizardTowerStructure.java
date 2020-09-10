@@ -53,13 +53,12 @@ public class WizardTowerStructure extends Structure<NoFeatureConfig>{
         return new ChunkPos(targetChunkX, targetChunkZ);
     }
 
-
     /**
      * This determines if the spot given is a valid chunk to spawn in by algorithm and that the biome contains the structure
      * as well.
      */
     @Override
-    public boolean func_225558_a_(BiomeManager biomeManager, ChunkGenerator<?> chunkGenerator, Random random, int chunkPosX, int chunkPosZ, Biome biome){
+    public boolean canBeGenerated(BiomeManager biomeManager, ChunkGenerator<?> chunkGenerator, Random random, int chunkPosX, int chunkPosZ, Biome biome){
         //check if the algorithm says the chunk is a valid spot
         ChunkPos chunkpos = this.getStartPositionForPosition(chunkGenerator, random, chunkPosX, chunkPosZ, 0, 0);
         if (chunkPosX == chunkpos.x && chunkPosZ == chunkpos.z){

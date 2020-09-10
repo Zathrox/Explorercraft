@@ -18,6 +18,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -78,9 +79,10 @@ public class RiceBaseBlock extends BushBlock implements ILiquidContainer {
         return blockstate;
     }
 
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
         if (!this.isRiceAboveWater(state, worldIn, pos.up())) {
-            worldIn.destroyBlock(pos, true);
+            worldIn.destroyBlock(pos, false);
         }
     }
 

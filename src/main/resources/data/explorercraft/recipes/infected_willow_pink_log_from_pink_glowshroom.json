@@ -1,0 +1,21 @@
+{
+    "group": "infected",
+    "key": {
+        "#": {
+            "item": "explorercraft:pink_mushroom"
+        },
+        "W": {
+            "item": "explorercraft:willow_log"
+        }
+    },
+    "pattern": [
+        "WWW",
+        "W#W",
+        "WWW"
+    ],
+    "result": {
+        "count": 8,
+        "item": "explorercraft:infected_willow_pink_log"
+    },
+    "type": "minecraft:crafting_shaped"
+}

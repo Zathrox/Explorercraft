@@ -1,19 +1,24 @@
 package com.zathrox.explorercraft.common.blocks;
 
+import com.zathrox.explorercraft.core.Explorercraft;
 import com.zathrox.explorercraft.core.registry.ExplorerBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.state.properties.DoubleBlockHalf;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockReader;
@@ -46,29 +51,6 @@ public class TallCattailBlock extends DoublePlantBlock {
         }
     }
 
-
-    @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        Block block = state.getBlock();
-
-        if (block == ExplorerBlocks.MUD) {
-            BlockPos blockpos = pos;
-
-            for (Direction direction : Direction.Plane.HORIZONTAL) {
-                BlockState blockstate = worldIn.getBlockState(blockpos.offset(direction, 1));
-                IFluidState ifluidstate = worldIn.getFluidState(blockpos.offset(direction, 1));
-                BlockState blockstate1 = worldIn.getBlockState(blockpos.offset(direction, 2));
-                IFluidState ifluidstate1 = worldIn.getFluidState(blockpos.offset(direction, 2));
-                if (ifluidstate.isTagged(FluidTags.WATER) || blockstate.getBlock() == Blocks.FROSTED_ICE || ifluidstate1.isTagged(FluidTags.WATER) || blockstate1.getBlock() == Blocks.FROSTED_ICE) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-
-    }
-
     @Override
     @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext context) {
@@ -78,8 +60,29 @@ public class TallCattailBlock extends DoublePlantBlock {
 
     @Override
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        BlockPos blockpos = pos.down();
-        return this.isValidGround(worldIn.getBlockState(blockpos), worldIn, blockpos);
+
+        Block block = worldIn.getBlockState(pos.down()).getBlock();
+        if (block == this) {
+            return true;
+        } else {
+            ResourceLocation mudBlocksTag = new ResourceLocation(Explorercraft.MOD_ID, "mud_blocks");
+            boolean isInGroup = BlockTags.getCollection().getOrCreate(mudBlocksTag).contains(block);
+            if (isInGroup) {
+                BlockPos blockpos = pos.down();
+
+                for(Direction direction : Direction.Plane.HORIZONTAL) {
+                    BlockState blockstate = worldIn.getBlockState(blockpos.offset(direction));
+                    IFluidState ifluidstate = worldIn.getFluidState(blockpos.offset(direction));
+                    BlockState blockstate1 = worldIn.getBlockState(blockpos.offset(direction, 2));
+                    IFluidState ifluidstate1 = worldIn.getFluidState(blockpos.offset(direction, 2));
+                    if (ifluidstate.isTagged(FluidTags.WATER) || blockstate.getBlock() == Blocks.FROSTED_ICE || ifluidstate1.isTagged(FluidTags.WATER) || blockstate1.getBlock() == Blocks.FROSTED_ICE) {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
     }
 
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
@@ -131,9 +134,7 @@ public class TallCattailBlock extends DoublePlantBlock {
         return OffsetType.XZ;
     }
 
-    /**
-     * Return a random long to be passed to {@link IBakedModel#getQuads}, used for random model rotations
-     */
+
     @OnlyIn(Dist.CLIENT)
     public long getPositionRandom(BlockState state, BlockPos pos) {
         return MathHelper.getCoordinateRandom(pos.getX(), pos.down(state.get(HALF) == DoubleBlockHalf.LOWER ? 0 : 1).getY(), pos.getZ());

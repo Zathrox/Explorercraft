@@ -92,6 +92,17 @@ public class ExplorerVanillaCompat {
 /*        registerFlammable(ExplorerBlocks.INFECTED_WILLOW_DOOR, 5, 20);
         registerFlammable(ExplorerBlocks.INFECTED_WILLOW_TRAPDOOR, 5, 20);*/
 
+        registerFlammable(ExplorerBlocks.INFECTED_WILLOW_PINK_LOG, 5, 5);
+        registerFlammable(ExplorerBlocks.INFECTED_WILLOW_PINK_WOOD, 5, 5);
+        registerFlammable(ExplorerBlocks.INFECTED_WILLOW_PINK_STRIPPED_LOG, 5, 5);
+        registerFlammable(ExplorerBlocks.INFECTED_WILLOW_PINK_STRIPPED_WOOD, 5, 5);
+        registerFlammable(ExplorerBlocks.INFECTED_WILLOW_PINK_PLANKS, 5, 20);
+        registerFlammable(ExplorerBlocks.INFECTED_WILLOW_PINK_SLAB, 5, 20);
+        registerFlammable(ExplorerBlocks.INFECTED_WILLOW_PINK_STAIRS, 5, 20);
+        registerFlammable(ExplorerBlocks.INFECTED_WILLOW_PINK_FENCE, 5, 20);
+        registerFlammable(ExplorerBlocks.INFECTED_WILLOW_PINK_FENCE_GATE, 5, 20);
+
+
         registerFlammable(ExplorerBlocks.TATAMI, 5, 20);
         registerFlammable(ExplorerBlocks.TATAMI_HALF, 5, 20);
 
@@ -114,6 +125,8 @@ public class ExplorerVanillaCompat {
         registerStrippable(ExplorerBlocks.WILLOW_WOOD, ExplorerBlocks.WILLOW_STRIPPED_WOOD);
         registerStrippable(ExplorerBlocks.INFECTED_WILLOW_LOG, ExplorerBlocks.INFECTED_WILLOW_STRIPPED_LOG);
         registerStrippable(ExplorerBlocks.INFECTED_WILLOW_WOOD, ExplorerBlocks.INFECTED_WILLOW_STRIPPED_WOOD);
+        registerStrippable(ExplorerBlocks.INFECTED_WILLOW_PINK_LOG, ExplorerBlocks.INFECTED_WILLOW_PINK_STRIPPED_LOG);
+        registerStrippable(ExplorerBlocks.INFECTED_WILLOW_PINK_WOOD, ExplorerBlocks.INFECTED_WILLOW_PINK_STRIPPED_WOOD);
 
         //Compostable Blocks
         registerCompostable(0.3F, ExplorerBlocks.LEEKS);

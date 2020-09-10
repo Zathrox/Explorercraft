@@ -30,7 +30,7 @@ public class ExplorerEntities {
     public static final EntityType<InfectedCreeperEntity> INFECTED_CREEPER = createEntity(InfectedCreeperEntity::new, EntityClassification.MONSTER, "infected_creeper", 0.6F, 1.7F, 894731, 0xdc1c1c);
     public static final EntityType<InfectedSkeletonEntity> INFECTED_SKELETON = createEntity(InfectedSkeletonEntity::new, EntityClassification.MONSTER, "infected_skeleton", 0.6F, 1.99F, 16777215, 10092400);
     public static final EntityType<InfectedZombieEntity> INFECTED_ZOMBIE = createEntity(InfectedZombieEntity::new, EntityClassification.MONSTER, "infected_zombie", 0.6F, 1.99F, 16777234, 10092500);
-    public static final EntityType<SkeletaurEntity> SKELETAUR = createEntity(SkeletaurEntity::new, EntityClassification.MONSTER, "skeletaur", 0.6F, 2.55F, 16433238, 4869992);
+    public static final EntityType<SkeletaurEntity> SKELETAUR = createEntity(SkeletaurEntity::new, EntityClassification.MONSTER, "skeletaur", 1.3964844F, 2.25F, 16433238, 4869992);
     public static final EntityType<WizardEntity> WIZARD = createEntity(WizardEntity::new, EntityClassification.MONSTER, "wizard", 0.6F, 1.99F, 4869992, 16433238);
 
     private static <T extends Entity> EntityType<T> createEntity(EntityType.IFactory<T> factory, EntityClassification entityClassification, String name, float width, float height, int eggPrimary, int eggSecondary) {

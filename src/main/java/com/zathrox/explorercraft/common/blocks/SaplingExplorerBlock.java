@@ -34,23 +34,13 @@ public class SaplingExplorerBlock extends BushBlock implements IGrowable {
         return SHAPE;
     }
 
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
-        super.tick(state, (ServerWorld)worldIn, pos, random);
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+        super.tick(state, worldIn, pos, random);
         if (!worldIn.isAreaLoaded(pos, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light
         if (worldIn.getLight(pos.up()) >= 9 && random.nextInt(7) == 0) {
-            this.grow(((ServerWorld) worldIn).getWorldServer(), random, pos, state);
+            this.grow(worldIn, random, pos, state);
         }
-    }
-
-
-    @Override
-    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-        return true;
-    }
-
-    @Override
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
-        return (double)worldIn.rand.nextFloat() < 0.45D;
     }
 
     @Override
@@ -62,6 +52,18 @@ public class SaplingExplorerBlock extends BushBlock implements IGrowable {
             this.tree.spawn(worldIn, pos, state, rand);
         }
     }
+
+    @Override
+    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
+        return true;
+    }
+
+    @Override
+    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
+        return (double)worldIn.rand.nextFloat() < 0.45D;
+    }
+
+
 
     public void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(STAGE);

@@ -74,7 +74,7 @@ public class BambooLogBlock extends FourWayBlock implements IPlantable {
             ItemStack itemstack = player.getHeldItem(handIn);
             return itemstack.getItem() == Items.LEAD ? ActionResultType.SUCCESS : ActionResultType.PASS;
         } else {
-            return LeadItem.func_226641_a_(player, worldIn, pos);
+            return LeadItem.bindPlayerMobs(player, worldIn, pos);
         }
     }
 

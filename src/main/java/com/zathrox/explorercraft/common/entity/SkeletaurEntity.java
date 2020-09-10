@@ -30,7 +30,7 @@ import java.util.Random;
 
 public class SkeletaurEntity extends MonsterEntity {
 
-    private static final DataParameter<Boolean> ATTACKING = EntityDataManager.createKey(WizardEntity.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Boolean> ATTACKING = EntityDataManager.createKey(SkeletaurEntity.class, DataSerializers.BOOLEAN);
 
     public SkeletaurEntity(EntityType<? extends SkeletaurEntity> p_i50194_1_, World p_i50194_2_) {
         super(p_i50194_1_, p_i50194_2_);
@@ -92,6 +92,38 @@ public class SkeletaurEntity extends MonsterEntity {
     protected SoundEvent getHurtSound(DamageSource p_184601_1_) {
         super.getHurtSound(p_184601_1_);
         return SoundEvents.ENTITY_SKELETON_HORSE_HURT;
+    }
+
+
+    protected boolean shouldBurnInDay() {
+        return true;
+    }
+
+    @Override
+    public void livingTick() {
+        if (this.isAlive()) {
+            boolean flag = this.shouldBurnInDay() && this.isInDaylight();
+            if (flag) {
+                ItemStack itemstack = this.getItemStackFromSlot(EquipmentSlotType.HEAD);
+                if (!itemstack.isEmpty()) {
+                    if (itemstack.isDamageable()) {
+                        itemstack.setDamage(itemstack.getDamage() + this.rand.nextInt(2));
+                        if (itemstack.getDamage() >= itemstack.getMaxDamage()) {
+                            this.sendBreakAnimation(EquipmentSlotType.HEAD);
+                            this.setItemStackToSlot(EquipmentSlotType.HEAD, ItemStack.EMPTY);
+                        }
+                    }
+
+                    flag = false;
+                }
+
+                if (flag) {
+                    this.setFire(8);
+                }
+            }
+        }
+
+        super.livingTick();
     }
 
     @Override

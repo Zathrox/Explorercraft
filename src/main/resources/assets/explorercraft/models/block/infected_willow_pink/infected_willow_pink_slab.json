@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "explorercraft:block/infected_willow_pink/infected_willow_pink_planks",
+    "side": "explorercraft:block/infected_willow_pink/infected_willow_pink_planks",
+    "top": "explorercraft:block/infected_willow_pink/infected_willow_pink_planks"
+  }
+}

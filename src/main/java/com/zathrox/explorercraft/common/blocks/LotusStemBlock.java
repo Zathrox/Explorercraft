@@ -1,5 +1,6 @@
 package com.zathrox.explorercraft.common.blocks;
 
+import com.zathrox.explorercraft.core.Explorercraft;
 import com.zathrox.explorercraft.core.interfaces.NoAutomaticItemBlock;
 import com.zathrox.explorercraft.core.registry.ExplorerBlocks;
 import net.minecraft.block.*;
@@ -9,8 +10,10 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -18,6 +21,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -43,7 +47,9 @@ public class LotusStemBlock extends BushBlock implements ILiquidContainer {
 
     @Override
     public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return Block.hasSolidSide(state, worldIn, pos, Direction.UP) && state.getBlock() == ExplorerBlocks.MUD && state.getBlock() != Blocks.MAGMA_BLOCK;
+        ResourceLocation mudBlocksTag = new ResourceLocation(Explorercraft.MOD_ID, "mud_blocks");
+        boolean isInGroup = BlockTags.getCollection().getOrCreate(mudBlocksTag).contains(state.getBlock());
+        return Block.hasSolidSide(state, worldIn, pos, Direction.UP) &&  isInGroup && state.getBlock() != Blocks.MAGMA_BLOCK;
     }
 
     public boolean isFlowerAboveWater(BlockState state, IBlockReader worldIn, BlockPos pos) {
@@ -78,7 +84,8 @@ public class LotusStemBlock extends BushBlock implements ILiquidContainer {
         return blockstate;
     }
 
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         if (!this.isFlowerAboveWater(state, worldIn, pos.up())) {
             worldIn.destroyBlock(pos, true);
         }

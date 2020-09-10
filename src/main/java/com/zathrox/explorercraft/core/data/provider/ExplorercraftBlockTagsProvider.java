@@ -14,8 +14,8 @@ public class ExplorercraftBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void registerTags() {
-        getBuilder(Tags.Blocks.FENCES_WOODEN).add(ExplorerBlocks.ASH_FENCE).add(ExplorerBlocks.BAMBOO_FENCE).add(ExplorerBlocks.CHERRY_FENCE).add(ExplorerBlocks.INFECTED_WILLOW_FENCE).add(ExplorerBlocks.MAPLE_FENCE).add(ExplorerBlocks.WILLOW_FENCE);
-        getBuilder(Tags.Blocks.FENCE_GATES_WOODEN).add(ExplorerBlocks.ASH_FENCE_GATE).add(ExplorerBlocks.BAMBOO_FENCE_GATE).add(ExplorerBlocks.CHERRY_FENCE_GATE).add(ExplorerBlocks.INFECTED_WILLOW_FENCE_GATE).add(ExplorerBlocks.MAPLE_FENCE_GATE).add(ExplorerBlocks.WILLOW_FENCE_GATE);
+        getBuilder(Tags.Blocks.FENCES_WOODEN).add(ExplorerBlocks.ASH_FENCE).add(ExplorerBlocks.BAMBOO_FENCE).add(ExplorerBlocks.CHERRY_FENCE).add(ExplorerBlocks.INFECTED_WILLOW_FENCE).add(ExplorerBlocks.INFECTED_WILLOW_PINK_FENCE).add(ExplorerBlocks.MAPLE_FENCE).add(ExplorerBlocks.WILLOW_FENCE);
+        getBuilder(Tags.Blocks.FENCE_GATES_WOODEN).add(ExplorerBlocks.ASH_FENCE_GATE).add(ExplorerBlocks.BAMBOO_FENCE_GATE).add(ExplorerBlocks.CHERRY_FENCE_GATE).add(ExplorerBlocks.INFECTED_WILLOW_FENCE_GATE).add(ExplorerBlocks.INFECTED_WILLOW_PINK_FENCE_GATE).add(ExplorerBlocks.MAPLE_FENCE_GATE).add(ExplorerBlocks.WILLOW_FENCE_GATE);
         //=== ORES
         getBuilder(Tags.Blocks.ORES).add(ExplorerTags.Blocks.ORES_AMETHYST).add(ExplorerTags.Blocks.ORES_JADE).add(ExplorerTags.Blocks.ORES_RUBY);
         getBuilder(ExplorerTags.Blocks.ORES_AMETHYST).add(ExplorerBlocks.AMETHYST_ORE);

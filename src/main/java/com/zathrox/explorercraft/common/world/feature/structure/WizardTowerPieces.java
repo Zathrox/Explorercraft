@@ -91,7 +91,7 @@ public class WizardTowerPieces
             }
         }
 
-        public boolean func_225577_a_(IWorld world, ChunkGenerator<?> chunkGenerator, Random random, MutableBoundingBox boundingBox, ChunkPos chunkPos) {
+        public boolean create(IWorld world, ChunkGenerator<?> chunkGenerator, Random random, MutableBoundingBox boundingBox, ChunkPos chunkPos) {
 
             BlockPos blockposOffset = new BlockPos(3, -4, 2);
             PlacementSettings placementSettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(rotation).setIgnoreEntities(false).addProcessor(BlockIgnoreStructureProcessor.STRUCTURE_BLOCK);
@@ -99,7 +99,7 @@ public class WizardTowerPieces
             this.templatePosition = finalBlockpos;
 
             //not sure what this does
-            boolean validConstruction = super.func_225577_a_(world, chunkGenerator, random, boundingBox, chunkPos);
+            boolean validConstruction = super.create(world, chunkGenerator, random, boundingBox, chunkPos);
             return validConstruction;
         }
     }

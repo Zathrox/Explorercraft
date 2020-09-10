@@ -1,6 +1,10 @@
 CHANGELOG:
 
 --------// Explorercraft 1.15.2 // ----------------------------------------------------
+Patch 4.0.3:
+Updated forge to 1.15.37 (latest / last forge version for 1.15.2)
+Added latest chinese translations
+
 Patch 4.0.2:
 todo Drops for blocks / improve texture model / Add wizard trade for dissolved/slimey stone
 todo Improve tree textures + slimey stone
@@ -9,19 +13,28 @@ todo - update default villager trades (look at upgrade aquatic for proper forge 
 todo Clean up config (maybe add wizard config/tower spawns)
 todo add dungeon as a structure
 
+Updated forge to release version: 31.2.0
 Added noctiluca spawning options in config
 Added in en_GB language (I am British after-all)
 Amended en_US "chiselled" to american "chiseled", if any other noted differences, please forward them to me!
 Fixed rare trade issue with stacks not being read correctly
 Fixed ore harvest level (Jade/Ruby is harvest level 2, Amethyst is harvest level 1)
 Fixed tatami mat only dropping the item, if the head was broken
+Fixed rice base block not destroying when rice top block is broken/harvested
+Fixed lotus stem from not destroying when lotus flower is broken/harvested
+Fixed Tall Cattails not being able to be placed on mud
+Noctiluca fruit is now always editable
+Fixed explorercraft trees not growing naturally
+Increased the speed of brush stooges to match brons description of them
+Added in a set of pink infected wood blocks
+Added in a recipe to get pink infected wood from pink glowshrooms
+Fixed dirt spawning underneath bamboo trees on world generation
+Increased enderghast spawns in the end
 
 New mob: Skeletaur!
 - Spawns in the plains biomes at night!
-todo - create entity drops
+- Drops bones for now, rarer or unique items coming in the future!
 
-todo - Write up - Tree bug
-todo - Write up - Rice bug
 
 Patch 4.0.1:
 + Improved slimey slime chunks generation

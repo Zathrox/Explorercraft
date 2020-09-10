@@ -37,7 +37,7 @@ public class WizardTowerPiecesOld {
 
     public static void func_215139_a(ChunkGenerator<?> generator, TemplateManager templateManager, BlockPos pos, List<StructurePiece> pieces, SharedSeedRandom seedRandom) {
         JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation(Explorercraft.MOD_ID, "wizard_tower_v2"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new RedGlassSingleJigsawPiece(Explorercraft.MOD_ID + ":wizard_tower_v2", Collections.singletonList(Processors.RED_GLASS_AND_STRUCTURE_BLOCK)), 1)), JigsawPattern.PlacementBehaviour.RIGID));
-        JigsawManager.func_214889_a(new ResourceLocation(Explorercraft.MOD_ID, "wizard_tower_v2"), 7, WizardTowerPiece::new, generator, templateManager, pos, pieces, seedRandom);
+        JigsawManager.addPieces(new ResourceLocation(Explorercraft.MOD_ID, "wizard_tower_v2"), 7, WizardTowerPiece::new, generator, templateManager, pos, pieces, seedRandom);
     }
 
     public static class WizardTowerPiece extends AbstractVillagePiece {

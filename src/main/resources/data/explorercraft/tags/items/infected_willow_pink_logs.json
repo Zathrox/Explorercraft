@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "explorercraft:infected_willow_pink_log",
+        "explorercraft:infected_willow_pink_wood",
+        "explorercraft:infected_willow_pink_stripped_log",
+        "explorercraft:infected_willow_pink_stripped_wood"
+    ]
+}

@@ -1,0 +1,18 @@
+{
+  "group": "wooden_door",
+  "key": {
+    "#": {
+      "item": "explorercraft:infected_willow_pink_planks"
+    }
+  },
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 3,
+    "item": "explorercraft:infected_willow_pink_door"
+  },
+  "type": "minecraft:crafting_shaped"
+}

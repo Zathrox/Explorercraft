@@ -1,0 +1,18 @@
+{
+  "group": "wooden_stairs",
+  "key": {
+    "#": {
+      "item": "explorercraft:infected_willow_pink_planks"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "item": "explorercraft:infected_willow_pink_stairs"
+  },
+  "type": "minecraft:crafting_shaped"
+}

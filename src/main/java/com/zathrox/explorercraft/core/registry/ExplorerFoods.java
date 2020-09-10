@@ -41,7 +41,7 @@ public class ExplorerFoods {
         RICE_STEW = buildStew(7);
         WELSH_CAKES = (new Food.Builder()).hunger(4).saturation(0.3F).build();
         WELSH_RAREBIT = (new Food.Builder()).hunger(8).saturation(0.5F).build();
-        NOCTILUCA = (new Food.Builder()).hunger(1).saturation(0.3F).effect(new EffectInstance(Effects.WATER_BREATHING, 50, 1), 1.0F).build();
+        NOCTILUCA = (new Food.Builder()).hunger(1).saturation(0.3F).effect(new EffectInstance(Effects.WATER_BREATHING, 50, 1), 1.0F).setAlwaysEdible().build();
         ONIGIRI = (new Food.Builder()).hunger(3).saturation(0.5F).build();
         SALMON_SUSHI = (new Food.Builder()).hunger(7).saturation(0.9F).build();
         TAMAGO_SUSHI = (new Food.Builder()).hunger(6).saturation(0.6F).build();

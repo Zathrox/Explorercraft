@@ -2,7 +2,6 @@ package com.zathrox.explorercraft.common.entity;
 
 import com.zathrox.explorercraft.core.registry.ExplorerBannerPattern;
 import com.zathrox.explorercraft.core.util.ExplorerTrades;
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.item.ExperienceOrbEntity;
@@ -11,7 +10,6 @@ import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
@@ -182,7 +180,7 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant {
     public static ItemStack createWelshFlagBanner() {
         ItemStack banner = new ItemStack(Items.WHITE_BANNER);
         CompoundNBT tag = banner.getOrCreateChildTag("BlockEntityTag");
-        ListNBT lvt_2_1_ = (new BannerPattern.Builder()).func_222477_a(BannerPattern.HALF_VERTICAL, DyeColor.GREEN).func_222477_a(ExplorerBannerPattern.WELSH_FLAG, DyeColor.RED).func_222476_a();
+        ListNBT lvt_2_1_ = (new BannerPattern.Builder()).setPatternWithColor(BannerPattern.HALF_VERTICAL, DyeColor.GREEN).setPatternWithColor(ExplorerBannerPattern.WELSH_FLAG, DyeColor.RED).func_222476_a();
         tag.put("Patterns", lvt_2_1_);
         banner.setDisplayName((new TranslationTextComponent("block.explorercraf.welsh_flag")).applyTextStyle(TextFormatting.DARK_RED));
         return banner;

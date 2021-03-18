@@ -13,8 +13,8 @@ public class CherryTree extends Tree {
 
     @Nullable
     @Override
-    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean largeHive) {
-        return Feature.TREE.withConfiguration(ExplorerFeature.Configs.CHERRY_TREE_CONFIG);
+    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random randomIn, boolean largeHive) {
+        return Feature.TREE.configured(ExplorerFeature.Configs.CHERRY_TREE_CONFIG);
     }
 
 }

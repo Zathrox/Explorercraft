@@ -26,15 +26,15 @@ public class ExplorerTags {
         public static final ITag.INamedTag<Block> LOGS = minecraft("logs");
 
         private static ITag.INamedTag<Block> forge(String path) {
-            return BlockTags.makeWrapperTag(new ResourceLocation("forge", path).toString());
+            return BlockTags.bind(new ResourceLocation("forge", path).toString());
         }
 
         private static ITag.INamedTag<Block> minecraft(String path) {
-            return BlockTags.makeWrapperTag(new ResourceLocation("minecraft", path).toString());
+            return BlockTags.bind(new ResourceLocation("minecraft", path).toString());
         }
 
         private static ITag.INamedTag<Block> explorercraft(String path) {
-            return BlockTags.makeWrapperTag(new ResourceLocation(Explorercraft.MOD_ID, path).toString());
+            return BlockTags.bind(new ResourceLocation(Explorercraft.MOD_ID, path).toString());
         }
     }
 
@@ -54,15 +54,15 @@ public class ExplorerTags {
         public static final ITag.INamedTag<Item> JADE = forge("gems/jade");
 
         private static ITag.INamedTag<Item> forge(String path) {
-            return ItemTags.makeWrapperTag(new ResourceLocation("forge", path).toString());
+            return ItemTags.bind(new ResourceLocation("forge", path).toString());
         }
 
         private static ITag.INamedTag<Item> minecraft(String path) {
-            return ItemTags.makeWrapperTag(new ResourceLocation("minecraft", path).toString());
+            return ItemTags.bind(new ResourceLocation("minecraft", path).toString());
         }
 
         private static ITag.INamedTag<Item> explorercraft(String path) {
-            return ItemTags.makeWrapperTag(new ResourceLocation(Explorercraft.MOD_ID, path).toString());
+            return ItemTags.bind(new ResourceLocation(Explorercraft.MOD_ID, path).toString());
         }
 
     }

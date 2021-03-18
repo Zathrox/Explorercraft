@@ -145,10 +145,10 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
     }
 
     public void fourWayMultipart(MultiPartBlockStateBuilder builder, ModelFile side, ModelFile side2 ) {
-        SixWayBlock.FACING_TO_PROPERTY_MAP.entrySet().forEach(e -> {
+        SixWayBlock.PROPERTY_BY_DIRECTION.entrySet().forEach(e -> {
             Direction dir = e.getKey();
             if (dir.getAxis().isHorizontal()) {
-                builder.part().modelFile(side).rotationY((((int) dir.getHorizontalAngle()) + 180) % 360).uvLock(true).weight(5).nextModel().modelFile(side2).rotationY((((int) dir.getHorizontalAngle()) + 180) % 360).uvLock(true).weight(5).addModel()
+                builder.part().modelFile(side).rotationY((((int) dir.toYRot()) + 180) % 360).uvLock(true).weight(5).nextModel().modelFile(side2).rotationY((((int) dir.toYRot()) + 180) % 360).uvLock(true).weight(5).addModel()
                         .condition(e.getValue(), true);
             }
         });
@@ -175,18 +175,18 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
     public void buttonBlock(Block block, Function<BlockState, ModelFile> normal,  Function<BlockState, ModelFile> pressed, int angleOffset) {
         getVariantBuilder(block)
                 .forAllStates(state -> {
-                    Boolean powered = state.get(BlockStateProperties.POWERED);
+                    Boolean powered = state.getValue(BlockStateProperties.POWERED);
                     if (powered) {
                         return ConfiguredModel.builder()
                                    .modelFile(pressed.apply(state))
-                                   .rotationX(state.get(BlockStateProperties.FACE).ordinal() * 90)
-                                   .rotationY((((int) state.get(BlockStateProperties.HORIZONTAL_FACING).getHorizontalAngle() + angleOffset) + (state.get(BlockStateProperties.FACE) == AttachFace.CEILING ? 180 : 0)) % 360)
+                                   .rotationX(state.getValue(BlockStateProperties.ATTACH_FACE).ordinal() * 90)
+                                   .rotationY((((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + angleOffset) + (state.getValue(BlockStateProperties.ATTACH_FACE) == AttachFace.CEILING ? 180 : 0)) % 360)
                                    .build();
                     } else {
                         return ConfiguredModel.builder()
                                    .modelFile(normal.apply(state))
-                                   .rotationX(state.get(BlockStateProperties.FACE).ordinal() * 90)
-                                   .rotationY((((int) state.get(BlockStateProperties.HORIZONTAL_FACING).getHorizontalAngle() + angleOffset) + (state.get(BlockStateProperties.FACE) == AttachFace.CEILING ? 180 : 0)) % 360)
+                                   .rotationX(state.getValue(BlockStateProperties.ATTACH_FACE).ordinal() * 90)
+                                   .rotationY((((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + angleOffset) + (state.getValue(BlockStateProperties.ATTACH_FACE) == AttachFace.CEILING ? 180 : 0)) % 360)
                                    .build();
                     }
                 });

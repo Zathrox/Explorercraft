@@ -25,35 +25,35 @@ import java.lang.reflect.Method;
 
 public class BambooGroveBiome {
 
-    private static final Method GET_SKY_COLOR_WITH_TEMPERATURE_MODIFIER = ObfuscationReflectionHelper.findMethod(BiomeMaker.class, "getSkyColorWithTemperatureModifier", float.class);
-    private static final Lazy<ConfiguredSurfaceBuilder<SurfaceBuilderConfig>> BAMBOO_GROVE_SURFACE_BUILDER = () -> ExplorerSurfaceBuilders.BAMBOO_GROVE_LOG.get().func_242929_a(SurfaceBuilder.GRASS_DIRT_SAND_CONFIG);
+    private static final Method GET_SKY_COLOR_WITH_TEMPERATURE_MODIFIER = ObfuscationReflectionHelper.findMethod(BiomeMaker.class, "calculateSkyColor", float.class);
+    private static final Lazy<ConfiguredSurfaceBuilder<SurfaceBuilderConfig>> BAMBOO_GROVE_SURFACE_BUILDER = () -> ExplorerSurfaceBuilders.BAMBOO_GROVE_LOG.get().configured(SurfaceBuilder.CONFIG_OCEAN_SAND);
 
     public static Biome makeBambooGrove()
     {
         MobSpawnInfo.Builder spawns = new MobSpawnInfo.Builder();
-        DefaultBiomeFeatures.withPassiveMobs(spawns);
-        DefaultBiomeFeatures.withBatsAndHostiles(spawns);
+        DefaultBiomeFeatures.farmAnimals(spawns);
+        DefaultBiomeFeatures.commonSpawns(spawns);
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder();
-        gen.withSurfaceBuilder(BAMBOO_GROVE_SURFACE_BUILDER::get);
+        gen.surfaceBuilder(BAMBOO_GROVE_SURFACE_BUILDER::get);
 
-        DefaultBiomeFeatures.withStrongholdAndMineshaft(gen);
-        gen.withStructure(StructureFeatures.RUINED_PORTAL);
-        DefaultBiomeFeatures.withCavesAndCanyons(gen);
-        DefaultBiomeFeatures.withMonsterRoom(gen);
-        DefaultBiomeFeatures.withCommonOverworldBlocks(gen);
-        DefaultBiomeFeatures.withOverworldOres(gen);
-        DefaultBiomeFeatures.withDisks(gen);
-        gen.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.FLOWER.withConfiguration(Features.Configs.NORMAL_FLOWER_CONFIG).withPlacement(Features.Placements.VEGETATION_PLACEMENT).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).count(2));
-        gen.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_BROWN_MUSHROOM.withPlacement(Features.Placements.PATCH_PLACEMENT).chance(4));
-        gen.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_RED_MUSHROOM.withPlacement(Features.Placements.PATCH_PLACEMENT).chance(4));
-        gen.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(Features.Configs.SUGAR_CANE_PATCH_CONFIG).withPlacement(Features.Placements.PATCH_PLACEMENT).count(10));
-        gen.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.PUMPKIN.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(64).whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK.getBlock())).preventProjection().build()).withPlacement(Features.Placements.PATCH_PLACEMENT).chance(32));
-        gen.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(Features.Configs.GRASS_PATCH_CONFIG).withPlacement(Features.Placements.PATCH_PLACEMENT).count(2));
-        gen.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SEAGRASS.withConfiguration(new ProbabilityConfig(0.3F)).count(48).withPlacement(Features.Placements.SEAGRASS_DISK_PLACEMENT));
-        gen.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.JUNGLE_BUSH.withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(1, 0.0F, 0))));
-        gen.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.LILY_PAD.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(10).build()).withPlacement(Features.Placements.PATCH_PLACEMENT).count(4));
-        DefaultBiomeFeatures.withFrozenTopLayer(gen);
+        DefaultBiomeFeatures.addDefaultOverworldLandStructures(gen);
+        gen.addStructureStart(StructureFeatures.RUINED_PORTAL_STANDARD);
+        DefaultBiomeFeatures.addDefaultCarvers(gen);
+        DefaultBiomeFeatures.addDefaultMonsterRoom(gen);
+        DefaultBiomeFeatures.addDefaultUndergroundVariety(gen);
+        DefaultBiomeFeatures.addDefaultOres(gen);
+        DefaultBiomeFeatures.addDefaultSoftDisks(gen);
+        gen.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.FLOWER.configured(Features.Configs.DEFAULT_FLOWER_CONFIG).decorated(Features.Placements.ADD_32).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(2));
+        gen.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_BROWN_MUSHROOM.decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE).chance(4));
+        gen.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_RED_MUSHROOM.decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE).chance(4));
+        gen.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configured(Features.Configs.SUGAR_CANE_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE).count(10));
+        gen.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configured((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.PUMPKIN.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(64).whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK.getBlock())).noProjection().build()).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE).chance(32));
+        gen.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configured(Features.Configs.DEFAULT_GRASS_CONFIG).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE).count(2));
+        gen.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SEAGRASS.configured(new ProbabilityConfig(0.3F)).count(48).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE));
+        gen.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.JUNGLE_BUSH.decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(1, 0.0F, 0))));
+        gen.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configured((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.LILY_PAD.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(10).build()).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE).count(4));
+        DefaultBiomeFeatures.addSurfaceFreezing(gen);
 
         final int skyColour;
         try {
@@ -63,17 +63,17 @@ public class BambooGroveBiome {
         }
 
         return new Biome.Builder()
-                       .precipitation(Biome.RainType.RAIN).category(Biome.Category.FOREST).depth(-0.08F).downfall(0.9F).scale(0.15F).temperature(1.5F)
-                       .setEffects(new BiomeAmbience.Builder()
-                                           .setWaterColor(4159204)
-                                           .setWaterFogColor(329011)
-                                           .withFoliageColor(9430372)
-                                           .withGrassColor(9430372)
-                                           .setFogColor(12638463)
-                                           .withSkyColor(skyColour)
+                       .precipitation(Biome.RainType.RAIN).biomeCategory(Biome.Category.FOREST).depth(-0.08F).downfall(0.9F).scale(0.15F).temperature(1.5F)
+                       .specialEffects(new BiomeAmbience.Builder()
+                                           .waterColor(4159204)
+                                           .waterFogColor(329011)
+                                           .foliageColorOverride(9430372)
+                                           .grassColorOverride(9430372)
+                                           .fogColor(12638463)
+                                           .skyColor(skyColour)
                                            .build())
-                       .withMobSpawnSettings(spawns.build())
-                       .withGenerationSettings(gen.build()).build();
+                       .mobSpawnSettings(spawns.build())
+                       .generationSettings(gen.build()).build();
     }
 
 }

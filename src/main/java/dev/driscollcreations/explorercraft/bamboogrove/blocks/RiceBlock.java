@@ -16,25 +16,27 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class RiceBlock extends CropsBlock {
 
-    private static final VoxelShape[] SHAPES = new VoxelShape[]{Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 5.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D)};
+    private static final VoxelShape[] SHAPES = new VoxelShape[]{Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 5.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D)};
 
     public RiceBlock(Properties properties) {
         super(properties);
     }
 
     @OnlyIn(Dist.CLIENT)
-    protected IItemProvider getSeedsItem() {
+    protected IItemProvider getBaseSeedId() {
         return BambooGroveItems.RICE.get();
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        return SHAPES[state.get(this.getAgeProperty())];
+        return SHAPES[state.getValue(this.getAgeProperty())];
     }
 
     @Override
-    public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    public boolean mayPlaceOn(BlockState state, IBlockReader worldIn, BlockPos pos) {
         return state.getBlock() == BambooGroveBlocks.RICE_BASE.get();
     }
 
@@ -43,12 +45,12 @@ public class RiceBlock extends CropsBlock {
         super.tick(state, worldIn, pos, random);
         if (!worldIn.isAreaLoaded(pos, 1))
             return; // Forge: prevent loading unloaded chunks when checking neighbor's light
-        if (worldIn.getLightSubtracted(pos, 0) >= 9) {
+        if (worldIn.getRawBrightness(pos, 0) >= 9) {
             int i = this.getAge(state);
             if (i < this.getMaxAge()) {
                 float f = getGrowthChance(this, worldIn, pos);
                 if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
-                    worldIn.setBlockState(pos, this.withAge(i + 1), 2);
+                    worldIn.setBlock(pos, this.getStateForAge(i + 1), 2);
                     net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
                 }
             }
@@ -58,13 +60,13 @@ public class RiceBlock extends CropsBlock {
 
     protected static float getGrowthChance(Block blockIn, IBlockReader worldIn, BlockPos pos) {
         float f = 1.0F;
-        BlockPos blockpos = pos.down();
+        BlockPos blockpos = pos.below();
 
         for (int i = -1; i <= 1; ++i) {
             for (int j = -1; j <= 1; ++j) {
                 float f1 = 0.0F;
-                BlockState blockstate = worldIn.getBlockState(blockpos.add(i, 0, j));
-                if (blockstate.canSustainPlant(worldIn, blockpos.add(i, 0, j), net.minecraft.util.Direction.UP, (net.minecraftforge.common.IPlantable) blockIn)) {
+                BlockState blockstate = worldIn.getBlockState(blockpos.offset(i, 0, j));
+                if (blockstate.canSustainPlant(worldIn, blockpos.offset(i, 0, j), net.minecraft.util.Direction.UP, (net.minecraftforge.common.IPlantable) blockIn)) {
                     f1 = 3.0F;
                 }
 

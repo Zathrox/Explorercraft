@@ -12,8 +12,8 @@ public class MapleTree extends Tree {
 
     @Nullable
     @Override
-    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean largeHive) {
-        return ExplorerFeature.MAPLE_TREE.get().withConfiguration(ExplorerFeature.Configs.MAPLE_TREE_CONFIG);
+    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random randomIn, boolean largeHive) {
+        return ExplorerFeature.MAPLE_TREE.get().configured(ExplorerFeature.Configs.MAPLE_TREE_CONFIG);
     }
 
 }

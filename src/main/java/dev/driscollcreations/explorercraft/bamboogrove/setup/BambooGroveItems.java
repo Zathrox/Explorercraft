@@ -10,14 +10,14 @@ import net.minecraftforge.fml.RegistryObject;
 
 public class BambooGroveItems {
 
-    public static final Item.Properties basicItemProps = new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT);
-    public static final Item.Properties singleStackItemProps = new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT).maxStackSize(0);
+    public static final Item.Properties basicItemProps = new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT);
+    public static final Item.Properties singleStackItemProps = new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT).stacksTo(0);
 
     //======== Food and Misc items
-    public static final RegistryObject<Item> RICE = Registration.ITEMS.register("rice", () -> new BlockNamedItem(BambooGroveBlocks.RICE_BASE.get(), new Item.Properties().food(ExplorerFoods.RICE).group(ExplorerItemGroups.EXPLORERCRAFT)));
+    public static final RegistryObject<Item> RICE = Registration.ITEMS.register("rice", () -> new BlockNamedItem(BambooGroveBlocks.RICE_BASE.get(), new Item.Properties().food(ExplorerFoods.RICE).tab(ExplorerItemGroups.EXPLORERCRAFT)));
     public static final RegistryObject<Item> RICE_STRAW = Registration.ITEMS.register("rice_straw", () -> new Item(basicItemProps));
 
-    public static final RegistryObject<Item> RICE_STEW = Registration.ITEMS.register("rice_bowl", () -> new SoupItem(basicItemProps.food(ExplorerFoods.RICE_BOWL).maxStackSize(1)));
+    public static final RegistryObject<Item> RICE_STEW = Registration.ITEMS.register("rice_bowl", () -> new SoupItem(basicItemProps.food(ExplorerFoods.RICE_BOWL).stacksTo(1)));
     public static final RegistryObject<Item> ONIGIRI = Registration.ITEMS.register("onigiri", () -> new Item(basicItemProps.food(ExplorerFoods.ONIGIRI)));
     public static final RegistryObject<Item> SALMON_SUSHI = Registration.ITEMS.register("salmon_sushi", () -> new Item(basicItemProps.food(ExplorerFoods.SALMON_SUSHI)));
     public static final RegistryObject<Item> TAMAGO_SUSHI = Registration.ITEMS.register("tamago_sushi", () -> new Item(basicItemProps.food(ExplorerFoods.TAMAGO_SUSHI)));
@@ -25,7 +25,7 @@ public class BambooGroveItems {
 
     ///======== Jade Misc
     public static final RegistryObject<Item> JADE = Registration.ITEMS.register("jade", () -> new Item(basicItemProps));
-    public static final RegistryObject<Item> JADE_BOW = Registration.ITEMS.register("jade_bow", () -> new JadeBowItem(basicItemProps.maxDamage(684)));
+    public static final RegistryObject<Item> JADE_BOW = Registration.ITEMS.register("jade_bow", () -> new JadeBowItem(basicItemProps.durability(684)));
     public static final RegistryObject<Item> JADE_HORSE_ARMOR = Registration.ITEMS.register("jade_horse_armor",
             () -> new HorseArmorItem(8, new ResourceLocation(Explorercraft.MOD_ID, "textures/entities/horse/armor/horse_armor_jade.png"), singleStackItemProps));
 

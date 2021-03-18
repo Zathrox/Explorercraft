@@ -23,44 +23,44 @@ public class BlockUtils {
 
     public static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {
         RegistryObject<T> ret = registerNoItem(name, block);
-        Registration.ITEMS.register(name,() -> new BlockItem(ret.get(), new Item.Properties().group(ExplorerItemGroups.EXPLORERCRAFT)));
+        Registration.ITEMS.register(name,() -> new BlockItem(ret.get(), new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT)));
         return ret;
     }
 
     public static Block createWoodBlock() {
-        return new Block(AbstractBlock.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD));
+        return new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
     }
 
     public static TrapDoorBlock createWoodTrapdoor() {
-        return  new TrapDoorBlock(AbstractBlock.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(3.0F).sound(SoundType.WOOD).notSolid().setAllowsSpawn(BlockUtils::neverAllowSpawn));
+        return  new TrapDoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(BlockUtils::neverAllowSpawn));
     }
 
     public static SlabBlock createWoodSlab() {
-        return new SlabBlock(AbstractBlock.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD));
+        return new SlabBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
     }
 
     public static WoodButtonBlock createWoodButton() {
-        return new WoodButtonBlock(AbstractBlock.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.WOOD));
+        return new WoodButtonBlock(AbstractBlock.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD));
     }
 
     public static PressurePlateBlock createWoodPressurePlate() {
-        return new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.create(Material.WOOD, MaterialColor.WOOD).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.WOOD));
+        return new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).noCollission().strength(0.5F).sound(SoundType.WOOD));
     }
 
     public static DoorBlock createWoodDoor() {
-        return new DoorBlock(AbstractBlock.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(3.0F).sound(SoundType.WOOD).notSolid());
+        return new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(3.0F).sound(SoundType.WOOD).noOcclusion());
     }
 
     public static FenceBlock createWoodFence() {
-        return new FenceBlock(AbstractBlock.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD));
+        return new FenceBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
     }
 
     public static FenceGateBlock createWoodFenceGate() {
-        return new FenceGateBlock(AbstractBlock.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD));
+        return new FenceGateBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
     }
 
     public static LeavesBlock createLeavesBlock() {
-        return new LeavesBlock(AbstractBlock.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT).notSolid().setAllowsSpawn(BlockUtils::allowsSpawnOnLeaves).setSuffocates(BlockUtils::isntSolid).setBlocksVision(BlockUtils::isntSolid));
+        return new LeavesBlock(AbstractBlock.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(BlockUtils::allowsSpawnOnLeaves).isSuffocating(BlockUtils::isntSolid).isViewBlocking(BlockUtils::isntSolid));
     }
 
     public static Boolean allowsSpawnOnLeaves(BlockState state, IBlockReader reader, BlockPos pos, EntityType<?> entity) {
@@ -76,9 +76,9 @@ public class BlockUtils {
     }
 
     public static RotatedPillarBlock createLogBlock(MaterialColor topColor, MaterialColor barkColor) {
-        return new RotatedPillarBlock(AbstractBlock.Properties.create(Material.WOOD, (state) -> {
-            return state.get(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? topColor : barkColor;
-        }).hardnessAndResistance(2.0F).sound(SoundType.WOOD));
+        return new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, (state) -> {
+            return state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? topColor : barkColor;
+        }).strength(2.0F).sound(SoundType.WOOD));
     }
 
 }

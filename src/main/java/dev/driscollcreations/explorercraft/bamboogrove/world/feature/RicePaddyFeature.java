@@ -22,9 +22,9 @@ public class RicePaddyFeature extends Feature<NoFeatureConfig> {
 
     private static final Random randomAge = new Random();
     /** Water block state. */
-    private static final BlockState water = Blocks.WATER.getDefaultState();
+    private static final BlockState water = Blocks.WATER.defaultBlockState();
     /** Rice base block state. */
-    private static final BlockState base = BambooGroveBlocks.RICE_BASE.get().getDefaultState();
+    private static final BlockState base = BambooGroveBlocks.RICE_BASE.get().defaultBlockState();
 
     public RicePaddyFeature() {
         super(NoFeatureConfig.CODEC);
@@ -32,9 +32,9 @@ public class RicePaddyFeature extends Feature<NoFeatureConfig> {
     }
 
     @Override
-    public boolean generate(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos position, NoFeatureConfig config) {
+    public boolean place(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos position, NoFeatureConfig config) {
 
-        for (position = position.add(-8, 0, -8); position.getY() > 5 && world.isAirBlock(position); position = position.down())
+        for (position = position.offset(-8, 0, -8); position.getY() > 5 && world.isEmptyBlock(position); position = position.below())
         {
 
         }
@@ -45,7 +45,7 @@ public class RicePaddyFeature extends Feature<NoFeatureConfig> {
         }
         else
         {
-            position = position.down(4);
+            position = position.below(4);
             boolean[] aboolean = new boolean[2048];
             int i = rand.nextInt(4) + 4;
 
@@ -88,14 +88,14 @@ public class RicePaddyFeature extends Feature<NoFeatureConfig> {
 
                         if (flag)
                         {
-                            Material material = world.getBlockState(position.add(k1, k, l2)).getMaterial();
+                            Material material = world.getBlockState(position.offset(k1, k, l2)).getMaterial();
 
                             if (k >= 4 && material.isLiquid())
                             {
                                 return false;
                             }
 
-                            if (k < 4 && !material.isSolid() && world.getBlockState(position.add(k1, k, l2)).getBlock() != block)
+                            if (k < 4 && !material.isSolid() && world.getBlockState(position.offset(k1, k, l2)).getBlock() != block)
                             {
                                 return false;
                             }
@@ -115,7 +115,7 @@ public class RicePaddyFeature extends Feature<NoFeatureConfig> {
 
                         if (aboolean[(l1 * 16 + i3) * 8 + i4]) {
 
-                            BlockPos target = position.add(l1, i4, i3);
+                            BlockPos target = position.offset(l1, i4, i3);
 
                             BlockPos down = target;
                             BlockState state = world.getBlockState(down);
@@ -123,20 +123,20 @@ public class RicePaddyFeature extends Feature<NoFeatureConfig> {
 
                             if (i4 >= 4) {
 
-                                if (world.getBlockState(target) != BambooGroveBlocks.RICE_TOP.get().getDefaultState() && world.getBlockState(target) != base && world.getBlockState(target) != BambooGroveBlocks.BAMBOO_LOG.get().getDefaultState()) {
+                                if (world.getBlockState(target) != BambooGroveBlocks.RICE_TOP.get().defaultBlockState() && world.getBlockState(target) != base && world.getBlockState(target) != BambooGroveBlocks.BAMBOO_LOG.get().defaultBlockState()) {
 
-                                    if (world.getBlockState(target.up()).getBlock() != BambooGroveBlocks.BAMBOO_LOG.get() && isSoil == false ) {
-                                        world.setBlockState(target, Blocks.AIR.getDefaultState(), 2);
+                                    if (world.getBlockState(target.above()).getBlock() != BambooGroveBlocks.BAMBOO_LOG.get() && isSoil == false ) {
+                                        world.setBlock(target, Blocks.AIR.defaultBlockState(), 2);
                                     }
 
                                 }
 
-                            } else if (world.getBlockState(target.up()).getBlock() == BambooGroveBlocks.BAMBOO_LOG.get() && isSoil ) {
-                                world.setBlockState(target, Blocks.DIRT.getDefaultState(), 2);
+                            } else if (world.getBlockState(target.above()).getBlock() == BambooGroveBlocks.BAMBOO_LOG.get() && isSoil ) {
+                                world.setBlock(target, Blocks.DIRT.defaultBlockState(), 2);
 
                             } else {
-                                world.setBlockState(target, Blocks.WATER.getDefaultState(), 2);
-                                Block below = world.getBlockState(target.down()).getBlock();
+                                world.setBlock(target, Blocks.WATER.defaultBlockState(), 2);
+                                Block below = world.getBlockState(target.below()).getBlock();
                                 if (below == Blocks.DIRT || below == Blocks.GRASS || below == Blocks.SAND) {
                                     possibles.add(target);
                                 }
@@ -153,17 +153,17 @@ public class RicePaddyFeature extends Feature<NoFeatureConfig> {
 
                 BlockPos rice = possibles.remove(rand.nextInt(possibles.size()));
 
-                if (world.canBlockSeeSky(rice.up()) && world.isAirBlock(rice.up())) {
+                if (world.canSeeSkyFromBelowWater(rice.above()) && world.isEmptyBlock(rice.above())) {
 
-                    BlockState top = BambooGroveBlocks.RICE_TOP.get().getDefaultState().with(RiceBlock.AGE, 0 + randomAge.nextInt(6));
-                    world.setBlockState(rice, base, 2);
-                    world.setBlockState(rice.up(), top, 3);
+                    BlockState top = BambooGroveBlocks.RICE_TOP.get().defaultBlockState().setValue(RiceBlock.AGE, 0 + randomAge.nextInt(6));
+                    world.setBlock(rice, base, 2);
+                    world.setBlock(rice.above(), top, 3);
                     //System.out.println(top);
                     riceCount++;
                 }
             }
 
-            if (block.getDefaultState().getMaterial() == Material.LAVA)
+            if (block.defaultBlockState().getMaterial() == Material.LAVA)
             {
                 for (int j2 = 0; j2 < 16; ++j2)
                 {
@@ -173,9 +173,9 @@ public class RicePaddyFeature extends Feature<NoFeatureConfig> {
                         {
                             boolean flag1 = !aboolean[(j2 * 16 + k3) * 8 + k4] && (j2 < 15 && aboolean[((j2 + 1) * 16 + k3) * 8 + k4] || j2 > 0 && aboolean[((j2 - 1) * 16 + k3) * 8 + k4] || k3 < 15 && aboolean[(j2 * 16 + k3 + 1) * 8 + k4] || k3 > 0 && aboolean[(j2 * 16 + (k3 - 1)) * 8 + k4] || k4 < 7 && aboolean[(j2 * 16 + k3) * 8 + k4 + 1] || k4 > 0 && aboolean[(j2 * 16 + k3) * 8 + (k4 - 1)]);
 
-                            if (flag1 && (k4 < 4 || rand.nextInt(2) != 0) && world.getBlockState(position.add(j2, k4, k3)).getMaterial().isSolid())
+                            if (flag1 && (k4 < 4 || rand.nextInt(2) != 0) && world.getBlockState(position.offset(j2, k4, k3)).getMaterial().isSolid())
                             {
-                                world.setBlockState(position.add(j2, k4, k3), Blocks.STONE.getDefaultState(), 2);
+                                world.setBlock(position.offset(j2, k4, k3), Blocks.STONE.defaultBlockState(), 2);
                             }
                         }
                     }

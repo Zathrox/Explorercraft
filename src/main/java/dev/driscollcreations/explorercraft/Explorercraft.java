@@ -72,24 +72,24 @@ public class Explorercraft
             ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(BambooGroveBlocks.CHERRY_SAPLING.getId(), BambooGroveBlocks.POTTED_CHERRY_SAPLING::get);
             ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(BambooGroveBlocks.MAPLE_SAPLING.getId(), BambooGroveBlocks.POTTED_MAPLE_SAPLING::get);
         });
-        EnchantmentType.BOW.canEnchantItem(BambooGroveItems.JADE_BOW.get());
+        EnchantmentType.BOW.canEnchant(BambooGroveItems.JADE_BOW.get());
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
-        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.BAMBOO_SAPLING.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.CHERRY_SAPLING.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.MAPLE_SAPLING.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.POTTED_BAMBOO_SAPLING.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.POTTED_CHERRY_SAPLING.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.POTTED_MAPLE_SAPLING.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.BAMBOO_TRAPDOOR.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.MAPLE_DOOR.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.MAPLE_TRAPDOOR.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.RICE_BASE.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.RICE_TOP.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(VanillaTweaksBlocks.DISSOLVED_STONE.get(), RenderType.getTranslucent());
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.BAMBOO_SAPLING.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.CHERRY_SAPLING.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.MAPLE_SAPLING.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.POTTED_BAMBOO_SAPLING.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.POTTED_CHERRY_SAPLING.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.POTTED_MAPLE_SAPLING.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.BAMBOO_TRAPDOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.MAPLE_DOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.MAPLE_TRAPDOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.RICE_BASE.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BambooGroveBlocks.RICE_TOP.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VanillaTweaksBlocks.DISSOLVED_STONE.get(), RenderType.translucent());
+        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
     }
 
     public static ExplorercraftResourceLocation getId(String path) {
@@ -109,24 +109,24 @@ public class Explorercraft
         if(event.getWorld() instanceof ServerWorld){
             ServerWorld serverWorld = (ServerWorld)event.getWorld();
             try {
-                if(GETCODEC_METHOD == null) GETCODEC_METHOD = ObfuscationReflectionHelper.findMethod(ChunkGenerator.class, "func_230347_a_");
-                ResourceLocation cgRL = Registry.CHUNK_GENERATOR_CODEC.getKey((Codec<? extends ChunkGenerator>) GETCODEC_METHOD.invoke(serverWorld.getChunkProvider().generator));
+                if(GETCODEC_METHOD == null) GETCODEC_METHOD = ObfuscationReflectionHelper.findMethod(ChunkGenerator.class, "codec");
+                ResourceLocation cgRL = Registry.CHUNK_GENERATOR.getKey((Codec<? extends ChunkGenerator>) GETCODEC_METHOD.invoke(serverWorld.getChunkSource().generator));
                 if(cgRL != null && cgRL.getNamespace().equals("terraforged")) return;
             }
             catch(Exception e){
-                Explorercraft.LOGGER.error("Was unable to check if " + serverWorld.getDimensionKey().getLocation() + " is using Terraforged's ChunkGenerator.");
+                Explorercraft.LOGGER.error("Was unable to check if " + serverWorld.dimension().location() + " is using Terraforged's ChunkGenerator.");
             }
 
-            if(serverWorld.getChunkProvider().getChunkGenerator() instanceof FlatChunkGenerator && serverWorld.getDimensionKey().equals(World.OVERWORLD)){
+            if(serverWorld.getChunkSource().getGenerator() instanceof FlatChunkGenerator && serverWorld.dimension().equals(World.OVERWORLD)){
                 return;
             }
 
-            Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkProvider().generator.func_235957_b_().func_236195_a_());
-            /*tempMap.putIfAbsent(ExplorerStructures.RUN_DOWN_HOUSE.get(), DimensionStructuresSettings.field_236191_b_.get(ExplorerStructures.RUN_DOWN_HOUSE.get()));
-            tempMap.putIfAbsent(ExplorerStructures.BLACKSTONE_DUNGEON.get(), DimensionStructuresSettings.field_236191_b_.get(ExplorerStructures.BLACKSTONE_DUNGEON.get()));*/
-            tempMap.putIfAbsent(ExplorerStructures.SAKURA_TREE.get(), DimensionStructuresSettings.field_236191_b_.get(ExplorerStructures.SAKURA_TREE.get()));
-            tempMap.putIfAbsent(ExplorerStructures.TORII_GATE.get(), DimensionStructuresSettings.field_236191_b_.get(ExplorerStructures.TORII_GATE.get()));
-            serverWorld.getChunkProvider().generator.func_235957_b_().field_236193_d_ = tempMap;
+            Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkSource().generator.getSettings().structureConfig());
+            /*tempMap.putIfAbsent(ExplorerStructures.RUN_DOWN_HOUSE.get(), DimensionStructuresSettings.DEFAULTS.get(ExplorerStructures.RUN_DOWN_HOUSE.get()));
+            tempMap.putIfAbsent(ExplorerStructures.BLACKSTONE_DUNGEON.get(), DimensionStructuresSettings.DEFAULTS.get(ExplorerStructures.BLACKSTONE_DUNGEON.get()));*/
+            tempMap.putIfAbsent(ExplorerStructures.SAKURA_TREE.get(), DimensionStructuresSettings.DEFAULTS.get(ExplorerStructures.SAKURA_TREE.get()));
+            tempMap.putIfAbsent(ExplorerStructures.TORII_GATE.get(), DimensionStructuresSettings.DEFAULTS.get(ExplorerStructures.TORII_GATE.get()));
+            serverWorld.getChunkSource().generator.getSettings().structureConfig = tempMap;
         }
     }
 

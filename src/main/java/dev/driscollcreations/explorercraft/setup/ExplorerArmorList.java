@@ -47,28 +47,28 @@ public enum ExplorerArmorList implements IArmorMaterial {
     }
 
     @Override
-    public int getDurability(EquipmentSlotType slot) {
+    public int getDurabilityForSlot(EquipmentSlotType slot) {
         return MAX_DAMAGE_ARRAY[slot.getIndex()] * this.durability;
     }
 
     @Override
-    public int getDamageReductionAmount(EquipmentSlotType slot) {
+    public int getDefenseForSlot(EquipmentSlotType slot) {
         return this.damageReductionAmounts[slot.getIndex()];
     }
 
     @Override
-    public int getEnchantability() {
+    public int getEnchantmentValue() {
         return this.enchantability;
     }
 
     @Override
-    public SoundEvent getSoundEvent() {
+    public SoundEvent getEquipSound() {
         return new SoundEvent(new ResourceLocation(equipSound));
     }
 
     @Override
-    public Ingredient getRepairMaterial() {
-        return Ingredient.fromItems(this.repairItem);
+    public Ingredient getRepairIngredient() {
+        return Ingredient.of(this.repairItem);
     }
 
     @Override

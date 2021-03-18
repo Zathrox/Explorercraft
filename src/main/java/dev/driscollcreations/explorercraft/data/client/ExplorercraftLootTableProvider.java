@@ -45,7 +45,7 @@ public class ExplorercraftLootTableProvider extends LootTableProvider {
     @Override
     protected void validate(Map<ResourceLocation, LootTable> map, ValidationTracker validationtracker) {
         map.forEach((p_218436_2_, p_218436_3_) -> {
-            LootTableManager.validateLootTable(validationtracker, p_218436_2_, p_218436_3_);
+            LootTableManager.validate(validationtracker, p_218436_2_, p_218436_3_);
         });
     }
 
@@ -58,83 +58,83 @@ public class ExplorercraftLootTableProvider extends LootTableProvider {
         protected void addTables() {
 
             //======= Bamboo Grove
-            registerDropSelfLootTable(BambooGroveBlocks.BAMBOO_BUTTON.get());
-            registerLootTable(BambooGroveBlocks.BAMBOO_DOOR.get(),
-                    block -> droppingWhen(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
-            registerDropSelfLootTable(BambooGroveBlocks.BAMBOO_FENCE.get());
-            registerDropSelfLootTable(BambooGroveBlocks.BAMBOO_FENCE_GATE.get());
-            registerDropSelfLootTable(BambooGroveBlocks.BAMBOO_LOG.get());
-            registerLootTable(BambooGroveBlocks.BAMBOO_LEAVES.get(), (leaves) -> {
-                return  droppingWithChancesAndSticks(BambooGroveBlocks.BAMBOO_LEAVES.get(), BambooGroveBlocks.BAMBOO_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES);
+            dropSelf(BambooGroveBlocks.BAMBOO_BUTTON.get());
+            add(BambooGroveBlocks.BAMBOO_DOOR.get(),
+                    block -> createSinglePropConditionTable(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
+            dropSelf(BambooGroveBlocks.BAMBOO_FENCE.get());
+            dropSelf(BambooGroveBlocks.BAMBOO_FENCE_GATE.get());
+            dropSelf(BambooGroveBlocks.BAMBOO_LOG.get());
+            add(BambooGroveBlocks.BAMBOO_LEAVES.get(), (leaves) -> {
+                return  createLeavesDrops(BambooGroveBlocks.BAMBOO_LEAVES.get(), BambooGroveBlocks.BAMBOO_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES);
             });
-            registerDropSelfLootTable(BambooGroveBlocks.BAMBOO_PLANKS.get());
-            registerDropSelfLootTable(BambooGroveBlocks.BAMBOO_PLANKS_VERTICAL.get());
-            registerDropSelfLootTable(BambooGroveBlocks.BAMBOO_SAPLING.get());
-            registerLootTable(BambooGroveBlocks.BAMBOO_SLAB.get(), BlockLootTables::droppingSlab);
-            registerDropSelfLootTable(BambooGroveBlocks.BAMBOO_STAIRS.get());
-            registerFlowerPot(BambooGroveBlocks.POTTED_BAMBOO_SAPLING.get());
-            registerDropSelfLootTable(BambooGroveBlocks.BAMBOO_PRESSURE_PLATE.get());
-            registerDropSelfLootTable(BambooGroveBlocks.BAMBOO_TRAPDOOR.get());
+            dropSelf(BambooGroveBlocks.BAMBOO_PLANKS.get());
+            dropSelf(BambooGroveBlocks.BAMBOO_PLANKS_VERTICAL.get());
+            dropSelf(BambooGroveBlocks.BAMBOO_SAPLING.get());
+            add(BambooGroveBlocks.BAMBOO_SLAB.get(), BlockLootTables::createSlabItemTable);
+            dropSelf(BambooGroveBlocks.BAMBOO_STAIRS.get());
+            dropPottedContents(BambooGroveBlocks.POTTED_BAMBOO_SAPLING.get());
+            dropSelf(BambooGroveBlocks.BAMBOO_PRESSURE_PLATE.get());
+            dropSelf(BambooGroveBlocks.BAMBOO_TRAPDOOR.get());
 
-            registerDropSelfLootTable(BambooGroveBlocks.CHERRY_BUTTON.get());
-            registerLootTable(BambooGroveBlocks.CHERRY_DOOR.get(),
-                    block -> droppingWhen(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
-            registerDropSelfLootTable(BambooGroveBlocks.CHERRY_FENCE.get());
-            registerDropSelfLootTable(BambooGroveBlocks.CHERRY_FENCE_GATE.get());
-            registerDropSelfLootTable(BambooGroveBlocks.CHERRY_LOG.get());
-            registerLootTable(BambooGroveBlocks.CHERRY_LEAVES.get(), (leaves) -> {
-                return  droppingWithChancesAndSticks(BambooGroveBlocks.CHERRY_LEAVES.get(), BambooGroveBlocks.CHERRY_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES);
+            dropSelf(BambooGroveBlocks.CHERRY_BUTTON.get());
+            add(BambooGroveBlocks.CHERRY_DOOR.get(),
+                    block -> createSinglePropConditionTable(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
+            dropSelf(BambooGroveBlocks.CHERRY_FENCE.get());
+            dropSelf(BambooGroveBlocks.CHERRY_FENCE_GATE.get());
+            dropSelf(BambooGroveBlocks.CHERRY_LOG.get());
+            add(BambooGroveBlocks.CHERRY_LEAVES.get(), (leaves) -> {
+                return  createLeavesDrops(BambooGroveBlocks.CHERRY_LEAVES.get(), BambooGroveBlocks.CHERRY_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES);
             });
-            registerDropSelfLootTable(BambooGroveBlocks.CHERRY_PLANKS.get());
-            registerDropSelfLootTable(BambooGroveBlocks.CHERRY_SAPLING.get());
-            registerLootTable(BambooGroveBlocks.CHERRY_SLAB.get(), BlockLootTables::droppingSlab);
+            dropSelf(BambooGroveBlocks.CHERRY_PLANKS.get());
+            dropSelf(BambooGroveBlocks.CHERRY_SAPLING.get());
+            add(BambooGroveBlocks.CHERRY_SLAB.get(), BlockLootTables::createSlabItemTable);
 
-            registerDropSelfLootTable(BambooGroveBlocks.CHERRY_STAIRS.get());
-            registerFlowerPot(BambooGroveBlocks.POTTED_CHERRY_SAPLING.get());
-            registerDropSelfLootTable(BambooGroveBlocks.CHERRY_PRESSURE_PLATE.get());
-            registerDropSelfLootTable(BambooGroveBlocks.CHERRY_TRAPDOOR.get());
-            registerDropSelfLootTable(BambooGroveBlocks.CHERRY_WOOD.get());
-            registerDropSelfLootTable(BambooGroveBlocks.CHERRY_STRIPPED_LOG.get());
-            registerDropSelfLootTable(BambooGroveBlocks.CHERRY_STRIPPED_WOOD.get());
+            dropSelf(BambooGroveBlocks.CHERRY_STAIRS.get());
+            dropPottedContents(BambooGroveBlocks.POTTED_CHERRY_SAPLING.get());
+            dropSelf(BambooGroveBlocks.CHERRY_PRESSURE_PLATE.get());
+            dropSelf(BambooGroveBlocks.CHERRY_TRAPDOOR.get());
+            dropSelf(BambooGroveBlocks.CHERRY_WOOD.get());
+            dropSelf(BambooGroveBlocks.CHERRY_STRIPPED_LOG.get());
+            dropSelf(BambooGroveBlocks.CHERRY_STRIPPED_WOOD.get());
 
-            registerDropSelfLootTable(BambooGroveBlocks.MAPLE_BUTTON.get());
-            registerLootTable(BambooGroveBlocks.MAPLE_DOOR.get(),
-                    block -> droppingWhen(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
-            registerDoor(BambooGroveBlocks.MAPLE_DOOR.get());
-            registerDropSelfLootTable(BambooGroveBlocks.MAPLE_FENCE.get());
-            registerDropSelfLootTable(BambooGroveBlocks.MAPLE_FENCE_GATE.get());
-            registerDropSelfLootTable(BambooGroveBlocks.MAPLE_LOG.get());
-            registerLootTable(BambooGroveBlocks.MAPLE_LEAVES.get(), (leaves) -> {
-                return  droppingWithChancesAndSticks(BambooGroveBlocks.MAPLE_LEAVES.get(), BambooGroveBlocks.MAPLE_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES);
+            dropSelf(BambooGroveBlocks.MAPLE_BUTTON.get());
+            add(BambooGroveBlocks.MAPLE_DOOR.get(),
+                    block -> createSinglePropConditionTable(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
+            createDoorTable(BambooGroveBlocks.MAPLE_DOOR.get());
+            dropSelf(BambooGroveBlocks.MAPLE_FENCE.get());
+            dropSelf(BambooGroveBlocks.MAPLE_FENCE_GATE.get());
+            dropSelf(BambooGroveBlocks.MAPLE_LOG.get());
+            add(BambooGroveBlocks.MAPLE_LEAVES.get(), (leaves) -> {
+                return  createLeavesDrops(BambooGroveBlocks.MAPLE_LEAVES.get(), BambooGroveBlocks.MAPLE_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES);
             });
-            registerDropSelfLootTable(BambooGroveBlocks.MAPLE_PLANKS.get());
-            registerDropSelfLootTable(BambooGroveBlocks.MAPLE_SAPLING.get());
-            registerLootTable(BambooGroveBlocks.MAPLE_SLAB.get(), BlockLootTables::droppingSlab);
-            registerDropSelfLootTable(BambooGroveBlocks.MAPLE_STAIRS.get());
-            registerFlowerPot(BambooGroveBlocks.POTTED_MAPLE_SAPLING.get());
-            registerDropSelfLootTable(BambooGroveBlocks.MAPLE_PRESSURE_PLATE.get());
-            registerDropSelfLootTable(BambooGroveBlocks.MAPLE_TRAPDOOR.get());
-            registerDropSelfLootTable(BambooGroveBlocks.MAPLE_WOOD.get());
-            registerDropSelfLootTable(BambooGroveBlocks.MAPLE_STRIPPED_LOG.get());
-            registerDropSelfLootTable(BambooGroveBlocks.MAPLE_STRIPPED_WOOD.get());
+            dropSelf(BambooGroveBlocks.MAPLE_PLANKS.get());
+            dropSelf(BambooGroveBlocks.MAPLE_SAPLING.get());
+            add(BambooGroveBlocks.MAPLE_SLAB.get(), BlockLootTables::createSlabItemTable);
+            dropSelf(BambooGroveBlocks.MAPLE_STAIRS.get());
+            dropPottedContents(BambooGroveBlocks.POTTED_MAPLE_SAPLING.get());
+            dropSelf(BambooGroveBlocks.MAPLE_PRESSURE_PLATE.get());
+            dropSelf(BambooGroveBlocks.MAPLE_TRAPDOOR.get());
+            dropSelf(BambooGroveBlocks.MAPLE_WOOD.get());
+            dropSelf(BambooGroveBlocks.MAPLE_STRIPPED_LOG.get());
+            dropSelf(BambooGroveBlocks.MAPLE_STRIPPED_WOOD.get());
 
-            registerLootTable(BambooGroveBlocks.TATAMI.get(),
-                    block -> droppingWhen(block, BedBlock.PART, BedPart.HEAD));
-            registerDropSelfLootTable(BambooGroveBlocks.TATAMI_HALF.get());
+            add(BambooGroveBlocks.TATAMI.get(),
+                    block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+            dropSelf(BambooGroveBlocks.TATAMI_HALF.get());
 
-            registerDropSelfLootTable(BambooGroveBlocks.RICE_STRAW_BLOCK.get());
-            registerLootTable(BambooGroveBlocks.RICE_BASE.get(), blockNoDrop());
-            registerLootTable(BambooGroveBlocks.RICE_TOP.get(), blockNoDrop());
+            dropSelf(BambooGroveBlocks.RICE_STRAW_BLOCK.get());
+            add(BambooGroveBlocks.RICE_BASE.get(), noDrop());
+            add(BambooGroveBlocks.RICE_TOP.get(), noDrop());
 
-            ILootCondition.IBuilder ilootcondition$ibuilder1 = BlockStateProperty.builder(BambooGroveBlocks.RICE_TOP.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(CropsBlock.AGE, 7));
-            this.registerLootTable(BambooGroveBlocks.RICE_TOP.get(), droppingAndBonusWhen(BambooGroveBlocks.RICE_TOP.get(), BambooGroveItems.RICE_STRAW.get(), BambooGroveItems.RICE.get(), ilootcondition$ibuilder1));
+            ILootCondition.IBuilder ilootcondition$ibuilder1 = BlockStateProperty.hasBlockStateProperties(BambooGroveBlocks.RICE_TOP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropsBlock.AGE, 7));
+            this.add(BambooGroveBlocks.RICE_TOP.get(), createCropDrops(BambooGroveBlocks.RICE_TOP.get(), BambooGroveItems.RICE_STRAW.get(), BambooGroveItems.RICE.get(), ilootcondition$ibuilder1));
 
-            registerDropSelfLootTable(BambooGroveBlocks.JADE_BLOCK.get());
-            registerLootTable(BambooGroveBlocks.JADE_ORE.get(), droppingItemWithFortune(BambooGroveBlocks.JADE_ORE.get(), BambooGroveItems.JADE.get()));
+            dropSelf(BambooGroveBlocks.JADE_BLOCK.get());
+            add(BambooGroveBlocks.JADE_ORE.get(), createOreDrop(BambooGroveBlocks.JADE_ORE.get(), BambooGroveItems.JADE.get()));
 
             //======== Vanilla Tweaks
-            registerDropSelfLootTable(VanillaTweaksBlocks.SLIMEY_STONE.get());
-            registerDropSelfLootTable(VanillaTweaksBlocks.DISSOLVED_STONE.get());
+            dropSelf(VanillaTweaksBlocks.SLIMEY_STONE.get());
+            dropSelf(VanillaTweaksBlocks.DISSOLVED_STONE.get());
 
         }
 

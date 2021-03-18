@@ -16,10 +16,10 @@ public class ExplorerConfiguredStructures {
     /**
      * Static instance of our structure so we can reference it and add it to biomes easily.
      */
-    public static StructureFeature<?, ?> CONFIGURED_RUN_DOWN_HOUSE = ExplorerStructures.RUN_DOWN_HOUSE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
-    public static StructureFeature<?, ?> CONFIGURED_BLACKSTONE_DUNGEON = ExplorerStructures.BLACKSTONE_DUNGEON.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
-    public static StructureFeature<?, ?> CONFIGURED_SAKURA_TREE = ExplorerStructures.SAKURA_TREE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
-    public static StructureFeature<?, ?> CONFIGURED_TORII_GATE = ExplorerStructures.TORII_GATE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
+    public static StructureFeature<?, ?> CONFIGURED_RUN_DOWN_HOUSE = ExplorerStructures.RUN_DOWN_HOUSE.get().configured(IFeatureConfig.NONE);
+    public static StructureFeature<?, ?> CONFIGURED_BLACKSTONE_DUNGEON = ExplorerStructures.BLACKSTONE_DUNGEON.get().configured(IFeatureConfig.NONE);
+    public static StructureFeature<?, ?> CONFIGURED_SAKURA_TREE = ExplorerStructures.SAKURA_TREE.get().configured(IFeatureConfig.NONE);
+    public static StructureFeature<?, ?> CONFIGURED_TORII_GATE = ExplorerStructures.TORII_GATE.get().configured(IFeatureConfig.NONE);
 
     /**
      * Registers the configured structure which is what gets added to the biomes.
@@ -50,9 +50,9 @@ public class ExplorerConfiguredStructures {
          *
          * Requires AccessTransformer ( see resources/META-INF/accesstransformer.cfg )
          */
-        FlatGenerationSettings.STRUCTURES.put(ExplorerStructures.RUN_DOWN_HOUSE.get(), CONFIGURED_RUN_DOWN_HOUSE);
-        FlatGenerationSettings.STRUCTURES.put(ExplorerStructures.BLACKSTONE_DUNGEON.get(), CONFIGURED_BLACKSTONE_DUNGEON);
-        FlatGenerationSettings.STRUCTURES.put(ExplorerStructures.SAKURA_TREE.get(), CONFIGURED_SAKURA_TREE);
-        FlatGenerationSettings.STRUCTURES.put(ExplorerStructures.TORII_GATE.get(), CONFIGURED_TORII_GATE);
+        FlatGenerationSettings.STRUCTURE_FEATURES.put(ExplorerStructures.RUN_DOWN_HOUSE.get(), CONFIGURED_RUN_DOWN_HOUSE);
+        FlatGenerationSettings.STRUCTURE_FEATURES.put(ExplorerStructures.BLACKSTONE_DUNGEON.get(), CONFIGURED_BLACKSTONE_DUNGEON);
+        FlatGenerationSettings.STRUCTURE_FEATURES.put(ExplorerStructures.SAKURA_TREE.get(), CONFIGURED_SAKURA_TREE);
+        FlatGenerationSettings.STRUCTURE_FEATURES.put(ExplorerStructures.TORII_GATE.get(), CONFIGURED_TORII_GATE);
     }
 }

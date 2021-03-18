@@ -87,7 +87,7 @@ public class ExplorerStructures {
          * If the registration is setup properly for the structure,
          * getRegistryName() should never return null.
          */
-        Structure.NAME_STRUCTURE_BIMAP.put(structure.getRegistryName().toString(), structure);
+        Structure.STRUCTURES_REGISTRY.put(structure.getRegistryName().toString(), structure);
 
         /*
          * Whether surrounding land will be modified automatically to conform to the bottom of the structure.
@@ -97,12 +97,12 @@ public class ExplorerStructures {
          * Note: The air space this method will create will be filled with water if the structure is below sealevel.
          * This means this is best for structure above sealevel so keep that in mind.
          *
-         * field_236384_t_ requires AccessTransformer  (See resources/META-INF/accesstransformer.cfg)
+         * NOISE_AFFECTING_FEATURES requires AccessTransformer  (See resources/META-INF/accesstransformer.cfg)
          */
         if(transformSurroundingLand){
-            Structure.field_236384_t_ =
+            Structure.NOISE_AFFECTING_FEATURES =
                     ImmutableList.<Structure<?>>builder()
-                            .addAll(Structure.field_236384_t_)
+                            .addAll(Structure.NOISE_AFFECTING_FEATURES)
                             .add(structure)
                             .build();
         }
@@ -115,13 +115,13 @@ public class ExplorerStructures {
          *
          * Instead, we will use the WorldEvent.Load event in StructureTutorialMain to add the structure
          * spacing from this list into that dimension or do dimension blacklisting properly. We also use
-         * our entry in DimensionStructuresSettings.field_236191_b_ in WorldEvent.Load as well.
+         * our entry in DimensionStructuresSettings.DEFAULTS in WorldEvent.Load as well.
          *
-         * field_236191_b_ requires AccessTransformer  (See resources/META-INF/accesstransformer.cfg)
+         * DEFAULTS requires AccessTransformer  (See resources/META-INF/accesstransformer.cfg)
          */
-        DimensionStructuresSettings.field_236191_b_ =
+        DimensionStructuresSettings.DEFAULTS =
                 ImmutableMap.<Structure<?>, StructureSeparationSettings>builder()
-                        .putAll(DimensionStructuresSettings.field_236191_b_)
+                        .putAll(DimensionStructuresSettings.DEFAULTS)
                         .put(structure, structureSeparationSettings)
                         .build();
 
@@ -130,23 +130,23 @@ public class ExplorerStructures {
          * There are very few mods that relies on seeing your structure in the noise settings registry before the world is made.
          *
          * This is best done here in FMLCommonSetupEvent after you created your configuredstructures.
-         * You may see some mods add their spacings to DimensionSettings.field_242740_q instead of the NOISE_SETTINGS loop below but
+         * You may see some mods add their spacings to DimensionSettings.BUILTIN_OVERWORLD instead of the NOISE_SETTINGS loop below but
          * that field only applies for the default overworld and won't add to other worldtypes or dimensions (like amplified or Nether).
-         * So yeah, don't do DimensionSettings.field_242740_q. Use the NOISE_SETTINGS loop below instead.
+         * So yeah, don't do DimensionSettings.BUILTIN_OVERWORLD. Use the NOISE_SETTINGS loop below instead.
          */
-        WorldGenRegistries.NOISE_SETTINGS.getEntries().forEach(settings -> {
-            Map<Structure<?>, StructureSeparationSettings> structureMap = settings.getValue().getStructures().func_236195_a_();
+        WorldGenRegistries.NOISE_GENERATOR_SETTINGS.entrySet().forEach(settings -> {
+            Map<Structure<?>, StructureSeparationSettings> structureMap = settings.getValue().structureSettings().structureConfig();
 
             /*
              * Pre-caution in case a mod makes the structure map immutable like datapacks do.
              * I take no chances myself. You never know what another mods does...
              *
-             * field_236193_d_ requires AccessTransformer  (See resources/META-INF/accesstransformer.cfg)
+             * structureConfig requires AccessTransformer  (See resources/META-INF/accesstransformer.cfg)
              */
             if(structureMap instanceof ImmutableMap){
                 Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(structureMap);
                 tempMap.put(structure, structureSeparationSettings);
-                settings.getValue().getStructures().field_236193_d_ = tempMap;
+                settings.getValue().structureSettings().structureConfig = tempMap;
             }
             else{
                 structureMap.put(structure, structureSeparationSettings);

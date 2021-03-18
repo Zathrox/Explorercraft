@@ -25,7 +25,7 @@ import java.util.Random;
 import net.minecraft.block.AbstractBlock.Properties;
 
 public class RiceBaseBlock extends BushBlock implements IWaterLoggable {
-    public static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
+    public static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
 
 
     public RiceBaseBlock(Properties properties) {
@@ -33,8 +33,8 @@ public class RiceBaseBlock extends BushBlock implements IWaterLoggable {
     }
 
     @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-        worldIn.setBlockState(pos.up(), BambooGroveBlocks.RICE_TOP.get().getDefaultState());
+    public void setPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+        worldIn.setBlockAndUpdate(pos.above(), BambooGroveBlocks.RICE_TOP.get().defaultBlockState());
     }
 
     @Override
@@ -43,8 +43,8 @@ public class RiceBaseBlock extends BushBlock implements IWaterLoggable {
     }
 
     @Override
-    public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.isSolidSide(worldIn, pos, Direction.UP) && state.getBlock() != Blocks.MAGMA_BLOCK;
+    public boolean mayPlaceOn(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return state.isFaceSturdy(worldIn, pos, Direction.UP) && state.getBlock() != Blocks.MAGMA_BLOCK;
     }
 
     public boolean isRiceAboveWater(BlockState state, IBlockReader worldIn, BlockPos pos) {
@@ -54,50 +54,50 @@ public class RiceBaseBlock extends BushBlock implements IWaterLoggable {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        BlockPos blockpos = context.getPos();
-        FluidState ifluidstate = context.getWorld().getFluidState(context.getPos());
-        return ifluidstate.isTagged(FluidTags.WATER) && ifluidstate.getLevel() == 8 && context.getWorld().isAirBlock(blockpos.up()) ? super.getStateForPlacement(context) : null;
+        BlockPos blockpos = context.getClickedPos();
+        FluidState ifluidstate = context.getLevel().getFluidState(context.getClickedPos());
+        return ifluidstate.is(FluidTags.WATER) && ifluidstate.getAmount() == 8 && context.getLevel().isEmptyBlock(blockpos.above()) ? super.getStateForPlacement(context) : null;
     }
 
     @Override
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        BlockPos blockpos = pos.down();
-        return this.isValidGround(worldIn.getBlockState(blockpos), worldIn, blockpos);
+    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos) {
+        BlockPos blockpos = pos.below();
+        return this.mayPlaceOn(worldIn.getBlockState(blockpos), worldIn, blockpos);
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
 
         if (facing == Direction.UP && facingState.getBlock() != BambooGroveBlocks.RICE_TOP.get()) {
-            worldIn.getPendingBlockTicks().scheduleTick(currentPos, this, 1);
+            worldIn.getBlockTicks().scheduleTick(currentPos, this, 1);
         }
 
-        BlockState blockstate = super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        BlockState blockstate = super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
         if (!blockstate.isAir()) {
-            worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
+            worldIn.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
         }
         return blockstate;
     }
 
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
-        if (!this.isRiceAboveWater(state, worldIn, pos.up())) {
+        if (!this.isRiceAboveWater(state, worldIn, pos.above())) {
             worldIn.destroyBlock(pos, false);
         }
     }
 
     @Override
     public FluidState getFluidState(BlockState state) {
-        return Fluids.WATER.getStillFluidState(false);
+        return Fluids.WATER.getSource(false);
     }
 
     @Override
-    public boolean canContainFluid(IBlockReader worldIn, BlockPos pos, BlockState state, Fluid fluidIn) {
+    public boolean canPlaceLiquid(IBlockReader worldIn, BlockPos pos, BlockState state, Fluid fluidIn) {
         return false;
     }
 
     @Override
-    public boolean receiveFluid(IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
+    public boolean placeLiquid(IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
         return false;
     }
 }

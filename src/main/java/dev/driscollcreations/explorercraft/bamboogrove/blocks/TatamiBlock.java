@@ -34,11 +34,11 @@ import net.minecraft.block.AbstractBlock.Properties;
 public class TatamiBlock extends HorizontalBlock implements IWaterLoggable {
     public static final EnumProperty<BedPart> PART = BlockStateProperties.BED_PART;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
+    protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
     public TatamiBlock(Properties builder) {
         super(builder);
-        this.setDefaultState(this.stateContainer.getBaseState().with(PART, BedPart.FOOT).with(WATERLOGGED, Boolean.valueOf(false)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(PART, BedPart.FOOT).setValue(WATERLOGGED, Boolean.valueOf(false)));
     }
 
 
@@ -49,20 +49,20 @@ public class TatamiBlock extends HorizontalBlock implements IWaterLoggable {
 
     @SuppressWarnings("deprecation")
     public FluidState getFluidState(BlockState state) {
-        return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @Override
-    public boolean canContainFluid(IBlockReader worldIn, BlockPos pos, BlockState state, Fluid fluidIn) {
+    public boolean canPlaceLiquid(IBlockReader worldIn, BlockPos pos, BlockState state, Fluid fluidIn) {
         return fluidIn == Fluids.WATER;
     }
 
     @Override
-    public boolean receiveFluid(IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
-        if (fluidStateIn.getFluid() == Fluids.WATER) {
-            if (!worldIn.isRemote()) {
-                worldIn.setBlockState(pos, state.with(WATERLOGGED, Boolean.valueOf(true)), 3);
-                worldIn.getPendingFluidTicks().scheduleTick(pos, fluidStateIn.getFluid(), fluidStateIn.getFluid().getTickRate(worldIn));
+    public boolean placeLiquid(IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
+        if (fluidStateIn.getType() == Fluids.WATER) {
+            if (!worldIn.isClientSide()) {
+                worldIn.setBlock(pos, state.setValue(WATERLOGGED, Boolean.valueOf(true)), 3);
+                worldIn.getLiquidTicks().scheduleTick(pos, fluidStateIn.getType(), fluidStateIn.getType().getTickDelay(worldIn));
             }
             return true;
         } else {
@@ -71,42 +71,42 @@ public class TatamiBlock extends HorizontalBlock implements IWaterLoggable {
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
-        if (stateIn.get(WATERLOGGED)) {
-            worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+        if (stateIn.getValue(WATERLOGGED)) {
+            worldIn.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
         }
 
-        if (facing == getDirectionToOther(stateIn.get(PART), stateIn.get(HORIZONTAL_FACING))) {
-            return facingState.getBlock() == this && facingState.get(PART) != stateIn.get(PART) ? stateIn : Blocks.AIR.getDefaultState();
+        if (facing == getDirectionToOther(stateIn.getValue(PART), stateIn.getValue(FACING))) {
+            return facingState.getBlock() == this && facingState.getValue(PART) != stateIn.getValue(PART) ? stateIn : Blocks.AIR.defaultBlockState();
         } else {
-            return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+            return super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
         }
     }
 
     @SuppressWarnings("deprecation")
-    public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+    public void onRemove(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
-            super.onReplaced(state, worldIn, pos, newState, isMoving);
+            super.onRemove(state, worldIn, pos, newState, isMoving);
             worldIn.removeBlock(pos, false);
         }
     }
 
     @Override
-    public void harvestBlock(World worldIn, PlayerEntity player, BlockPos pos, BlockState state, @Nullable TileEntity te, ItemStack stack) {
-        super.harvestBlock(worldIn, player, pos, Blocks.AIR.getDefaultState(), te, stack);
+    public void playerDestroy(World worldIn, PlayerEntity player, BlockPos pos, BlockState state, @Nullable TileEntity te, ItemStack stack) {
+        super.playerDestroy(worldIn, player, pos, Blocks.AIR.defaultBlockState(), te, stack);
     }
 
     @Override
-    public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
-        BedPart bedpart = state.get(PART);
-        BlockPos blockpos = pos.offset(getDirectionToOther(bedpart, state.get(HORIZONTAL_FACING)));
+    public void playerWillDestroy(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
+        BedPart bedpart = state.getValue(PART);
+        BlockPos blockpos = pos.relative(getDirectionToOther(bedpart, state.getValue(FACING)));
         BlockState blockstate = worldIn.getBlockState(blockpos);
-        if (blockstate.getBlock() == this && blockstate.get(PART) != bedpart) {
-            worldIn.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 35);
-            worldIn.playEvent(player, 2001, blockpos, Block.getStateId(blockstate));
-            player.addStat(Stats.BLOCK_MINED.get(this));
+        if (blockstate.getBlock() == this && blockstate.getValue(PART) != bedpart) {
+            worldIn.setBlock(blockpos, Blocks.AIR.defaultBlockState(), 35);
+            worldIn.levelEvent(player, 2001, blockpos, Block.getId(blockstate));
+            player.awardStat(Stats.BLOCK_MINED.get(this));
         }
-        super.onBlockHarvested(worldIn, pos, state, player);
+        super.playerWillDestroy(worldIn, pos, state, player);
     }
 
     private static Direction getDirectionToOther(BedPart part, Direction direction) {
@@ -115,14 +115,14 @@ public class TatamiBlock extends HorizontalBlock implements IWaterLoggable {
 
     @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        Direction enumfacing = context.getPlacementHorizontalFacing();
-        BlockPos blockpos = context.getPos();
-        BlockPos blockpos1 = blockpos.offset(enumfacing);
+        Direction enumfacing = context.getHorizontalDirection();
+        BlockPos blockpos = context.getClickedPos();
+        BlockPos blockpos1 = blockpos.relative(enumfacing);
 
-        if (context.getWorld().getBlockState(blockpos).getBlock() == Blocks.WATER) {
-            return context.getWorld().getBlockState(blockpos1).isReplaceable(context) && !context.getWorld().getBlockState(blockpos1.down()).isAir() ? this.getDefaultState().with(HORIZONTAL_FACING, enumfacing).with(WATERLOGGED, Boolean.valueOf(true)) : null;
+        if (context.getLevel().getBlockState(blockpos).getBlock() == Blocks.WATER) {
+            return context.getLevel().getBlockState(blockpos1).canBeReplaced(context) && !context.getLevel().getBlockState(blockpos1.below()).isAir() ? this.defaultBlockState().setValue(FACING, enumfacing).setValue(WATERLOGGED, Boolean.valueOf(true)) : null;
         } else {
-            return context.getWorld().getBlockState(blockpos1).isReplaceable(context) && !context.getWorld().getBlockState(blockpos1.down()).isAir() ? this.getDefaultState().with(HORIZONTAL_FACING, enumfacing).with(WATERLOGGED, Boolean.valueOf(false)) : null;
+            return context.getLevel().getBlockState(blockpos1).canBeReplaced(context) && !context.getLevel().getBlockState(blockpos1.below()).isAir() ? this.defaultBlockState().setValue(FACING, enumfacing).setValue(WATERLOGGED, Boolean.valueOf(false)) : null;
         }
     }
 
@@ -136,32 +136,32 @@ public class TatamiBlock extends HorizontalBlock implements IWaterLoggable {
         return true;
     }
 
-    public PushReaction getPushReaction(BlockState state) {
+    public PushReaction getPistonPushReaction(BlockState state) {
         return PushReaction.DESTROY;
     }
 
-    public BlockRenderType getRenderType(BlockState state) {
+    public BlockRenderType getRenderShape(BlockState state) {
         return BlockRenderType.MODEL;
     }
 
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(HORIZONTAL_FACING, PART, WATERLOGGED);
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+        builder.add(FACING, PART, WATERLOGGED);
     }
 
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
-        super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
-        if (!worldIn.isRemote) {
-            BlockPos blockpos = pos.offset(state.get(HORIZONTAL_FACING));
-            worldIn.setBlockState(blockpos, state.with(PART, BedPart.HEAD), 3);
-            worldIn.notifyNeighborsOfStateChange(pos, Blocks.AIR);
-            state.updateNeighbours(worldIn, pos, 3);
+    public void setPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+        super.setPlacedBy(worldIn, pos, state, placer, stack);
+        if (!worldIn.isClientSide) {
+            BlockPos blockpos = pos.relative(state.getValue(FACING));
+            worldIn.setBlock(blockpos, state.setValue(PART, BedPart.HEAD), 3);
+            worldIn.updateNeighborsAt(pos, Blocks.AIR);
+            state.updateNeighbourShapes(worldIn, pos, 3);
         }
     }
 
     @OnlyIn(Dist.CLIENT)
-    public long getPositionRandom(BlockState state, BlockPos pos) {
-        BlockPos blockpos = pos.offset(state.get(HORIZONTAL_FACING), state.get(PART) == BedPart.HEAD ? 0 : 1);
-        return MathHelper.getCoordinateRandom(blockpos.getX(), pos.getY(), blockpos.getZ());
+    public long getSeed(BlockState state, BlockPos pos) {
+        BlockPos blockpos = pos.relative(state.getValue(FACING), state.getValue(PART) == BedPart.HEAD ? 0 : 1);
+        return MathHelper.getSeed(blockpos.getX(), pos.getY(), blockpos.getZ());
     }
 
 }

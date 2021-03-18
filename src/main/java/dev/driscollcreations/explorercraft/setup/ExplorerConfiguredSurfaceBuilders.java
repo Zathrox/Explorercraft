@@ -20,7 +20,7 @@ public class ExplorerConfiguredSurfaceBuilders {
     public static RegistryKey<ConfiguredSurfaceBuilder<?>> BAMB00_GROVE = key("bamboo_grove");
 
     private static RegistryKey<ConfiguredSurfaceBuilder<?>> key(final String name) {
-        return RegistryKey.getOrCreateKey(Registry.CONFIGURED_SURFACE_BUILDER_KEY, new ResourceLocation(Explorercraft.MOD_ID, name));
+        return RegistryKey.create(Registry.CONFIGURED_SURFACE_BUILDER_REGISTRY, new ResourceLocation(Explorercraft.MOD_ID, name));
     }
 
     @Mod.EventBusSubscriber(modid = Explorercraft.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -30,16 +30,16 @@ public class ExplorerConfiguredSurfaceBuilders {
         public static void register(final RegistryEvent.Register<SurfaceBuilder<?>> event) {
             register(TEST,
                     ExplorerSurfaceBuilders.LOGGING_DEFAULT.get()
-                            .func_242929_a(new SurfaceBuilderConfig(Blocks.RED_SAND.getDefaultState(), Blocks.BRICKS.getDefaultState(), Blocks.GRAVEL.getDefaultState()))
+                            .configured(new SurfaceBuilderConfig(Blocks.RED_SAND.defaultBlockState(), Blocks.BRICKS.defaultBlockState(), Blocks.GRAVEL.defaultBlockState()))
             );
             register(BAMB00_GROVE,
                     ExplorerSurfaceBuilders.BAMBOO_GROVE_LOG.get()
-                            .func_242929_a(SurfaceBuilder.GRASS_DIRT_SAND_CONFIG)
+                            .configured(SurfaceBuilder.CONFIG_OCEAN_SAND)
             );
         }
 
         private static void register(final RegistryKey<ConfiguredSurfaceBuilder<?>> key, final ConfiguredSurfaceBuilder<?> configuredSurfaceBuilder) {
-            Registry.register(WorldGenRegistries.CONFIGURED_SURFACE_BUILDER, key.getLocation(), configuredSurfaceBuilder);
+            Registry.register(WorldGenRegistries.CONFIGURED_SURFACE_BUILDER, key.location(), configuredSurfaceBuilder);
         }
     }
 }

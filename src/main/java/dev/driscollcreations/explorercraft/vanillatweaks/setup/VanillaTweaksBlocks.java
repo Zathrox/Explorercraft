@@ -11,8 +11,8 @@ import net.minecraftforge.fml.RegistryObject;
 
 public class VanillaTweaksBlocks {
 
-    public static final RegistryObject<Block> SLIMEY_STONE = BlockUtils.register("slimey_stone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F).harvestLevel(2).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> DISSOLVED_STONE = BlockUtils.register("dissolved_stone", () -> new SlimeBlock(AbstractBlock.Properties.create(Material.CLAY, MaterialColor.GRASS).slipperiness(0.8F).sound(SoundType.SLIME).notSolid()));
+    public static final RegistryObject<Block> SLIMEY_STONE = BlockUtils.register("slimey_stone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5F, 6.0F).harvestLevel(2).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> DISSOLVED_STONE = BlockUtils.register("dissolved_stone", () -> new SlimeBlock(AbstractBlock.Properties.of(Material.CLAY, MaterialColor.GRASS).friction(0.8F).sound(SoundType.SLIME_BLOCK).noOcclusion()));
 
     public static void register() {}
 }

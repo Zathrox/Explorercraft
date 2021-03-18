@@ -25,6 +25,8 @@ import org.apache.logging.log4j.Level;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.world.gen.feature.structure.Structure.IStartFactory;
+
 public class BlackstoneDungeonStructure extends Structure<NoFeatureConfig>
 
     {
@@ -47,7 +49,7 @@ public class BlackstoneDungeonStructure extends Structure<NoFeatureConfig>
      * This surface structure stage places the structure before plants and ores are generated.
      */
     @Override
-    public GenerationStage.Decoration getDecorationStage() {
+    public GenerationStage.Decoration step() {
         return GenerationStage.Decoration.UNDERGROUND_STRUCTURES;
     }
 
@@ -116,7 +118,7 @@ public class BlackstoneDungeonStructure extends Structure<NoFeatureConfig>
      * spacing into the chunk generator, the structure will not spawn in that dimension!
      */
 //    @Override
-//    protected boolean func_230363_a_(ChunkGenerator chunkGenerator, BiomeProvider biomeSource, long seed, SharedSeedRandom chunkRandom, int chunkX, int chunkZ, Biome biome, ChunkPos chunkPos, NoFeatureConfig featureConfig) {
+//    protected boolean isFeatureChunk(ChunkGenerator chunkGenerator, BiomeProvider biomeSource, long seed, SharedSeedRandom chunkRandom, int chunkX, int chunkZ, Biome biome, ChunkPos chunkPos, NoFeatureConfig featureConfig) {
 //        int landHeight = chunkGenerator.getNoiseHeight(chunkX << 4, chunkZ << 4, Heightmap.Type.WORLD_SURFACE_WG);
 //        return landHeight > 100;
 //    }
@@ -131,15 +133,15 @@ public class BlackstoneDungeonStructure extends Structure<NoFeatureConfig>
         }
 
         @Override
-        public void func_230364_a_(DynamicRegistries dynamicRegistryManager, ChunkGenerator chunkGenerator, TemplateManager templateManagerIn, int chunkX, int chunkZ, Biome biomeIn, NoFeatureConfig config) {
+        public void generatePieces(DynamicRegistries dynamicRegistryManager, ChunkGenerator chunkGenerator, TemplateManager templateManagerIn, int chunkX, int chunkZ, Biome biomeIn, NoFeatureConfig config) {
 
             // Turns the chunk coordinates into actual coordinates we can use. (Gets center of that chunk)
             int x = (chunkX << 4) + 7;
             int z = (chunkZ << 4) + 7;
 
             /*
-             * We pass this into func_242837_a to tell it where to generate the structure.
-             * If func_242837_a's last parameter is true, blockpos's Y value is ignored and the
+             * We pass this into addPieces to tell it where to generate the structure.
+             * If addPieces's last parameter is true, blockpos's Y value is ignored and the
              * structure will spawn at terrain height instead. Set that parameter to false to
              * force the structure to spawn at blockpos's Y value instead. You got options here!
              */
@@ -153,15 +155,15 @@ public class BlackstoneDungeonStructure extends Structure<NoFeatureConfig>
              * If you are doing Nether structures, you'll probably want to spawn your structure on top of ledges.
              * Best way to do that is to use getColumnSample to grab a column of blocks at the structure's x/z position.
              * Then loop through it and look for land with air above it and set blockpos's Y value to it.
-             * Make sure to set the final boolean in JigsawManager.func_242837_a to false so
+             * Make sure to set the final boolean in JigsawManager.addPieces to false so
              * that the structure spawns at blockpos's y value instead of placing the structure on the Bedrock roof!
              */
-            //IBlockReader blockReader = chunkGenerator.func_230348_a_(blockpos.getX(), blockpos.getZ());
+            //IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
 
             // All a structure has to do is call this method to turn it into a jigsaw based structure!
-            JigsawManager.func_242837_a(
+            JigsawManager.addPieces(
                     dynamicRegistryManager,
-                    new VillageConfig(() -> dynamicRegistryManager.getRegistry(Registry.JIGSAW_POOL_KEY)
+                    new VillageConfig(() -> dynamicRegistryManager.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY)
                                                     // The path to the starting Template Pool JSON file to read.
                                                     //
                                                     // Note, this is "structure_tutorial:run_down_house/start_pool" which means
@@ -169,7 +171,7 @@ public class BlackstoneDungeonStructure extends Structure<NoFeatureConfig>
                                                     // "resources/data/structure_tutorial/worldgen/template_pool/run_down_house/start_pool.json"
                                                     // This is why your pool files must be in "data/<modid>/worldgen/template_pool/<the path to the pool here>"
                                                     // because the game automatically will check in worldgen/template_pool for the pools.
-                                                    .getOrDefault(new ResourceLocation(Explorercraft.MOD_ID, "dungeon_start")),
+                                                    .get(new ResourceLocation(Explorercraft.MOD_ID, "dungeon_start")),
 
                             // How many pieces outward from center can a recursive jigsaw structure spawn.
                             // Our structure is only 1 piece outward and isn't recursive so any value of 1 or more doesn't change anything.
@@ -180,8 +182,8 @@ public class BlackstoneDungeonStructure extends Structure<NoFeatureConfig>
                     chunkGenerator,
                     templateManagerIn,
                     blockpos, // Position of the structure. Y value is ignored if last parameter is set to true.
-                    this.components, // The list that will be populated with the jigsaw pieces after this method.
-                    this.rand,
+                    this.pieces, // The list that will be populated with the jigsaw pieces after this method.
+                    this.random,
                     false, // Special boundary adjustments for villages. It's... hard to explain. Keep this false and make your pieces not be partially intersecting.
                     // Either not intersecting or fully contained will make children pieces spawn just fine. It's easier that way.
                     false);  // Place at heightmap (top land). Set this to false for structure to be place at the passed in blockpos's Y value instead.
@@ -201,7 +203,7 @@ public class BlackstoneDungeonStructure extends Structure<NoFeatureConfig>
             // Then we extend the bounding box down by 1 by doing `piece.getBoundingBox().minY` which will cause the
             // land formed around the structure to be lowered and not cover the doorstep. You can raise the bounding
             // box to force the structure to be buried as well. This bounding box stuff with land is only for structures
-            // that you added to Structure.field_236384_t_ field handles adding land around the base of structures.
+            // that you added to Structure.NOISE_AFFECTING_FEATURES field handles adding land around the base of structures.
             //
             // By lifting the house up by 1 and lowering the bounding box, the land at bottom of house will now be
             // flush with the surrounding terrain without blocking off the doorstep.
@@ -210,14 +212,14 @@ public class BlackstoneDungeonStructure extends Structure<NoFeatureConfig>
 
 
             // Sets the bounds of the structure once you are finished.
-            this.recalculateStructureSize();
+            this.calculateBoundingBox();
 
             // I use to debug and quickly find out if the structure is spawning or not and where it is.
             // This is returning the coordinates of the center starting piece.
             Explorercraft.LOGGER.log(Level.DEBUG, "Dungeon spawned at " +
-                                                                  this.components.get(0).getBoundingBox().minX + " " +
-                                                                  this.components.get(0).getBoundingBox().minY + " " +
-                                                                  this.components.get(0).getBoundingBox().minZ);
+                                                                  this.pieces.get(0).getBoundingBox().x0 + " " +
+                                                                  this.pieces.get(0).getBoundingBox().y0 + " " +
+                                                                  this.pieces.get(0).getBoundingBox().z0);
         }
 
     }

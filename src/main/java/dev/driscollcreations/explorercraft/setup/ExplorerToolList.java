@@ -29,36 +29,36 @@ public enum ExplorerToolList implements IItemTier {
         this.durability = durability;
         this.harvestLevel = harvestLevel;
         this.enchantability = enchantability;
-        this.repairMaterial = Ingredient.fromItems(repairMaterial);
+        this.repairMaterial = Ingredient.of(repairMaterial);
     }
 
     @Override
-    public int getMaxUses() {
+    public int getUses() {
         return this.durability;
     }
 
     @Override
-    public float getEfficiency() {
+    public float getSpeed() {
         return this.efficiency;
     }
 
     @Override
-    public float getAttackDamage() {
+    public float getAttackDamageBonus() {
         return this.attackDamage;
     }
 
     @Override
-    public int getHarvestLevel() {
+    public int getLevel() {
         return this.harvestLevel;
     }
 
     @Override
-    public int getEnchantability() {
+    public int getEnchantmentValue() {
         return this.enchantability;
     }
 
     @Override
-    public Ingredient getRepairMaterial() {
+    public Ingredient getRepairIngredient() {
         return this.repairMaterial;
     }
 }

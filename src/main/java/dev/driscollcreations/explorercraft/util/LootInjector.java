@@ -51,9 +51,9 @@ public final class LootInjector {
         Tables.get(event.getName()).ifPresent(injectorName -> {
             Explorercraft.LOGGER.info("Injecting loot table '{}' into '{}'", injectorName, event.getName());
             event.getTable().addPool(
-                    LootPool.builder()
+                    LootPool.lootPool()
                             .name("explorercraft_injected")
-                            .addEntry(TableLootEntry.builder(injectorName))
+                            .add(TableLootEntry.lootTableReference(injectorName))
                             .build()
             );
         });

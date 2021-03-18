@@ -156,12 +156,12 @@ public class ExplorerVanillaCompat {
     }
 
     public static void registerStrippable(Block LOG, Block stripped_LOG) {
-        AxeItem.BLOCK_STRIPPING_MAP = Maps.newHashMap(AxeItem.BLOCK_STRIPPING_MAP);
-        AxeItem.BLOCK_STRIPPING_MAP.put(LOG, stripped_LOG);
+        AxeItem.STRIPABLES = Maps.newHashMap(AxeItem.STRIPABLES);
+        AxeItem.STRIPABLES.put(LOG, stripped_LOG);
     }
 
     public static void registerCompostable(float chance, IItemProvider itemIn) {
-        ComposterBlock.CHANCES.put(itemIn.asItem(), chance);
+        ComposterBlock.COMPOSTABLES.put(itemIn.asItem(), chance);
     }
 
     public static void registerFlammable(Block blockIn, int encouragement, int flammability) {

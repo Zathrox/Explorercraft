@@ -39,7 +39,7 @@ public class ExplorerBiomes {
         }
 
         private static RegistryKey<Biome> key(final Biome biome) {
-            return RegistryKey.getOrCreateKey(ForgeRegistries.Keys.BIOMES, Objects.requireNonNull(ForgeRegistries.BIOMES.getKey(biome), "Biome registry name was null"));
+            return RegistryKey.create(ForgeRegistries.Keys.BIOMES, Objects.requireNonNull(ForgeRegistries.BIOMES.getKey(biome), "Biome registry name was null"));
         }
     }
 

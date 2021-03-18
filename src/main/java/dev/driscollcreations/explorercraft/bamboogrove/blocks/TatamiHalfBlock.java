@@ -14,7 +14,7 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.block.AbstractBlock.Properties;
 
 public class TatamiHalfBlock extends Block {
-    protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
+    protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
 
     public TatamiHalfBlock(Properties properties) {
@@ -26,12 +26,12 @@ public class TatamiHalfBlock extends Block {
         return SHAPE;
     }
 
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
-        return !stateIn.isValidPosition(worldIn, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+        return !stateIn.canSurvive(worldIn, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        return !worldIn.isAirBlock(pos.down());
+    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos) {
+        return !worldIn.isEmptyBlock(pos.below());
     }
 
 }

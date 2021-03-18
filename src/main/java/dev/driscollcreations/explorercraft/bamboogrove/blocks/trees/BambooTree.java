@@ -12,8 +12,8 @@ public class BambooTree extends Tree {
 
     @Nullable
     @Override
-    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean largeHive) {
-        return ExplorerFeature.BAMBOO_TREE.get().withConfiguration(ExplorerFeature.Configs.BAMBOO_TREE_CONFIG);
+    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random randomIn, boolean largeHive) {
+        return ExplorerFeature.BAMBOO_TREE.get().configured(ExplorerFeature.Configs.BAMBOO_TREE_CONFIG);
     }
 
 }

@@ -19,7 +19,7 @@ public class ExplorerItemTagsProvider extends ItemTagsProvider {
     }
 
     @Override
-    protected void registerTags() {
+    protected void addTags() {
         copy(ExplorerTags.Blocks.ORES_JADE, ExplorerTags.Items.ORES_JADE);
         copy(Tags.Blocks.ORES, Tags.Items.ORES);
 
@@ -39,7 +39,7 @@ public class ExplorerItemTagsProvider extends ItemTagsProvider {
         copy(ExplorerTags.Blocks.LEAVES, ExplorerTags.Items.LEAVES);
         copy(ExplorerTags.Blocks.LOGS, ExplorerTags.Items.LOGS);
 
-        getOrCreateBuilder(ExplorerTags.Items.JADE).add(BambooGroveItems.JADE.get());
-        getOrCreateBuilder(Tags.Items.GEMS).addTag(ExplorerTags.Items.JADE);
+        tag(ExplorerTags.Items.JADE).add(BambooGroveItems.JADE.get());
+        tag(Tags.Items.GEMS).addTag(ExplorerTags.Items.JADE);
     }
 }

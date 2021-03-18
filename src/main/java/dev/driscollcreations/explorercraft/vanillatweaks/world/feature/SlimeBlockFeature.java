@@ -47,8 +47,8 @@ public class SlimeBlockFeature extends Feature<NoFeatureConfig> {
             double d2 = (double)position.getZ() + Math.cos(f) * (double)f1;
             double d3 = (double)position.getZ() - Math.cos(f) * (double)f1;
             int j = 2;
-            double d4 = (double)(position.getY() + random.nextInt(3) - 2);
-            double d5 = (double)(position.getY() + random.nextInt(3) - 2);
+            double d4 = (position.getY() + random.nextInt(3) - 2);
+            double d5 = (position.getY() + random.nextInt(3) - 2);
             int k = position.getX() - MathHelper.ceil(f1) - i;
             int l = position.getY() - 2 - i;
             int i1 = position.getZ() - MathHelper.ceil(f1) - i;

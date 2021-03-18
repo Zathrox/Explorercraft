@@ -3,6 +3,9 @@ CHANGELOG:
 --------// Explorercraft 1.16.5 // ----------------------------------------------------
 + Initial port of mod started
 + Added new structures to the bamboo grove, currently: Sakura Tree center pieces, Two large torii-gates.
++ Re-Added Vanilla Tweak Recipes
++ Re-added Slimey-chunks for better slime chunk finding
++ Added bamboo grove saplings to Wandering trader
 todo Update plank textures
 todo Loottable injections (Villages?)
 todo Re-add configuration

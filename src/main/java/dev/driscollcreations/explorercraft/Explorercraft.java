@@ -9,6 +9,7 @@ import dev.driscollcreations.explorercraft.setup.ExplorerStructures;
 import dev.driscollcreations.explorercraft.setup.Registration;
 import dev.driscollcreations.explorercraft.util.ExplorerVanillaCompat;
 import dev.driscollcreations.explorercraft.util.ExplorercraftResourceLocation;
+import dev.driscollcreations.explorercraft.vanillatweaks.client.ClientEvents;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerPotBlock;
@@ -77,6 +78,9 @@ public class Explorercraft
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
+
+        MinecraftForge.EVENT_BUS.register(new ClientEvents());
+
         RenderTypeLookup.setRenderLayer(BambooGroveBlocks.BAMBOO_SAPLING.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BambooGroveBlocks.CHERRY_SAPLING.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BambooGroveBlocks.MAPLE_SAPLING.get(), RenderType.cutout());

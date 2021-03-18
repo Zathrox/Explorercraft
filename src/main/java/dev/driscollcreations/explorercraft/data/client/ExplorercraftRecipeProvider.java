@@ -7,6 +7,7 @@ import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
@@ -26,6 +27,29 @@ public class ExplorercraftRecipeProvider extends RecipeProvider {
         createBambooGroveWoodRecipes(consumer);
     }
 
+    private static void createVanillaTweakRecipes(Consumer<IFinishedRecipe> consumer) {
+        ShapedRecipeBuilder.shaped(Items.SADDLE, 1)
+                .pattern("LLL")
+                .pattern("SLS")
+                .pattern("I I")
+                .define('L', Items.LEATHER)
+                .define('S', Items.STRING)
+                .define('I', Items.IRON_INGOT)
+                .unlockedBy("has_leather", has(Items.LEATHER))
+                .unlockedBy("has_saddle", has(Items.SADDLE))
+                .save(consumer, new ResourceLocation(Explorercraft.MOD_ID, "saddle"));
+
+        ShapedRecipeBuilder.shaped(Items.TRIDENT, 1)
+                .pattern(" SS")
+                .pattern(" HS")
+                .pattern("C  ")
+                .group("combat")
+                .define('S', Items.PRISMARINE_SHARD)
+                .define('C', Items.PRISMARINE_CRYSTALS)
+                .define('H', Items.HEART_OF_THE_SEA)
+                .unlockedBy("has_heart_of_sea", has(Items.HEART_OF_THE_SEA))
+                .save(consumer, new ResourceLocation(Explorercraft.MOD_ID, "trident"));
+    }
     private static void createBambooGroveMiscRecipes(Consumer<IFinishedRecipe> consumer) {
 
         ShapelessRecipeBuilder.shapeless(BambooGroveItems.RICE_STRAW.get(), 9)
@@ -394,7 +418,7 @@ public class ExplorercraftRecipeProvider extends RecipeProvider {
                 .pattern("JS|")
                 .pattern("S |")
                 .pattern("JS|")
-                .unlockedBy("has_item", has(jade))
+                .unlockedBy("has_jade", has(jade))
                 .save(consumer);
 
         ShapelessRecipeBuilder.shapeless(jade, 9)

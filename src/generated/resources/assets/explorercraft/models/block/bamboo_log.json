@@ -1,0 +1,7 @@
+{
+  "parent": "explorercraft:block/bamboo",
+  "textures": {
+    "texture": "explorercraft:block/bamboo_log",
+    "end": "explorercraft:block/bamboo_log_top"
+  }
+}

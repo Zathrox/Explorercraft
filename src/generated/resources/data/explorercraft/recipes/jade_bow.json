@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "JS|",
+    "S |",
+    "JS|"
+  ],
+  "key": {
+    "J": {
+      "item": "explorercraft:jade"
+    },
+    "|": {
+      "item": "minecraft:string"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "explorercraft:jade_bow"
+  }
+}

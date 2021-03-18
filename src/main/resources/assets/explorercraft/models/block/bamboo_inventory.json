@@ -1,0 +1,32 @@
+{   "parent": "block/block",
+    "display": {
+        "gui": {
+            "rotation": [ 30, 135, 0 ],
+            "translation": [ 0, 0, 0],
+            "scale":[ 0.625, 0.625, 0.625 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 90, 0 ],
+            "translation": [ 0, 0, 0],
+            "scale":[ 0.8, 0.8, 0.8 ]
+        }
+    },
+    "ambientocclusion": false,
+    "textures": {
+        "particle": "#texture"
+    },
+    "elements": [
+        {   "from": [ 6, 0, 6 ],
+            "to": [ 10, 16, 10],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#end", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#end" },
+                "north": { "uv": [ 6, 0, 10, 16 ], "texture": "#side" },
+                "south": { "uv": [ 6, 0, 10, 16 ], "texture": "#side" },
+                "west":  { "uv": [ 6, 0, 10, 16 ], "texture": "#side" },
+                "east":  { "uv": [ 6, 0, 10, 16 ], "texture": "#side" }
+            },
+            "__comment": "Main Log"
+        }
+    ]
+}

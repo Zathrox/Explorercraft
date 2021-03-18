@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_fence_gate",
+  "pattern": [
+    "X#X",
+    "X#X"
+  ],
+  "key": {
+    "#": {
+      "item": "explorercraft:bamboo_planks_vertical"
+    },
+    "X": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "explorercraft:bamboo_fence_gate"
+  }
+}

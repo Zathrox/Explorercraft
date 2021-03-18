@@ -1,0 +1,10 @@
+{
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/explorercraft",
+    "1.15.2": {
+        "4.0.2": "Chinese translations added"
+    },
+    "promos": {
+        "1.15.2-latest": "4.0.2",
+        "1.15.2-recommended": "4.0.2"
+    }
+}

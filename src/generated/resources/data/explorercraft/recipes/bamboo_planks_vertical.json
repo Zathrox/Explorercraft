@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "planks",
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "explorercraft:bamboo_log"
+    }
+  },
+  "result": {
+    "item": "explorercraft:bamboo_planks_vertical",
+    "count": 4
+  }
+}

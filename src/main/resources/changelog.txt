@@ -1,0 +1,130 @@
+CHANGELOG:
+
+--------// Explorercraft 1.16.5 // ----------------------------------------------------
++ Initial port of mod started
++ Added new structures to the bamboo grove, currently: Sakura Tree center pieces, Two large torii-gates.
+todo Update plank textures
+todo Loottable injections (Villages?)
+todo Re-add configuration
+
+
+todo Adamantite knights, drop adamintite scrap, forge it like netherite scrape with another material, take it to Wizard for Ingots?
+todo Notes: Creating a dynamically sized and more interesting Slate dungeon is possible with jigsaw pieces
+todo all I need to do is create a large selection of rooms, give each jigsaw piece a corresponding and matching name/target
+todo so hallway, will look for hallway, etc. Could for example on certain rooms, have new pools to spawn new hallways or special rooms.
+
+--------// Explorercraft 1.15.2 // ----------------------------------------------------
+Patch 4.0.3:
+Added latest chinese translations
+
+Patch 4.0.2:
+todo Drops for blocks / improve texture model / Add wizard trade for dissolved/slimey stone
+todo Improve tree textures + slimey stone
+todo Blacklist food items
+todo - update default villager trades (look at upgrade aquatic for proper forge events)
+todo Clean up config (maybe add wizard config/tower spawns)
+todo add dungeon as a structure
+
+Updated forge to release version: 31.2.0
+Added noctiluca spawning options in config
+Added in en_GB language (I am British after-all)
+Amended en_US "chiselled" to american "chiseled", if any other noted differences, please forward them to me!
+Fixed rare trade issue with stacks not being read correctly
+Fixed ore harvest level (Jade/Ruby is harvest level 2, Amethyst is harvest level 1)
+Fixed tatami mat only dropping the item, if the head was broken
+Fixed rice base block not destroying when rice top block is broken/harvested
+Fixed lotus stem from not destroying when lotus flower is broken/harvested
+Fixed Tall Cattails not being able to be placed on mud
+Noctiluca fruit is now always editable
+Fixed explorercraft trees not growing naturally
+Increased the speed of brush stooges to match brons description of them
+Added in a set of pink infected wood blocks
+Added in a recipe to get pink infected wood from pink glowshrooms
+Fixed dirt spawning underneath bamboo trees on world generation
+Increased enderghast spawns in the end
+
+New mob: Skeletaur!
+- Spawns in the plains biomes at night!
+- Drops bones for now, rarer or unique items coming in the future!
+
+
+Patch 4.0.1:
++ Improved slimey slime chunks generation
+++ Now spawns more frequently in swamps and rarely in other biomes (A new reason to actually find a swamp biome!)
++++ New slimy stone and dissolved stone slime blocks
++ Added mob spawning (forgot it in last patch)
++ Fixed multiplayer sleeping bag visual glitch
++ Added some new enchantments (Treasure Enchantments only and some of the functionality for them is limited/no there, so WIP)
++ New Cartographer Trade to get an exploration map that can locate a Wizards Tower (Might lag / delay game while it locates one)
++ Wizard towers now spawn in multiply mountain biomes, not just snowdonia  (In order to reduce the lag/delay, locating one from the map/command)
++ Wizard towers can now be located with /locate
++ Completely reworked the Wizard trades, all trades will now reward some kind of exploration by hunting and farming some kind of rare goodies from around the worlds, with random gem prices for your troubles!
+++ Will now spawn a random amount of normal trades, 2 + random amount of rare trades and 1+random amount of welsh trades
++ Fixed fatal server crashing bug (It was the enderreeper blowing up your servers! Literally, it really was!)
++ Wooden Trapdoors + Doors are now no longer flammable! (didn't realise that they weren't in vanilla, so I thought it was an oversight on my behalf!)
++ Fixed duplicated language bug with Polished and Tile slate slabs
++ Added a localised translation string for the description of the Wizard Hat - can now change it to your local languages!
+
+Patch 4.0.0:
++ Initial port of mod, with several fixes to get working on this version (All World Gen is Broken)
++ Fixed rendering issues on plants
++ Wooden Trapdoors + Doors are now flammable!
++ Ash tree saplings now require 9 saplings to spawn, to make it fair on the logs > sapling ratio
++ Minor subtle changes to the way biomes look / generate due to 1.15 changes
++ Wizards now have a random chance to reset / chance trades after a successful trade
++ Wizard trades are now different, new additions, different functionality, now rewards you for exploring!
+
+
+--------// Explorercraft 1.14.4 // ----------------------------------------------------
+Patch 3.2.2:
++ added Custom Villager Trades (might be conflict with other mods)
++ tweaked world generation of the Slate Dungeon code (possible fix to an issue someone was having)
++ Fixed Polished Basalt, Marble and Slate all dropping bricks and not polished variants - no idea how that slipped through and for how long!
++ Tweaked and changed functionality of the Wizard Trading - the initial wizard I spawned in the structure, all his trades were duplicated, so now the wizard has poor memory and randomly changes his mind on what he's selling! :P
++ added Jade Longbow added
++ added Enderghast to the End
+
+Patch 3.2.3:
+- Removed a config conflict where disabling the enderreeper disabled both the enderghast + enderreeper and the enderghast config did nothing
++ Added new rare spawns to the enderreeper spawning in the overworld and nether biome, similar to the enderman (these are configurable)
++ Special thanks to MasterSloth1 for providing me with OreDict variants of my tools/armors recipes which allow for other mod gems to be used to make explorercraft tools!
++ Added Russian translation
++ Modified Enderghast spawns slightly
++ Added Enderghast Spawn egg to language file
+
+Patch 3.2.4:
++ Changed Gem Blocks languages file to match vanilla: Block of Gem
++ Added wizard/wizard tower weights, to increase the chance of them spawning
++ Tweaked some loot-tables to reduce conflicts
++ Added Ash-Tree rarity, increase to add more ashtrees to spawn (careful though, higher values will cause lag/dodgy world gen)
+
+Patch 3.2.5:
++ Updated to latest and recommended forge
++ Updated Noctiluca Artwork
++ Updated some Jade tools Artwork
++ Renamed "Bamboo Forest" to "Bamboo Grove"
++ Renamed "Bamboo" to "Thick Bamboo" in order to reduce conflicts with Vanilla bamboo
++ Fixed normal minecraft bamboo being planted on top of Thick Bamboo and Bamboo Saplings
+- Disabled Enderreeper spawning in the Overworld/Nether by default (can configure in settings, if you wish to have the monstrosity in your normal worlds)
++ Added Loot-table for Lotus Flowers, can now finally collect them!
++ Added some extra info onto the EntityConfig for Wizards
++ Added Infected Wood crafting recipes (Find the green glowshrooms!)
++ Added Infected Wood recipebook advancements
++ Added Willow loot-table, can now finally collect them! (use shears like vines)
++ Amended text for the bamboo related advancements
++ Decreased all Explorercraft biome weights, making them rarer hopefully!
++ Fixed spawning bug preventing Infected mobs from spawning in Dark Forest Hills
++ Added new spawning rules for the enderreeper, that if enabled for overworld spawning, they wont spawn on mushroom field biomes or in the nether by default
++ Added Slate dungeon rarity options in the general config file
++ Increased the slate dungeon rarity from 2 to 10 (making it more common)
++ Increased chances for east branch of the dungeon to spawn (making the full cross shaped dungeon more common)
+
+Patch 3.2.6:
++ Added some additional code to the enderreeper spawning that should hopefully limit the spawns of it in the dimensions that load overworld biomes into them
++ reduce enderreeper spawns in the end slightly
+
+Patch 3.2.7:
++ Added Chinese(simplified) translation with special thanks to Chiren_Chen for the file
++ Fixed an issue in all language (english, spanish, russian and chinese) files where slate tile slabs didn't have the correct name due to naming conflicts with polished slate slabs
++ Changed the brush stooge spawn egg color to be unique from the infected skeleton
++ Added Slimey Caves - a new visual and rewarding experience for finding a Slime Chunk!

@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "explorercraft:block/rice_stage2"
+    }
+}

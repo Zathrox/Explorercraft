@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    " |",
+    " |"
+  ],
+  "key": {
+    "#": {
+      "item": "explorercraft:jade"
+    },
+    "|": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "explorercraft:jade_hoe"
+  }
+}

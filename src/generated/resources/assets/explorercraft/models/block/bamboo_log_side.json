@@ -1,0 +1,6 @@
+{
+  "parent": "explorercraft:block/bamboo_branch",
+  "textures": {
+    "texture": "explorercraft:block/bamboo_log"
+  }
+}

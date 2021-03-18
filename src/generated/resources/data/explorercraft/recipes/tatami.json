@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "###",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "explorercraft:bamboo_log"
+    },
+    "#": {
+      "item": "explorercraft:rice_straw"
+    }
+  },
+  "result": {
+    "item": "explorercraft:tatami",
+    "count": 8
+  }
+}

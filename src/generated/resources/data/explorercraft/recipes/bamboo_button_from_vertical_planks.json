@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "explorercraft:bamboo_planks_vertical"
+    }
+  ],
+  "result": {
+    "item": "explorercraft:bamboo_button"
+  }
+}

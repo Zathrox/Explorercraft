@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_door",
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "explorercraft:bamboo_planks_vertical"
+    }
+  },
+  "result": {
+    "item": "explorercraft:bamboo_door"
+  }
+}

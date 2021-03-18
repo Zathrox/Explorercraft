@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "sushi",
+  "ingredients": [
+    {
+      "item": "explorercraft:rice"
+    },
+    {
+      "item": "minecraft:salmon"
+    }
+  ],
+  "result": {
+    "item": "explorercraft:salmon_sushi"
+  }
+}

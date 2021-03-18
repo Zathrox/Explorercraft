@@ -4,9 +4,11 @@ import com.google.common.collect.ImmutableList;
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.world.feature.RicePaddyFeature;
+import dev.driscollcreations.explorercraft.vanillatweaks.world.feature.SlimeBlockFeature;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
@@ -31,6 +33,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.Level;
 
 import java.util.OptionalInt;
+import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = Explorercraft.MOD_ID)
 public class ExplorerFeature {
@@ -41,6 +44,7 @@ public class ExplorerFeature {
     public static final RegistryObject<Feature<BaseTreeFeatureConfig>> BAMBOO_TREE = FEATURES.register("bamboo_tree", () -> new TreeFeature(BaseTreeFeatureConfig.CODEC));
     public static final RegistryObject<Feature<BaseTreeFeatureConfig>> MAPLE_TREE = FEATURES.register("maple_tree", () -> new TreeFeature(BaseTreeFeatureConfig.CODEC));
     public static final RegistryObject<Feature<NoFeatureConfig>> RICE_PADDY = FEATURES.register("rice_paddy", () -> new RicePaddyFeature());
+    public static final RegistryObject<Feature<NoFeatureConfig>> SLIMEY_CHUNK = FEATURES.register("slimey_chunk", () -> new SlimeBlockFeature()) ;
 
 
     //Add which biome to generate one.
@@ -48,7 +52,14 @@ public class ExplorerFeature {
     public static void onBiomeLoad(BiomeLoadingEvent event) {
         if (event.getName() == null) return;
         ResourceLocation biome = event.getName();
+        Random rand = new Random();
         BiomeGenerationSettingsBuilder generation = event.getGeneration();
+
+        if(biome == Biomes.SWAMP.getRegistryName() || biome == Biomes.SWAMP_HILLS.getRegistryName()) {
+            generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Configured.SLIMEY_CHUNK_SWAMP);
+        } else if (rand.nextInt(20) == 0) {
+            generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Configured.SLIMEY_CHUNK_GLOBAL);
+        }
 
         if (biome.toString().contains("bamboo_grove")) {
             Explorercraft.LOGGER.log(Level.DEBUG, "Generating bamboo trees: " + biome);
@@ -126,6 +137,8 @@ public class ExplorerFeature {
         public static final ConfiguredFeature<?, ?> MAPLE_TREE = ExplorerFeature.MAPLE_TREE.get().configured(Configs.MAPLE_TREE_CONFIG).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(10, 0.1F, 1)));
         public static final ConfiguredFeature<?, ?> JADE_ORE = Feature.ORE.configured(Configs.JADE_ORE_CONFIG).range(24).squared();
         public static final ConfiguredFeature<?, ?> RICE_PADDY = ExplorerFeature.RICE_PADDY.get().configured(IFeatureConfig.NONE).decorated(Placement.TOP_SOLID_HEIGHTMAP.configured(IPlacementConfig.NONE));
+        public static final ConfiguredFeature<?, ?> SLIMEY_CHUNK_SWAMP = ExplorerFeature.SLIMEY_CHUNK.get().configured(IFeatureConfig.NONE).range(40).squared().count(33);
+        public static final ConfiguredFeature<?, ?> SLIMEY_CHUNK_GLOBAL = ExplorerFeature.SLIMEY_CHUNK.get().configured(IFeatureConfig.NONE).range(40).squared().count(20);
 
         public static void registerConfiguredFeatures() {
             register("bamboo_tree", BAMBOO_TREE);
@@ -133,6 +146,8 @@ public class ExplorerFeature {
             register("maple_tree", MAPLE_TREE);
             register("jade_ore", JADE_ORE);
             register("rice_paddy", RICE_PADDY);
+            register("slimey_chunk_swamp", SLIMEY_CHUNK_SWAMP);
+            register("slimey_chunk_global", SLIMEY_CHUNK_GLOBAL);
 
         }
 

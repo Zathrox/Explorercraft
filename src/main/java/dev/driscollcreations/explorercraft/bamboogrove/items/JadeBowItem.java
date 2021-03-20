@@ -7,9 +7,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.*;
 import net.minecraft.stats.Stats;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class JadeBowItem extends BowItem {
 
@@ -25,6 +28,13 @@ public class JadeBowItem extends BowItem {
         return 172000;
     }
 
+
+    @OnlyIn(Dist.CLIENT)
+    public void initConfigOptions() {
+        ItemModelsProperties.register(this, new ResourceLocation("pulling"), (itemStack, world, livingEntity) -> {
+            return livingEntity != null && livingEntity.isHandActive() && livingEntity.getActiveItemStack() == itemStack ? 1.0F : 0.0F;
+        });
+    }
 
     /**
      * Called when the player stops using an Item (stops holding the right mouse button).

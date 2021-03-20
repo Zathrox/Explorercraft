@@ -80,7 +80,6 @@ public class ExplorercraftRecipeProvider extends RecipeProvider {
 
     private static void createBambooGroveWoodRecipes(Consumer<IFinishedRecipe> consumer) {
 
-
         ShapedRecipeBuilder.shaped(BambooGroveBlocks.BAMBOO_PLANKS.get(), 4)
                 .define('#', BambooGroveBlocks.BAMBOO_LOG.get())
                 .pattern("###")

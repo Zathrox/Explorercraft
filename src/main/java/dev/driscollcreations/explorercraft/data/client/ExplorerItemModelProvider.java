@@ -32,6 +32,7 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
         withExistingParent("rice_straw_block", modLoc("block/rice_straw_block"));
         builderMod(itemGenerated, "item/rice");
         builderMod(itemGenerated, "item/rice_straw");
+        builderMod(itemGenerated, "item/cherry_blossom");
         builderMod(itemGenerated, "item/rice_bowl");
         builderMod(itemGenerated, "item/onigiri");
         builderMod(itemGenerated, "item/salmon_sushi");

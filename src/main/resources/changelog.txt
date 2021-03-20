@@ -6,10 +6,12 @@ CHANGELOG:
 + Re-Added Vanilla Tweak Recipes
 + Re-added Slimey-chunks for better slime chunk finding
 + Added bamboo grove saplings to Wandering trader
-todo Update plank textures
-todo Loottable injections (Villages?)
++ Added Rice to Farmer villagers
++ Updated the Maple and Cherry Blossom Tree, given them a Jasper-esque update :D
+todo add cherry blossom planks + blocks
+todo add cherry blossom blocks localisation, loottables, blockstates, models
 todo Re-add configuration
-
+todo jade_bow not animating?
 
 todo Adamantite knights, drop adamintite scrap, forge it like netherite scrape with another material, take it to Wizard for Ingots?
 todo Notes: Creating a dynamically sized and more interesting Slate dungeon is possible with jigsaw pieces
@@ -21,13 +23,6 @@ Patch 4.0.3:
 Added latest chinese translations
 
 Patch 4.0.2:
-todo Drops for blocks / improve texture model / Add wizard trade for dissolved/slimey stone
-todo Improve tree textures + slimey stone
-todo Blacklist food items
-todo - update default villager trades (look at upgrade aquatic for proper forge events)
-todo Clean up config (maybe add wizard config/tower spawns)
-todo add dungeon as a structure
-
 Updated forge to release version: 31.2.0
 Added noctiluca spawning options in config
 Added in en_GB language (I am British after-all)

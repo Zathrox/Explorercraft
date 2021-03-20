@@ -47,19 +47,20 @@ public final class ExplorerTrades {
     @SubscribeEvent
     public static void onWandererTradesEvent(WandererTradesEvent event) {
         ExplorerTrades.addWandererTrades(event,
-                new ExplorerTrades.ExplorerTrade(1, BambooGroveBlocks.BAMBOO_SAPLING.get().asItem(), 1, 12, 1)
+                new ExplorerTrades.ExplorerTrade(1, BambooGroveBlocks.BAMBOO_SAPLING.get().asItem(), 1, 3, 1)
         );
 
         ExplorerTrades.addRareWandererTrades(event,
-                new ExplorerTrades.ExplorerTrade(1, BambooGroveBlocks.CHERRY_SAPLING.get().asItem(), 1, 12, 1),
-                new ExplorerTrades.ExplorerTrade(1, BambooGroveBlocks.MAPLE_SAPLING.get().asItem(), 1, 12, 1)
+                new ExplorerTrades.ExplorerTrade(1, BambooGroveBlocks.CHERRY_SAPLING.get().asItem(), 1, 3, 1),
+                new ExplorerTrades.ExplorerTrade(1, BambooGroveBlocks.MAPLE_SAPLING.get().asItem(), 1, 3, 1),
+                new ExplorerTrades.ExplorerTrade(1, BambooGroveItems.CHERRY_BLOSSOM.get().asItem(), 1, 12, 1)
         );
     }
 
     @SubscribeEvent
     public static void onVillagerTradesEvent(VillagerTradesEvent event) {
         ExplorerTrades.addVillagerTrades(event, VillagerProfession.FARMER, ExplorerTrades.NOVICE,
-                new ExplorerTrades.ExplorerTrade(1, BambooGroveItems.RICE.get(), 32, 16, 2)
+                new ExplorerTrades.ExplorerTrade(BambooGroveItems.RICE.get(), 32, 1, 16, 2)
         );
     }
 

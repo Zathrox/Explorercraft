@@ -16,40 +16,41 @@ public class BambooGroveItems {
     //======== Food and Misc items
     public static final RegistryObject<Item> RICE = Registration.ITEMS.register("rice", () -> new BlockNamedItem(BambooGroveBlocks.RICE_BASE.get(), new Item.Properties().food(ExplorerFoods.RICE).tab(ExplorerItemGroups.EXPLORERCRAFT)));
     public static final RegistryObject<Item> RICE_STRAW = Registration.ITEMS.register("rice_straw", () -> new Item(basicItemProps));
+    public static final RegistryObject<Item> CHERRY_BLOSSOM = Registration.ITEMS.register("cherry_blossom", () -> new Item(basicItemProps));
 
-    public static final RegistryObject<Item> RICE_STEW = Registration.ITEMS.register("rice_bowl", () -> new SoupItem(basicItemProps.food(ExplorerFoods.RICE_BOWL).stacksTo(1)));
-    public static final RegistryObject<Item> ONIGIRI = Registration.ITEMS.register("onigiri", () -> new Item(basicItemProps.food(ExplorerFoods.ONIGIRI)));
-    public static final RegistryObject<Item> SALMON_SUSHI = Registration.ITEMS.register("salmon_sushi", () -> new Item(basicItemProps.food(ExplorerFoods.SALMON_SUSHI)));
-    public static final RegistryObject<Item> TAMAGO_SUSHI = Registration.ITEMS.register("tamago_sushi", () -> new Item(basicItemProps.food(ExplorerFoods.TAMAGO_SUSHI)));
+    public static final RegistryObject<Item> RICE_STEW = Registration.ITEMS.register("rice_bowl", () -> new SoupItem(new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT).food(ExplorerFoods.RICE_BOWL).stacksTo(1)));
+    public static final RegistryObject<Item> ONIGIRI = Registration.ITEMS.register("onigiri", () -> new Item(new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT).food(ExplorerFoods.ONIGIRI)));
+    public static final RegistryObject<Item> SALMON_SUSHI = Registration.ITEMS.register("salmon_sushi", () -> new Item(new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT).food(ExplorerFoods.SALMON_SUSHI)));
+    public static final RegistryObject<Item> TAMAGO_SUSHI = Registration.ITEMS.register("tamago_sushi", () -> new Item(new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT).food(ExplorerFoods.TAMAGO_SUSHI)));
 
 
     ///======== Jade Misc
     public static final RegistryObject<Item> JADE = Registration.ITEMS.register("jade", () -> new Item(basicItemProps));
-    public static final RegistryObject<Item> JADE_BOW = Registration.ITEMS.register("jade_bow", () -> new JadeBowItem(basicItemProps.durability(684)));
+    public static final RegistryObject<Item> JADE_BOW = Registration.ITEMS.register("jade_bow", () -> new JadeBowItem(new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT).durability(684)));
     public static final RegistryObject<Item> JADE_HORSE_ARMOR = Registration.ITEMS.register("jade_horse_armor",
             () -> new HorseArmorItem(8, new ResourceLocation(Explorercraft.MOD_ID, "textures/entities/horse/armor/horse_armor_jade.png"), singleStackItemProps));
 
     //======== Jade Tools
     public static final RegistryObject<Item> JADE_AXE = Registration.ITEMS.register("jade_axe",
-            () -> new AxeItem(ExplorerToolList.JADE, 6.0f, -3.1F, basicItemProps));
+            () -> new AxeItem(ExplorerToolList.JADE, 6.0f, -3.1F, new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT)));
     public static final RegistryObject<Item> JADE_HOE = Registration.ITEMS.register("jade_hoe",
-            () -> new HoeItem(ExplorerToolList.JADE, -1, 0.0F, basicItemProps));
+            () -> new HoeItem(ExplorerToolList.JADE, -1, 0.0F, new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT)));
     public static final RegistryObject<Item> JADE_PICKAXE = Registration.ITEMS.register("jade_pickaxe",
-            () -> new PickaxeItem(ExplorerToolList.JADE, 1, -2.8F, basicItemProps));
+            () -> new PickaxeItem(ExplorerToolList.JADE, 1, -2.8F, new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT)));
     public static final RegistryObject<Item> JADE_SHOVEL = Registration.ITEMS.register("jade_shovel",
-            () -> new ShovelItem(ExplorerToolList.JADE, 1.5F, -3.0F, basicItemProps));
+            () -> new ShovelItem(ExplorerToolList.JADE, 1.5F, -3.0F, new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT)));
     public static final RegistryObject<Item> JADE_SWORD = Registration.ITEMS.register("jade_sword",
-            () -> new SwordItem(ExplorerToolList.JADE, 3, -2.4F, basicItemProps));
+            () -> new SwordItem(ExplorerToolList.JADE, 3, -2.4F, new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT)));
 
     //======== Jade Armor
     public static final RegistryObject<Item> JADE_HELMET = Registration.ITEMS.register("jade_helmet",
-            () -> new ArmorItem(ExplorerArmorList.JADE_ARMOR, EquipmentSlotType.HEAD, basicItemProps));
+            () -> new ArmorItem(ExplorerArmorList.JADE_ARMOR, EquipmentSlotType.HEAD, new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT)));
     public static final RegistryObject<Item> JADE_CHESTPLATE = Registration.ITEMS.register("jade_chestplate",
-            () -> new ArmorItem(ExplorerArmorList.JADE_ARMOR, EquipmentSlotType.CHEST, basicItemProps));
+            () -> new ArmorItem(ExplorerArmorList.JADE_ARMOR, EquipmentSlotType.CHEST, new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT)));
     public static final RegistryObject<Item> JADE_LEGGINGS = Registration.ITEMS.register("jade_leggings",
-            () -> new ArmorItem(ExplorerArmorList.JADE_ARMOR, EquipmentSlotType.LEGS, basicItemProps));
+            () -> new ArmorItem(ExplorerArmorList.JADE_ARMOR, EquipmentSlotType.LEGS, new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT)));
     public static final RegistryObject<Item> JADE_BOOTS = Registration.ITEMS.register("jade_boots",
-            () -> new ArmorItem(ExplorerArmorList.JADE_ARMOR, EquipmentSlotType.FEET, basicItemProps));
+            () -> new ArmorItem(ExplorerArmorList.JADE_ARMOR, EquipmentSlotType.FEET, new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT)));
 
 
     public static void register() {}

@@ -58,6 +58,18 @@ public class BambooGroveBlocks {
     public static final RegistryObject<RotatedPillarBlock> CHERRY_STRIPPED_WOOD = BlockUtils.register("cherry_stripped_wood",
             () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD).strength(2, 10).sound(SoundType.WOOD)));
 
+    //== Cherry Blossom Blocks
+    public static final RegistryObject<Block> CHERRY_BLOSSOM_BUTTON = BlockUtils.register("cherry_blossom_button", () -> BlockUtils.createWoodButton());
+    public static final RegistryObject<Block> CHERRY_BLOSSOM_DOOR = BlockUtils.register("cherry_blossom_door", () -> BlockUtils.createWoodDoor());
+    public static final RegistryObject<Block> CHERRY_BLOSSOM_FENCE = BlockUtils.register("cherry_blossom_fence", () -> BlockUtils.createWoodFence());
+    public static final RegistryObject<Block> CHERRY_BLOSSOM_FENCE_GATE = BlockUtils.register("cherry_blossom_fence_gate", () -> BlockUtils.createWoodFenceGate());
+    public static final RegistryObject<Block> CHERRY_BLOSSOM_PLANKS = BlockUtils.register("cherry_blossom_planks", () -> BlockUtils.createWoodBlock());
+    public static final RegistryObject<Block> CHERRY_BLOSSOM_PRESSURE_PLATE = BlockUtils.register("cherry_blossom_pressure_plate", () -> BlockUtils.createWoodPressurePlate());
+    public static final RegistryObject<Block> CHERRY_BLOSSOM_SLAB = BlockUtils.register("cherry_blossom_slab", () -> BlockUtils.createWoodSlab());
+    public static final RegistryObject<Block> CHERRY_BLOSSOM_STAIRS = BlockUtils.register("cherry_blossom_stairs",
+            () -> new StairsBlock(() -> CHERRY_BLOSSOM_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(CHERRY_BLOSSOM_PLANKS.get())));
+    public static final RegistryObject<Block> CHERRY_BLOSSOM_TRAPDOOR = BlockUtils.register("cherry_blossom_trapdoor", () -> BlockUtils.createWoodTrapdoor());
+
     //== Maple Tree
     public static final RegistryObject<Block> MAPLE_LEAVES = BlockUtils.register("maple_leaves", () -> BlockUtils.createLeavesBlock());
     public static final RegistryObject<RotatedPillarBlock> MAPLE_LOG = BlockUtils.register("maple_log",

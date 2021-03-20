@@ -1,15 +1,11 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "group": "planks",
-  "pattern": [
-    "###",
-    "###"
-  ],
-  "key": {
-    "#": {
+  "ingredients": [
+    {
       "item": "explorercraft:cherry_log"
     }
-  },
+  ],
   "result": {
     "item": "explorercraft:cherry_planks",
     "count": 4

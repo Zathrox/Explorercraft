@@ -94,6 +94,26 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         woodBlock(BambooGroveBlocks.CHERRY_WOOD.get(), modLoc("block/cherry_log"));
         woodBlock(BambooGroveBlocks.CHERRY_STRIPPED_WOOD.get(), modLoc("block/cherry_stripped_log"));
 
+        //===== Cherry Blossom Blocks
+        buttonBlock(BambooGroveBlocks.CHERRY_BLOSSOM_BUTTON.get(),
+                models().withExistingParent("cherry_blossom_button", mcLoc("block/button"))
+                        .texture("texture", "block/cherry_blossom_planks"),
+                models().withExistingParent("cherry_blossom_button_pressed", mcLoc("block/button_pressed"))
+                        .texture("texture", "block/cherry_blossom_planks"));
+        new ConfiguredModel(models().withExistingParent("cherry_blossom_button_inventory", mcLoc("block/button_inventory")).texture("texture", "block/cherry_blossom_planks"));
+        doorBlock((DoorBlock) BambooGroveBlocks.CHERRY_BLOSSOM_DOOR.get(), modLoc("block/cherry_blossom_door_bottom"), modLoc("block/cherry_blossom_door_top"));
+        fenceBlock((FenceBlock) BambooGroveBlocks.CHERRY_BLOSSOM_FENCE.get(), modLoc("block/cherry_blossom_planks"));
+        fenceGateBlock((FenceGateBlock) BambooGroveBlocks.CHERRY_BLOSSOM_FENCE_GATE.get(), modLoc("block/cherry_blossom_planks"));
+        simpleBlock(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get());
+        pressurePlateBlock(BambooGroveBlocks.CHERRY_BLOSSOM_PRESSURE_PLATE.get(),
+                models().withExistingParent("cherry_blossom_pressure_plate", mcLoc("block/pressure_plate_up"))
+                        .texture("texture", "block/cherry_blossom_planks"),
+                models().withExistingParent("cherry_blossom_pressure_plate_down", mcLoc("block/pressure_plate_down"))
+                        .texture("texture", "block/cherry_blossom_planks"));
+        slabBlock((SlabBlock) BambooGroveBlocks.CHERRY_BLOSSOM_SLAB.get(), modLoc("block/cherry_blossom_planks"), modLoc("block/cherry_blossom_planks"));
+        stairsBlock((StairsBlock) BambooGroveBlocks.CHERRY_BLOSSOM_STAIRS.get(), modLoc("block/cherry_blossom_planks"));
+        trapdoorBlock((TrapDoorBlock) BambooGroveBlocks.CHERRY_BLOSSOM_TRAPDOOR.get(), modLoc("block/cherry_blossom_trapdoor"), true);
+
         //===== Maple Tree Blocks
         buttonBlock(BambooGroveBlocks.MAPLE_BUTTON.get(),
                 models().withExistingParent("maple_button", mcLoc("block/button"))

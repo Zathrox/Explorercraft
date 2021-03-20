@@ -7,6 +7,7 @@ import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.item.crafting.ShapelessRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 
@@ -226,10 +227,8 @@ public class ExplorercraftRecipeProvider extends RecipeProvider {
 
 
         //===== Cherry Blocks
-        ShapedRecipeBuilder.shaped(BambooGroveBlocks.CHERRY_PLANKS.get(), 4)
-                .define('#', BambooGroveBlocks.CHERRY_LOG.get())
-                .pattern("###")
-                .pattern("###")
+        ShapelessRecipeBuilder.shapeless(BambooGroveBlocks.CHERRY_PLANKS.get(), 4)
+                .requires(BambooGroveBlocks.CHERRY_LOG.get())
                 .unlockedBy("has_item", has(BambooGroveBlocks.CHERRY_LOG.get()))
                 .group("planks")
                 .save(consumer);
@@ -313,12 +312,83 @@ public class ExplorercraftRecipeProvider extends RecipeProvider {
                 .group("bark")
                 .save(consumer);
 
+        //===== Cherry Blossom Blocks
+        ShapedRecipeBuilder.shaped(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get(), 8)
+                .define('#', BambooGroveBlocks.CHERRY_PLANKS.get())
+                .define('B', BambooGroveItems.CHERRY_BLOSSOM.get())
+                .pattern("###")
+                .pattern("#B#")
+                .pattern("###")
+                .unlockedBy("has_item", has(BambooGroveItems.CHERRY_BLOSSOM.get()))
+                .group("planks")
+                .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(BambooGroveBlocks.CHERRY_BLOSSOM_BUTTON.get(), 1)
+                .requires(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get()).unlockedBy("has_planks", has(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get()))
+                .group("wooden_button")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(BambooGroveBlocks.CHERRY_BLOSSOM_DOOR.get(), 1)
+                .define('#', BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get())
+                .pattern("##")
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy("has_planks", has(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get()))
+                .group("wooden_door")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(BambooGroveBlocks.CHERRY_BLOSSOM_FENCE.get(), 1)
+                .define('#', BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get())
+                .define('X', Tags.Items.RODS_WOODEN)
+                .pattern("#X#")
+                .pattern("#X#")
+                .unlockedBy("has_item", has(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get()))
+                .group("wooden_fence")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(BambooGroveBlocks.CHERRY_BLOSSOM_FENCE_GATE.get(), 1)
+                .define('#', BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get())
+                .define('X', Tags.Items.RODS_WOODEN)
+                .pattern("X#X")
+                .pattern("X#X")
+                .unlockedBy("has_item", has(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get()))
+                .group("wooden_fence_gate")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(BambooGroveBlocks.CHERRY_BLOSSOM_PRESSURE_PLATE.get(), 1)
+                .define('#', BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get())
+                .pattern("##")
+                .unlockedBy("has_item", has(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get()))
+                .group("wooden_pressure_plate")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(BambooGroveBlocks.CHERRY_BLOSSOM_SLAB.get(), 6)
+                .define('#', BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get())
+                .pattern("###")
+                .unlockedBy("has_item", has(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get()))
+                .group("wooden_slab")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(BambooGroveBlocks.CHERRY_BLOSSOM_STAIRS.get(), 4)
+                .define('#', BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get())
+                .pattern("#  ")
+                .pattern("## ")
+                .pattern("###")
+                .unlockedBy("has_item", has(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get()))
+                .group("wooden_stairs")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(BambooGroveBlocks.CHERRY_BLOSSOM_TRAPDOOR.get(), 2)
+                .define('#', BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get())
+                .pattern("###")
+                .pattern("###")
+                .unlockedBy("has_item", has(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get()))
+                .group("wooden_trapdoor")
+                .save(consumer);
 
         //===== Maple
-        ShapedRecipeBuilder.shaped(BambooGroveBlocks.MAPLE_PLANKS.get(), 4)
-                .define('#', BambooGroveBlocks.MAPLE_LOG.get())
-                .pattern("###")
-                .pattern("###")
+        ShapelessRecipeBuilder.shapeless(BambooGroveBlocks.MAPLE_PLANKS.get(), 4)
+                .requires(BambooGroveBlocks.MAPLE_LOG.get())
                 .unlockedBy("has_item", has(BambooGroveBlocks.MAPLE_LOG.get()))
                 .group("planks")
                 .save(consumer);

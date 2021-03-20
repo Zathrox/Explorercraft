@@ -111,6 +111,19 @@ public class ExplorercraftLootTableProvider extends LootTableProvider {
             dropSelf(BambooGroveBlocks.CHERRY_STRIPPED_LOG.get());
             dropSelf(BambooGroveBlocks.CHERRY_STRIPPED_WOOD.get());
 
+            //====== Cherry Blossom Blocks
+            dropSelf(BambooGroveBlocks.CHERRY_BLOSSOM_BUTTON.get());
+            add(BambooGroveBlocks.CHERRY_BLOSSOM_DOOR.get(),
+                    block -> createSinglePropConditionTable(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
+            dropSelf(BambooGroveBlocks.CHERRY_BLOSSOM_FENCE.get());
+            dropSelf(BambooGroveBlocks.CHERRY_BLOSSOM_FENCE_GATE.get());
+            dropSelf(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get());
+            add(BambooGroveBlocks.CHERRY_BLOSSOM_SLAB.get(), BlockLootTables::createSlabItemTable);
+            dropSelf(BambooGroveBlocks.CHERRY_BLOSSOM_STAIRS.get());
+            dropSelf(BambooGroveBlocks.CHERRY_BLOSSOM_PRESSURE_PLATE.get());
+            dropSelf(BambooGroveBlocks.CHERRY_BLOSSOM_TRAPDOOR.get());
+
+            //====== Maple Tree Blocks
             dropSelf(BambooGroveBlocks.MAPLE_BUTTON.get());
             add(BambooGroveBlocks.MAPLE_DOOR.get(),
                     block -> createSinglePropConditionTable(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));

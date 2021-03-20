@@ -52,6 +52,17 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
             builderMod(itemGenerated, "item/"+ore+"_boots");
         }
 
+        withExistingParent("cherry_blossom_button", modLoc("block/cherry_blossom_button_inventory"));
+        builderMod(itemGenerated, "item/cherry_blossom_door");
+        fenceInventory("cherry_blossom_fence", modLoc("block/cherry_blossom_planks"));
+        fenceGate("cherry_blossom_fence_gate", modLoc("block/cherry_blossom_planks"));
+        withExistingParent("cherry_blossom_planks", modLoc("block/cherry_blossom_planks"));
+        withExistingParent("cherry_blossom_pressure_plate", modLoc("block/cherry_blossom_pressure_plate"));
+        withExistingParent("cherry_blossom_slab", modLoc("block/cherry_blossom_slab"));
+        withExistingParent("cherry_blossom_stairs", modLoc("block/cherry_blossom_stairs"));
+        withExistingParent("cherry_blossom_trapdoor", modLoc("block/cherry_blossom_trapdoor_bottom"));
+
+
         for (String tree : treeTypes)
         {
             withExistingParent(tree+"_button", modLoc("block/"+tree+"_button_inventory"));

@@ -11,7 +11,6 @@ CHANGELOG:
 todo add cherry blossom planks + blocks
 todo add cherry blossom blocks localisation, loottables, blockstates, models
 todo Re-add configuration
-todo jade_bow not animating?
 
 todo Adamantite knights, drop adamintite scrap, forge it like netherite scrape with another material, take it to Wizard for Ingots?
 todo Notes: Creating a dynamically sized and more interesting Slate dungeon is possible with jigsaw pieces

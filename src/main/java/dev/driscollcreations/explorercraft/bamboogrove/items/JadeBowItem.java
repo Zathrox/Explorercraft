@@ -1,5 +1,6 @@
 package dev.driscollcreations.explorercraft.bamboogrove.items;
 
+import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
@@ -30,9 +31,17 @@ public class JadeBowItem extends BowItem {
 
 
     @OnlyIn(Dist.CLIENT)
-    public void initConfigOptions() {
-        ItemModelsProperties.register(this, new ResourceLocation("pulling"), (itemStack, world, livingEntity) -> {
-            return livingEntity != null && livingEntity.isHandActive() && livingEntity.getActiveItemStack() == itemStack ? 1.0F : 0.0F;
+    public static void initPropertyOverride() {
+        ItemModelsProperties.register(BambooGroveItems.JADE_BOW.get(),new ResourceLocation("pull"),(itemStack, world, livingEntity) -> {
+            if (livingEntity == null) {
+                return 0.0F;
+            } else {
+                return !(livingEntity.getUseItem().getItem() instanceof BowItem) ? 0.0F : (float)(itemStack.getUseDuration() - livingEntity.getUseItemRemainingTicks()) / 20.0F;
+            }
+        });
+
+        ItemModelsProperties.register(BambooGroveItems.JADE_BOW.get(), new ResourceLocation("pulling"), (itemStack, world, livingEntity) -> {
+            return livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1.0F : 0.0F;
         });
     }
 

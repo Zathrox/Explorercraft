@@ -3,6 +3,7 @@ package dev.driscollcreations.explorercraft.bamboogrove.world;
 import com.google.common.collect.ImmutableSet;
 import dev.driscollcreations.explorercraft.setup.ExplorerSurfaceBuilders;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
@@ -25,7 +26,11 @@ import java.lang.reflect.Method;
 
 public class BambooGroveBiome {
 
-    private static final Method GET_SKY_COLOR_WITH_TEMPERATURE_MODIFIER = ObfuscationReflectionHelper.findMethod(BiomeMaker.class, "calculateSkyColor", float.class);
+    private static int calculateSkyColor(float p_244206_0_) {
+        float lvt_1_1_ = p_244206_0_ / 3.0F;
+        lvt_1_1_ = MathHelper.clamp(lvt_1_1_, -1.0F, 1.0F);
+        return MathHelper.hsvToRgb(0.62222224F - lvt_1_1_ * 0.05F, 0.5F + lvt_1_1_ * 0.1F, 1.0F);
+    }
     private static final Lazy<ConfiguredSurfaceBuilder<SurfaceBuilderConfig>> BAMBOO_GROVE_SURFACE_BUILDER = () -> ExplorerSurfaceBuilders.BAMBOO_GROVE_LOG.get().configured(SurfaceBuilder.CONFIG_OCEAN_SAND);
 
     public static Biome makeBambooGrove()
@@ -55,13 +60,6 @@ public class BambooGroveBiome {
         gen.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configured((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.LILY_PAD.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(10).build()).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE).count(4));
         DefaultBiomeFeatures.addSurfaceFreezing(gen);
 
-        final int skyColour;
-        try {
-            skyColour = (int) GET_SKY_COLOR_WITH_TEMPERATURE_MODIFIER.invoke(null, 2);
-        } catch (final IllegalAccessException | InvocationTargetException e) {
-            throw new RuntimeException("Unable to get sky colour", e);
-        }
-
         return new Biome.Builder()
                        .precipitation(Biome.RainType.RAIN).biomeCategory(Biome.Category.FOREST).depth(-0.08F).downfall(0.9F).scale(0.15F).temperature(1.5F)
                        .specialEffects(new BiomeAmbience.Builder()
@@ -70,7 +68,7 @@ public class BambooGroveBiome {
                                            .foliageColorOverride(9430372)
                                            .grassColorOverride(9430372)
                                            .fogColor(12638463)
-                                           .skyColor(skyColour)
+                                           .skyColor(calculateSkyColor(0.2F))
                                            .build())
                        .mobSpawnSettings(spawns.build())
                        .generationSettings(gen.build()).build();

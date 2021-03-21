@@ -1,12 +1,7 @@
 CHANGELOG:
 
 --------// Explorercraft 1.16.5 // ----------------------------------------------------
-Patch 5.0.1:
-+ Improved Thick bamboo generation and re-added features, like being destroyed by a sword fast and destroying all blocks if base is gone.
-+ Added Bamboo and Cherry Panel blocks, a new block type that is placed similar to a door but without any functionality. (Might not keep or rework into something else, let me know)
-    + Recipe using both bamboo planks and cherry planks
-
-
+Patch 5.0.2:
 
 todo Re-add configuration
 todo VanillaTweaks: Sleeping bags, Advancements, marble/basalt, Amethyst
@@ -15,6 +10,14 @@ todo Adamantite knights, drop adamintite scrap, forge it like netherite scrape w
 todo Notes: Creating a dynamically sized and more interesting Slate dungeon is possible with jigsaw pieces
 todo all I need to do is create a large selection of rooms, give each jigsaw piece a corresponding and matching name/target
 todo so hallway, will look for hallway, etc. Could for example on certain rooms, have new pools to spawn new hallways or special rooms.
+
+Patch 5.0.1:
++ Improved Thick bamboo generation and re-added features, like being destroyed by a sword fast and destroying all blocks if base is gone.
++ Added Bamboo and Cherry Panel blocks, a new block type that is placed similar to a door but without any functionality. (Might not keep or rework into something else, let me know)
+    + Recipe using both bamboo planks and cherry planks
+- Fixed a bug stopping the mod from booting up with latest forge.
+
+
 
 Patch 5.0.0:
 + Initial port of mod started

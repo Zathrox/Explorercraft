@@ -1,6 +1,22 @@
 CHANGELOG:
 
 --------// Explorercraft 1.16.5 // ----------------------------------------------------
+Patch 5.0.1:
++ Improved Thick bamboo generation and re-added features, like being destroyed by a sword fast and destroying all blocks if base is gone.
++ Added Bamboo and Cherry Panel blocks, a new block type that is placed similar to a door but without any functionality. (Might not keep or rework into something else, let me know)
+    + Recipe using both bamboo planks and cherry planks
+
+
+
+todo Re-add configuration
+todo VanillaTweaks: Sleeping bags, Advancements, marble/basalt, Amethyst
+todo Loot-table injections for Jade and some other items
+todo Adamantite knights, drop adamintite scrap, forge it like netherite scrape with another material, take it to Wizard for Ingots?
+todo Notes: Creating a dynamically sized and more interesting Slate dungeon is possible with jigsaw pieces
+todo all I need to do is create a large selection of rooms, give each jigsaw piece a corresponding and matching name/target
+todo so hallway, will look for hallway, etc. Could for example on certain rooms, have new pools to spawn new hallways or special rooms.
+
+Patch 5.0.0:
 + Initial port of mod started
 + Added new structures to the bamboo grove, currently: Sakura Tree center pieces, Two large torii-gates.
 + Re-Added Vanilla Tweak Recipes
@@ -8,14 +24,7 @@ CHANGELOG:
 + Added bamboo grove saplings to Wandering trader
 + Added Rice to Farmer villagers
 + Updated the Maple and Cherry Blossom Tree, given them a Jasper-esque update :D
-todo add cherry blossom planks + blocks
-todo add cherry blossom blocks localisation, loottables, blockstates, models
-todo Re-add configuration
-
-todo Adamantite knights, drop adamintite scrap, forge it like netherite scrape with another material, take it to Wizard for Ingots?
-todo Notes: Creating a dynamically sized and more interesting Slate dungeon is possible with jigsaw pieces
-todo all I need to do is create a large selection of rooms, give each jigsaw piece a corresponding and matching name/target
-todo so hallway, will look for hallway, etc. Could for example on certain rooms, have new pools to spawn new hallways or special rooms.
++ Added in Pink Cherry Blossom planks
 
 --------// Explorercraft 1.15.2 // ----------------------------------------------------
 Patch 4.0.3:

@@ -1,4 +1,4 @@
-package dev.driscollcreations.explorercraft.data.client;
+package dev.driscollcreations.explorercraft.data.recipes;
 
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
@@ -13,9 +13,9 @@ import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
 
-public class ExplorercraftRecipeProvider extends RecipeProvider {
+public class ExplorerRecipeProvider extends RecipeProvider {
 
-    public ExplorercraftRecipeProvider(DataGenerator generatorIn) {
+    public ExplorerRecipeProvider(DataGenerator generatorIn) {
         super(generatorIn);
     }
 
@@ -238,7 +238,7 @@ public class ExplorercraftRecipeProvider extends RecipeProvider {
                 .group("wooden_button")
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(BambooGroveBlocks.CHERRY_DOOR.get(), 1)
+        ShapedRecipeBuilder.shaped(BambooGroveBlocks.CHERRY_DOOR.get(), 3)
                 .define('#', BambooGroveBlocks.CHERRY_PLANKS.get())
                 .pattern("##")
                 .pattern("##")
@@ -312,6 +312,37 @@ public class ExplorercraftRecipeProvider extends RecipeProvider {
                 .group("bark")
                 .save(consumer);
 
+        //===== Panels
+        ShapedRecipeBuilder.shaped(BambooGroveBlocks.BAMBOO_PANEL.get(), 3)
+                .define('X', BambooGroveBlocks.BAMBOO_PLANKS.get())
+                .define('#', Items.PAPER)
+                .pattern("X#X")
+                .pattern("X#X")
+                .pattern("X#X")
+                .unlockedBy("has_item", has(BambooGroveBlocks.BAMBOO_PLANKS.get()))
+                .group("panel")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(BambooGroveBlocks.BAMBOO_PANEL.get(), 3)
+                .define('X', BambooGroveBlocks.BAMBOO_PLANKS_VERTICAL.get())
+                .define('#', Items.PAPER)
+                .pattern("X#X")
+                .pattern("X#X")
+                .pattern("X#X")
+                .unlockedBy("has_item", has(BambooGroveBlocks.BAMBOO_PLANKS_VERTICAL.get()))
+                .group("panel")
+                .save(consumer, Explorercraft.getId("bamboo_panel_from_vertical_planks"));
+
+        ShapedRecipeBuilder.shaped(BambooGroveBlocks.CHERRY_PANEL.get(), 3)
+                .define('X', BambooGroveBlocks.CHERRY_PLANKS.get())
+                .define('#', Items.PAPER)
+                .pattern("X#X")
+                .pattern("X#X")
+                .pattern("X#X")
+                .unlockedBy("has_item", has(BambooGroveBlocks.CHERRY_PLANKS.get()))
+                .group("panel")
+                .save(consumer);
+
         //===== Cherry Blossom Blocks
         ShapedRecipeBuilder.shaped(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get(), 8)
                 .define('#', BambooGroveBlocks.CHERRY_PLANKS.get())
@@ -328,7 +359,7 @@ public class ExplorercraftRecipeProvider extends RecipeProvider {
                 .group("wooden_button")
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(BambooGroveBlocks.CHERRY_BLOSSOM_DOOR.get(), 1)
+        ShapedRecipeBuilder.shaped(BambooGroveBlocks.CHERRY_BLOSSOM_DOOR.get(), 3)
                 .define('#', BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get())
                 .pattern("##")
                 .pattern("##")
@@ -398,7 +429,7 @@ public class ExplorercraftRecipeProvider extends RecipeProvider {
                 .group("wooden_button")
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(BambooGroveBlocks.MAPLE_DOOR.get(), 1)
+        ShapedRecipeBuilder.shaped(BambooGroveBlocks.MAPLE_DOOR.get(), 3)
                 .define('#', BambooGroveBlocks.MAPLE_PLANKS.get())
                 .pattern("##")
                 .pattern("##")

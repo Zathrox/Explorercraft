@@ -5,9 +5,11 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FourWayBlock;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.SwordItem;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
@@ -16,8 +18,13 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.IWorldReader;
+import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.IPlantable;
 
-public class BambooLogBlock extends FourWayBlock {
+import java.util.Random;
+
+public class BambooLogBlock extends FourWayBlock implements IPlantable {
     private final VoxelShape[] renderShapes;
 
     public BambooLogBlock(AbstractBlock.Properties properties) {
@@ -42,7 +49,7 @@ public class BambooLogBlock extends FourWayBlock {
     }
 
 
-    public boolean canConnect(BlockState state, boolean isSideSolid, Direction direction) {
+    public boolean canConnect(BlockState state) {
         if (state.getBlock() == BambooGroveBlocks.BAMBOO_LEAVES.get()) {
             return true;
         } else {
@@ -63,22 +70,20 @@ public class BambooLogBlock extends FourWayBlock {
         BlockState blockstate1 = iblockreader.getBlockState(blockpos2);
         BlockState blockstate2 = iblockreader.getBlockState(blockpos3);
         BlockState blockstate3 = iblockreader.getBlockState(blockpos4);
-        return super.getStateForPlacement(context).setValue(NORTH, Boolean.valueOf(this.canConnect(blockstate, blockstate.isFaceSturdy(iblockreader, blockpos1, Direction.SOUTH), Direction.SOUTH))).setValue(EAST, Boolean.valueOf(this.canConnect(blockstate1, blockstate1.isFaceSturdy(iblockreader, blockpos2, Direction.WEST), Direction.WEST))).setValue(SOUTH, Boolean.valueOf(this.canConnect(blockstate2, blockstate2.isFaceSturdy(iblockreader, blockpos3, Direction.NORTH), Direction.NORTH))).setValue(WEST, Boolean.valueOf(this.canConnect(blockstate3, blockstate3.isFaceSturdy(iblockreader, blockpos4, Direction.EAST), Direction.EAST))).setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+        return super.getStateForPlacement(context).setValue(NORTH, Boolean.valueOf(this.canConnect(blockstate))).setValue(EAST, Boolean.valueOf(this.canConnect(blockstate1))).setValue(SOUTH, Boolean.valueOf(this.canConnect(blockstate2))).setValue(WEST, Boolean.valueOf(this.canConnect(blockstate3))).setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
     }
 
-    /**
-     * Update the provided state given the provided neighbor facing and neighbor state, returning a new state.
-     * For example, fences make their connections to the passed in state if possible, and wet concrete powder immediately
-     * returns its solidified counterpart.
-     * Note that this method should ideally consider only the specific face passed in.
-     */
     @Override
     public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+        if (!isValidPosition(stateIn, worldIn, currentPos)) {
+            worldIn.getBlockTicks().scheduleTick(currentPos, this, 1);
+        }
+
         if (stateIn.getValue(WATERLOGGED)) {
             worldIn.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
         }
 
-        return facing.getAxis().getPlane() == Direction.Plane.HORIZONTAL ? stateIn.setValue(PROPERTY_BY_DIRECTION.get(facing), Boolean.valueOf(this.canConnect(facingState, facingState.isFaceSturdy(worldIn, facingPos, facing.getOpposite()), facing.getOpposite()))) : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        return facing.getAxis().getPlane() == Direction.Plane.HORIZONTAL ? stateIn.setValue(PROPERTY_BY_DIRECTION.get(facing), Boolean.valueOf(this.canConnect(facingState))) : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
     @Override
@@ -86,35 +91,28 @@ public class BambooLogBlock extends FourWayBlock {
         builder.add(NORTH, EAST, WEST, SOUTH, WATERLOGGED);
     }
 
-    //Special condition to connect to only bamboo_leaves @todo
-
-    /*public boolean canConnect(BlockState state, boolean isSideSolid, Direction direction) {
-        if (state.getBlock() == ExplorerBlocks.BAMBOO_LEAVES) {
-            return true;
-        } else {
-            return false;
-        }
-    }*/
-
-    //Destroy the block when its not a valid positon anymore, see bamboo/scaffolding @todo
-    /*@Override
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
-        if (!state.isValidPosition(worldIn, pos)) {
+    //Destroy the block when its not a valid positon anymore, see bamboo/scaffolding
+    @Override
+    public void tick(BlockState blockState, ServerWorld worldIn, BlockPos pos, Random random) {
+        if (!isValidPosition(blockState, worldIn, pos)) {
             worldIn.destroyBlock(pos, true);
         }
     }
 
-    @Override
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        BlockState soil = worldIn.getBlockState(pos.down());
-        if (soil.canSustainPlant(worldIn, pos.down(), Direction.UP, this)) return true;
-        Block block = worldIn.getBlockState(pos.down()).getBlock();
-        if (block == this) {
-            return true;
-        } else {
-            return false;
-        }
-    }*/
+        BlockState soil = worldIn.getBlockState(pos.below());
+        if (soil.canSustainPlant(worldIn, pos.below(), Direction.UP, this)) return true;
+        Block block = worldIn.getBlockState(pos.below()).getBlock();
+        return block == this;
+    }
 
+    @Override
+    public BlockState getPlant(IBlockReader world, BlockPos pos) {
+        return defaultBlockState();
+    }
 
+    @Override
+    public float getDestroyProgress(BlockState p_180647_1_, PlayerEntity playerEntity, IBlockReader blockReader, BlockPos pos) {
+        return playerEntity.getMainHandItem().getItem() instanceof SwordItem ? 1.0F : super.getDestroyProgress(p_180647_1_, playerEntity, blockReader, pos);
+    }
 }

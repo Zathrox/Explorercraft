@@ -7,7 +7,9 @@ import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.gen.FlatGenerationSettings;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.StructureFeature;
+import net.minecraft.world.gen.feature.structure.SavannaVillagePools;
 import net.minecraft.world.gen.feature.structure.Structure;
+import net.minecraft.world.gen.feature.structure.VillageConfig;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -20,6 +22,9 @@ public class ExplorerConfiguredStructures {
     public static StructureFeature<?, ?> CONFIGURED_BLACKSTONE_DUNGEON = ExplorerStructures.BLACKSTONE_DUNGEON.get().configured(IFeatureConfig.NONE);
     public static StructureFeature<?, ?> CONFIGURED_SAKURA_TREE = ExplorerStructures.SAKURA_TREE.get().configured(IFeatureConfig.NONE);
     public static StructureFeature<?, ?> CONFIGURED_TORII_GATE = ExplorerStructures.TORII_GATE.get().configured(IFeatureConfig.NONE);
+    /*public static StructureFeature<?, ?> TEST_VILLAGE = Structure.VILLAGE.configured(new VillageConfig(() -> {
+        return SavannaVillagePools.START;
+    }, 6));*/
 
     /**
      * Registers the configured structure which is what gets added to the biomes.
@@ -34,6 +39,7 @@ public class ExplorerConfiguredStructures {
         Registry.register(registry, new ResourceLocation(Explorercraft.MOD_ID, "configured_blackstone_dungeon"), CONFIGURED_BLACKSTONE_DUNGEON);
         Registry.register(registry, new ResourceLocation(Explorercraft.MOD_ID, "configured_sakura_tree"), CONFIGURED_SAKURA_TREE);
         Registry.register(registry, new ResourceLocation(Explorercraft.MOD_ID, "configured_torii_gate"), CONFIGURED_TORII_GATE);
+        /*Registry.register(registry, new ResourceLocation(Explorercraft.MOD_ID, "test_village"), TEST_VILLAGE);*/
 
         /* Ok so, this part may be hard to grasp but basically, just add your structure to this to
          * prevent any sort of crash or issue with other mod's custom ChunkGenerators. If they use

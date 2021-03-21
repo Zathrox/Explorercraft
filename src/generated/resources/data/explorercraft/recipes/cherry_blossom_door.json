@@ -12,6 +12,7 @@
     }
   },
   "result": {
-    "item": "explorercraft:cherry_blossom_door"
+    "item": "explorercraft:cherry_blossom_door",
+    "count": 3
   }
 }

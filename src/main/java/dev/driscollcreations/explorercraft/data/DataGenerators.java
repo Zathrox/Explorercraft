@@ -2,6 +2,10 @@ package dev.driscollcreations.explorercraft.data;
 
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.data.client.*;
+import dev.driscollcreations.explorercraft.data.loot.*;
+import dev.driscollcreations.explorercraft.data.recipes.ExplorerRecipeProvider;
+import dev.driscollcreations.explorercraft.data.tags.ExplorerBlockTagsProvider;
+import dev.driscollcreations.explorercraft.data.tags.ExplorerItemTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -19,8 +23,8 @@ public class DataGenerators {
         if (event.includeServer()) {
             gen.addProvider(new ExplorerBlockStateProvider(gen, existingFileHelper)); //== Creates BlockStates and model files
             gen.addProvider(new ExplorerItemModelProvider(gen, existingFileHelper)); //== Creates model files for items/blockItems
-            gen.addProvider(new ExplorercraftLootTableProvider(gen)); //== Creates loot tables
-            gen.addProvider(new ExplorercraftRecipeProvider(gen)); //== Creates recipe files
+            gen.addProvider(new ExplorerLootTables(gen)); //== Creates loot tables
+            gen.addProvider(new ExplorerRecipeProvider(gen)); //== Creates recipe files
 
             // Create the blockTags and then duplicates it for the Item variants
             ExplorerBlockTagsProvider blockTags = new ExplorerBlockTagsProvider(gen, existingFileHelper);

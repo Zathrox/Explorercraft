@@ -12,6 +12,7 @@
     }
   },
   "result": {
-    "item": "explorercraft:maple_door"
+    "item": "explorercraft:maple_door",
+    "count": 3
   }
 }

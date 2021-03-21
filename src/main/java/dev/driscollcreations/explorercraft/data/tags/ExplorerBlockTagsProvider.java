@@ -1,4 +1,4 @@
-package dev.driscollcreations.explorercraft.data.client;
+package dev.driscollcreations.explorercraft.data.tags;
 
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;

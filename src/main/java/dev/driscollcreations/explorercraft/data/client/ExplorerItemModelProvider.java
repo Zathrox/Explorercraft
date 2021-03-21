@@ -62,6 +62,8 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
         withExistingParent("cherry_blossom_stairs", modLoc("block/cherry_blossom_stairs"));
         withExistingParent("cherry_blossom_trapdoor", modLoc("block/cherry_blossom_trapdoor_bottom"));
 
+        builderMod(itemGenerated, "item/cherry_panel");
+        builderMod(itemGenerated, "item/bamboo_panel");
 
         for (String tree : treeTypes)
         {

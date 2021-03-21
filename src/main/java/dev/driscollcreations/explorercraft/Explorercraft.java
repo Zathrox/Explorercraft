@@ -58,6 +58,7 @@ public class Explorercraft
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::doClientStuff);
         ExplorerFeature.FEATURES.register(modEventBus);
+        ExplorerFeature.FOLIAGE_PLACER_TYPES.register(modEventBus);
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
         forgeBus.addListener(EventPriority.NORMAL, this::addDimensionalSpacing);
         forgeBus.addListener(EventPriority.HIGH, this::biomeModification);

@@ -3,6 +3,7 @@ package dev.driscollcreations.explorercraft.setup;
 import com.google.common.collect.ImmutableList;
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
+import dev.driscollcreations.explorercraft.bamboogrove.world.feature.BambooFoliagePlacer;
 import dev.driscollcreations.explorercraft.bamboogrove.world.feature.RicePaddyFeature;
 import dev.driscollcreations.explorercraft.vanillatweaks.world.feature.SlimeBlockFeature;
 import net.minecraft.util.ResourceLocation;
@@ -14,9 +15,7 @@ import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.structure.StructureFeatures;
-import net.minecraft.world.gen.foliageplacer.AcaciaFoliagePlacer;
-import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
-import net.minecraft.world.gen.foliageplacer.FancyFoliagePlacer;
+import net.minecraft.world.gen.foliageplacer.*;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
@@ -39,6 +38,7 @@ import java.util.Random;
 public class ExplorerFeature {
 
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, Explorercraft.MOD_ID);
+    public static final DeferredRegister<FoliagePlacerType<?>> FOLIAGE_PLACER_TYPES = DeferredRegister.create(ForgeRegistries.FOLIAGE_PLACER_TYPES, Explorercraft.MOD_ID);
 
     //Register features here if we need new features registered and cant use vanilla
     public static final RegistryObject<Feature<BaseTreeFeatureConfig>> BAMBOO_TREE = FEATURES.register("bamboo_tree", () -> new TreeFeature(BaseTreeFeatureConfig.CODEC));
@@ -46,6 +46,7 @@ public class ExplorerFeature {
     public static final RegistryObject<Feature<NoFeatureConfig>> RICE_PADDY = FEATURES.register("rice_paddy", () -> new RicePaddyFeature());
     public static final RegistryObject<Feature<NoFeatureConfig>> SLIMEY_CHUNK = FEATURES.register("slimey_chunk", () -> new SlimeBlockFeature()) ;
 
+    public static final RegistryObject<FoliagePlacerType<BambooFoliagePlacer>> BAMBOO_FOLIAGE_TYPE = FOLIAGE_PLACER_TYPES.register("bamboo_foliage_placer", () -> new FoliagePlacerType<>(BambooFoliagePlacer.CODEC));
 
     //Add which biome to generate one.
     @SubscribeEvent
@@ -108,9 +109,9 @@ public class ExplorerFeature {
         public static final BaseTreeFeatureConfig BAMBOO_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(
                 new SimpleBlockStateProvider(BambooGroveBlocks.BAMBOO_LOG.get().defaultBlockState()),
                 new SimpleBlockStateProvider(BambooGroveBlocks.BAMBOO_LEAVES.get().defaultBlockState()),
-                new BlobFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0), 3),
+                new BambooFoliagePlacer(FeatureSpread.fixed(1), FeatureSpread.fixed(1), 6),
                 new StraightTrunkPlacer(12, 10, 0),
-                new TwoLayerFeature(1, 0, 1))).ignoreVines().build();
+                new TwoLayerFeature(2, 0, 2))).ignoreVines().build();
 
         public static final BaseTreeFeatureConfig CHERRY_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(
                 new SimpleBlockStateProvider(BambooGroveBlocks.CHERRY_LOG.get().defaultBlockState()),

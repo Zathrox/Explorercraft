@@ -2,12 +2,15 @@ package dev.driscollcreations.explorercraft.data.client;
 
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.blocks.BambooLogBlock;
+import dev.driscollcreations.explorercraft.bamboogrove.blocks.PanelBlock;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
 import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.state.properties.AttachFace;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.state.properties.DoorHingeSide;
+import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
@@ -102,6 +105,7 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
                         .texture("texture", "block/cherry_blossom_planks"));
         new ConfiguredModel(models().withExistingParent("cherry_blossom_button_inventory", mcLoc("block/button_inventory")).texture("texture", "block/cherry_blossom_planks"));
         doorBlock((DoorBlock) BambooGroveBlocks.CHERRY_BLOSSOM_DOOR.get(), modLoc("block/cherry_blossom_door_bottom"), modLoc("block/cherry_blossom_door_top"));
+
         fenceBlock((FenceBlock) BambooGroveBlocks.CHERRY_BLOSSOM_FENCE.get(), modLoc("block/cherry_blossom_planks"));
         fenceGateBlock((FenceGateBlock) BambooGroveBlocks.CHERRY_BLOSSOM_FENCE_GATE.get(), modLoc("block/cherry_blossom_planks"));
         simpleBlock(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get());
@@ -113,6 +117,10 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         slabBlock((SlabBlock) BambooGroveBlocks.CHERRY_BLOSSOM_SLAB.get(), modLoc("block/cherry_blossom_planks"), modLoc("block/cherry_blossom_planks"));
         stairsBlock((StairsBlock) BambooGroveBlocks.CHERRY_BLOSSOM_STAIRS.get(), modLoc("block/cherry_blossom_planks"));
         trapdoorBlock((TrapDoorBlock) BambooGroveBlocks.CHERRY_BLOSSOM_TRAPDOOR.get(), modLoc("block/cherry_blossom_trapdoor"), true);
+
+
+        panelBlock((PanelBlock) BambooGroveBlocks.CHERRY_PANEL.get(), modLoc("block/cherry_panel_bottom"), modLoc("block/cherry_panel_top"));
+        panelBlock((PanelBlock) BambooGroveBlocks.BAMBOO_PANEL.get(), modLoc("block/bamboo_panel_bottom"), modLoc("block/bamboo_panel_top"));
 
         //===== Maple Tree Blocks
         buttonBlock(BambooGroveBlocks.MAPLE_BUTTON.get(),
@@ -225,6 +233,26 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
 
     private String name(Block block) {
         return block.getRegistryName().getPath();
+    }
+
+    public void panelBlock(PanelBlock block, ResourceLocation bottom, ResourceLocation top) {
+        panelBLockInternal(block, block.getRegistryName().toString(), bottom, top);
+    }
+
+    private void panelBLockInternal(PanelBlock block, String baseName, ResourceLocation bottom, ResourceLocation top) {
+        ModelFile bottomLeft = models().doorBottomLeft(baseName + "_bottom", bottom, top);
+        ModelFile topLeft = models().doorTopLeft(baseName + "_top", bottom, top);
+        panelBlock(block, bottomLeft, topLeft);
+    }
+
+    public void panelBlock(PanelBlock block, ModelFile bottomLeft, ModelFile topLeft) {
+        getVariantBuilder(block).forAllStatesExcept(state -> {
+            int yRot = ((int) state.getValue(DoorBlock.FACING).toYRot()) + 90;
+            yRot %= 360;
+            return ConfiguredModel.builder().modelFile(state.getValue(DoorBlock.HALF) == DoubleBlockHalf.LOWER ? (bottomLeft) : (topLeft))
+                           .rotationY(yRot)
+                           .build();
+        });
     }
 
 }

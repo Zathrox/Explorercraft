@@ -1,5 +1,6 @@
 package dev.driscollcreations.explorercraft.util;
 
+import dev.driscollcreations.explorercraft.bamboogrove.blocks.PanelBlock;
 import dev.driscollcreations.explorercraft.setup.ExplorerItemGroups;
 import dev.driscollcreations.explorercraft.setup.Registration;
 import net.minecraft.block.*;
@@ -49,6 +50,10 @@ public class BlockUtils {
 
     public static DoorBlock createWoodDoor() {
         return new DoorBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(3.0F).sound(SoundType.WOOD).noOcclusion());
+    }
+
+    public static PanelBlock createPanel() {
+        return new PanelBlock(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(3.0F).sound(SoundType.WOOD).noOcclusion());
     }
 
     public static FenceBlock createWoodFence() {

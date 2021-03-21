@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "panel",
+  "pattern": [
+    "X#X",
+    "X#X",
+    "X#X"
+  ],
+  "key": {
+    "X": {
+      "item": "explorercraft:bamboo_planks"
+    },
+    "#": {
+      "item": "minecraft:paper"
+    }
+  },
+  "result": {
+    "item": "explorercraft:bamboo_panel",
+    "count": 3
+  }
+}

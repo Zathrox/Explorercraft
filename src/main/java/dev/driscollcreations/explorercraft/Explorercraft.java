@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import dev.driscollcreations.explorercraft.bamboogrove.items.JadeBowItem;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
+import dev.driscollcreations.explorercraft.config.Config;
 import dev.driscollcreations.explorercraft.setup.ExplorerConfiguredStructures;
 import dev.driscollcreations.explorercraft.setup.ExplorerFeature;
 import dev.driscollcreations.explorercraft.setup.ExplorerStructures;
@@ -27,7 +28,6 @@ import net.minecraft.world.gen.settings.DimensionStructuresSettings;
 import net.minecraft.world.gen.settings.StructureSeparationSettings;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -61,7 +61,8 @@ public class Explorercraft
         ExplorerFeature.FOLIAGE_PLACER_TYPES.register(modEventBus);
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
         forgeBus.addListener(EventPriority.NORMAL, this::addDimensionalSpacing);
-        forgeBus.addListener(EventPriority.HIGH, this::biomeModification);
+        Config.init();
+
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -79,8 +80,6 @@ public class Explorercraft
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        // do something that can only be done on the client
-
         MinecraftForge.EVENT_BUS.register(new ClientEvents());
         JadeBowItem.initPropertyOverride();
         RenderTypeLookup.setRenderLayer(BambooGroveBlocks.BAMBOO_SAPLING.get(), RenderType.cutout());
@@ -95,7 +94,6 @@ public class Explorercraft
         RenderTypeLookup.setRenderLayer(BambooGroveBlocks.RICE_BASE.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BambooGroveBlocks.RICE_TOP.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VanillaTweaksBlocks.DISSOLVED_STONE.get(), RenderType.translucent());
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
     }
 
     public static ExplorercraftResourceLocation getId(String path) {
@@ -103,11 +101,6 @@ public class Explorercraft
             throw new IllegalArgumentException("path contains namespace");
         }
         return new ExplorercraftResourceLocation(path);
-    }
-
-    public void biomeModification(final BiomeLoadingEvent event) {
-        /*event.getGeneration().getStructures().add(() -> ExplorerConfiguredStructures.CONFIGURED_RUN_DOWN_HOUSE);
-        event.getGeneration().getStructures().add(() -> ExplorerConfiguredStructures.CONFIGURED_BLACKSTONE_DUNGEON);*/
     }
 
     private static Method GETCODEC_METHOD;

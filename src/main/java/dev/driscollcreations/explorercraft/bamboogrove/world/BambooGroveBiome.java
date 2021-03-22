@@ -19,10 +19,6 @@ import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 import net.minecraftforge.common.util.Lazy;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 public class BambooGroveBiome {
 
@@ -73,5 +69,4 @@ public class BambooGroveBiome {
                        .mobSpawnSettings(spawns.build())
                        .generationSettings(gen.build()).build();
     }
-
 }

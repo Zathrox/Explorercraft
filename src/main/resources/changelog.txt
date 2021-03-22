@@ -2,22 +2,40 @@ CHANGELOG:
 
 --------// Explorercraft 1.16.5 // ----------------------------------------------------
 Patch 5.0.2:
+Modified the Bamboo grove biome types + weight
+Created new trunk placed which stops bamboo logs placing dirt below them
+Tweaked Cherry blossom heights
+Re-added the configurations
+ - Slimey caves
+ - Swimming horse
+ - Allow Jade
+ - Spawn Bamboo Grove
+ - Bamboo grove rarity
+ - Torii Gates and Cherry blossom structure spawns
 
-todo Re-add configuration
-todo VanillaTweaks: Sleeping bags, Advancements, marble/basalt, Amethyst
-todo Loot-table injections for Jade and some other items
+TODO Loot-table injections for Jade and some other items for other
+
+TODO VanillaTweaks:
+    - Sleeping bags
+    - Noctiluca
+    - Marble/basalt
+    - Advancements
+    - Forested Mountain Biome
+
+TODO To Be Decided:
+    - Amethyst
+    - Ruby(Renamed to Addamantite or Dragon Scalemail)
+
 todo Adamantite knights, drop adamintite scrap, forge it like netherite scrape with another material, take it to Wizard for Ingots?
 todo Notes: Creating a dynamically sized and more interesting Slate dungeon is possible with jigsaw pieces
 todo all I need to do is create a large selection of rooms, give each jigsaw piece a corresponding and matching name/target
-todo so hallway, will look for hallway, etc. Could for example on certain rooms, have new pools to spawn new hallways or special rooms.
+todo so hallway, will look for hallway, etc. Could for example on certain rooms, have new pools to spawn new hallways or special rooms. See blackstone dungeon
 
 Patch 5.0.1:
 + Improved Thick bamboo generation and re-added features, like being destroyed by a sword fast and destroying all blocks if base is gone.
 + Added Bamboo and Cherry Panel blocks, a new block type that is placed similar to a door but without any functionality. (Might not keep or rework into something else, let me know)
     + Recipe using both bamboo planks and cherry planks
 - Fixed a bug stopping the mod from booting up with latest forge.
-
-
 
 Patch 5.0.0:
 + Initial port of mod started

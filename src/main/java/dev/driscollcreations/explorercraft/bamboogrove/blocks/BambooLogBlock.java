@@ -44,6 +44,11 @@ public class BambooLogBlock extends FourWayBlock implements IPlantable {
     }
 
     @Override
+    public boolean propagatesSkylightDown(BlockState p_200123_1_, IBlockReader p_200123_2_, BlockPos p_200123_3_) {
+        return !p_200123_1_.getValue(WATERLOGGED);
+    }
+
+    @Override
     public boolean isPathfindable(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
         return false;
     }

@@ -7,7 +7,7 @@ import net.minecraft.potion.Effects;
 public class ExplorerFoods {
 
     //---- Vanilla Tweaks
-    public static final Food NOCTILUCA = (new Food.Builder()).nutrition(1).saturationMod(0.3F).effect(new EffectInstance(Effects.WATER_BREATHING, 50, 1), 1.0F).alwaysEat().build();
+    public static final Food NOCTILUCA = (new Food.Builder()).nutrition(1).saturationMod(0.3F).effect(new EffectInstance(Effects.WATER_BREATHING, 100, 1), 1.0F).alwaysEat().build();
 
     //---- Cymru Expansion
     public static final Food CAWL_STEW = buildStew(10);

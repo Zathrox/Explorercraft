@@ -16,12 +16,12 @@ Re-added the configurations
 Set loads of items/blocks as flammable.
 Re-Added sleepings bags
 Re-added some advancements
+Re-added Noctiluca blocks/items + tweaks water breathing items, spawns in deep oceans
 
 
 TODO Loot-table injections for Jade and some other items for other
 
 TODO VanillaTweaks:
-    - Noctiluca + Worldgen
     - Marble
     - Advancements
     - Forested Mountain Biome

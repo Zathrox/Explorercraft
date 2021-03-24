@@ -8,6 +8,7 @@ import dev.driscollcreations.explorercraft.bamboogrove.world.feature.BambooTruck
 import dev.driscollcreations.explorercraft.bamboogrove.world.feature.RicePaddyFeature;
 import dev.driscollcreations.explorercraft.config.BambooGroveConfig;
 import dev.driscollcreations.explorercraft.config.VanillaTweaksConfig;
+import dev.driscollcreations.explorercraft.vanillatweaks.world.feature.NoctilucaFeature;
 import dev.driscollcreations.explorercraft.vanillatweaks.world.feature.SlimeBlockFeature;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -22,6 +23,7 @@ import net.minecraft.world.gen.foliageplacer.AcaciaFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.FancyFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.FoliagePlacerType;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
+import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.trunkplacer.FancyTrunkPlacer;
@@ -50,25 +52,34 @@ public class ExplorerFeature {
     public static final RegistryObject<Feature<BaseTreeFeatureConfig>> MAPLE_TREE = FEATURES.register("maple_tree", () -> new TreeFeature(BaseTreeFeatureConfig.CODEC));
     public static final RegistryObject<Feature<NoFeatureConfig>> RICE_PADDY = FEATURES.register("rice_paddy", RicePaddyFeature::new);
     public static final RegistryObject<Feature<NoFeatureConfig>> SLIMEY_CHUNK = FEATURES.register("slimey_chunk", SlimeBlockFeature::new) ;
+    public static final RegistryObject<Feature<FeatureSpreadConfig>> NOCTILUCAS = FEATURES.register("noctilucas", () -> new NoctilucaFeature(FeatureSpreadConfig.CODEC)) ;
 
     public static final RegistryObject<FoliagePlacerType<BambooFoliagePlacer>> BAMBOO_FOLIAGE_TYPE = FOLIAGE_PLACER_TYPES.register("bamboo_foliage_placer", () -> new FoliagePlacerType<>(BambooFoliagePlacer.CODEC));
 
     @SubscribeEvent
     public static void onBiomeLoad(BiomeLoadingEvent event) {
         if (event.getName() == null) return;
-        ResourceLocation biome = event.getName();
+        String biome = event.getName().toString();
         Random rand = new Random();
         BiomeGenerationSettingsBuilder generation = event.getGeneration();
 
         if (VanillaTweaksConfig.spawnSlimeChunkCaves.get()) {
-            if (biome == Biomes.SWAMP.getRegistryName() || biome == Biomes.SWAMP_HILLS.getRegistryName() || event.getCategory() == Biome.Category.SWAMP) {
+            if (biome.equals(Biomes.SWAMP.location().toString()) || biome.equals(Biomes.SWAMP_HILLS.location().toString()) || event.getCategory() == Biome.Category.SWAMP) {
                 generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ExplorerFeature.Configured.SLIMEY_CHUNK_SWAMP);
             } else if (rand.nextInt(20) == 0) {
                 generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ExplorerFeature.Configured.SLIMEY_CHUNK_GLOBAL);
             }
         }
 
-        if (biome.toString().contains("bamboo_grove")) {
+        if(VanillaTweaksConfig.spawnNoctilucas.get()) {
+            if (biome.equals(Biomes.DEEP_OCEAN.location().toString()) || biome.equals(Biomes.DEEP_COLD_OCEAN.location().toString()) || biome.equals(Biomes.DEEP_FROZEN_OCEAN.location().toString()) || biome.equals(Biomes.DEEP_LUKEWARM_OCEAN.location().toString()) || biome.equals(Biomes.DEEP_WARM_OCEAN.location().toString())) {
+                Explorercraft.LOGGER.log(Level.DEBUG, "Generating noctilucas in " + biome);
+                generation.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Configured.NOCTILUCAS);
+            }
+        }
+
+        String bambooGroveName = ExplorerBiomes.BAMBOO_GROVE.get().getRegistryName().toString();
+        if (biome.equals(bambooGroveName)) {
             Explorercraft.LOGGER.log(Level.DEBUG, "Generating " + biome + " features");
             generation.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_SELECTOR.configured(
                     new MultipleRandomFeatureConfig(ImmutableList.of(
@@ -130,6 +141,7 @@ public class ExplorerFeature {
         public static final ConfiguredFeature<?, ?> RICE_PADDY = ExplorerFeature.RICE_PADDY.get().configured(IFeatureConfig.NONE).decorated(Placement.TOP_SOLID_HEIGHTMAP.configured(IPlacementConfig.NONE));
         public static final ConfiguredFeature<?, ?> SLIMEY_CHUNK_SWAMP = ExplorerFeature.SLIMEY_CHUNK.get().configured(IFeatureConfig.NONE).range(40).squared().count(33);
         public static final ConfiguredFeature<?, ?> SLIMEY_CHUNK_GLOBAL = ExplorerFeature.SLIMEY_CHUNK.get().configured(IFeatureConfig.NONE).range(40).squared().count(20);
+        public static final ConfiguredFeature<?, ?> NOCTILUCAS = ExplorerFeature.NOCTILUCAS.get().configured(new FeatureSpreadConfig(20)).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE).chance(16);
 
         public static void registerConfiguredFeatures() {
             register("bamboo_tree", BAMBOO_TREE);
@@ -139,6 +151,7 @@ public class ExplorerFeature {
             register("rice_paddy", RICE_PADDY);
             register("slimey_chunk_swamp", SLIMEY_CHUNK_SWAMP);
             register("slimey_chunk_global", SLIMEY_CHUNK_GLOBAL);
+            register("noctilucas", NOCTILUCAS);
 
         }
 

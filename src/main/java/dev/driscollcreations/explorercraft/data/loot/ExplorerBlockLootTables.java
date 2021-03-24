@@ -4,7 +4,9 @@ import dev.driscollcreations.explorercraft.bamboogrove.blocks.PanelBlock;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
 import dev.driscollcreations.explorercraft.setup.Registration;
+import dev.driscollcreations.explorercraft.vanillatweaks.blocks.NoctilucaBlock;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
+import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksItems;
 import net.minecraft.advancements.criterion.EnchantmentPredicate;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.advancements.criterion.MinMaxBounds;
@@ -132,10 +134,12 @@ public class ExplorerBlockLootTables extends BlockLootTables {
 
         dropSelf(BambooGroveBlocks.RICE_STRAW_BLOCK.get());
         add(BambooGroveBlocks.RICE_BASE.get(), noDrop());
-        add(BambooGroveBlocks.RICE_TOP.get(), noDrop());
 
-        ILootCondition.IBuilder ilootcondition$ibuilder1 = BlockStateProperty.hasBlockStateProperties(BambooGroveBlocks.RICE_TOP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropsBlock.AGE, 7));
-        this.add(BambooGroveBlocks.RICE_TOP.get(), createCropDrops(BambooGroveBlocks.RICE_TOP.get(), BambooGroveItems.RICE_STRAW.get(), BambooGroveItems.RICE.get(), ilootcondition$ibuilder1));
+        ILootCondition.IBuilder riceLootCondition = BlockStateProperty.hasBlockStateProperties(BambooGroveBlocks.RICE_TOP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropsBlock.AGE, 7));
+        this.add(BambooGroveBlocks.RICE_TOP.get(), createCropDrops(BambooGroveBlocks.RICE_TOP.get(), BambooGroveItems.RICE_STRAW.get(), BambooGroveItems.RICE.get(), riceLootCondition));
+
+        ILootCondition.IBuilder noctilucasLootCondition = BlockStateProperty.hasBlockStateProperties(VanillaTweaksBlocks.NOCTILUCAS.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(NoctilucaBlock.AGE, 7));
+        this.add(VanillaTweaksBlocks.NOCTILUCAS.get(), createCropDrops(VanillaTweaksBlocks.NOCTILUCAS.get(), VanillaTweaksItems.NOCTILUCA.get(),VanillaTweaksItems.NOCTILUCA.get(), noctilucasLootCondition));
 
         dropSelf(BambooGroveBlocks.JADE_BLOCK.get());
         add(BambooGroveBlocks.JADE_ORE.get(), createOreDrop(BambooGroveBlocks.JADE_ORE.get(), BambooGroveItems.JADE.get()));

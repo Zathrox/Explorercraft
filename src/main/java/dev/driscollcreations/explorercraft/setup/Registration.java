@@ -4,6 +4,7 @@ import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
+import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.util.RegistryKey;
@@ -36,6 +37,7 @@ public class Registration {
         BambooGroveItems.register();
         BambooGroveBlocks.register();
         VanillaTweaksBlocks.register();
+        VanillaTweaksItems.register();
 
         SURFACE_BUILDERS.register(modEventBus);
         ExplorerSurfaceBuilders.register();

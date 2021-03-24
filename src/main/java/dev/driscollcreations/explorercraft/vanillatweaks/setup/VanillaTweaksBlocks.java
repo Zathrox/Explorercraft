@@ -1,6 +1,7 @@
 package dev.driscollcreations.explorercraft.vanillatweaks.setup;
 
 import dev.driscollcreations.explorercraft.util.BlockUtils;
+import dev.driscollcreations.explorercraft.vanillatweaks.blocks.NoctilucaBlock;
 import dev.driscollcreations.explorercraft.vanillatweaks.blocks.SleepingBagBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -33,6 +34,9 @@ public class VanillaTweaksBlocks {
     public static final RegistryObject<Block> GREEN_SLEEPING_BAG 		= BlockUtils.register("sleeping_bag_green", createSleepingBag(DyeColor.GREEN));
     public static final RegistryObject<Block> RED_SLEEPING_BAG 			= BlockUtils.register("sleeping_bag_red", createSleepingBag(DyeColor.RED));
     public static final RegistryObject<Block> BLACK_SLEEPING_BAG 		= BlockUtils.register("sleeping_bag_black", createSleepingBag(DyeColor.BLACK));
+
+    public static final RegistryObject<Block> NOCTILUCAS = BlockUtils.registerNoItem("noctilucas", () -> new NoctilucaBlock(Block.Properties.of(Material.WATER_PLANT).noCollission().randomTicks().sound(SoundType.WET_GRASS)));
+
 
     public static void register() {}
 

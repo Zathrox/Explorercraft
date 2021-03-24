@@ -7,6 +7,7 @@ public class VanillaTweaksConfig {
 
     public static ForgeConfigSpec.BooleanValue swimmingHorse;
     public static ForgeConfigSpec.BooleanValue spawnSlimeChunkCaves;
+    public static ForgeConfigSpec.BooleanValue spawnNoctilucas;
 
     public static void init(ForgeConfigSpec.Builder common, ForgeConfigSpec.Builder client) {
 
@@ -21,6 +22,11 @@ public class VanillaTweaksConfig {
                .comment("Spawn slimey caves in Overworld")
                .translation(Explorercraft.MOD_ID + ".config.spawnSpawnChunkCaves")
                .define("spawnSpawnChunkCaves", true);
+
+        spawnNoctilucas = common
+              .comment("Allow noctilucas to spawn naturally in the world")
+              .translation(Explorercraft.MOD_ID + ".config.spawnNoctilucas")
+              .define("spawnNoctilucas", true);
         common.pop();
     }
 }

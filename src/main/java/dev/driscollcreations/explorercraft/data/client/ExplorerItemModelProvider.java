@@ -58,6 +58,8 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
         builderMod(itemGenerated, "item/sleeping_bag_white");
         builderMod(itemGenerated, "item/sleeping_bag_yellow");
 
+        builderMod(itemGenerated, "item/noctiluca");
+
         for (String ore : oreTypes) {
             builderMod(itemGenerated, "item/"+ore);
             builderMod(itemGenerated, "item/"+ore+"_horse_armor");

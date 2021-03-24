@@ -97,6 +97,7 @@ public class Explorercraft
         RenderTypeLookup.setRenderLayer(BambooGroveBlocks.MAPLE_TRAPDOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BambooGroveBlocks.RICE_BASE.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BambooGroveBlocks.RICE_TOP.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VanillaTweaksBlocks.NOCTILUCAS.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VanillaTweaksBlocks.DISSOLVED_STONE.get(), RenderType.translucent());
     }
 

@@ -95,6 +95,8 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:' + modMinecraftVersion + "-" + modForgeVersion
+
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.16.5:3.0.15')
     // JEI
     if (project.hasProperty('jei_version')) {
         // compile against the JEI API but do not include it at runtime

@@ -1,0 +1,30 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:jade_block"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.gem_hunting.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.gem_hunting.description"
+        },
+        "frame": "challenge"
+    },
+    "parent": "explorercraft:explorercraft/root",
+    "rewards": {
+        "experience": 500
+    },
+    "criteria": {
+        "jade": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:jade"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -166,7 +166,7 @@ public class ExplorerVanillaCompat {
 
     public static void registerFlammable(Block blockIn, int encouragement, int flammability) {
         FireBlock fireblock = (FireBlock) Blocks.FIRE;
-        //fireblock.setFireInfo(blockIn, encouragement, flammability);
+        fireblock.setFlammable(blockIn, encouragement, flammability);
     }
 
 }

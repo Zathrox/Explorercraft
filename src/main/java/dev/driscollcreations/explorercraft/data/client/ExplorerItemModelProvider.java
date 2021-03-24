@@ -38,6 +38,26 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
         builderMod(itemGenerated, "item/salmon_sushi");
         builderMod(itemGenerated, "item/tamago_sushi");
 
+        //-------- Sleeping bags
+        builderMod(itemGenerated, "item/sleeping_bag_black");
+        builderMod(itemGenerated, "item/sleeping_bag_blue");
+        builderMod(itemGenerated, "item/sleeping_bag_brown");
+        builderMod(itemGenerated, "item/sleeping_bag_cyan");
+        builderMod(itemGenerated, "item/sleeping_bag_gray");
+        builderMod(itemGenerated, "item/sleeping_bag_green");
+        builderMod(itemGenerated, "item/sleeping_bag_leather");
+        builderMod(itemGenerated, "item/sleeping_bag_light_blue");
+        builderMod(itemGenerated, "item/sleeping_bag_light_gray");
+        builderMod(itemGenerated, "item/sleeping_bag_green");
+        builderMod(itemGenerated, "item/sleeping_bag_lime");
+        builderMod(itemGenerated, "item/sleeping_bag_magenta");
+        builderMod(itemGenerated, "item/sleeping_bag_orange");
+        builderMod(itemGenerated, "item/sleeping_bag_pink");
+        builderMod(itemGenerated, "item/sleeping_bag_purple");
+        builderMod(itemGenerated, "item/sleeping_bag_red");
+        builderMod(itemGenerated, "item/sleeping_bag_white");
+        builderMod(itemGenerated, "item/sleeping_bag_yellow");
+
         for (String ore : oreTypes) {
             builderMod(itemGenerated, "item/"+ore);
             builderMod(itemGenerated, "item/"+ore+"_horse_armor");

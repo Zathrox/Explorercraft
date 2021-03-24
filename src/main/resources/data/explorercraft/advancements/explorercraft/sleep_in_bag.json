@@ -1,0 +1,28 @@
+{
+    "parent": "explorercraft:explorercraft/root",
+    "display": {
+        "icon": {
+            "item": "explorercraft:sleeping_bag_leather"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.sleep_in_bag.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.sleep_in_bag.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "sleep_in_bag": {
+            "trigger": "explorercraft:sleep_in_bag"
+        }
+    },
+    "requirements": [
+        [
+            "sleep_in_bag"
+        ]
+    ]
+}

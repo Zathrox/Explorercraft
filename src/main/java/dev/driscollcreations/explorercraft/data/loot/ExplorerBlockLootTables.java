@@ -143,6 +143,23 @@ public class ExplorerBlockLootTables extends BlockLootTables {
         //======== Vanilla Tweaks
         dropSelf(VanillaTweaksBlocks.SLIMEY_STONE.get());
         dropSelf(VanillaTweaksBlocks.DISSOLVED_STONE.get());
+        add(VanillaTweaksBlocks.LEATHER_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.BLACK_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.BLUE_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.BROWN_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.CYAN_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.GRAY_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.GREEN_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.LIGHT_BLUE_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.LIGHT_GRAY_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.LIME_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.MAGENTA_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.ORANGE_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.PINK_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.PURPLE_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.RED_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.WHITE_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        add(VanillaTweaksBlocks.YELLOW_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
     }
 
     @Override

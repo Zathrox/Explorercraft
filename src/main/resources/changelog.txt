@@ -13,19 +13,25 @@ Re-added the configurations
  - Bamboo grove rarity
  - Torii Gates and Cherry blossom structure spawns
 
+Set loads of items/blocks as flammable.
+Re-Added sleepings bags
+Re-added some advancements
+
+
 TODO Loot-table injections for Jade and some other items for other
 
 TODO VanillaTweaks:
-    - Sleeping bags
-    - Noctiluca
-    - Marble/basalt
+    - Noctiluca + Worldgen
+    - Marble
     - Advancements
     - Forested Mountain Biome
 
 TODO To Be Decided:
     - Amethyst
-    - Ruby(Renamed to Addamantite or Dragon Scalemail)
+    - Ruby(Renamed to Adamantite or Dragon Scalemail)
 
+
+todo - Create complicated models/blockstates in data generators
 todo Adamantite knights, drop adamintite scrap, forge it like netherite scrape with another material, take it to Wizard for Ingots?
 todo Notes: Creating a dynamically sized and more interesting Slate dungeon is possible with jigsaw pieces
 todo all I need to do is create a large selection of rooms, give each jigsaw piece a corresponding and matching name/target

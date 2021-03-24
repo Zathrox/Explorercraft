@@ -3,12 +3,14 @@ package dev.driscollcreations.explorercraft.util;
 import dev.driscollcreations.explorercraft.bamboogrove.blocks.PanelBlock;
 import dev.driscollcreations.explorercraft.setup.ExplorerItemGroups;
 import dev.driscollcreations.explorercraft.setup.Registration;
+import dev.driscollcreations.explorercraft.vanillatweaks.blocks.SleepingBagBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -85,5 +87,4 @@ public class BlockUtils {
             return state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? topColor : barkColor;
         }).strength(2.0F).sound(SoundType.WOOD));
     }
-
 }

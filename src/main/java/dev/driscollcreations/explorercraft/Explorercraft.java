@@ -5,18 +5,18 @@ import dev.driscollcreations.explorercraft.bamboogrove.items.JadeBowItem;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
 import dev.driscollcreations.explorercraft.config.Config;
-import dev.driscollcreations.explorercraft.setup.ExplorerConfiguredStructures;
-import dev.driscollcreations.explorercraft.setup.ExplorerFeature;
-import dev.driscollcreations.explorercraft.setup.ExplorerStructures;
-import dev.driscollcreations.explorercraft.setup.Registration;
+import dev.driscollcreations.explorercraft.setup.*;
+import dev.driscollcreations.explorercraft.util.EntityEvents;
 import dev.driscollcreations.explorercraft.util.ExplorerVanillaCompat;
 import dev.driscollcreations.explorercraft.util.ExplorercraftResourceLocation;
 import dev.driscollcreations.explorercraft.vanillatweaks.client.ClientEvents;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
+import dev.driscollcreations.explorercraft.vanillatweaks.tileentities.SleepingBagTileEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.tileentity.BedTileEntityRenderer;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -31,6 +31,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -38,6 +39,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -58,11 +60,12 @@ public class Explorercraft
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::doClientStuff);
         ExplorerFeature.FEATURES.register(modEventBus);
+        ExplorerTileEntities.TILE_ENTITIES.register(modEventBus);
         ExplorerFeature.FOLIAGE_PLACER_TYPES.register(modEventBus);
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
         forgeBus.addListener(EventPriority.NORMAL, this::addDimensionalSpacing);
         Config.init();
-
+        GeckoLib.initialize();
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -77,6 +80,7 @@ public class Explorercraft
             ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(BambooGroveBlocks.MAPLE_SAPLING.getId(), BambooGroveBlocks.POTTED_MAPLE_SAPLING::get);
         });
         EnchantmentType.BOW.canEnchant(BambooGroveItems.JADE_BOW.get());
+        MinecraftForge.EVENT_BUS.register(new EntityEvents());
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {

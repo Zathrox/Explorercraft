@@ -1,0 +1,77 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:salmon_sushi"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.rice_connoisseur.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.rice_connoisseur.description"
+        },
+        "frame": "challenge"
+    },
+    "parent": "explorercraft:explorercraft/rice",
+    "rewards": {
+        "experience": 100
+    },
+    "criteria": {
+        "rice": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "item": "explorercraft:rice"
+                }
+            }
+        },
+        "onigiri": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "item": "explorercraft:onigiri"
+                }
+            }
+        },
+        "rice_bowl": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "item": "explorercraft:rice_bowl"
+                }
+            }
+        },
+        "tamago_sushi": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "item": "explorercraft:tamago_sushi"
+                }
+            }
+        },
+        "salmon_sushi": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "item": "explorercraft:salmon_sushi"
+                }
+            }
+        }
+    },
+    "requirements": [
+        [
+            "rice"
+        ],
+        [
+            "rice_bowl"
+        ],
+        [
+            "onigiri"
+        ],
+        [
+            "tamago_sushi"
+        ],
+        [
+            "salmon_sushi"
+        ]
+    ]
+}

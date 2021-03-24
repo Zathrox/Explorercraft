@@ -39,7 +39,6 @@ public class SleepingBagBlock extends BedBlock {
         return SHAPE;
     }
 
-
     @Override
     public void fallOn(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
         super.fallOn(worldIn, pos, entityIn, fallDistance * 0.2F);
@@ -61,17 +60,12 @@ public class SleepingBagBlock extends BedBlock {
     }
 
     @Override
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> p_206840_1_) {
-        p_206840_1_.add(FACING, PART, OCCUPIED);
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+        builder.add(FACING, PART, OCCUPIED);
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public static TileEntityMerger.Type getBlockType(BlockState state) {
-        BedPart bedpart = state.getValue(PART);
-        return bedpart == BedPart.HEAD ? TileEntityMerger.Type.FIRST : TileEntityMerger.Type.SECOND;
-    }
-
-    public BlockRenderType getRenderType(BlockState state) {
+    @Override
+    public BlockRenderType getRenderShape(BlockState state) {
         return BlockRenderType.MODEL;
     }
 

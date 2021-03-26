@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "explorercraft:marble_pillar"
+    ]
+  },
+  "criteria": {
+    "has_marble": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:marble"
+          }
+        ]
+      }
+    },
+    "has_marble_polished": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:marble_polished"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "explorercraft:marble_pillar"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_marble",
+      "has_marble_polished",
+      "has_the_recipe"
+    ]
+  ]
+}

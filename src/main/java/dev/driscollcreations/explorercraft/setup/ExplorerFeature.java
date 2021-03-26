@@ -8,8 +8,10 @@ import dev.driscollcreations.explorercraft.bamboogrove.world.feature.BambooTruck
 import dev.driscollcreations.explorercraft.bamboogrove.world.feature.RicePaddyFeature;
 import dev.driscollcreations.explorercraft.config.BambooGroveConfig;
 import dev.driscollcreations.explorercraft.config.VanillaTweaksConfig;
+import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
 import dev.driscollcreations.explorercraft.vanillatweaks.world.feature.NoctilucaFeature;
 import dev.driscollcreations.explorercraft.vanillatweaks.world.feature.SlimeBlockFeature;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
@@ -23,12 +25,12 @@ import net.minecraft.world.gen.foliageplacer.AcaciaFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.FancyFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.FoliagePlacerType;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
-import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
+import net.minecraft.world.gen.placement.TopSolidRangeConfig;
 import net.minecraft.world.gen.trunkplacer.FancyTrunkPlacer;
 import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
-import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -38,6 +40,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.Level;
 
+import java.util.Objects;
 import java.util.OptionalInt;
 import java.util.Random;
 
@@ -62,6 +65,7 @@ public class ExplorerFeature {
         String biome = event.getName().toString();
         Random rand = new Random();
         BiomeGenerationSettingsBuilder generation = event.getGeneration();
+        final RegistryKey<Biome> biomeRegistryKey = RegistryKey.create(ForgeRegistries.Keys.BIOMES, Objects.requireNonNull(event.getName(), "Biome registry name was null"));
 
         if (VanillaTweaksConfig.spawnSlimeChunkCaves.get()) {
             if (biome.equals(Biomes.SWAMP.location().toString()) || biome.equals(Biomes.SWAMP_HILLS.location().toString()) || event.getCategory() == Biome.Category.SWAMP) {
@@ -71,7 +75,17 @@ public class ExplorerFeature {
             }
         }
 
-        if(VanillaTweaksConfig.spawnNoctilucas.get()) {
+        if (VanillaTweaksConfig.spawnMarbleInForestedMountains.get()) {
+            if (biome.equals(ExplorerBiomes.FORESTED_MOUNTAIN.get().getRegistryName().toString()) ) {
+                generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Configured.MARBLE_MOUNTAIN);
+            }
+        }
+
+        if (BiomeDictionary.hasType(biomeRegistryKey, BiomeDictionary.Type.OVERWORLD) && VanillaTweaksConfig.spawnMarbleInOverworld.get()) {
+            generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Configured.MARBLE_GENERAL);
+        }
+
+        if (VanillaTweaksConfig.spawnNoctilucas.get()) {
             if (biome.equals(Biomes.DEEP_OCEAN.location().toString()) || biome.equals(Biomes.DEEP_COLD_OCEAN.location().toString()) || biome.equals(Biomes.DEEP_FROZEN_OCEAN.location().toString()) || biome.equals(Biomes.DEEP_LUKEWARM_OCEAN.location().toString()) || biome.equals(Biomes.DEEP_WARM_OCEAN.location().toString())) {
                 Explorercraft.LOGGER.log(Level.DEBUG, "Generating noctilucas in " + biome);
                 generation.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Configured.NOCTILUCAS);
@@ -142,6 +156,9 @@ public class ExplorerFeature {
         public static final ConfiguredFeature<?, ?> SLIMEY_CHUNK_SWAMP = ExplorerFeature.SLIMEY_CHUNK.get().configured(IFeatureConfig.NONE).range(40).squared().count(33);
         public static final ConfiguredFeature<?, ?> SLIMEY_CHUNK_GLOBAL = ExplorerFeature.SLIMEY_CHUNK.get().configured(IFeatureConfig.NONE).range(40).squared().count(20);
         public static final ConfiguredFeature<?, ?> NOCTILUCAS = ExplorerFeature.NOCTILUCAS.get().configured(new FeatureSpreadConfig(20)).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE).chance(16);
+        public static final ConfiguredFeature<?, ?> MARBLE_MOUNTAIN = Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, VanillaTweaksBlocks.MARBLE.get().defaultBlockState(), VanillaTweaksConfig.marbleVeinSizeInForestedMountains.get())).range(150).squared().count(VanillaTweaksConfig.marbleChanceInForestedMountains.get());
+        public static final ConfiguredFeature<?, ?> MARBLE_GENERAL = Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, VanillaTweaksBlocks.MARBLE.get().defaultBlockState(), VanillaTweaksConfig.marbleVeinSizeInOverworld.get())).range(40).squared().count(VanillaTweaksConfig.marbleChanceInOverworld.get());
+
 
         public static void registerConfiguredFeatures() {
             register("bamboo_tree", BAMBOO_TREE);
@@ -152,6 +169,8 @@ public class ExplorerFeature {
             register("slimey_chunk_swamp", SLIMEY_CHUNK_SWAMP);
             register("slimey_chunk_global", SLIMEY_CHUNK_GLOBAL);
             register("noctilucas", NOCTILUCAS);
+            register("marble_mountain", MARBLE_MOUNTAIN);
+            register("marble_general", MARBLE_GENERAL);
 
         }
 

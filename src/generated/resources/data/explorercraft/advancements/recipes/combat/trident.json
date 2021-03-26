@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "explorercraft:trident"
+    ]
+  },
+  "criteria": {
+    "has_heart_of_sea": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:heart_of_the_sea"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "explorercraft:trident"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_heart_of_sea",
+      "has_the_recipe"
+    ]
+  ]
+}

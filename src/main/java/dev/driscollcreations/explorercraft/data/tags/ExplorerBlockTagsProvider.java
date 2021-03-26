@@ -3,6 +3,7 @@ package dev.driscollcreations.explorercraft.data.tags;
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.setup.ExplorerTags;
+import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.Tags;
@@ -20,6 +21,8 @@ public class ExplorerBlockTagsProvider extends BlockTagsProvider {
     protected void addTags() {
         tag(ExplorerTags.Blocks.STORAGE_BLOCKS_JADE).add(BambooGroveBlocks.JADE_BLOCK.get());
         tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ExplorerTags.Blocks.STORAGE_BLOCKS_JADE);
+        tag(ExplorerTags.Blocks.BASE_STONE_OVERWORLD)
+                .add(VanillaTweaksBlocks.MARBLE.get());
 
         tag(Tags.Blocks.FENCES_WOODEN)
                 .add(BambooGroveBlocks.BAMBOO_FENCE.get())
@@ -97,6 +100,10 @@ public class ExplorerBlockTagsProvider extends BlockTagsProvider {
                 .add(BambooGroveBlocks.CHERRY_LOG.get())
                 .add(BambooGroveBlocks.MAPLE_LOG.get());
 
+        tag(ExplorerTags.Blocks.WALLS)
+                .add(VanillaTweaksBlocks.MARBLE_WALL.get())
+                .add(VanillaTweaksBlocks.MARBLE_BRICK_WALL.get())
+                .add(VanillaTweaksBlocks.MARBLE_MOSSY_WALL.get());
 
     }
 }

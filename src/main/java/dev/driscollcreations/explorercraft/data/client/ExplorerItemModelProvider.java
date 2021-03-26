@@ -113,7 +113,32 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
                 withExistingParent(tree+"_stripped_wood", modLoc("block/"+tree+"_stripped_wood"));
             }
         }
+
+        //=== MARBLE
+        withExistingParent("marble", modLoc("block/marble"));
+        withExistingParent("marble_bricks", modLoc("block/marble_bricks"));
+        withExistingParent("marble_polished", modLoc("block/marble_polished"));
+        withExistingParent("marble_mossy", modLoc("block/marble_mossy"));
+        withExistingParent("marble_cracked", modLoc("block/marble_cracked"));
+        withExistingParent("marble_chiseled", modLoc("block/marble_chiseled"));
+        withExistingParent("marble_pillar", modLoc("block/marble_pillar"));
+
+        withExistingParent("marble_slab", modLoc("block/marble_slab"));
+        withExistingParent("marble_brick_slab", modLoc("block/marble_brick_slab"));
+        withExistingParent("marble_polished_slab", modLoc("block/marble_polished_slab"));
+        withExistingParent("marble_mossy_slab", modLoc("block/marble_mossy_slab"));
+
+        withExistingParent("marble_stairs", modLoc("block/marble_stairs"));
+        withExistingParent("marble_brick_stairs", modLoc("block/marble_brick_stairs"));
+        withExistingParent("marble_polished_stairs", modLoc("block/marble_polished_stairs"));
+        withExistingParent("marble_mossy_stairs", modLoc("block/marble_mossy_stairs"));
+
+        wallInventory("marble_wall", modLoc("block/marble"));
+        wallInventory("marble_brick_wall", modLoc("block/marble_bricks"));
+        wallInventory("marble_mossy_wall", modLoc("block/marble_mossy"));
     }
+
+
 
     private ItemModelBuilder builderMod(ModelFile itemGenerated, String name) {
         return getBuilder(name).parent(itemGenerated).texture("layer0", modLoc(name));

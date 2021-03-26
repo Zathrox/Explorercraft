@@ -21,6 +21,12 @@
             "conditions": {
                 "biome": "explorercraft:bamboo_grove"
             }
+        },
+        "forested_mountain": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "explorercraft:forested_mountain"
+            }
         }
     }
 }

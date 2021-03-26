@@ -17,18 +17,18 @@ Set loads of items/blocks as flammable.
 Re-Added sleepings bags
 Re-added some advancements
 Re-added Noctiluca blocks/items + tweaks water breathing items, spawns in deep oceans
+Re-added Forested Mountain biome (ruby is currently not added)
+Re-added Marble, now spawns primarily in the Forested mountain biomes with smaller blobs formed in the Overworld
 
 
-TODO Loot-table injections for Jade and some other items for other
+TODO Loot-table injections for Jade and some other items for other (Double check double injection isn't affecting rates)
 
 TODO VanillaTweaks:
-    - Marble
-    - Advancements
-    - Forested Mountain Biome
+    - Marble Structure - Look at Mountain notes for additional forested mountain ideas!
 
 TODO To Be Decided:
     - Amethyst
-    - Ruby(Renamed to Adamantite or Dragon Scalemail)
+    - Ruby - Spawns in marble?
 
 
 todo - Create complicated models/blockstates in data generators

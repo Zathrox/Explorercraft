@@ -62,11 +62,12 @@ public class BambooGroveBiome {
                                            .waterColor(4159204)
                                            .waterFogColor(329011)
                                            .foliageColorOverride(9430372)
-                                           .grassColorOverride(9430372)
+                                           .grassColorOverride(14009444)
                                            .fogColor(12638463)
                                            .skyColor(calculateSkyColor(0.2F))
                                            .build())
                        .mobSpawnSettings(spawns.build())
                        .generationSettings(gen.build()).build();
     }
+
 }

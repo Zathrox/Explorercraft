@@ -151,6 +151,34 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         woodBlock(BambooGroveBlocks.MAPLE_WOOD.get(), modLoc("block/maple_log"));
         woodBlock(BambooGroveBlocks.MAPLE_STRIPPED_WOOD.get(), modLoc("block/maple_stripped_log"));
 
+        //==== MARBLE
+        simpleBlock(VanillaTweaksBlocks.MARBLE.get());
+        simpleBlock(VanillaTweaksBlocks.MARBLE_POLISHED.get());
+        simpleBlock(VanillaTweaksBlocks.MARBLE_BRICKS.get());
+        simpleBlock(VanillaTweaksBlocks.MARBLE_MOSSY.get());
+        simpleBlock(VanillaTweaksBlocks.MARBLE_CRACKED.get());
+        simpleBlock(VanillaTweaksBlocks.MARBLE_CHISELED.get());
+        axisBlock((RotatedPillarBlock) VanillaTweaksBlocks.MARBLE_PILLAR.get(), modLoc("block/marble_pillar"), modLoc("block/marble_polished"));
+
+        slabBlock((SlabBlock) VanillaTweaksBlocks.MARBLE_SLAB.get(), modLoc("block/marble"), modLoc("block/marble"));
+        slabBlock((SlabBlock) VanillaTweaksBlocks.MARBLE_POLISHED_SLAB.get(), modLoc("block/marble_polished"), modLoc("block/marble_polished"));
+        slabBlock((SlabBlock) VanillaTweaksBlocks.MARBLE_BRICK_SLAB.get(), modLoc("block/marble_bricks"), modLoc("block/marble_bricks"));
+        slabBlock((SlabBlock) VanillaTweaksBlocks.MARBLE_MOSSY_SLAB.get(), modLoc("block/marble_mossy"), modLoc("block/marble_mossy"));
+
+        stairsBlock((StairsBlock) VanillaTweaksBlocks.MARBLE_STAIRS.get(), modLoc("block/marble"));
+        stairsBlock((StairsBlock) VanillaTweaksBlocks.MARBLE_POLISHED_STAIRS.get(), modLoc("block/marble_polished"));
+        stairsBlock((StairsBlock) VanillaTweaksBlocks.MARBLE_BRICK_STAIRS.get(), modLoc("block/marble_bricks"));
+        stairsBlock((StairsBlock) VanillaTweaksBlocks.MARBLE_MOSSY_STAIRS.get(), modLoc("block/marble_mossy"));
+
+        wallBlock((WallBlock) VanillaTweaksBlocks.MARBLE_WALL.get(), modLoc("block/marble"));
+        wallBlock((WallBlock) VanillaTweaksBlocks.MARBLE_BRICK_WALL.get(), modLoc("block/marble_bricks"));
+        wallBlock((WallBlock) VanillaTweaksBlocks.MARBLE_MOSSY_WALL.get(), modLoc("block/marble_mossy"));
+
+    }
+
+    @Override
+    public void axisBlock(RotatedPillarBlock block, ResourceLocation side, ResourceLocation end) {
+        axisBlock(block, models().cubeColumn(name(block), side, end), models().cubeColumnHorizontal(name(block) + "_horizontal", side, end));
     }
 
     public void bambooLogBlock(BambooLogBlock block) {

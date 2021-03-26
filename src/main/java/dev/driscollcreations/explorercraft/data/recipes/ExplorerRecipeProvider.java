@@ -3,15 +3,21 @@ package dev.driscollcreations.explorercraft.data.recipes;
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
+import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.ShapelessRecipe;
+import net.minecraft.item.crafting.StonecuttingRecipe;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 public class ExplorerRecipeProvider extends RecipeProvider {
 
@@ -26,6 +32,8 @@ public class ExplorerRecipeProvider extends RecipeProvider {
         createBambooGroveFoodRecipes(consumer);
         createBambooGroveMiscRecipes(consumer);
         createBambooGroveWoodRecipes(consumer);
+        createVanillaTweakRecipes(consumer);
+        createVanillaTweakMarbleRecipes(consumer);
     }
 
     private static void createVanillaTweakRecipes(Consumer<IFinishedRecipe> consumer) {
@@ -51,6 +59,50 @@ public class ExplorerRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_heart_of_sea", has(Items.HEART_OF_THE_SEA))
                 .save(consumer, new ResourceLocation(Explorercraft.MOD_ID, "trident"));
     }
+
+    private static void createVanillaTweakMarbleRecipes(Consumer<IFinishedRecipe> consumer) {
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE.get()), VanillaTweaksBlocks.MARBLE_SLAB.get(), 2).unlocks("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "marble_slab_from_marble_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE.get()), VanillaTweaksBlocks.MARBLE_STAIRS.get()).unlocks("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "marble_stairs_from_marble_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE.get()), VanillaTweaksBlocks.MARBLE_WALL.get()).unlocks("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "marble_walls_from_marble_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE.get()), VanillaTweaksBlocks.MARBLE_PILLAR.get()).unlocks("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "marble_pillar_from_marble_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE.get()), VanillaTweaksBlocks.MARBLE_CHISELED.get()).unlocks("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "chiseled_marble_from_marble_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE.get()), VanillaTweaksBlocks.MARBLE_BRICKS.get()).unlocks("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "marble_bricks_from_marble_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE.get()), VanillaTweaksBlocks.MARBLE_BRICK_SLAB.get(), 2).unlocks("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "marble_brick_slab_from_marble_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE.get()), VanillaTweaksBlocks.MARBLE_BRICK_STAIRS.get()).unlocks("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "marble_brick_stairs_from_marble_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE.get()), VanillaTweaksBlocks.MARBLE_BRICK_WALL.get()).unlocks("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "marble_brick_wall_from_marble_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE.get()), VanillaTweaksBlocks.MARBLE_POLISHED.get()).unlocks("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "marble_polished_from_marble_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE.get()), VanillaTweaksBlocks.MARBLE_POLISHED_SLAB.get(), 2).unlocks("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "marble_polished_slab_from_marble_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE.get()), VanillaTweaksBlocks.MARBLE_POLISHED_STAIRS.get()).unlocks("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "marble_polished_stairs_from_marble_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE_BRICKS.get()), VanillaTweaksBlocks.MARBLE_BRICK_SLAB.get(), 2).unlocks("has_marble_bricks", has(VanillaTweaksBlocks.MARBLE_BRICKS.get())).save(consumer, "marble_brick_slab_from_marble_bricks_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE_BRICKS.get()), VanillaTweaksBlocks.MARBLE_BRICK_STAIRS.get()).unlocks("has_marble_bricks", has(VanillaTweaksBlocks.MARBLE_BRICKS.get())).save(consumer, "marble_brick_stairs_from_marble_bricks_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE_BRICKS.get()), VanillaTweaksBlocks.MARBLE_BRICK_WALL.get()).unlocks("has_marble_bricks", has(VanillaTweaksBlocks.MARBLE_BRICKS.get())).save(consumer, "marble_brick_wall_from_marble_bricks_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE_BRICKS.get()), VanillaTweaksBlocks.MARBLE_CHISELED.get()).unlocks("has_marble_bricks", has(VanillaTweaksBlocks.MARBLE_BRICKS.get())).save(consumer, "chiseled_marble_from_marble_bricks_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE_POLISHED.get()), VanillaTweaksBlocks.MARBLE_POLISHED_SLAB.get(), 2).unlocks("has_marble_polished", has(VanillaTweaksBlocks.MARBLE_POLISHED.get())).save(consumer, "marble_polished_slab_from_marble_polished_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE_POLISHED.get()), VanillaTweaksBlocks.MARBLE_POLISHED_STAIRS.get()).unlocks("has_marble_polished", has(VanillaTweaksBlocks.MARBLE_POLISHED.get())).save(consumer, "marble_polished_stairs_from_marble_polished_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE_POLISHED.get()), VanillaTweaksBlocks.MARBLE_PILLAR.get()).unlocks("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "marble_pillar_from_polished_marble_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE_MOSSY.get()), VanillaTweaksBlocks.MARBLE_MOSSY_SLAB.get(), 2).unlocks("has_marble_mossy", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "marble_mossy_slab_from_marble_mossy_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE_MOSSY.get()), VanillaTweaksBlocks.MARBLE_MOSSY_STAIRS.get()).unlocks("has_marble_mossy", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "marble_mossy_stairs_from_marble_mossy_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(VanillaTweaksBlocks.MARBLE_MOSSY.get()), VanillaTweaksBlocks.MARBLE_MOSSY_WALL.get()).unlocks("has_marble_mossy", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer, "marble_mossy_wall_from_marble_mossy_stonecutting");
+        CookingRecipeBuilder.smelting(Ingredient.of(VanillaTweaksBlocks.MARBLE_BRICKS.get()),  VanillaTweaksBlocks.MARBLE_CRACKED.get().asItem(), 0.1F, 200).unlockedBy("has_marble_bricks", has(VanillaTweaksBlocks.MARBLE_BRICKS.get())).save(consumer);
+
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.MARBLE_SLAB.get(), 6).define('#', VanillaTweaksBlocks.MARBLE.get()).pattern("###").unlockedBy("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.MARBLE_STAIRS.get(), 4).define('#', VanillaTweaksBlocks.MARBLE.get()).pattern("#  ").pattern("## ").pattern("###").unlockedBy("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.MARBLE_WALL.get(), 6).define('#', VanillaTweaksBlocks.MARBLE.get()).pattern("###").pattern("###").unlockedBy("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.MARBLE_CHISELED.get()).define('#', VanillaTweaksBlocks.MARBLE_BRICK_SLAB.get()).pattern("#").pattern("#").unlockedBy("has_marble_bricks", has(VanillaTweaksBlocks.MARBLE_BRICKS.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.MARBLE_PILLAR.get(), 2).define('#', VanillaTweaksBlocks.MARBLE_POLISHED.get()).pattern("#").pattern("#").unlockedBy("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).unlockedBy("has_marble_polished", has(VanillaTweaksBlocks.MARBLE_POLISHED.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.MARBLE_BRICKS.get(), 4).define('#', VanillaTweaksBlocks.MARBLE.get()).pattern("##").pattern("##").unlockedBy("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.MARBLE_BRICK_SLAB.get(), 6).define('#', VanillaTweaksBlocks.MARBLE_BRICKS.get()).pattern("###").unlockedBy("has_marble_bricks", has(VanillaTweaksBlocks.MARBLE_BRICKS.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.MARBLE_BRICK_STAIRS.get(), 4).define('#', VanillaTweaksBlocks.MARBLE_BRICKS.get()).pattern("#  ").pattern("## ").pattern("###").unlockedBy("has_marble_bricks", has(VanillaTweaksBlocks.MARBLE_BRICKS.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.MARBLE_BRICK_WALL.get(), 6).define('#', VanillaTweaksBlocks.MARBLE_BRICKS.get()).pattern("###").pattern("###").unlockedBy("has_marble_bricks", has(VanillaTweaksBlocks.MARBLE_BRICKS.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.MARBLE_POLISHED.get(), 4).define('#', VanillaTweaksBlocks.MARBLE.get()).pattern("##").pattern("##").unlockedBy("has_marble", has(VanillaTweaksBlocks.MARBLE.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.MARBLE_POLISHED_SLAB.get(), 6).define('#', VanillaTweaksBlocks.MARBLE_POLISHED.get()).pattern("###").unlockedBy("has_marble_polished", has(VanillaTweaksBlocks.MARBLE_POLISHED.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.MARBLE_POLISHED_STAIRS.get(), 4).define('#', VanillaTweaksBlocks.MARBLE_POLISHED.get()).pattern("#  ").pattern("## ").pattern("###").unlockedBy("has_marble_polished", has(VanillaTweaksBlocks.MARBLE_POLISHED.get())).save(consumer);
+        ShapelessRecipeBuilder.shapeless(VanillaTweaksBlocks.MARBLE_MOSSY.get()).requires(VanillaTweaksBlocks.MARBLE.get()).requires(Blocks.VINE).unlockedBy("has_vine", has(Blocks.VINE)).save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.MARBLE_MOSSY_SLAB.get(), 6).define('#', VanillaTweaksBlocks.MARBLE_MOSSY.get()).pattern("###").unlockedBy("has_marble_mossy", has(VanillaTweaksBlocks.MARBLE_MOSSY.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.MARBLE_MOSSY_STAIRS.get(), 4).define('#', VanillaTweaksBlocks.MARBLE_MOSSY.get()).pattern("#  ").pattern("## ").pattern("###").unlockedBy("has_marble_mossy", has(VanillaTweaksBlocks.MARBLE_MOSSY.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.MARBLE_MOSSY_WALL.get(), 6).define('#', VanillaTweaksBlocks.MARBLE_MOSSY.get()).pattern("###").pattern("###").unlockedBy("has_marble_mossy", has(VanillaTweaksBlocks.MARBLE_MOSSY.get())).save(consumer);
+    }
+
     private static void createBambooGroveMiscRecipes(Consumer<IFinishedRecipe> consumer) {
 
         ShapelessRecipeBuilder.shapeless(BambooGroveItems.RICE_STRAW.get(), 9)

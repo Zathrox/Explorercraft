@@ -138,9 +138,6 @@ public class ExplorerBlockLootTables extends BlockLootTables {
         ILootCondition.IBuilder riceLootCondition = BlockStateProperty.hasBlockStateProperties(BambooGroveBlocks.RICE_TOP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropsBlock.AGE, 7));
         this.add(BambooGroveBlocks.RICE_TOP.get(), createCropDrops(BambooGroveBlocks.RICE_TOP.get(), BambooGroveItems.RICE_STRAW.get(), BambooGroveItems.RICE.get(), riceLootCondition));
 
-        ILootCondition.IBuilder noctilucasLootCondition = BlockStateProperty.hasBlockStateProperties(VanillaTweaksBlocks.NOCTILUCAS.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(NoctilucaBlock.AGE, 7));
-        this.add(VanillaTweaksBlocks.NOCTILUCAS.get(), createCropDrops(VanillaTweaksBlocks.NOCTILUCAS.get(), VanillaTweaksItems.NOCTILUCA.get(),VanillaTweaksItems.NOCTILUCA.get(), noctilucasLootCondition));
-
         dropSelf(BambooGroveBlocks.JADE_BLOCK.get());
         add(BambooGroveBlocks.JADE_ORE.get(), createOreDrop(BambooGroveBlocks.JADE_ORE.get(), BambooGroveItems.JADE.get()));
 
@@ -164,6 +161,31 @@ public class ExplorerBlockLootTables extends BlockLootTables {
         add(VanillaTweaksBlocks.RED_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
         add(VanillaTweaksBlocks.WHITE_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
         add(VanillaTweaksBlocks.YELLOW_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+
+        ILootCondition.IBuilder noctilucasLootCondition = BlockStateProperty.hasBlockStateProperties(VanillaTweaksBlocks.NOCTILUCAS.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(NoctilucaBlock.AGE, 7));
+        this.add(VanillaTweaksBlocks.NOCTILUCAS.get(), createCropDrops(VanillaTweaksBlocks.NOCTILUCAS.get(), VanillaTweaksItems.NOCTILUCA.get(),VanillaTweaksItems.NOCTILUCA.get(), noctilucasLootCondition));
+
+        //======= MARBLE
+        dropSelf(VanillaTweaksBlocks.MARBLE.get());
+        dropSelf(VanillaTweaksBlocks.MARBLE_POLISHED.get());
+        dropSelf(VanillaTweaksBlocks.MARBLE_BRICKS.get());
+        dropSelf(VanillaTweaksBlocks.MARBLE_MOSSY.get());
+        dropSelf(VanillaTweaksBlocks.MARBLE_CRACKED.get());
+        dropSelf(VanillaTweaksBlocks.MARBLE_CHISELED.get());
+        dropSelf(VanillaTweaksBlocks.MARBLE_PILLAR.get());
+        dropSelf(VanillaTweaksBlocks.MARBLE_SLAB.get());
+        add(VanillaTweaksBlocks.MARBLE_SLAB.get(), BlockLootTables::createSlabItemTable);
+        add(VanillaTweaksBlocks.MARBLE_POLISHED_SLAB.get(), BlockLootTables::createSlabItemTable);
+        add(VanillaTweaksBlocks.MARBLE_BRICK_SLAB.get(), BlockLootTables::createSlabItemTable);
+        add(VanillaTweaksBlocks.MARBLE_MOSSY_SLAB.get(), BlockLootTables::createSlabItemTable);
+        dropSelf(VanillaTweaksBlocks.MARBLE_STAIRS.get());
+        dropSelf(VanillaTweaksBlocks.MARBLE_POLISHED_STAIRS.get());
+        dropSelf(VanillaTweaksBlocks.MARBLE_BRICK_STAIRS.get());
+        dropSelf(VanillaTweaksBlocks.MARBLE_MOSSY_STAIRS.get());
+        dropSelf(VanillaTweaksBlocks.MARBLE_WALL.get());
+        dropSelf(VanillaTweaksBlocks.MARBLE_BRICK_WALL.get());
+        dropSelf(VanillaTweaksBlocks.MARBLE_MOSSY_WALL.get());
+
     }
 
     @Override

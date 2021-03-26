@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "side": "explorercraft:block/marble_bricks",
+    "bottom": "explorercraft:block/marble_bricks",
+    "top": "explorercraft:block/marble_bricks"
+  }
+}

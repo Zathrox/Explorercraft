@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:marble_mossy_slab_from_marble_mossy_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_marble_mossy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:marble"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:marble_mossy_slab_from_marble_mossy_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_marble_mossy",
+      "has_the_recipe"
+    ]
+  ]
+}

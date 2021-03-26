@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "explorercraft:marble_wall",
+    "explorercraft:marble_brick_wall",
+    "explorercraft:marble_mossy_wall"
+  ]
+}

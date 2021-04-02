@@ -37,6 +37,7 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
@@ -53,6 +54,9 @@ public class Explorercraft
     public static final Logger LOGGER = LogManager.getLogger();
 
     public Explorercraft() {
+        if (!FMLEnvironment.production) {
+            GeckoLib.initialize();
+        }
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         Registration.register();
@@ -65,7 +69,7 @@ public class Explorercraft
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
         forgeBus.addListener(EventPriority.NORMAL, this::addDimensionalSpacing);
         Config.init();
-        GeckoLib.initialize();
+
     }
 
     private void setup(final FMLCommonSetupEvent event)

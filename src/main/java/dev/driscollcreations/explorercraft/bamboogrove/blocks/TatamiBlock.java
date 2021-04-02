@@ -38,7 +38,7 @@ public class TatamiBlock extends HorizontalBlock implements IWaterLoggable {
 
     public TatamiBlock(Properties builder) {
         super(builder);
-        this.registerDefaultState(this.stateDefinition.any().setValue(PART, BedPart.FOOT).setValue(WATERLOGGED, Boolean.valueOf(false)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(PART, BedPart.FOOT).setValue(WATERLOGGED, Boolean.FALSE));
     }
 
 
@@ -61,7 +61,7 @@ public class TatamiBlock extends HorizontalBlock implements IWaterLoggable {
     public boolean placeLiquid(IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
         if (fluidStateIn.getType() == Fluids.WATER) {
             if (!worldIn.isClientSide()) {
-                worldIn.setBlock(pos, state.setValue(WATERLOGGED, Boolean.valueOf(true)), 3);
+                worldIn.setBlock(pos, state.setValue(WATERLOGGED, Boolean.TRUE), 3);
                 worldIn.getLiquidTicks().scheduleTick(pos, fluidStateIn.getType(), fluidStateIn.getType().getTickDelay(worldIn));
             }
             return true;

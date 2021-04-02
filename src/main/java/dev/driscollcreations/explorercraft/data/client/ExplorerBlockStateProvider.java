@@ -32,6 +32,8 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
 
         //===== Vanilla tweaks
         simpleBlock(VanillaTweaksBlocks.SLIMEY_STONE.get());
+        simpleBlock(VanillaTweaksBlocks.BLACK_HOLE.get());
+
         //===== Jade Blocks
         simpleBlock(BambooGroveBlocks.JADE_BLOCK.get());
         simpleBlock(BambooGroveBlocks.JADE_ORE.get());

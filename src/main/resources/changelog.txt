@@ -1,6 +1,25 @@
 CHANGELOG:
 
 --------// Explorercraft 1.16.5 // ----------------------------------------------------
+Patch 5.0.3:
+TODO Loot-table injections for Jade and some other items for other (Double check double injection isn't affecting rates)
+TODO VanillaTweaks:
+    - Marble Structure - Look at Mountain notes for additional forested mountain ideas!
+    - Explorer Set, advancements, items, buffs, custom model
+    - Custom Signs?
+
+TODO To Be Decided:
+    - Amethyst
+    - Ruby - Spawns in marble?
+
+
+todo - Create complicated models/blockstates in data generators
+todo Adamantite knights, drop adamintite scrap, forge it like netherite scrape with another material, take it to Wizard for Ingots?
+todo Notes: Creating a dynamically sized and more interesting Slate dungeon is possible with jigsaw pieces
+todo all I need to do is create a large selection of rooms, give each jigsaw piece a corresponding and matching name/target
+todo so hallway, will look for hallway, etc. Could for example on certain rooms, have new pools to spawn new hallways or special rooms. See blackstone dungeon
+
+
 Patch 5.0.2:
 Modified the Bamboo grove biome types + weight
 Created new trunk placed which stops bamboo logs placing dirt below them
@@ -19,23 +38,6 @@ Re-added some advancements
 Re-added Noctiluca blocks/items + tweaks water breathing items, spawns in deep oceans
 Re-added Forested Mountain biome (ruby is currently not added)
 Re-added Marble, now spawns primarily in the Forested mountain biomes with smaller blobs formed in the Overworld
-
-
-TODO Loot-table injections for Jade and some other items for other (Double check double injection isn't affecting rates)
-
-TODO VanillaTweaks:
-    - Marble Structure - Look at Mountain notes for additional forested mountain ideas!
-
-TODO To Be Decided:
-    - Amethyst
-    - Ruby - Spawns in marble?
-
-
-todo - Create complicated models/blockstates in data generators
-todo Adamantite knights, drop adamintite scrap, forge it like netherite scrape with another material, take it to Wizard for Ingots?
-todo Notes: Creating a dynamically sized and more interesting Slate dungeon is possible with jigsaw pieces
-todo all I need to do is create a large selection of rooms, give each jigsaw piece a corresponding and matching name/target
-todo so hallway, will look for hallway, etc. Could for example on certain rooms, have new pools to spawn new hallways or special rooms. See blackstone dungeon
 
 Patch 5.0.1:
 + Improved Thick bamboo generation and re-added features, like being destroyed by a sword fast and destroying all blocks if base is gone.

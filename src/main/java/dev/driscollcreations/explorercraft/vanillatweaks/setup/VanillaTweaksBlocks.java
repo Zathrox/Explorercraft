@@ -2,6 +2,7 @@ package dev.driscollcreations.explorercraft.vanillatweaks.setup;
 
 import dev.driscollcreations.explorercraft.setup.ExplorerItemGroups;
 import dev.driscollcreations.explorercraft.util.BlockUtils;
+import dev.driscollcreations.explorercraft.vanillatweaks.blocks.BlackHoleBlock;
 import dev.driscollcreations.explorercraft.vanillatweaks.blocks.NoctilucaBlock;
 import dev.driscollcreations.explorercraft.vanillatweaks.blocks.SleepingBagBlock;
 import net.minecraft.block.*;
@@ -64,6 +65,10 @@ public class VanillaTweaksBlocks {
     public static final RegistryObject<Block> MARBLE_WALL               = BlockUtils.register("marble_wall", () -> new WallBlock(stoneBlockProps));
     public static final RegistryObject<Block> MARBLE_BRICK_WALL         = BlockUtils.register("marble_brick_wall", () -> new WallBlock(stoneBlockProps));
     public static final RegistryObject<Block> MARBLE_MOSSY_WALL         = BlockUtils.register("marble_mossy_wall", () -> new WallBlock(stoneBlockProps));
+
+    //========== Black hole
+    public static final RegistryObject<Block> BLACK_HOLE = BlockUtils.register("black_hole", () -> new BlackHoleBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).strength(-1.0F, 3600000.0F).noDrops().noCollission()));
+
 
     public static void register() {}
 

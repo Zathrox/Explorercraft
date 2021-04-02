@@ -3,19 +3,27 @@ CHANGELOG:
 --------// Explorercraft 1.16.5 // ----------------------------------------------------
 Patch 5.0.3:
 Added a development block - Black hole
+Added Bamboo, Cherry, Cherry Blossom and Maple wood signs!
+Created data generated sleeping bag blockstates and models.
+Refactoring some files/folders
+
 
 TODO Loot-table injections for Jade and some other items for other (Double check double injection isn't affecting rates)
 TODO VanillaTweaks:
     - Marble Structure - Look at Mountain notes for additional forested mountain ideas!
     - Explorer Set, advancements, items, buffs, custom model
-    - Custom Signs?
 
 TODO To Be Decided:
     - Amethyst
     - Ruby - Spawns in marble?
 
+TODO - Create complicated models/blockstates in data generators:
+    - Dissolved Slime
+    - Crops (Noctilucas, rice)
+    - Tatami mats (B, M, Im)
+    - Bamboo log models
 
-todo - Create complicated models/blockstates in data generators
+todo livingentity.getType().is(EntityTypeTags.RAIDERS) - code for possibly checking a list of entities, can create enchantments off this.
 todo Adamantite knights, drop adamintite scrap, forge it like netherite scrape with another material, take it to Wizard for Ingots?
 todo Notes: Creating a dynamically sized and more interesting Slate dungeon is possible with jigsaw pieces
 todo all I need to do is create a large selection of rooms, give each jigsaw piece a corresponding and matching name/target

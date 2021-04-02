@@ -34,9 +34,9 @@ public class Registration {
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
 
-        BambooGroveItems.register();
         BambooGroveBlocks.register();
         VanillaTweaksBlocks.register();
+        BambooGroveItems.register();
         VanillaTweaksItems.register();
 
         SURFACE_BUILDERS.register(modEventBus);

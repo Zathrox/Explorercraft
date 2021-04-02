@@ -14,10 +14,14 @@ import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBloc
 import dev.driscollcreations.explorercraft.vanillatweaks.tileentities.SleepingBagTileEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerPotBlock;
+import net.minecraft.block.WoodType;
+import net.minecraft.client.renderer.Atlases;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.tileentity.BedTileEntityRenderer;
+import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
 import net.minecraft.enchantment.EnchantmentType;
+import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
@@ -82,6 +86,10 @@ public class Explorercraft
             ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(BambooGroveBlocks.BAMBOO_SAPLING.getId(), BambooGroveBlocks.POTTED_BAMBOO_SAPLING::get);
             ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(BambooGroveBlocks.CHERRY_SAPLING.getId(), BambooGroveBlocks.POTTED_CHERRY_SAPLING::get);
             ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(BambooGroveBlocks.MAPLE_SAPLING.getId(), BambooGroveBlocks.POTTED_MAPLE_SAPLING::get);
+            WoodType.register(BambooGroveBlocks.BAMBOO_WOODTYPE);
+            WoodType.register(BambooGroveBlocks.CHERRY_WOODTYPE);
+            WoodType.register(BambooGroveBlocks.CHERRY_BLOSSOM_WOODTYPE);
+            WoodType.register(BambooGroveBlocks.MAPLE_WOODTYPE);
         });
         EnchantmentType.BOW.canEnchant(BambooGroveItems.JADE_BOW.get());
         MinecraftForge.EVENT_BUS.register(new EntityEvents());
@@ -103,6 +111,13 @@ public class Explorercraft
         RenderTypeLookup.setRenderLayer(BambooGroveBlocks.RICE_TOP.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VanillaTweaksBlocks.NOCTILUCAS.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VanillaTweaksBlocks.DISSOLVED_STONE.get(), RenderType.translucent());
+        ClientRegistry.bindTileEntityRenderer(ExplorerTileEntities.EXPLORER_SIGNS.get(), SignTileEntityRenderer::new);
+        event.enqueueWork(() -> {
+            Atlases.addWoodType(BambooGroveBlocks.BAMBOO_WOODTYPE);
+            Atlases.addWoodType(BambooGroveBlocks.CHERRY_WOODTYPE);
+            Atlases.addWoodType(BambooGroveBlocks.CHERRY_BLOSSOM_WOODTYPE);
+            Atlases.addWoodType(BambooGroveBlocks.MAPLE_WOODTYPE);
+        });
     }
 
     public static ExplorercraftResourceLocation getId(String path) {

@@ -59,6 +59,8 @@ public class ExplorerBlockLootTables extends BlockLootTables {
         dropSelf(BambooGroveBlocks.BAMBOO_PLANKS.get());
         dropSelf(BambooGroveBlocks.BAMBOO_PLANKS_VERTICAL.get());
         dropSelf(BambooGroveBlocks.BAMBOO_SAPLING.get());
+        dropSelf(BambooGroveBlocks.BAMBOO_STANDING_SIGN.get());
+        dropSelf(BambooGroveBlocks.BAMBOO_WALL_SIGN.get());
         add(BambooGroveBlocks.BAMBOO_SLAB.get(), BlockLootTables::createSlabItemTable);
         dropSelf(BambooGroveBlocks.BAMBOO_STAIRS.get());
         dropPottedContents(BambooGroveBlocks.POTTED_BAMBOO_SAPLING.get());
@@ -87,6 +89,8 @@ public class ExplorerBlockLootTables extends BlockLootTables {
         dropSelf(BambooGroveBlocks.CHERRY_WOOD.get());
         dropSelf(BambooGroveBlocks.CHERRY_STRIPPED_LOG.get());
         dropSelf(BambooGroveBlocks.CHERRY_STRIPPED_WOOD.get());
+        dropSelf(BambooGroveBlocks.CHERRY_WALL_SIGN.get());
+        dropSelf(BambooGroveBlocks.CHERRY_STANDING_SIGN.get());
 
         add(BambooGroveBlocks.CHERRY_PANEL.get(),
                 block -> createSinglePropConditionTable(block, PanelBlock.HALF, DoubleBlockHalf.LOWER));
@@ -105,6 +109,8 @@ public class ExplorerBlockLootTables extends BlockLootTables {
         dropSelf(BambooGroveBlocks.CHERRY_BLOSSOM_STAIRS.get());
         dropSelf(BambooGroveBlocks.CHERRY_BLOSSOM_PRESSURE_PLATE.get());
         dropSelf(BambooGroveBlocks.CHERRY_BLOSSOM_TRAPDOOR.get());
+        dropSelf(BambooGroveBlocks.CHERRY_BLOSSOM_WALL_SIGN.get());
+        dropSelf(BambooGroveBlocks.CHERRY_BLOSSOM_STANDING_SIGN.get());
 
         //====== Maple Tree Blocks
         dropSelf(BambooGroveBlocks.MAPLE_BUTTON.get());
@@ -127,6 +133,8 @@ public class ExplorerBlockLootTables extends BlockLootTables {
         dropSelf(BambooGroveBlocks.MAPLE_WOOD.get());
         dropSelf(BambooGroveBlocks.MAPLE_STRIPPED_LOG.get());
         dropSelf(BambooGroveBlocks.MAPLE_STRIPPED_WOOD.get());
+        dropSelf(BambooGroveBlocks.MAPLE_WALL_SIGN.get());
+        dropSelf(BambooGroveBlocks.MAPLE_STANDING_SIGN.get());
 
         add(BambooGroveBlocks.TATAMI.get(),
                 block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));

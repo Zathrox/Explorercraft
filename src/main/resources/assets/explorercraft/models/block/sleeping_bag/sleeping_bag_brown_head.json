@@ -1,7 +1,0 @@
-{
-    "parent": "explorercraft:block/sleeping_bag/sleeping_bag_head",
-    "textures": {
-        "particle": "explorercraft:block/sleeping_bag/sleeping_bag_brown",
-        "sleeping_bag": "explorercraft:block/sleeping_bag/sleeping_bag_brown"
-    }
-}

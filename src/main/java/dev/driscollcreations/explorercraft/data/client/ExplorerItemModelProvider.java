@@ -3,6 +3,7 @@ package dev.driscollcreations.explorercraft.data.client;
 import dev.driscollcreations.explorercraft.Explorercraft;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -29,6 +30,7 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
         withExistingParent("jade_ore", modLoc("block/jade_ore"));
         withExistingParent("slimey_stone", modLoc("block/slimey_stone"));
         withExistingParent("dissolved_stone", modLoc("block/dissolved_stone"));
+        withExistingParent("black_hole", modLoc("block/black_hole"));
         withExistingParent("rice_straw_block", modLoc("block/rice_straw_block"));
         builderMod(itemGenerated, "item/rice");
         builderMod(itemGenerated, "item/rice_straw");
@@ -39,24 +41,10 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
         builderMod(itemGenerated, "item/tamago_sushi");
 
         //-------- Sleeping bags
-        builderMod(itemGenerated, "item/sleeping_bag_black");
-        builderMod(itemGenerated, "item/sleeping_bag_blue");
-        builderMod(itemGenerated, "item/sleeping_bag_brown");
-        builderMod(itemGenerated, "item/sleeping_bag_cyan");
-        builderMod(itemGenerated, "item/sleeping_bag_gray");
-        builderMod(itemGenerated, "item/sleeping_bag_green");
-        builderMod(itemGenerated, "item/sleeping_bag_leather");
-        builderMod(itemGenerated, "item/sleeping_bag_light_blue");
-        builderMod(itemGenerated, "item/sleeping_bag_light_gray");
-        builderMod(itemGenerated, "item/sleeping_bag_green");
-        builderMod(itemGenerated, "item/sleeping_bag_lime");
-        builderMod(itemGenerated, "item/sleeping_bag_magenta");
-        builderMod(itemGenerated, "item/sleeping_bag_orange");
-        builderMod(itemGenerated, "item/sleeping_bag_pink");
-        builderMod(itemGenerated, "item/sleeping_bag_purple");
-        builderMod(itemGenerated, "item/sleeping_bag_red");
-        builderMod(itemGenerated, "item/sleeping_bag_white");
-        builderMod(itemGenerated, "item/sleeping_bag_yellow");
+        List<String> sleepingBags = Arrays.asList("black", "blue", "brown", "cyan", "gray", "green", "leather", "light_blue", "light_gray", "lime", "magenta", "orange", "pink", "purple", "red", "white", "yellow");
+        for (String color : sleepingBags) {
+            builderMod(itemGenerated, "item/sleeping_bag_"+color);
+        }
 
         builderMod(itemGenerated, "item/noctiluca");
 
@@ -83,6 +71,7 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
         withExistingParent("cherry_blossom_slab", modLoc("block/cherry_blossom_slab"));
         withExistingParent("cherry_blossom_stairs", modLoc("block/cherry_blossom_stairs"));
         withExistingParent("cherry_blossom_trapdoor", modLoc("block/cherry_blossom_trapdoor_bottom"));
+        builderMod(itemGenerated, "item/cherry_blossom_sign");
 
         builderMod(itemGenerated, "item/cherry_panel");
         builderMod(itemGenerated, "item/bamboo_panel");
@@ -103,6 +92,7 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
             builderMod(itemGenerated, tree+"_sapling","block/"+tree+"_sapling");
             builderMc(itemGenerated, "potted_"+tree+"_sapling","item/flower_pot");
 
+            builderMod(itemGenerated, "item/"+tree+"_sign");
             withExistingParent(tree+"_slab", modLoc("block/"+tree+"_slab"));
             withExistingParent(tree+"_stairs", modLoc("block/"+tree+"_stairs"));
             withExistingParent(tree+"_trapdoor", modLoc("block/"+tree+"_trapdoor_bottom"));

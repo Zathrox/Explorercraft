@@ -3,6 +3,8 @@ package dev.driscollcreations.explorercraft.bamboogrove.setup;
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.items.JadeBowItem;
 import dev.driscollcreations.explorercraft.setup.*;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
@@ -23,12 +25,16 @@ public class BambooGroveItems {
     public static final RegistryObject<Item> SALMON_SUSHI = Registration.ITEMS.register("salmon_sushi", () -> new Item(new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT).food(ExplorerFoods.SALMON_SUSHI)));
     public static final RegistryObject<Item> TAMAGO_SUSHI = Registration.ITEMS.register("tamago_sushi", () -> new Item(new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT).food(ExplorerFoods.TAMAGO_SUSHI)));
 
+    public static final RegistryObject<Item> BAMBOO_SIGN = Registration.ITEMS.register("bamboo_sign", () -> new SignItem((new Item.Properties()).stacksTo(16).tab(ExplorerItemGroups.EXPLORERCRAFT), BambooGroveBlocks.BAMBOO_STANDING_SIGN.get(), BambooGroveBlocks.BAMBOO_WALL_SIGN.get()));
+    public static final RegistryObject<Item> CHERRY_SIGN = Registration.ITEMS.register("cherry_sign", () -> new SignItem((new Item.Properties()).stacksTo(16).tab(ExplorerItemGroups.EXPLORERCRAFT), BambooGroveBlocks.CHERRY_STANDING_SIGN.get(), BambooGroveBlocks.CHERRY_WALL_SIGN.get()));
+    public static final RegistryObject<Item> CHERRY_BLOSSOM_SIGN = Registration.ITEMS.register("cherry_blossom_sign", () -> new SignItem((new Item.Properties()).stacksTo(16).tab(ExplorerItemGroups.EXPLORERCRAFT), BambooGroveBlocks.CHERRY_BLOSSOM_STANDING_SIGN.get(), BambooGroveBlocks.CHERRY_BLOSSOM_WALL_SIGN.get()));
+    public static final RegistryObject<Item> MAPLE_SIGN = Registration.ITEMS.register("maple_sign", () -> new SignItem((new Item.Properties()).stacksTo(16).tab(ExplorerItemGroups.EXPLORERCRAFT), BambooGroveBlocks.MAPLE_STANDING_SIGN.get(), BambooGroveBlocks.MAPLE_WALL_SIGN.get()));
 
     ///======== Jade Misc
     public static final RegistryObject<Item> JADE = Registration.ITEMS.register("jade", () -> new Item(basicItemProps));
     public static final RegistryObject<Item> JADE_BOW = Registration.ITEMS.register("jade_bow", () -> new JadeBowItem(new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT).durability(684)));
     public static final RegistryObject<Item> JADE_HORSE_ARMOR = Registration.ITEMS.register("jade_horse_armor",
-            () -> new HorseArmorItem(8, new ResourceLocation(Explorercraft.MOD_ID, "textures/entities/horse/armor/horse_armor_jade.png"), singleStackItemProps));
+            () -> new HorseArmorItem(8, new ResourceLocation(Explorercraft.MOD_ID, "textures/entity/horse/armor/horse_armor_jade.png"), singleStackItemProps));
 
     //======== Jade Tools
     public static final RegistryObject<Item> JADE_AXE = Registration.ITEMS.register("jade_axe",

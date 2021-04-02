@@ -1,0 +1,7 @@
+{
+  "parent": "explorercraft:block/sleeping_bag/sleeping_bag_foot",
+  "textures": {
+    "sleeping_bag": "explorercraft:block/sleeping_bag/sleeping_bag_red",
+    "particle": "explorercraft:block/sleeping_bag/sleeping_bag_red"
+  }
+}

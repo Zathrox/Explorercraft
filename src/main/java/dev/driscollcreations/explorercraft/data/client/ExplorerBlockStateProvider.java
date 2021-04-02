@@ -4,21 +4,22 @@ import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.blocks.BambooLogBlock;
 import dev.driscollcreations.explorercraft.bamboogrove.blocks.PanelBlock;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
+import dev.driscollcreations.explorercraft.vanillatweaks.blocks.SleepingBagBlock;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
 import net.minecraft.block.*;
+import net.minecraft.client.renderer.model.Model;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.state.properties.AttachFace;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.state.properties.DoorHingeSide;
-import net.minecraft.state.properties.DoubleBlockHalf;
+import net.minecraft.state.properties.*;
 import net.minecraft.util.Direction;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
+import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 
 public class ExplorerBlockStateProvider extends BlockStateProvider {
@@ -69,6 +70,11 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         slabBlock((SlabBlock) BambooGroveBlocks.BAMBOO_SLAB.get(), modLoc("block/bamboo_planks"), modLoc("block/bamboo_planks"));
         stairsBlock((StairsBlock) BambooGroveBlocks.BAMBOO_STAIRS.get(), modLoc("block/bamboo_planks"));
         trapdoorBlock((TrapDoorBlock) BambooGroveBlocks.BAMBOO_TRAPDOOR.get(), modLoc("block/bamboo_trapdoor"), true);
+        panelBlock((PanelBlock) BambooGroveBlocks.BAMBOO_PANEL.get(), modLoc("block/bamboo_panel_bottom"), modLoc("block/bamboo_panel_top"));
+        new ConfiguredModel(models().getBuilder("bamboo_sign").texture("particle", "block/bamboo_planks"));
+        simpleBlock(BambooGroveBlocks.BAMBOO_STANDING_SIGN.get(), models().getExistingFile(modLoc("block/bamboo_sign")));
+        simpleBlock(BambooGroveBlocks.BAMBOO_WALL_SIGN.get(), models().getExistingFile(modLoc("block/bamboo_sign")));
+
 
         //===== Cherry Tree Blocks
         buttonBlock(BambooGroveBlocks.CHERRY_BUTTON.get(),
@@ -98,6 +104,10 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         trapdoorBlock((TrapDoorBlock) BambooGroveBlocks.CHERRY_TRAPDOOR.get(), modLoc("block/cherry_trapdoor"), true);
         woodBlock(BambooGroveBlocks.CHERRY_WOOD.get(), modLoc("block/cherry_log"));
         woodBlock(BambooGroveBlocks.CHERRY_STRIPPED_WOOD.get(), modLoc("block/cherry_stripped_log"));
+        panelBlock((PanelBlock) BambooGroveBlocks.CHERRY_PANEL.get(), modLoc("block/cherry_panel_bottom"), modLoc("block/cherry_panel_top"));
+        new ConfiguredModel(models().getBuilder("cherry_sign").texture("particle", "block/cherry_planks"));
+        simpleBlock(BambooGroveBlocks.CHERRY_STANDING_SIGN.get(), models().getExistingFile( modLoc("block/cherry_sign")));
+        simpleBlock(BambooGroveBlocks.CHERRY_WALL_SIGN.get(), models().getExistingFile( modLoc("block/cherry_sign")));
 
         //===== Cherry Blossom Blocks
         buttonBlock(BambooGroveBlocks.CHERRY_BLOSSOM_BUTTON.get(),
@@ -119,10 +129,9 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         slabBlock((SlabBlock) BambooGroveBlocks.CHERRY_BLOSSOM_SLAB.get(), modLoc("block/cherry_blossom_planks"), modLoc("block/cherry_blossom_planks"));
         stairsBlock((StairsBlock) BambooGroveBlocks.CHERRY_BLOSSOM_STAIRS.get(), modLoc("block/cherry_blossom_planks"));
         trapdoorBlock((TrapDoorBlock) BambooGroveBlocks.CHERRY_BLOSSOM_TRAPDOOR.get(), modLoc("block/cherry_blossom_trapdoor"), true);
-
-
-        panelBlock((PanelBlock) BambooGroveBlocks.CHERRY_PANEL.get(), modLoc("block/cherry_panel_bottom"), modLoc("block/cherry_panel_top"));
-        panelBlock((PanelBlock) BambooGroveBlocks.BAMBOO_PANEL.get(), modLoc("block/bamboo_panel_bottom"), modLoc("block/bamboo_panel_top"));
+        new ConfiguredModel(models().getBuilder("cherry_blossom_sign").texture("particle", "block/cherry_blossom_planks"));
+        simpleBlock(BambooGroveBlocks.CHERRY_BLOSSOM_STANDING_SIGN.get(), models().getExistingFile( modLoc("block/cherry_blossom_sign")));
+        simpleBlock(BambooGroveBlocks.CHERRY_BLOSSOM_WALL_SIGN.get(), models().getExistingFile( modLoc("block/cherry_blossom_sign")));
 
         //===== Maple Tree Blocks
         buttonBlock(BambooGroveBlocks.MAPLE_BUTTON.get(),
@@ -152,6 +161,9 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         trapdoorBlock((TrapDoorBlock) BambooGroveBlocks.MAPLE_TRAPDOOR.get(), modLoc("block/maple_trapdoor"), true);
         woodBlock(BambooGroveBlocks.MAPLE_WOOD.get(), modLoc("block/maple_log"));
         woodBlock(BambooGroveBlocks.MAPLE_STRIPPED_WOOD.get(), modLoc("block/maple_stripped_log"));
+        new ConfiguredModel(models().getBuilder("maple_sign").texture("particle", "block/maple_planks"));
+        simpleBlock(BambooGroveBlocks.MAPLE_STANDING_SIGN.get(), models().getExistingFile( modLoc("block/maple_sign")));
+        simpleBlock(BambooGroveBlocks.MAPLE_WALL_SIGN.get(), models().getExistingFile( modLoc("block/maple_sign")));
 
         //==== MARBLE
         simpleBlock(VanillaTweaksBlocks.MARBLE.get());
@@ -176,6 +188,48 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         wallBlock((WallBlock) VanillaTweaksBlocks.MARBLE_BRICK_WALL.get(), modLoc("block/marble_bricks"));
         wallBlock((WallBlock) VanillaTweaksBlocks.MARBLE_MOSSY_WALL.get(), modLoc("block/marble_mossy"));
 
+        sleepingBagModels();
+
+    }
+    public void sleepingBag(String color, ResourceLocation head, ResourceLocation foot) {
+        ModelFile headModel = models().getExistingFile(head);
+        ModelFile footModel = models().getExistingFile(foot);
+        Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(Explorercraft.MOD_ID, "sleeping_bag_"+color));
+        getVariantBuilder(block).forAllStatesExcept(state -> {
+            int yRot = ((int) state.getValue(SleepingBagBlock.FACING).toYRot());
+            return ConfiguredModel.builder().modelFile(state.getValue(SleepingBagBlock.PART) == BedPart.FOOT ? footModel : headModel)
+                    .rotationY(yRot)
+                    .build();
+        });
+    }
+
+    public void sleepingBagModels() {
+        new ConfiguredModel(models().withExistingParent("block/sleeping_bag/sleeping_bag_foot", mcLoc("block/thin_block"))
+                .element()
+                .from(0,0,0).to(16, 2, 16)
+                .face(Direction.EAST).uvs(8,1,12,1.5f).texture("#sleeping_bag").cullface(Direction.NORTH).end()
+                .face(Direction.NORTH).uvs(10, 0.5f, 14, 1).texture("#sleeping_bag").cullface(Direction.NORTH).end()
+                .face(Direction.WEST).uvs(8, 1.5f, 12, 2).texture("#sleeping_bag").cullface(Direction.NORTH).end()
+                .face(Direction.UP).uvs(0, 4, 4, 8).texture("#sleeping_bag").rotation(ModelBuilder.FaceRotation.UPSIDE_DOWN).end()
+                .face(Direction.DOWN).uvs(4, 4, 8, 8).texture("#sleeping_bag").rotation(ModelBuilder.FaceRotation.UPSIDE_DOWN).end()
+                .end());
+
+        new ConfiguredModel(models().withExistingParent("block/sleeping_bag/sleeping_bag_head", mcLoc("block/thin_block"))
+                .element()
+                .from(0,0,0).to(16, 2, 16)
+                .face(Direction.EAST).uvs(12,1.5f,16,2).texture("#sleeping_bag").cullface(Direction.NORTH).end()
+                .face(Direction.SOUTH).uvs(10, 0.5f, 14, 1).texture("#sleeping_bag").cullface(Direction.NORTH).end()
+                .face(Direction.WEST).uvs(12, 1, 16, 1.5f).texture("#sleeping_bag").cullface(Direction.NORTH).end()
+                .face(Direction.UP).uvs(0, 0, 4, 4).texture("#sleeping_bag").rotation(ModelBuilder.FaceRotation.UPSIDE_DOWN).end()
+                .face(Direction.DOWN).uvs(4, 0, 8, 4).texture("#sleeping_bag").rotation(ModelBuilder.FaceRotation.UPSIDE_DOWN).end()
+                .end());
+
+        List<String> sleepingBags = Arrays.asList("black", "blue", "brown", "cyan", "gray", "green", "leather", "light_blue", "light_gray", "lime", "magenta", "orange", "pink", "purple", "red", "white", "yellow");
+        for (String color : sleepingBags) {
+            sleepingBag(color, modLoc("block/sleeping_bag/sleeping_bag_"+color+"_head"), modLoc("block/sleeping_bag/sleeping_bag_"+color+"_foot"));
+            new ConfiguredModel(models().withExistingParent("block/sleeping_bag/sleeping_bag_"+color+"_head", modLoc("block/sleeping_bag/sleeping_bag_head")).texture("sleeping_bag", modLoc("block/sleeping_bag/sleeping_bag_"+color)).texture("particle", modLoc("block/sleeping_bag/sleeping_bag_"+color)));
+            new ConfiguredModel(models().withExistingParent("block/sleeping_bag/sleeping_bag_"+color+"_foot", modLoc("block/sleeping_bag/sleeping_bag_foot")).texture("sleeping_bag", modLoc("block/sleeping_bag/sleeping_bag_"+color)).texture("particle", modLoc("block/sleeping_bag/sleeping_bag_"+color)));
+        }
     }
 
     @Override

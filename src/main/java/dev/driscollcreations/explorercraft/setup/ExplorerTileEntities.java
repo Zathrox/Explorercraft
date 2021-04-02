@@ -2,6 +2,7 @@ package dev.driscollcreations.explorercraft.setup;
 
 import com.google.common.collect.Sets;
 import dev.driscollcreations.explorercraft.Explorercraft;
+import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
 import dev.driscollcreations.explorercraft.vanillatweaks.tileentities.BlackHoleTileEntity;
 import dev.driscollcreations.explorercraft.vanillatweaks.tileentities.SleepingBagTileEntity;
@@ -19,6 +20,10 @@ public class ExplorerTileEntities {
 
     public static final RegistryObject<TileEntityType<BlackHoleTileEntity>> BLACK_HOLE = TILE_ENTITIES.register("black_hole",
             () -> new TileEntityType<>(BlackHoleTileEntity::new, Sets.newHashSet(VanillaTweaksBlocks.BLACK_HOLE.get()), null));
+
+    public static final RegistryObject<TileEntityType<ExplorerSigns.CustomSignTileEntity>> EXPLORER_SIGNS = TILE_ENTITIES.register("explorer_signs",
+            () -> TileEntityType.Builder.of(ExplorerSigns.CustomSignTileEntity::new, BambooGroveBlocks.BAMBOO_WALL_SIGN.get(), BambooGroveBlocks.CHERRY_WALL_SIGN.get(), BambooGroveBlocks.CHERRY_BLOSSOM_WALL_SIGN.get(), BambooGroveBlocks.MAPLE_WALL_SIGN.get(), BambooGroveBlocks.BAMBOO_STANDING_SIGN.get(), BambooGroveBlocks.CHERRY_STANDING_SIGN.get(), BambooGroveBlocks.CHERRY_BLOSSOM_STANDING_SIGN.get(), BambooGroveBlocks.MAPLE_STANDING_SIGN.get()).build(null));
+
 
 //    public static final RegistryObject<TileEntityType<SleepingBagTileEntity>> SLEEPING_BAG = TILE_ENTITIES.register("sleeping_bag",
 //            () -> TileEntityType.Builder.of(SleepingBagTileEntity::new, VanillaTweaksBlocks.LEATHER_SLEEPING_BAG.get()).build(null));

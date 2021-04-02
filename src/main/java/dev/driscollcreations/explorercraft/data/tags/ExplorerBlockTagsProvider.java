@@ -96,14 +96,36 @@ public class ExplorerBlockTagsProvider extends BlockTagsProvider {
                 .add(BambooGroveBlocks.MAPLE_LEAVES.get());
 
         tag(ExplorerTags.Blocks.LOGS)
-                .add(BambooGroveBlocks.BAMBOO_LOG.get())
-                .add(BambooGroveBlocks.CHERRY_LOG.get())
-                .add(BambooGroveBlocks.MAPLE_LOG.get());
+                .addTag(ExplorerTags.Blocks.BAMBOO_LOGS)
+                .addTag(ExplorerTags.Blocks.CHERRY_LOGS)
+                .addTag(ExplorerTags.Blocks.MAPLE_LOGS);
+
+        tag(ExplorerTags.Blocks.PLANKS)
+                .add(BambooGroveBlocks.BAMBOO_PLANKS.get())
+                .add(BambooGroveBlocks.BAMBOO_PLANKS_VERTICAL.get())
+                .add(BambooGroveBlocks.CHERRY_PLANKS.get())
+                .add(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get())
+                .add(BambooGroveBlocks.MAPLE_PLANKS.get());
 
         tag(ExplorerTags.Blocks.WALLS)
                 .add(VanillaTweaksBlocks.MARBLE_WALL.get())
                 .add(VanillaTweaksBlocks.MARBLE_BRICK_WALL.get())
                 .add(VanillaTweaksBlocks.MARBLE_MOSSY_WALL.get());
+
+        tag(ExplorerTags.Blocks.BAMBOO_LOGS)
+                .add(BambooGroveBlocks.BAMBOO_LOG.get());
+
+        tag(ExplorerTags.Blocks.CHERRY_LOGS)
+                .add(BambooGroveBlocks.CHERRY_LOG.get())
+                .add(BambooGroveBlocks.CHERRY_STRIPPED_LOG.get())
+                .add(BambooGroveBlocks.CHERRY_WOOD.get())
+                .add(BambooGroveBlocks.CHERRY_STRIPPED_WOOD.get());
+
+        tag(ExplorerTags.Blocks.MAPLE_LOGS)
+                .add(BambooGroveBlocks.MAPLE_LOG.get())
+                .add(BambooGroveBlocks.MAPLE_STRIPPED_LOG.get())
+                .add(BambooGroveBlocks.MAPLE_WOOD.get())
+                .add(BambooGroveBlocks.MAPLE_STRIPPED_WOOD.get());
 
     }
 }

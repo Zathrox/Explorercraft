@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:marble_polished_slab_from_marble_polished_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_marble_polished": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:marble_polished"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:marble_polished_slab_from_marble_polished_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_marble_polished",
+      "has_the_recipe"
+    ]
+  ]
+}

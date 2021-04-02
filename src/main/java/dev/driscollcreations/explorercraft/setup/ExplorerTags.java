@@ -24,8 +24,12 @@ public class ExplorerTags {
         public static final ITag.INamedTag<Block> TRAPDOORS_WOODEN = minecraft("wooden_trapdoors");
         public static final ITag.INamedTag<Block> LEAVES = minecraft("leaves");
         public static final ITag.INamedTag<Block> LOGS = minecraft("logs");
+        public static final ITag.INamedTag<Block> PLANKS = minecraft("planks");
         public static final ITag.INamedTag<Block> WALLS = minecraft("walls");
         public static final ITag.INamedTag<Block> BASE_STONE_OVERWORLD = minecraft("base_stone_overworld");
+        public static final ITag.INamedTag<Block> BAMBOO_LOGS = explorercraft("bamboo_logs");
+        public static final ITag.INamedTag<Block> CHERRY_LOGS = explorercraft("cherry_logs");
+        public static final ITag.INamedTag<Block> MAPLE_LOGS = explorercraft("maple_logs");
 
         private static ITag.INamedTag<Block> forge(String path) {
             return BlockTags.bind(new ResourceLocation("forge", path).toString());
@@ -52,7 +56,11 @@ public class ExplorerTags {
         public static final ITag.INamedTag<Item> TRAPDOORS_WOODEN = minecraft("wooden_trapdoors");
         public static final ITag.INamedTag<Item> LEAVES = minecraft("leaves");
         public static final ITag.INamedTag<Item> LOGS = minecraft("logs");
+        public static final ITag.INamedTag<Item> PLANKS = minecraft("planks");
         public static final ITag.INamedTag<Item> WALLS = minecraft("walls");
+        public static final ITag.INamedTag<Item> BAMBOO_LOGS = explorercraft("bamboo_logs");
+        public static final ITag.INamedTag<Item> CHERRY_LOGS = explorercraft("cherry_logs");
+        public static final ITag.INamedTag<Item> MAPLE_LOGS = explorercraft("maple_logs");
 
         public static final ITag.INamedTag<Item> JADE = forge("gems/jade");
 

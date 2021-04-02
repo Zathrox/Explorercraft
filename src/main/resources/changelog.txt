@@ -2,6 +2,8 @@ CHANGELOG:
 
 --------// Explorercraft 1.16.5 // ----------------------------------------------------
 Patch 5.0.3:
+Added a development block - Black hole
+
 TODO Loot-table injections for Jade and some other items for other (Double check double injection isn't affecting rates)
 TODO VanillaTweaks:
     - Marble Structure - Look at Mountain notes for additional forested mountain ideas!

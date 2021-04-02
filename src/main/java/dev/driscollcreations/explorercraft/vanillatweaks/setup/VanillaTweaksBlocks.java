@@ -69,7 +69,6 @@ public class VanillaTweaksBlocks {
     //========== Black hole
     public static final RegistryObject<Block> BLACK_HOLE = BlockUtils.register("black_hole", () -> new BlackHoleBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).strength(-1.0F, 3600000.0F).noDrops().noCollission()));
 
-
     public static void register() {}
 
     private static Supplier<Block> createSleepingBag(DyeColor color) {

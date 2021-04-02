@@ -657,6 +657,12 @@ bf1ce4ee040f54280f32d6bdc60afacf1070ca4e data/explorercraft/recipes/saddle.json
 cdda671161f9a6ac2783bcb9db60a79bbf3b6d30 data/explorercraft/recipes/tatami.json
 e44084a90f14531fb99b2c680197f994e8a795ba data/explorercraft/recipes/tatami_half.json
 79cda9fb7bc6a4a294e4a20620453c2ca6d5ff75 data/explorercraft/recipes/trident.json
+4b9a7fb3f1c08ef8e5321f6f3c1ae90192c58f16 data/explorercraft/tags/blocks/bamboo_logs.json
+93e44a66894e59d0e7c173d6a7a3a1b6b52ffc35 data/explorercraft/tags/blocks/cherry_logs.json
+a33cc25c58e55fa51eed057f21016eada889a116 data/explorercraft/tags/blocks/maple_logs.json
+4b9a7fb3f1c08ef8e5321f6f3c1ae90192c58f16 data/explorercraft/tags/items/bamboo_logs.json
+93e44a66894e59d0e7c173d6a7a3a1b6b52ffc35 data/explorercraft/tags/items/cherry_logs.json
+a33cc25c58e55fa51eed057f21016eada889a116 data/explorercraft/tags/items/maple_logs.json
 304526c4619ce9c90b44eaec04fda13b18310e43 data/forge/tags/blocks/fence_gates/wooden.json
 63eb803df502fa64f82d9856f4d80a62a0828e13 data/forge/tags/blocks/fences/wooden.json
 7767fd7815c1fc0fd98efa27d0c3b5f01e14add9 data/forge/tags/blocks/storage_blocks.json
@@ -717,7 +723,8 @@ ff8b426843a343fcf904ff72ea4a7703e3801267 data/minecraft/recipes/marble_polished_
 8f9a06caf4d081c5cd7918e90dd17c7af02cb212 data/minecraft/tags/blocks/buttons.json
 cef5e6c174e88a5fcbd5a5be593743b6ee5dc47e data/minecraft/tags/blocks/doors.json
 9e47bcde9495d0d100e447e4dd88eac84fcf1357 data/minecraft/tags/blocks/leaves.json
-93eb515b745120add933bbbc7204f8cd217f0354 data/minecraft/tags/blocks/logs.json
+c0b31b342dab9087382c2a87239f3b74fe7e4e69 data/minecraft/tags/blocks/logs.json
+ab940265d8498145b2ab1ffb286ebd95250c5442 data/minecraft/tags/blocks/planks.json
 19b5a0b28a307691396af39fc08fc799cad9c317 data/minecraft/tags/blocks/walls.json
 8f9a06caf4d081c5cd7918e90dd17c7af02cb212 data/minecraft/tags/blocks/wooden_buttons.json
 cef5e6c174e88a5fcbd5a5be593743b6ee5dc47e data/minecraft/tags/blocks/wooden_doors.json
@@ -727,7 +734,8 @@ d593237d2d0e6f5ff3447f29b75ed301e7723b32 data/minecraft/tags/blocks/wooden_press
 0833480a92f423474f4e3122d71837aa1bfad957 data/minecraft/tags/blocks/wooden_stairs.json
 5f9ef9dc233ef0bc600922e5fa86e843def6a23b data/minecraft/tags/blocks/wooden_trapdoors.json
 9e47bcde9495d0d100e447e4dd88eac84fcf1357 data/minecraft/tags/items/leaves.json
-93eb515b745120add933bbbc7204f8cd217f0354 data/minecraft/tags/items/logs.json
+c0b31b342dab9087382c2a87239f3b74fe7e4e69 data/minecraft/tags/items/logs.json
+ab940265d8498145b2ab1ffb286ebd95250c5442 data/minecraft/tags/items/planks.json
 19b5a0b28a307691396af39fc08fc799cad9c317 data/minecraft/tags/items/walls.json
 8f9a06caf4d081c5cd7918e90dd17c7af02cb212 data/minecraft/tags/items/wooden_buttons.json
 cef5e6c174e88a5fcbd5a5be593743b6ee5dc47e data/minecraft/tags/items/wooden_doors.json

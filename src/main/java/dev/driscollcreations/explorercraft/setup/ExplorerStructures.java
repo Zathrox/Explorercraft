@@ -8,6 +8,7 @@ import dev.driscollcreations.explorercraft.bamboogrove.world.structures.RunDownH
 import dev.driscollcreations.explorercraft.bamboogrove.world.structures.SakuraTreeStructure;
 import dev.driscollcreations.explorercraft.bamboogrove.world.structures.ToriiGateStructure;
 import dev.driscollcreations.explorercraft.config.BambooGroveConfig;
+import dev.driscollcreations.explorercraft.vanillatweaks.structures.TempleRuinStructure;
 import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.StructureFeature;
@@ -32,6 +33,7 @@ public class ExplorerStructures {
     public static final RegistryObject<Structure<NoFeatureConfig>> BLACKSTONE_DUNGEON = registerStructure("blackstone_dungeon", () -> (new BlackstoneDungeonStructure(NoFeatureConfig.CODEC)));
     public static final RegistryObject<Structure<NoFeatureConfig>> SAKURA_TREE = registerStructure("sakura_tree", () -> (new SakuraTreeStructure(NoFeatureConfig.CODEC)));
     public static final RegistryObject<Structure<NoFeatureConfig>> TORII_GATE = registerStructure("torii_gate", () -> (new ToriiGateStructure(NoFeatureConfig.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> TEMPLE_RUINS = registerStructure("temple_ruins", () -> (new TempleRuinStructure(NoFeatureConfig.CODEC)));
 
 
     private static <T extends Structure<?>> RegistryObject<T> registerStructure(String name, Supplier<T> structure) {
@@ -49,6 +51,7 @@ public class ExplorerStructures {
         setupMapSpacingAndLand(BLACKSTONE_DUNGEON.get(), new StructureSeparationSettings(30,15,564645743),false);
         setupMapSpacingAndLand(SAKURA_TREE.get(), new StructureSeparationSettings(20, 6, 647785356), true);
         setupMapSpacingAndLand(TORII_GATE.get(), new StructureSeparationSettings(40,20,539272656),true);
+        setupMapSpacingAndLand(TEMPLE_RUINS.get(), new StructureSeparationSettings(10,5,76345737),true);
 
     }
 

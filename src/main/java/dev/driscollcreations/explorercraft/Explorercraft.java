@@ -149,6 +149,7 @@ public class Explorercraft
             tempMap.putIfAbsent(ExplorerStructures.BLACKSTONE_DUNGEON.get(), DimensionStructuresSettings.DEFAULTS.get(ExplorerStructures.BLACKSTONE_DUNGEON.get()));*/
             tempMap.putIfAbsent(ExplorerStructures.SAKURA_TREE.get(), DimensionStructuresSettings.DEFAULTS.get(ExplorerStructures.SAKURA_TREE.get()));
             tempMap.putIfAbsent(ExplorerStructures.TORII_GATE.get(), DimensionStructuresSettings.DEFAULTS.get(ExplorerStructures.TORII_GATE.get()));
+            tempMap.putIfAbsent(ExplorerStructures.TEMPLE_RUINS.get(), DimensionStructuresSettings.DEFAULTS.get(ExplorerStructures.TEMPLE_RUINS.get()));
             serverWorld.getChunkSource().generator.getSettings().structureConfig = tempMap;
         }
     }

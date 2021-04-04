@@ -67,6 +67,7 @@ public class ExplorerFeature {
         BiomeGenerationSettingsBuilder generation = event.getGeneration();
         final RegistryKey<Biome> biomeRegistryKey = RegistryKey.create(ForgeRegistries.Keys.BIOMES, Objects.requireNonNull(event.getName(), "Biome registry name was null"));
 
+
         if (VanillaTweaksConfig.spawnSlimeChunkCaves.get()) {
             if (biome.equals(Biomes.SWAMP.location().toString()) || biome.equals(Biomes.SWAMP_HILLS.location().toString()) || event.getCategory() == Biome.Category.SWAMP) {
                 generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ExplorerFeature.Configured.SLIMEY_CHUNK_SWAMP);
@@ -78,6 +79,7 @@ public class ExplorerFeature {
         if (VanillaTweaksConfig.spawnMarbleInForestedMountains.get()) {
             if (biome.equals(ExplorerBiomes.FORESTED_MOUNTAIN.get().getRegistryName().toString()) ) {
                 generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Configured.MARBLE_MOUNTAIN);
+                event.getGeneration().getStructures().add(() -> ExplorerConfiguredStructures.CONFIGURED_TEMPLE_RUINS);
             }
         }
 

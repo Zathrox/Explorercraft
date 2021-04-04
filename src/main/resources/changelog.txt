@@ -1,15 +1,10 @@
 CHANGELOG:
 
 --------// Explorercraft 1.16.5 // ----------------------------------------------------
-Patch 5.0.3:
-Fixed several forge tag related issues for the planks, logs, etc
-Added a development block - Black hole
-Added Bamboo, Cherry, Cherry Blossom and Maple wood signs!
-Created data generated sleeping bag blockstates and models.
-Refactoring some files/folders
-Added Temple ruins to Forested mountain biome, every one is different from the last!
-Added new advancements for the newer blocks/structures added
-Fixed a small sleeping bag bug
+Patch 5.0.4:
+Add Enderreeper
+    Enderghast
+    Skeletaur
 
 TODO Loot-table injections for Jade and some other items
 TODO VanillaTweaks:
@@ -33,6 +28,16 @@ todo Notes: Creating a dynamically sized and more interesting Slate dungeon is p
 todo all I need to do is create a large selection of rooms, give each jigsaw piece a corresponding and matching name/target
 todo so hallway, will look for hallway, etc. Could for example on certain rooms, have new pools to spawn new hallways or special rooms. See blackstone dungeon
 
+
+Patch 5.0.3:
+Fixed several forge tag related issues for the planks, logs, etc
+Added a development block - Black hole
+Added Bamboo, Cherry, Cherry Blossom and Maple wood signs!
+Created data generated sleeping bag blockstates and models.
+Refactoring some files/folders
+Added Temple ruins to Forested mountain biome, every one is different from the last!
+Added new advancements for the newer blocks/structures added
+Fixed a small sleeping bag bug
 
 Patch 5.0.2:
 Modified the Bamboo grove biome types + weight

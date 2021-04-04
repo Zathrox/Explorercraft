@@ -1,0 +1,30 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:marble_chiseled"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.temple_ruins.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.temple_ruins.description"
+        },
+        "hidden": false
+    },
+    "parent": "explorercraft:explorercraft/marble",
+    "criteria": {
+        "temple_ruins": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "location": {
+                    "feature": "explorercraft:temple_ruins"
+                }
+            }
+        }
+    },
+    "requirements": [
+        [
+            "temple_ruins"
+        ]
+    ]
+}

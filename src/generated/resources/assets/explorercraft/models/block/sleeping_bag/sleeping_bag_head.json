@@ -41,7 +41,7 @@
             14.0,
             1.0
           ],
-          "cullface": "north"
+          "cullface": "south"
         },
         "west": {
           "texture": "#sleeping_bag",
@@ -51,7 +51,7 @@
             16.0,
             1.5
           ],
-          "cullface": "north"
+          "cullface": "west"
         },
         "east": {
           "texture": "#sleeping_bag",
@@ -61,7 +61,7 @@
             16.0,
             2.0
           ],
-          "cullface": "north"
+          "cullface": "east"
         }
       }
     }

@@ -7,12 +7,11 @@ Added a development block - Black hole
 Added Bamboo, Cherry, Cherry Blossom and Maple wood signs!
 Created data generated sleeping bag blockstates and models.
 Refactoring some files/folders
-Added Temple ruins to Forested mountain biome, every one is different from the last
+Added Temple ruins to Forested mountain biome, every one is different from the last!
+Added new advancements for the newer blocks/structures added
+Fixed a small sleeping bag bug
 
-TODO - Sleeping bag bug - placing a block at the bottom hides texture
-TODO - Sign textures
-
-TODO Loot-table injections for Jade and some other items for other (Double check double injection isn't affecting rates)
+TODO Loot-table injections for Jade and some other items
 TODO VanillaTweaks:
     - Temple ruins: Minataur spawn? or Skeletaur eventually?
     - Explorer Set, advancements, items, buffs, custom model
@@ -27,6 +26,7 @@ TODO - Create complicated models/blockstates in data generators:
     - Tatami mats (B, M, Im)
     - Bamboo log models
 
+todo Have wizard sell "legacy" items such as ruby, amethyst and basalt?
 todo livingentity.getType().is(EntityTypeTags.RAIDERS) - code for possibly checking a list of entities, can create enchantments off this.
 todo Adamantite knights, drop adamintite scrap, forge it like netherite scrape with another material, take it to Wizard for Ingots?
 todo Notes: Creating a dynamically sized and more interesting Slate dungeon is possible with jigsaw pieces

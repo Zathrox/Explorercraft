@@ -76,9 +76,11 @@ public class ExplorerFeature {
             }
         }
 
-        if (VanillaTweaksConfig.spawnMarbleInForestedMountains.get()) {
-            if (biome.equals(ExplorerBiomes.FORESTED_MOUNTAIN.get().getRegistryName().toString()) ) {
+        if (biome.equals(ExplorerBiomes.FORESTED_MOUNTAIN.get().getRegistryName().toString()) ) {
+            if (VanillaTweaksConfig.spawnMarbleInForestedMountains.get()) {
                 generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Configured.MARBLE_MOUNTAIN);
+            }
+            if(VanillaTweaksConfig.spawnTempleRuins.get()) {
                 event.getGeneration().getStructures().add(() -> ExplorerConfiguredStructures.CONFIGURED_TEMPLE_RUINS);
             }
         }
@@ -103,9 +105,9 @@ public class ExplorerFeature {
                             ExplorerFeature.Configured.CHERRY_TREE.weighted(0.01F),
                             ExplorerFeature.Configured.MAPLE_TREE.weighted(0.01F)),
                             ExplorerFeature.Configured.BAMBOO_TREE))
-                                                                                         .decorated(Features.Placements.HEIGHTMAP_SQUARE)
-                                                                                         .decorated(Placement.COUNT_EXTRA
-                                                                                                            .configured(new AtSurfaceWithExtraConfig(30, 0.1F, 1))));
+                     .decorated(Features.Placements.HEIGHTMAP_SQUARE)
+                     .decorated(Placement.COUNT_EXTRA
+                    .configured(new AtSurfaceWithExtraConfig(30, 0.1F, 1))));
 
             if (BambooGroveConfig.spawnJade.get()) {
                 generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ExplorerFeature.Configured.JADE_ORE);

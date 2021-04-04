@@ -70,7 +70,7 @@
     "advancements.explorercraft.dragon_heart.description": "Flaming Heart of Wales!",
     "advancements.explorercraft.welsh_shield.title": "Shield of Cmyru",
     "advancements.explorercraft.welsh_shield.description": "Pride of Wales!",
-    "//": "===== Banners",
+    "//": "===== Advancements",
     "advancements.explorercraft.banner_leek.title": "Icon of Wales",
     "advancements.explorercraft.banner_leek.description": "Smug a leek onto a banner!",
     "advancements.explorercraft.banner_heart.title": "Heart of Wales",
@@ -89,6 +89,10 @@
     "advancements.explorercraft.bamboo1.description": "Six flat pieces for a floor!",
     "advancements.explorercraft.bamboo2.title": "Bamboo Wall!",
     "advancements.explorercraft.bamboo2.description": "Six stacked pieces for a wall!",
+    "advancements.explorercraft.cherry_blossom.title": "Spring has come!",
+    "advancements.explorercraft.cherry_blossom.description": "Get a splash of spring with these petals!",
+    "advancements.explorercraft.torii_gates.title": "Torii gate discovered!",
+    "advancements.explorercraft.torii_gates.description": "A gateway to another land!",
     "advancements.explorercraft.mine_jade.title": "Mineral of the East!",
     "advancements.explorercraft.mine_jade.description": "Discovered Jade!",
     "advancements.explorercraft.mine_ruby.title": "Jewel of the Mountain",
@@ -99,6 +103,8 @@
     "advancements.explorercraft.basalt.description": "Forged in the fires of Mordor!",
     "advancements.explorercraft.marble.title": "Marble Discovered!",
     "advancements.explorercraft.marble.description": "Get your Greek on!",
+    "advancements.explorercraft.temple_ruins.title": "Temple Ruins Discovered!",
+    "advancements.explorercraft.temple_ruins.description": "Lost civilizations hidden within the mountain!",
     "block.explorercraft.sleeping_bag_leather": "Sleeping Bag",
     "block.explorercraft.sleeping_bag_white": "White Sleeping Bag",
     "block.explorercraft.sleeping_bag_black": "Black Sleeping Bag",
@@ -265,6 +271,8 @@
     "block.explorercraft.bamboo_trapdoor": "Bamboo Trapdoor",
     "block.explorercraft.bamboo_pressure_plate": "Bamboo Pressure Plate",
     "block.explorercraft.bamboo_button": "Bamboo Button",
+    "block.explorercraft.bamboo_panel": "Bamboo Panel",
+    "block.explorercraft.bamboo_sign": "Bamboo Sign",
     "block.explorercraft.cherry_log": "Cherry Blossom Log",
     "block.explorercraft.cherry_wood": "Cherry Blossom Wood",
     "block.explorercraft.cherry_stripped_log": "Stripped Cherry Blossom Log",
@@ -280,11 +288,8 @@
     "block.explorercraft.cherry_trapdoor": "Cherry Blossom Trapdoor",
     "block.explorercraft.cherry_pressure_plate": "Cherry Blossom Pressure Plate",
     "block.explorercraft.cherry_button": "Cherry Blossom Button",
-
-    "block.explorercraft.bamboo_panel": "Bamboo Panel",
+    "block.explorercraft.cherry_sign": "Cherry Blossom Sign",
     "block.explorercraft.cherry_panel": "Cherry Blossom Panel",
-
-
     "block.explorercraft.cherry_blossom_planks": "Pink Cherry Blossom Planks",
     "block.explorercraft.cherry_blossom_stairs": "Pink Cherry Blossom Stairs",
     "block.explorercraft.cherry_blossom_slab": "Pink Cherry Blossom Slab",
@@ -294,6 +299,7 @@
     "block.explorercraft.cherry_blossom_trapdoor": "Pink Cherry Blossom Trapdoor",
     "block.explorercraft.cherry_blossom_pressure_plate": "Pink Cherry Blossom Pressure Plate",
     "block.explorercraft.cherry_blossom_button": "Pink Cherry Blossom Button",
+    "block.explorercraft.cherry_blossom_sign": "Pink Cherry Blossom Sign",
 
     "block.explorercraft.maple_log": "Maple Log",
     "block.explorercraft.maple_wood": "Maple Wood",
@@ -310,6 +316,8 @@
     "block.explorercraft.maple_trapdoor": "Maple Trapdoor",
     "block.explorercraft.maple_pressure_plate": "Maple Pressure Plate",
     "block.explorercraft.maple_button": "Maple Button",
+    "block.explorercraft.maple_sign": "Maple Sign",
+
     "block.explorercraft.willow_log": "Willow Log",
     "block.explorercraft.willow_wood": "Willow Wood",
     "block.explorercraft.willow_stripped_log": "Stripped Willow Log",
@@ -431,5 +439,7 @@
     "block.minecraft.banner.welshdragon.lightBlue": "Light Blue Welsh Dragon",
     "block.minecraft.banner.welshdragon.magenta": "Magenta Welsh Dragon",
     "block.minecraft.banner.welshdragon.orange": "Orange Welsh Dragon",
-    "block.minecraft.banner.welshdragon.white": "White Welsh Dragon"
+    "block.minecraft.banner.welshdragon.white": "White Welsh Dragon",
+
+    "block.explorercraft.black_hole": "Black hole"
 }

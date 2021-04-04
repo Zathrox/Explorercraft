@@ -51,7 +51,7 @@ public class ExplorerStructures {
         setupMapSpacingAndLand(BLACKSTONE_DUNGEON.get(), new StructureSeparationSettings(30,15,564645743),false);
         setupMapSpacingAndLand(SAKURA_TREE.get(), new StructureSeparationSettings(20, 6, 647785356), true);
         setupMapSpacingAndLand(TORII_GATE.get(), new StructureSeparationSettings(40,20,539272656),true);
-        setupMapSpacingAndLand(TEMPLE_RUINS.get(), new StructureSeparationSettings(10,5,76345737),true);
+        setupMapSpacingAndLand(TEMPLE_RUINS.get(), new StructureSeparationSettings(40,20,76345737),true);
 
     }
 

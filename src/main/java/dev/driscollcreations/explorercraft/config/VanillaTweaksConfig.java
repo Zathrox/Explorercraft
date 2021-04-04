@@ -16,6 +16,7 @@ public class VanillaTweaksConfig {
     public static ForgeConfigSpec.IntValue marbleChanceInForestedMountains;
     public static ForgeConfigSpec.IntValue marbleVeinSizeInOverworld;
     public static ForgeConfigSpec.IntValue marbleChanceInOverworld;
+    public static ForgeConfigSpec.BooleanValue spawnTempleRuins;
 
     public static void init(ForgeConfigSpec.Builder common, ForgeConfigSpec.Builder client) {
 
@@ -75,6 +76,11 @@ public class VanillaTweaksConfig {
            .comment("Chance of spawning Marble in the Overworld")
            .translation(Explorercraft.MOD_ID + ".config.marbleChanceInOverworld")
            .defineInRange("marbleChanceInOverworld", 10, 0, 100);
+
+        spawnTempleRuins = common
+           .comment("Spawn Temple Ruins in the Forested Mountains")
+           .translation(Explorercraft.MOD_ID + ".config.spawnTempleRuins")
+           .define("spawnTempleRuins", true);
 
         common.pop();
     }

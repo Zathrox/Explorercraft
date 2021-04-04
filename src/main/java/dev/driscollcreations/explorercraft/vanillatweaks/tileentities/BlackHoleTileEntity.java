@@ -42,6 +42,8 @@ public class BlackHoleTileEntity extends TileEntity implements ITickableTileEnti
     }
 
     public void tick() {
+        //Look at bell tile entity for better code, I think the pull code needs to be seperated into a pull entities code
+        // with other checks and the tick functionality just needs to do the pull code. trial run with glowing effect later?
         World world = this.getLevel();
         BlockPos blockPos = this.getBlockPos();
         --timer;

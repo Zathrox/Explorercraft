@@ -1,24 +1,24 @@
 {
     "display": {
         "icon": {
-            "item": "explorercraft:bamboo_planks"
+            "item": "explorercraft:cherry_blossom_planks"
         },
         "title": {
-            "translate": "advancements.explorercraft.bamboo1.title"
+            "translate": "advancements.explorercraft.cherry_blossom.title"
         },
         "description": {
-            "translate": "advancements.explorercraft.bamboo1.description"
+            "translate": "advancements.explorercraft.cherry_blossom.description"
         },
-        "hidden": false
+        "hidden": true
     },
     "parent": "explorercraft:explorercraft/bamboo_forest",
     "criteria": {
-        "bamboo1": {
+        "cherry_blossom": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                        "item": "explorercraft:bamboo_planks"
+                        "item": "explorercraft:cherry_blossom"
                     }
                 ]
             }

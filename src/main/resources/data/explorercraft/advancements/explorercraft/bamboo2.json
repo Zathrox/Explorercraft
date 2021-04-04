@@ -13,7 +13,7 @@
     },
     "parent": "explorercraft:explorercraft/bamboo1",
     "criteria": {
-        "rice": {
+        "bamboo2": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [

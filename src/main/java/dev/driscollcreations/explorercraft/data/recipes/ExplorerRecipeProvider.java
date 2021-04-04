@@ -276,6 +276,25 @@ public class ExplorerRecipeProvider extends RecipeProvider {
                 .group("wooden_trapdoor")
                 .save(consumer, Explorercraft.getId("bamboo_trapdoor_from_vertical_planks"));
 
+        ShapedRecipeBuilder.shaped(BambooGroveItems.BAMBOO_SIGN.get(), 3)
+                .define('#', BambooGroveBlocks.BAMBOO_PLANKS.get())
+                .define('X', Tags.Items.RODS_WOODEN)
+                .pattern("###")
+                .pattern("###")
+                .pattern(" X ")
+                .unlockedBy("has_item", has(BambooGroveBlocks.BAMBOO_PLANKS.get()))
+                .group("sign")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(BambooGroveItems.BAMBOO_SIGN.get(), 3)
+                .define('#', BambooGroveBlocks.BAMBOO_PLANKS_VERTICAL.get())
+                .define('X', Tags.Items.RODS_WOODEN)
+                .pattern("###")
+                .pattern("###")
+                .pattern(" X ")
+                .unlockedBy("has_item", has(BambooGroveBlocks.BAMBOO_PLANKS_VERTICAL.get()))
+                .group("sign")
+                .save(consumer, Explorercraft.getId("bamboo_sign_from_vertical_planks"));
 
 
         //===== Cherry Blocks
@@ -362,6 +381,16 @@ public class ExplorerRecipeProvider extends RecipeProvider {
                 .pattern("##")
                 .unlockedBy("has_item", has(BambooGroveBlocks.CHERRY_LOG.get()))
                 .group("bark")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(BambooGroveItems.CHERRY_SIGN.get(), 3)
+                .define('#', BambooGroveBlocks.CHERRY_PLANKS.get())
+                .define('X', Tags.Items.RODS_WOODEN)
+                .pattern("###")
+                .pattern("###")
+                .pattern(" X ")
+                .unlockedBy("has_item", has(BambooGroveBlocks.CHERRY_PLANKS.get()))
+                .group("sign")
                 .save(consumer);
 
         //===== Panels
@@ -469,6 +498,16 @@ public class ExplorerRecipeProvider extends RecipeProvider {
                 .group("wooden_trapdoor")
                 .save(consumer);
 
+        ShapedRecipeBuilder.shaped(BambooGroveItems.CHERRY_BLOSSOM_SIGN.get(), 3)
+                .define('#', BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get())
+                .define('X', Tags.Items.RODS_WOODEN)
+                .pattern("###")
+                .pattern("###")
+                .pattern(" X ")
+                .unlockedBy("has_item", has(BambooGroveBlocks.CHERRY_BLOSSOM_PLANKS.get()))
+                .group("sign")
+                .save(consumer);
+
         //===== Maple
         ShapelessRecipeBuilder.shapeless(BambooGroveBlocks.MAPLE_PLANKS.get(), 4)
                 .requires(BambooGroveBlocks.MAPLE_LOG.get())
@@ -553,6 +592,16 @@ public class ExplorerRecipeProvider extends RecipeProvider {
                 .pattern("##")
                 .unlockedBy("has_item", has(BambooGroveBlocks.MAPLE_LOG.get()))
                 .group("bark")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(BambooGroveItems.MAPLE_SIGN.get(), 3)
+                .define('#', BambooGroveBlocks.MAPLE_PLANKS.get())
+                .define('X', Tags.Items.RODS_WOODEN)
+                .pattern("###")
+                .pattern("###")
+                .pattern(" X ")
+                .unlockedBy("has_item", has(BambooGroveBlocks.MAPLE_PLANKS.get()))
+                .group("sign")
                 .save(consumer);
     }
 

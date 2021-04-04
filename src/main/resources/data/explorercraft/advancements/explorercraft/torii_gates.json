@@ -1,0 +1,30 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:cherry_stripped_log"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.torii_gates.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.torii_gates.description"
+        },
+        "hidden": false
+    },
+    "parent": "explorercraft:explorercraft/cherry_blossoms",
+    "criteria": {
+        "torii_gate": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "location": {
+                    "feature": "explorercraft:torii_gate"
+                }
+            }
+        }
+    },
+    "requirements": [
+        [
+            "torii_gate"
+        ]
+    ]
+}

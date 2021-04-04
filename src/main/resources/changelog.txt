@@ -2,15 +2,19 @@ CHANGELOG:
 
 --------// Explorercraft 1.16.5 // ----------------------------------------------------
 Patch 5.0.3:
+Fixed several forge tag related issues for the planks, logs, etc
 Added a development block - Black hole
 Added Bamboo, Cherry, Cherry Blossom and Maple wood signs!
 Created data generated sleeping bag blockstates and models.
 Refactoring some files/folders
+Added Temple ruins to Forested mountain biome, every one is different from the last
 
+TODO - Sleeping bag bug - placing a block at the bottom hides texture
+TODO - Sign textures
 
 TODO Loot-table injections for Jade and some other items for other (Double check double injection isn't affecting rates)
 TODO VanillaTweaks:
-    - Marble Structure - Look at Mountain notes for additional forested mountain ideas!
+    - Temple ruins: Minataur spawn? or Skeletaur eventually?
     - Explorer Set, advancements, items, buffs, custom model
 
 TODO To Be Decided:

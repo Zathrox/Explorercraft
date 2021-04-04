@@ -1,0 +1,51 @@
+{
+  "name": "explorercraft:temple_courtyards",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "explorercraft:temple_courtyard_fountain",
+        "processors": "explorercraft:marble_path_randomiser",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "explorercraft:temple_courtyard_statue",
+        "processors": "explorercraft:marble_path_randomiser",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "explorercraft:temple_courtyard_well",
+        "processors": "explorercraft:marble_path_randomiser",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "explorercraft:temple_courtyard_camp",
+        "processors": "explorercraft:marble_path_randomiser",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "explorercraft:temple_courtyard_mausoleum",
+        "processors": "explorercraft:marble_path_randomiser",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

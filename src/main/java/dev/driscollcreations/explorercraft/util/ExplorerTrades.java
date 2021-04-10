@@ -27,7 +27,6 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = Explorercraft.MOD_ID)
 public final class ExplorerTrades {
 
-
     @SubscribeEvent
     public static void onPlayerMount(EntityMountEvent event) {
         Entity mountingEntity = event.getEntityMounting();

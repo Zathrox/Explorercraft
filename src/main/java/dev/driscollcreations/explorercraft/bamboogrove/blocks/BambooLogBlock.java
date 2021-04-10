@@ -80,7 +80,7 @@ public class BambooLogBlock extends FourWayBlock implements IPlantable {
 
     @Override
     public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
-        if (!isValidPosition(stateIn, worldIn, currentPos)) {
+        if (!canSurvive(stateIn, worldIn, currentPos)) {
             worldIn.getBlockTicks().scheduleTick(currentPos, this, 1);
         }
 
@@ -99,12 +99,12 @@ public class BambooLogBlock extends FourWayBlock implements IPlantable {
     //Destroy the block when its not a valid positon anymore, see bamboo/scaffolding
     @Override
     public void tick(BlockState blockState, ServerWorld worldIn, BlockPos pos, Random random) {
-        if (!isValidPosition(blockState, worldIn, pos)) {
+        if (!canSurvive(blockState, worldIn, pos)) {
             worldIn.destroyBlock(pos, true);
         }
     }
 
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
+    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos) {
         BlockState soil = worldIn.getBlockState(pos.below());
         if (soil.canSustainPlant(worldIn, pos.below(), Direction.UP, this)) return true;
         Block block = worldIn.getBlockState(pos.below()).getBlock();

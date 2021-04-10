@@ -22,6 +22,8 @@ import net.minecraft.world.server.ServerWorld;
 import javax.annotation.Nullable;
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class NoctilucaBlock extends Block implements IWaterLoggable {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
@@ -87,7 +89,7 @@ public class NoctilucaBlock extends Block implements IWaterLoggable {
     }
 
     protected boolean mayPlaceOn(BlockState state, IBlockReader reader, BlockPos pos) {
-        return !state.getCollisionShape(reader, pos).getFaceShape(Direction.UP).isEmpty() || state.isFaceSturdy(reader, pos, Direction.UP);
+        return !state.getBlockSupportShape(reader, pos).getFaceShape(Direction.UP).isEmpty() || state.isFaceSturdy(reader, pos, Direction.UP);
     }
 
     @Override

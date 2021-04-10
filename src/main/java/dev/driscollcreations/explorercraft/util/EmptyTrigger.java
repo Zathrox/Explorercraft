@@ -13,6 +13,8 @@ import net.minecraft.loot.ConditionArrayParser;
 import net.minecraft.loot.ConditionArraySerializer;
 import net.minecraft.util.ResourceLocation;
 
+import net.minecraft.advancements.ICriterionTrigger.Listener;
+
 /**
  * @author - SmellyModder(Luke Tonon)
  */

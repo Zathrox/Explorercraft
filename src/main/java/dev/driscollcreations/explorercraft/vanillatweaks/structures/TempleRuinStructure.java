@@ -28,6 +28,8 @@ import org.apache.logging.log4j.Level;
 
 import java.util.List;
 
+import net.minecraft.world.gen.feature.structure.Structure.IStartFactory;
+
 public class TempleRuinStructure extends Structure<NoFeatureConfig>
 
     {

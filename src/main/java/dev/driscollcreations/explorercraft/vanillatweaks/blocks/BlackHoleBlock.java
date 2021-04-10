@@ -15,6 +15,8 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class BlackHoleBlock extends Block {
 
     public BlackHoleBlock(Properties properties) {

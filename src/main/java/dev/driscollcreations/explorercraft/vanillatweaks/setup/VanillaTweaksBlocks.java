@@ -40,7 +40,7 @@ public class VanillaTweaksBlocks {
     public static final RegistryObject<Block> RED_SLEEPING_BAG 			= BlockUtils.register("sleeping_bag_red", createSleepingBag(DyeColor.RED));
     public static final RegistryObject<Block> BLACK_SLEEPING_BAG 		= BlockUtils.register("sleeping_bag_black", createSleepingBag(DyeColor.BLACK));
 
-    public static final RegistryObject<Block> NOCTILUCAS = BlockUtils.registerNoItem("noctilucas", () -> new NoctilucaBlock(Block.Properties.of(Material.WATER_PLANT).noCollission().randomTicks().sound(SoundType.WET_GRASS)));
+    public static final RegistryObject<Block> NOCTILUCAS = BlockUtils.registerNoItem("noctilucas", () -> new NoctilucaBlock(AbstractBlock.Properties.of(Material.WATER_PLANT).noCollission().randomTicks().sound(SoundType.WET_GRASS)));
 
     //=========== MARBLE BLOCKS ============//
     public static final RegistryObject<Block> MARBLE            = BlockUtils.register("marble", () -> new Block(stoneBlockProps));

@@ -40,8 +40,8 @@ public class BambooGroveBlocks {
             () -> new StairsBlock(() -> BAMBOO_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(BAMBOO_PLANKS.get())));
     public static final RegistryObject<Block> BAMBOO_TRAPDOOR = BlockUtils.register("bamboo_trapdoor", () -> BlockUtils.createWoodTrapdoor());
     public static final RegistryObject<Block> BAMBOO_PANEL = BlockUtils.register("bamboo_panel", () -> BlockUtils.createPanel());
-    public static final RegistryObject<ExplorerSigns.CustomStandingSignBlock> BAMBOO_STANDING_SIGN = BlockUtils.registerNoItem("bamboo_sign", () -> new ExplorerSigns.CustomStandingSignBlock(Block.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), BAMBOO_WOODTYPE));
-    public static final RegistryObject<ExplorerSigns.CustomWallSignBlock> BAMBOO_WALL_SIGN = BlockUtils.registerNoItem("bamboo_wall_sign", () -> new ExplorerSigns.CustomWallSignBlock(Block.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), BAMBOO_WOODTYPE));
+    public static final RegistryObject<ExplorerSigns.CustomStandingSignBlock> BAMBOO_STANDING_SIGN = BlockUtils.registerNoItem("bamboo_sign", () -> new ExplorerSigns.CustomStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), BAMBOO_WOODTYPE));
+    public static final RegistryObject<ExplorerSigns.CustomWallSignBlock> BAMBOO_WALL_SIGN = BlockUtils.registerNoItem("bamboo_wall_sign", () -> new ExplorerSigns.CustomWallSignBlock(AbstractBlock.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), BAMBOO_WOODTYPE));
 
     //== Cherry Tree
     public static final RegistryObject<Block> CHERRY_LEAVES = BlockUtils.register("cherry_leaves", () -> BlockUtils.createLeavesBlock());
@@ -68,8 +68,8 @@ public class BambooGroveBlocks {
     public static final RegistryObject<RotatedPillarBlock> CHERRY_STRIPPED_WOOD = BlockUtils.register("cherry_stripped_wood",
             () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD).strength(2, 10).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> CHERRY_PANEL = BlockUtils.register("cherry_panel", () -> BlockUtils.createPanel());
-    public static final RegistryObject<ExplorerSigns.CustomStandingSignBlock> CHERRY_STANDING_SIGN = BlockUtils.registerNoItem("cherry_sign", () -> new ExplorerSigns.CustomStandingSignBlock(Block.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), CHERRY_WOODTYPE));
-    public static final RegistryObject<ExplorerSigns.CustomWallSignBlock> CHERRY_WALL_SIGN = BlockUtils.registerNoItem("cherry_wall_sign", () -> new ExplorerSigns.CustomWallSignBlock(Block.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), CHERRY_WOODTYPE));
+    public static final RegistryObject<ExplorerSigns.CustomStandingSignBlock> CHERRY_STANDING_SIGN = BlockUtils.registerNoItem("cherry_sign", () -> new ExplorerSigns.CustomStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), CHERRY_WOODTYPE));
+    public static final RegistryObject<ExplorerSigns.CustomWallSignBlock> CHERRY_WALL_SIGN = BlockUtils.registerNoItem("cherry_wall_sign", () -> new ExplorerSigns.CustomWallSignBlock(AbstractBlock.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), CHERRY_WOODTYPE));
 
     //== Cherry Blossom Blocks
     public static final RegistryObject<Block> CHERRY_BLOSSOM_BUTTON = BlockUtils.register("cherry_blossom_button", () -> BlockUtils.createWoodButton());
@@ -82,8 +82,8 @@ public class BambooGroveBlocks {
     public static final RegistryObject<Block> CHERRY_BLOSSOM_STAIRS = BlockUtils.register("cherry_blossom_stairs",
             () -> new StairsBlock(() -> CHERRY_BLOSSOM_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(CHERRY_BLOSSOM_PLANKS.get())));
     public static final RegistryObject<Block> CHERRY_BLOSSOM_TRAPDOOR = BlockUtils.register("cherry_blossom_trapdoor", () -> BlockUtils.createWoodTrapdoor());
-    public static final RegistryObject<ExplorerSigns.CustomStandingSignBlock> CHERRY_BLOSSOM_STANDING_SIGN = BlockUtils.registerNoItem("cherry_blossom_sign", () -> new ExplorerSigns.CustomStandingSignBlock(Block.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), CHERRY_BLOSSOM_WOODTYPE));
-    public static final RegistryObject<ExplorerSigns.CustomWallSignBlock> CHERRY_BLOSSOM_WALL_SIGN = BlockUtils.registerNoItem("cherry_blossom_wall_sign", () -> new ExplorerSigns.CustomWallSignBlock(Block.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), CHERRY_BLOSSOM_WOODTYPE));
+    public static final RegistryObject<ExplorerSigns.CustomStandingSignBlock> CHERRY_BLOSSOM_STANDING_SIGN = BlockUtils.registerNoItem("cherry_blossom_sign", () -> new ExplorerSigns.CustomStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), CHERRY_BLOSSOM_WOODTYPE));
+    public static final RegistryObject<ExplorerSigns.CustomWallSignBlock> CHERRY_BLOSSOM_WALL_SIGN = BlockUtils.registerNoItem("cherry_blossom_wall_sign", () -> new ExplorerSigns.CustomWallSignBlock(AbstractBlock.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), CHERRY_BLOSSOM_WOODTYPE));
 
     //== Maple Tree
     public static final RegistryObject<Block> MAPLE_LEAVES = BlockUtils.register("maple_leaves", () -> BlockUtils.createLeavesBlock());
@@ -109,8 +109,8 @@ public class BambooGroveBlocks {
             () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD).strength(2, 10).sound(SoundType.WOOD)));
     public static final RegistryObject<RotatedPillarBlock> MAPLE_STRIPPED_WOOD = BlockUtils.register("maple_stripped_wood",
             () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD).strength(2, 10).sound(SoundType.WOOD)));
-    public static final RegistryObject<ExplorerSigns.CustomStandingSignBlock> MAPLE_STANDING_SIGN = BlockUtils.registerNoItem("maple_sign", () -> new ExplorerSigns.CustomStandingSignBlock(Block.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), MAPLE_WOODTYPE));
-    public static final RegistryObject<ExplorerSigns.CustomWallSignBlock> MAPLE_WALL_SIGN = BlockUtils.registerNoItem("maple_wall_sign", () -> new ExplorerSigns.CustomWallSignBlock(Block.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), MAPLE_WOODTYPE));
+    public static final RegistryObject<ExplorerSigns.CustomStandingSignBlock> MAPLE_STANDING_SIGN = BlockUtils.registerNoItem("maple_sign", () -> new ExplorerSigns.CustomStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), MAPLE_WOODTYPE));
+    public static final RegistryObject<ExplorerSigns.CustomWallSignBlock> MAPLE_WALL_SIGN = BlockUtils.registerNoItem("maple_wall_sign", () -> new ExplorerSigns.CustomWallSignBlock(AbstractBlock.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), MAPLE_WOODTYPE));
 
     //== Rice, Jade
     public static final RegistryObject<Block> JADE_ORE = BlockUtils.register("jade_ore", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(3, 10).harvestLevel(2).sound(SoundType.STONE)));

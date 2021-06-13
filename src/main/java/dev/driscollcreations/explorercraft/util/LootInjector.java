@@ -23,6 +23,7 @@ public final class LootInjector {
         public static final ResourceLocation CHESTS_BASTION_OTHER = inject(LootTables.BASTION_OTHER);
         public static final ResourceLocation CHESTS_BASTION_BRIDGE = inject(LootTables.BASTION_BRIDGE);
         public static final ResourceLocation CHESTS_RUINED_PORTAL = inject(LootTables.RUINED_PORTAL);
+        public static final ResourceLocation CHESTS_SIMPLY_DUNGEON = inject(LootTables.SIMPLE_DUNGEON);
 
         /*
         public static final ResourceLocation ENTITIES_CAVE_SPIDER = inject(new ResourceLocation("entities/cave_spider"));

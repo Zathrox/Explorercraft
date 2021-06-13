@@ -25,6 +25,7 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));
+        ModelFile itemHandheld = getExistingFile(mcLoc("item/handheld"));
 
         withExistingParent("jade_block", modLoc("block/jade_block"));
         withExistingParent("jade_ore", modLoc("block/jade_ore"));
@@ -55,11 +56,11 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
         for (String ore : oreTypes) {
             builderMod(itemGenerated, "item/"+ore);
             builderMod(itemGenerated, "item/"+ore+"_horse_armor");
-            builderMod(itemGenerated, "item/"+ore+"_axe");
-            builderMod(itemGenerated, "item/"+ore+"_hoe");
-            builderMod(itemGenerated, "item/"+ore+"_pickaxe");
-            builderMod(itemGenerated, "item/"+ore+"_shovel");
-            builderMod(itemGenerated, "item/"+ore+"_sword");
+            builderMod(itemHandheld, "item/"+ore+"_axe");
+            builderMod(itemHandheld, "item/"+ore+"_hoe");
+            builderMod(itemHandheld, "item/"+ore+"_pickaxe");
+            builderMod(itemHandheld, "item/"+ore+"_shovel");
+            builderMod(itemHandheld, "item/"+ore+"_sword");
             builderMod(itemGenerated, "item/"+ore+"_helmet");
             builderMod(itemGenerated, "item/"+ore+"_chestplate");
             builderMod(itemGenerated, "item/"+ore+"_leggings");

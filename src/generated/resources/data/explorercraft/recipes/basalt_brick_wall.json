@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "explorercraft:basalt_bricks"
+    }
+  },
+  "result": {
+    "item": "explorercraft:basalt_brick_wall",
+    "count": 6
+  }
+}

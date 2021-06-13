@@ -126,6 +126,37 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
         wallInventory("marble_wall", modLoc("block/marble"));
         wallInventory("marble_brick_wall", modLoc("block/marble_bricks"));
         wallInventory("marble_mossy_wall", modLoc("block/marble_mossy"));
+
+        //=== BASALT
+        withExistingParent("basalt", modLoc("block/basalt"));
+        withExistingParent("basalt_bricks", modLoc("block/basalt_bricks"));
+        withExistingParent("basalt_polished", modLoc("block/basalt_polished"));
+        withExistingParent("basalt_mossy", modLoc("block/basalt_mossy"));
+        withExistingParent("basalt_cracked", modLoc("block/basalt_cracked"));
+        withExistingParent("basalt_chiseled", modLoc("block/basalt_chiseled"));
+        withExistingParent("basalt_pillar", modLoc("block/basalt_pillar"));
+        withExistingParent("basalt_cobblestone", modLoc("block/basalt_cobblestone"));
+        withExistingParent("basalt_cobblestone_mossy", modLoc("block/basalt_cobblestone_mossy"));
+
+        withExistingParent("basalt_slab", modLoc("block/basalt_slab"));
+        withExistingParent("basalt_brick_slab", modLoc("block/basalt_brick_slab"));
+        withExistingParent("basalt_polished_slab", modLoc("block/basalt_polished_slab"));
+        withExistingParent("basalt_mossy_slab", modLoc("block/basalt_mossy_slab"));
+        withExistingParent("basalt_cobblestone_slab", modLoc("block/basalt_cobblestone_slab"));
+        withExistingParent("basalt_cobblestone_mossy_slab", modLoc("block/basalt_cobblestone_mossy_slab"));
+
+        withExistingParent("basalt_stairs", modLoc("block/basalt_stairs"));
+        withExistingParent("basalt_brick_stairs", modLoc("block/basalt_brick_stairs"));
+        withExistingParent("basalt_polished_stairs", modLoc("block/basalt_polished_stairs"));
+        withExistingParent("basalt_mossy_stairs", modLoc("block/basalt_mossy_stairs"));
+        withExistingParent("basalt_cobblestone_stairs", modLoc("block/basalt_cobblestone_stairs"));
+        withExistingParent("basalt_cobblestone_mossy_stairs", modLoc("block/basalt_cobblestone_mossy_stairs"));
+
+        wallInventory("basalt_wall", modLoc("block/basalt"));
+        wallInventory("basalt_brick_wall", modLoc("block/basalt_bricks"));
+        wallInventory("basalt_mossy_wall", modLoc("block/basalt_mossy"));
+        wallInventory("basalt_cobblestone_wall", modLoc("block/basalt_cobblestone"));
+        wallInventory("basalt_cobblestone_mossy_wall", modLoc("block/basalt_cobblestone_mossy"));
     }
 
 

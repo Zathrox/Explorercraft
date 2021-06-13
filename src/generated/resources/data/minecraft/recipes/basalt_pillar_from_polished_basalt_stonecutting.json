@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "explorercraft:basalt_polished"
+  },
+  "result": "explorercraft:basalt_pillar",
+  "count": 1
+}

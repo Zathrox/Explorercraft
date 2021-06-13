@@ -22,7 +22,8 @@ public class ExplorerBlockTagsProvider extends BlockTagsProvider {
         tag(ExplorerTags.Blocks.STORAGE_BLOCKS_JADE).add(BambooGroveBlocks.JADE_BLOCK.get());
         tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ExplorerTags.Blocks.STORAGE_BLOCKS_JADE);
         tag(ExplorerTags.Blocks.BASE_STONE_OVERWORLD)
-                .add(VanillaTweaksBlocks.MARBLE.get());
+                .add(VanillaTweaksBlocks.MARBLE.get())
+                .add(VanillaTweaksBlocks.BASALT.get());
 
         tag(Tags.Blocks.FENCES_WOODEN)
                 .add(BambooGroveBlocks.BAMBOO_FENCE.get())
@@ -110,7 +111,12 @@ public class ExplorerBlockTagsProvider extends BlockTagsProvider {
         tag(ExplorerTags.Blocks.WALLS)
                 .add(VanillaTweaksBlocks.MARBLE_WALL.get())
                 .add(VanillaTweaksBlocks.MARBLE_BRICK_WALL.get())
-                .add(VanillaTweaksBlocks.MARBLE_MOSSY_WALL.get());
+                .add(VanillaTweaksBlocks.MARBLE_MOSSY_WALL.get())
+                .add(VanillaTweaksBlocks.BASALT_WALL.get())
+                .add(VanillaTweaksBlocks.BASALT_BRICK_WALL.get())
+                .add(VanillaTweaksBlocks.BASALT_MOSSY_WALL.get())
+                .add(VanillaTweaksBlocks.BASALT_COBBLESTONE_WALL.get())
+                .add(VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_WALL.get());
 
         tag(ExplorerTags.Blocks.BAMBOO_LOGS)
                 .add(BambooGroveBlocks.BAMBOO_LOG.get());

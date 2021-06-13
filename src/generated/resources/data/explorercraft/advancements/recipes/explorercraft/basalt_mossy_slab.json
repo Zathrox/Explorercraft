@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "explorercraft:basalt_mossy_slab"
+    ]
+  },
+  "criteria": {
+    "has_basalt_mossy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:basalt_mossy"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "explorercraft:basalt_mossy_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_basalt_mossy",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "explorercraft:marble"
+    "explorercraft:marble",
+    "explorercraft:basalt"
   ]
 }

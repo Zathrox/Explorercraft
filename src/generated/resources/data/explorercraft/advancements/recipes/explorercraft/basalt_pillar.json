@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "explorercraft:basalt_pillar"
+    ]
+  },
+  "criteria": {
+    "has_basalt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:basalt"
+          }
+        ]
+      }
+    },
+    "has_basalt_polished": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:basalt_polished"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "explorercraft:basalt_pillar"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_basalt",
+      "has_basalt_polished",
+      "has_the_recipe"
+    ]
+  ]
+}

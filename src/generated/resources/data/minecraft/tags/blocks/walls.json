@@ -3,6 +3,11 @@
   "values": [
     "explorercraft:marble_wall",
     "explorercraft:marble_brick_wall",
-    "explorercraft:marble_mossy_wall"
+    "explorercraft:marble_mossy_wall",
+    "explorercraft:basalt_wall",
+    "explorercraft:basalt_brick_wall",
+    "explorercraft:basalt_mossy_wall",
+    "explorercraft:basalt_cobblestone_wall",
+    "explorercraft:basalt_cobblestone_mossy_wall"
   ]
 }

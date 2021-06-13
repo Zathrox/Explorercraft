@@ -67,7 +67,6 @@ public class ExplorerFeature {
         BiomeGenerationSettingsBuilder generation = event.getGeneration();
         final RegistryKey<Biome> biomeRegistryKey = RegistryKey.create(ForgeRegistries.Keys.BIOMES, Objects.requireNonNull(event.getName(), "Biome registry name was null"));
 
-
         if (VanillaTweaksConfig.spawnSlimeChunkCaves.get()) {
             if (biome.equals(Biomes.SWAMP.location().toString()) || biome.equals(Biomes.SWAMP_HILLS.location().toString()) || event.getCategory() == Biome.Category.SWAMP) {
                 generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ExplorerFeature.Configured.SLIMEY_CHUNK_SWAMP);
@@ -85,8 +84,14 @@ public class ExplorerFeature {
             }
         }
 
-        if (BiomeDictionary.hasType(biomeRegistryKey, BiomeDictionary.Type.OVERWORLD) && VanillaTweaksConfig.spawnMarbleInOverworld.get()) {
-            generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Configured.MARBLE_GENERAL);
+        if (BiomeDictionary.hasType(biomeRegistryKey, BiomeDictionary.Type.OVERWORLD)) {
+            if (VanillaTweaksConfig.spawnMarbleInOverworld.get()) {
+                generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Configured.MARBLE_GENERAL);
+            }
+            if (VanillaTweaksConfig.spawnBasaltInOverworld.get()) {
+                generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Configured.BASALT_GENERAL);
+            }
+
         }
 
         if (VanillaTweaksConfig.spawnNoctilucas.get()) {
@@ -162,6 +167,7 @@ public class ExplorerFeature {
         public static final ConfiguredFeature<?, ?> NOCTILUCAS = ExplorerFeature.NOCTILUCAS.get().configured(new FeatureSpreadConfig(20)).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE).chance(16);
         public static final ConfiguredFeature<?, ?> MARBLE_MOUNTAIN = Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, VanillaTweaksBlocks.MARBLE.get().defaultBlockState(), VanillaTweaksConfig.marbleVeinSizeInForestedMountains.get())).range(150).squared().count(VanillaTweaksConfig.marbleChanceInForestedMountains.get());
         public static final ConfiguredFeature<?, ?> MARBLE_GENERAL = Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, VanillaTweaksBlocks.MARBLE.get().defaultBlockState(), VanillaTweaksConfig.marbleVeinSizeInOverworld.get())).range(40).squared().count(VanillaTweaksConfig.marbleChanceInOverworld.get());
+        public static final ConfiguredFeature<?, ?> BASALT_GENERAL = Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, VanillaTweaksBlocks.BASALT.get().defaultBlockState(), VanillaTweaksConfig.basaltVeinSizeInOverworld.get())).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(30, 0, 64))).squared().count(VanillaTweaksConfig.basaltChanceInOverworld.get());
 
 
         public static void registerConfiguredFeatures() {
@@ -175,6 +181,7 @@ public class ExplorerFeature {
             register("noctilucas", NOCTILUCAS);
             register("marble_mountain", MARBLE_MOUNTAIN);
             register("marble_general", MARBLE_GENERAL);
+            register("basalt_general", BASALT_GENERAL);
 
         }
 

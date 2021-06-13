@@ -188,6 +188,37 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         wallBlock((WallBlock) VanillaTweaksBlocks.MARBLE_BRICK_WALL.get(), modLoc("block/marble_bricks"));
         wallBlock((WallBlock) VanillaTweaksBlocks.MARBLE_MOSSY_WALL.get(), modLoc("block/marble_mossy"));
 
+        //==== BASALT
+        simpleBlock(VanillaTweaksBlocks.BASALT.get());
+        simpleBlock(VanillaTweaksBlocks.BASALT_POLISHED.get());
+        simpleBlock(VanillaTweaksBlocks.BASALT_BRICKS.get());
+        simpleBlock(VanillaTweaksBlocks.BASALT_MOSSY.get());
+        simpleBlock(VanillaTweaksBlocks.BASALT_CRACKED.get());
+        simpleBlock(VanillaTweaksBlocks.BASALT_CHISELED.get());
+        axisBlock((RotatedPillarBlock) VanillaTweaksBlocks.BASALT_PILLAR.get(), modLoc("block/basalt_pillar"), modLoc("block/basalt_polished"));
+        simpleBlock(VanillaTweaksBlocks.BASALT_COBBLESTONE.get());
+        simpleBlock(VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY.get());
+
+        slabBlock((SlabBlock) VanillaTweaksBlocks.BASALT_SLAB.get(), modLoc("block/basalt"), modLoc("block/basalt"));
+        slabBlock((SlabBlock) VanillaTweaksBlocks.BASALT_POLISHED_SLAB.get(), modLoc("block/basalt_polished"), modLoc("block/basalt_polished"));
+        slabBlock((SlabBlock) VanillaTweaksBlocks.BASALT_BRICK_SLAB.get(), modLoc("block/basalt_bricks"), modLoc("block/basalt_bricks"));
+        slabBlock((SlabBlock) VanillaTweaksBlocks.BASALT_MOSSY_SLAB.get(), modLoc("block/basalt_mossy"), modLoc("block/basalt_mossy"));
+        slabBlock((SlabBlock) VanillaTweaksBlocks.BASALT_COBBLESTONE_SLAB.get(), modLoc("block/basalt_cobblestone"), modLoc("block/basalt_cobblestone"));
+        slabBlock((SlabBlock) VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_SLAB.get(), modLoc("block/basalt_cobblestone_mossy"), modLoc("block/basalt_cobblestone_mossy"));
+
+        stairsBlock((StairsBlock) VanillaTweaksBlocks.BASALT_STAIRS.get(), modLoc("block/basalt"));
+        stairsBlock((StairsBlock) VanillaTweaksBlocks.BASALT_POLISHED_STAIRS.get(), modLoc("block/basalt_polished"));
+        stairsBlock((StairsBlock) VanillaTweaksBlocks.BASALT_BRICK_STAIRS.get(), modLoc("block/basalt_bricks"));
+        stairsBlock((StairsBlock) VanillaTweaksBlocks.BASALT_MOSSY_STAIRS.get(), modLoc("block/basalt_mossy"));
+        stairsBlock((StairsBlock) VanillaTweaksBlocks.BASALT_COBBLESTONE_STAIRS.get(), modLoc("block/basalt_cobblestone"));
+        stairsBlock((StairsBlock) VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_STAIRS.get(), modLoc("block/basalt_cobblestone_mossy"));
+
+        wallBlock((WallBlock) VanillaTweaksBlocks.BASALT_WALL.get(), modLoc("block/basalt"));
+        wallBlock((WallBlock) VanillaTweaksBlocks.BASALT_BRICK_WALL.get(), modLoc("block/basalt_bricks"));
+        wallBlock((WallBlock) VanillaTweaksBlocks.BASALT_MOSSY_WALL.get(), modLoc("block/basalt_mossy"));
+        wallBlock((WallBlock) VanillaTweaksBlocks.BASALT_COBBLESTONE_WALL.get(), modLoc("block/basalt_cobblestone"));
+        wallBlock((WallBlock) VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_WALL.get(), modLoc("block/basalt_cobblestone_mossy"));
+
         sleepingBagModels();
 
     }

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "explorercraft:basalt_cobblestone_mossy"
+  },
+  "result": "explorercraft:basalt_cobblestone_mossy_stairs",
+  "count": 1
+}

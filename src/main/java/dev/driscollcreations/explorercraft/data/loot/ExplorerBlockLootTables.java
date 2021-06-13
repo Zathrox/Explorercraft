@@ -11,10 +11,7 @@ import net.minecraft.advancements.criterion.EnchantmentPredicate;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.advancements.criterion.MinMaxBounds;
 import net.minecraft.advancements.criterion.StatePropertiesPredicate;
-import net.minecraft.block.BedBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.CropsBlock;
-import net.minecraft.block.DoorBlock;
+import net.minecraft.block.*;
 import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
@@ -181,7 +178,6 @@ public class ExplorerBlockLootTables extends BlockLootTables {
         dropSelf(VanillaTweaksBlocks.MARBLE_CRACKED.get());
         dropSelf(VanillaTweaksBlocks.MARBLE_CHISELED.get());
         dropSelf(VanillaTweaksBlocks.MARBLE_PILLAR.get());
-        dropSelf(VanillaTweaksBlocks.MARBLE_SLAB.get());
         add(VanillaTweaksBlocks.MARBLE_SLAB.get(), BlockLootTables::createSlabItemTable);
         add(VanillaTweaksBlocks.MARBLE_POLISHED_SLAB.get(), BlockLootTables::createSlabItemTable);
         add(VanillaTweaksBlocks.MARBLE_BRICK_SLAB.get(), BlockLootTables::createSlabItemTable);
@@ -193,6 +189,35 @@ public class ExplorerBlockLootTables extends BlockLootTables {
         dropSelf(VanillaTweaksBlocks.MARBLE_WALL.get());
         dropSelf(VanillaTweaksBlocks.MARBLE_BRICK_WALL.get());
         dropSelf(VanillaTweaksBlocks.MARBLE_MOSSY_WALL.get());
+
+        //======= BASALT
+        dropSelf(VanillaTweaksBlocks.BASALT.get());
+        add(VanillaTweaksBlocks.BASALT.get(), createSingleItemTableWithSilkTouch(VanillaTweaksBlocks.BASALT.get(), VanillaTweaksBlocks.BASALT_COBBLESTONE.get()));
+        dropSelf(VanillaTweaksBlocks.BASALT_POLISHED.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_BRICKS.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_MOSSY.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_CRACKED.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_CHISELED.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_PILLAR.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_COBBLESTONE.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY.get());
+        add(VanillaTweaksBlocks.BASALT_SLAB.get(), BlockLootTables::createSlabItemTable);
+        add(VanillaTweaksBlocks.BASALT_POLISHED_SLAB.get(), BlockLootTables::createSlabItemTable);
+        add(VanillaTweaksBlocks.BASALT_BRICK_SLAB.get(), BlockLootTables::createSlabItemTable);
+        add(VanillaTweaksBlocks.BASALT_MOSSY_SLAB.get(), BlockLootTables::createSlabItemTable);
+        add(VanillaTweaksBlocks.BASALT_COBBLESTONE_SLAB.get(), BlockLootTables::createSlabItemTable);
+        add(VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_SLAB.get(), BlockLootTables::createSlabItemTable);
+        dropSelf(VanillaTweaksBlocks.BASALT_STAIRS.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_POLISHED_STAIRS.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_BRICK_STAIRS.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_MOSSY_STAIRS.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_COBBLESTONE_STAIRS.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_STAIRS.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_WALL.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_BRICK_WALL.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_MOSSY_WALL.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_COBBLESTONE_WALL.get());
+        dropSelf(VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_WALL.get());
 
     }
 

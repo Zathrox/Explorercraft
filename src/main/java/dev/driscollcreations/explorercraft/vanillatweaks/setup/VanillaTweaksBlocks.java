@@ -66,6 +66,38 @@ public class VanillaTweaksBlocks {
     public static final RegistryObject<Block> MARBLE_BRICK_WALL         = BlockUtils.register("marble_brick_wall", () -> new WallBlock(stoneBlockProps));
     public static final RegistryObject<Block> MARBLE_MOSSY_WALL         = BlockUtils.register("marble_mossy_wall", () -> new WallBlock(stoneBlockProps));
 
+    //=========== BASALT BLOCKS ============//
+    public static final RegistryObject<Block> BASALT                        = BlockUtils.register("basalt", () -> new Block(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_POLISHED               = BlockUtils.register("basalt_polished", () -> new Block(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_BRICKS                 = BlockUtils.register("basalt_bricks", () -> new Block(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_MOSSY                  = BlockUtils.register("basalt_mossy", () -> new Block(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_CRACKED                = BlockUtils.register("basalt_cracked", () -> new Block(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_CHISELED               = BlockUtils.register("basalt_chiseled", () -> new Block(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_PILLAR                 = BlockUtils.register("basalt_pillar", () -> new RotatedPillarBlock(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_COBBLESTONE            = BlockUtils.register("basalt_cobblestone", () -> new Block(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_COBBLESTONE_MOSSY      = BlockUtils.register("basalt_cobblestone_mossy", () -> new Block(stoneBlockProps));
+
+    //=========== BASALT DECOR ============//
+    public static final RegistryObject<Block> BASALT_SLAB                       = BlockUtils.register("basalt_slab", () -> new SlabBlock(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_BRICK_SLAB                 = BlockUtils.register("basalt_brick_slab", () -> new SlabBlock(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_MOSSY_SLAB                 = BlockUtils.register("basalt_mossy_slab", () -> new SlabBlock(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_POLISHED_SLAB              = BlockUtils.register("basalt_polished_slab", () -> new SlabBlock(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_COBBLESTONE_SLAB           = BlockUtils.register("basalt_cobblestone_slab", () -> new SlabBlock(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_COBBLESTONE_MOSSY_SLAB     = BlockUtils.register("basalt_cobblestone_mossy_slab", () -> new SlabBlock(stoneBlockProps));
+
+    public static final RegistryObject<Block> BASALT_STAIRS                         = BlockUtils.register("basalt_stairs", () -> new StairsBlock(BASALT.get()::defaultBlockState, stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_BRICK_STAIRS                   = BlockUtils.register("basalt_brick_stairs", () -> new StairsBlock(BASALT_BRICKS.get()::defaultBlockState, stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_MOSSY_STAIRS                   = BlockUtils.register("basalt_mossy_stairs", () -> new StairsBlock(BASALT_MOSSY.get()::defaultBlockState, stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_POLISHED_STAIRS                = BlockUtils.register("basalt_polished_stairs", () -> new StairsBlock(BASALT_POLISHED.get()::defaultBlockState, stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_COBBLESTONE_STAIRS             = BlockUtils.register("basalt_cobblestone_stairs", () -> new StairsBlock(BASALT_COBBLESTONE.get()::defaultBlockState, stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_COBBLESTONE_MOSSY_STAIRS       = BlockUtils.register("basalt_cobblestone_mossy_stairs", () -> new StairsBlock(BASALT_COBBLESTONE_MOSSY.get()::defaultBlockState, stoneBlockProps));
+
+    public static final RegistryObject<Block> BASALT_WALL                           = BlockUtils.register("basalt_wall", () -> new WallBlock(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_BRICK_WALL                     = BlockUtils.register("basalt_brick_wall", () -> new WallBlock(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_MOSSY_WALL                     = BlockUtils.register("basalt_mossy_wall", () -> new WallBlock(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_COBBLESTONE_WALL               = BlockUtils.register("basalt_cobblestone_wall", () -> new WallBlock(stoneBlockProps));
+    public static final RegistryObject<Block> BASALT_COBBLESTONE_MOSSY_WALL         = BlockUtils.register("basalt_cobblestone_mossy_wall", () -> new WallBlock(stoneBlockProps));
+
     //========== Black hole
     public static final RegistryObject<Block> BLACK_HOLE = BlockUtils.register("black_hole", () -> new BlackHoleBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).strength(-1.0F, 3600000.0F).noDrops().noCollission()));
 

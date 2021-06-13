@@ -17,6 +17,9 @@ public class VanillaTweaksConfig {
     public static ForgeConfigSpec.IntValue marbleVeinSizeInOverworld;
     public static ForgeConfigSpec.IntValue marbleChanceInOverworld;
     public static ForgeConfigSpec.BooleanValue spawnTempleRuins;
+    public static ForgeConfigSpec.BooleanValue spawnBasaltInOverworld;
+    public static ForgeConfigSpec.IntValue basaltVeinSizeInOverworld;
+    public static ForgeConfigSpec.IntValue basaltChanceInOverworld;
 
     public static void init(ForgeConfigSpec.Builder common, ForgeConfigSpec.Builder client) {
 
@@ -81,6 +84,21 @@ public class VanillaTweaksConfig {
            .comment("Spawn Temple Ruins in the Forested Mountains")
            .translation(Explorercraft.MOD_ID + ".config.spawnTempleRuins")
            .define("spawnTempleRuins", true);
+
+        spawnBasaltInOverworld = common
+           .comment("Spawn Basalt in Overworld")
+           .translation(Explorercraft.MOD_ID + ".config.spawnBasaltInOverworld")
+           .define("spawnBasaltInOverworld", true);
+
+        basaltVeinSizeInOverworld = common
+            .comment("Size of Basalt vein generated all over the Overworld")
+            .translation(Explorercraft.MOD_ID + ".config.basaltVeinSizeInOverworld")
+            .defineInRange("basaltVeinSizeInOverworld", 33, 0, 64);
+
+        basaltChanceInOverworld = common
+          .comment("Chance of spawning Basalt in the Overworld")
+          .translation(Explorercraft.MOD_ID + ".config.basaltChanceInOverworld")
+          .defineInRange("basaltChanceInOverworld", 10, 0, 100);
 
         common.pop();
     }

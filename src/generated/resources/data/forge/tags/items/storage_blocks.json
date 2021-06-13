@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "#forge:storage_blocks/jade"
+    "#forge:storage_blocks/jade",
+    "#forge:storage_blocks/amethyst",
+    "#forge:storage_blocks/ruby"
   ]
 }

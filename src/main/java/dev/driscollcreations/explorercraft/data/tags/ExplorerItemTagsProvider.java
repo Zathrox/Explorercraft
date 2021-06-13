@@ -21,9 +21,13 @@ public class ExplorerItemTagsProvider extends ItemTagsProvider {
     @Override
     protected void addTags() {
         copy(ExplorerTags.Blocks.ORES_JADE, ExplorerTags.Items.ORES_JADE);
+        copy(ExplorerTags.Blocks.ORES_AMETHYST, ExplorerTags.Items.ORES_AMETHYST);
+        copy(ExplorerTags.Blocks.ORES_RUBY, ExplorerTags.Items.ORES_RUBY);
         copy(Tags.Blocks.ORES, Tags.Items.ORES);
 
         copy(ExplorerTags.Blocks.STORAGE_BLOCKS_JADE, ExplorerTags.Items.STORAGE_BLOCKS_JADE);
+        copy(ExplorerTags.Blocks.STORAGE_BLOCKS_RUBY, ExplorerTags.Items.STORAGE_BLOCKS_RUBY);
+        copy(ExplorerTags.Blocks.STORAGE_BLOCKS_AMETHYST, ExplorerTags.Items.STORAGE_BLOCKS_AMETHYST);
         copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
 
         copy(Tags.Blocks.FENCES_WOODEN, Tags.Items.FENCES_WOODEN);
@@ -47,5 +51,9 @@ public class ExplorerItemTagsProvider extends ItemTagsProvider {
 
         tag(ExplorerTags.Items.JADE).add(BambooGroveItems.JADE.get());
         tag(Tags.Items.GEMS).addTag(ExplorerTags.Items.JADE);
+        tag(ExplorerTags.Items.AMETHYST).add(BambooGroveItems.AMETHYST.get());
+        tag(Tags.Items.GEMS).addTag(ExplorerTags.Items.AMETHYST);
+        tag(ExplorerTags.Items.RUBY).add(BambooGroveItems.RUBY.get());
+        tag(Tags.Items.GEMS).addTag(ExplorerTags.Items.RUBY);
     }
 }

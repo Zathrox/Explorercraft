@@ -4,20 +4,16 @@ import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
+import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.crafting.ShapelessRecipe;
-import net.minecraft.item.crafting.StonecuttingRecipe;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
-import java.util.stream.Stream;
 
 public class ExplorerRecipeProvider extends RecipeProvider {
 
@@ -28,7 +24,9 @@ public class ExplorerRecipeProvider extends RecipeProvider {
     @Override
     protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
 
-        createBambooGroveJadeRecipes(consumer);
+        createJadeRecipes(consumer);
+        createAmethystRecipes(consumer);
+        createRubyRecipes(consumer);
         createBambooGroveFoodRecipes(consumer);
         createBambooGroveMiscRecipes(consumer);
         createBambooGroveWoodRecipes(consumer);
@@ -666,11 +664,11 @@ public class ExplorerRecipeProvider extends RecipeProvider {
     }
 
 
-    private static void createBambooGroveJadeRecipes(Consumer<IFinishedRecipe> consumer) {
+    private static void createJadeRecipes(Consumer<IFinishedRecipe> consumer) {
 
         Item jade = BambooGroveItems.JADE.get();
-        createArmorForMaterial(consumer, jade);
-        createToolsForMaterial(consumer, jade);
+        createJadeArmor(consumer, jade);
+        createJadeTools(consumer, jade);
 
         ShapedRecipeBuilder.shaped(BambooGroveItems.JADE_BOW.get(), 1)
                 .define('J', jade)
@@ -699,6 +697,56 @@ public class ExplorerRecipeProvider extends RecipeProvider {
 
         CookingRecipeBuilder.smelting(Ingredient.of(BambooGroveBlocks.JADE_ORE.get().asItem()), jade, 1.0F, 200)
                 .unlockedBy("has_item", has(jade)).save(consumer, Explorercraft.getId("jade_from_blasting"));
+    }
+
+    private static void createAmethystRecipes(Consumer<IFinishedRecipe> consumer) {
+
+        Item amethyst = BambooGroveItems.AMETHYST.get();
+        createAmethystArmor(consumer, amethyst);
+        createAmethystTools(consumer, amethyst);
+
+        ShapelessRecipeBuilder.shapeless(amethyst, 9)
+                .requires(VanillaTweaksBlocks.AMETHYST_BLOCK.get()).unlockedBy("has_item", has(amethyst))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.AMETHYST_BLOCK.get(), 1)
+                .define('#', amethyst)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .unlockedBy("has_item", has(amethyst))
+                .save(consumer);
+
+        CookingRecipeBuilder.smelting(Ingredient.of(VanillaTweaksBlocks.AMETHYST_ORE.get().asItem()), amethyst, 1.0F, 200)
+                .unlockedBy("has_item", has(amethyst)).save(consumer, Explorercraft.getId("amethyst_from_smelting"));
+
+        CookingRecipeBuilder.smelting(Ingredient.of(VanillaTweaksBlocks.AMETHYST_ORE.get().asItem()), amethyst, 1.0F, 200)
+                .unlockedBy("has_item", has(amethyst)).save(consumer, Explorercraft.getId("amethyst_from_blasting"));
+    }
+
+    private static void createRubyRecipes(Consumer<IFinishedRecipe> consumer) {
+
+        Item ruby = BambooGroveItems.RUBY.get();
+        createRubyArmor(consumer, ruby);
+        createRubyTools(consumer, ruby);
+
+        ShapelessRecipeBuilder.shapeless(ruby, 9)
+                .requires(VanillaTweaksBlocks.RUBY_BLOCK.get()).unlockedBy("has_item", has(ruby))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.RUBY_BLOCK.get(), 1)
+                .define('#', ruby)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .unlockedBy("has_item", has(ruby))
+                .save(consumer);
+
+        CookingRecipeBuilder.smelting(Ingredient.of(VanillaTweaksBlocks.RUBY_ORE.get().asItem()), ruby, 1.0F, 200)
+                .unlockedBy("has_item", has(ruby)).save(consumer, Explorercraft.getId("ruby_from_smelting"));
+
+        CookingRecipeBuilder.smelting(Ingredient.of(VanillaTweaksBlocks.RUBY_ORE.get().asItem()), ruby, 1.0F, 200)
+                .unlockedBy("has_item", has(ruby)).save(consumer, Explorercraft.getId("ruby_from_blasting"));
     }
 
     private static void createBambooGroveFoodRecipes(Consumer<IFinishedRecipe> consumer) {
@@ -743,7 +791,7 @@ public class ExplorerRecipeProvider extends RecipeProvider {
                 .save(consumer);
     }
 
-    private static void createToolsForMaterial(Consumer<IFinishedRecipe> consumer, Item material) {
+    private static void createJadeTools(Consumer<IFinishedRecipe> consumer, Item material) {
         Tags.IOptionalNamedTag<Item> stick = Tags.Items.RODS_WOODEN;
         ShapedRecipeBuilder.shaped(BambooGroveItems.JADE_AXE.get(), 1)
                 .define('#', material)
@@ -789,7 +837,8 @@ public class ExplorerRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_item", has(material))
                 .save(consumer);
     }
-    private static void createArmorForMaterial(Consumer<IFinishedRecipe> consumer, Item material) {
+
+    private static void createJadeArmor(Consumer<IFinishedRecipe> consumer, Item material) {
         ShapedRecipeBuilder.shaped(BambooGroveItems.JADE_HELMET.get(), 1)
                 .define('#', material)
                 .pattern("###")
@@ -811,6 +860,158 @@ public class ExplorerRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_item", has(material))
                 .save(consumer);
         ShapedRecipeBuilder.shaped(BambooGroveItems.JADE_BOOTS.get(), 1)
+                .define('#', material)
+                .pattern("# #")
+                .pattern("# #")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+    }
+
+    private static void createAmethystTools(Consumer<IFinishedRecipe> consumer, Item material) {
+        Tags.IOptionalNamedTag<Item> stick = Tags.Items.RODS_WOODEN;
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.AMETHYST_AXE.get(), 1)
+                .define('#', material)
+                .define('|', stick)
+                .pattern("##")
+                .pattern("#|")
+                .pattern(" |")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.AMETHYST_HOE.get(), 1)
+                .define('#', material)
+                .define('|', stick)
+                .pattern("##")
+                .pattern(" |")
+                .pattern(" |")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.AMETHYST_PICKAXE.get(), 1)
+                .define('#', material)
+                .define('|', stick)
+                .pattern("###")
+                .pattern(" | ")
+                .pattern(" | ")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.AMETHYST_SHOVEL.get(), 1)
+                .define('#', material)
+                .define('|', stick)
+                .pattern("#")
+                .pattern("|")
+                .pattern("|")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.AMETHYST_SWORD.get(), 1)
+                .define('#', material)
+                .define('|', stick)
+                .pattern("#")
+                .pattern("#")
+                .pattern("|")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+    }
+
+    private static void createAmethystArmor(Consumer<IFinishedRecipe> consumer, Item material) {
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.AMETHYST_HELMET.get(), 1)
+                .define('#', material)
+                .pattern("###")
+                .pattern("# #")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.AMETHYST_CHESTPLATE.get(), 1)
+                .define('#', material)
+                .pattern("# #")
+                .pattern("###")
+                .pattern("###")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.AMETHYST_LEGGINGS.get(), 1)
+                .define('#', material)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("# #")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.AMETHYST_BOOTS.get(), 1)
+                .define('#', material)
+                .pattern("# #")
+                .pattern("# #")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+    }
+
+    private static void createRubyTools(Consumer<IFinishedRecipe> consumer, Item material) {
+        Tags.IOptionalNamedTag<Item> stick = Tags.Items.RODS_WOODEN;
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.RUBY_AXE.get(), 1)
+                .define('#', material)
+                .define('|', stick)
+                .pattern("##")
+                .pattern("#|")
+                .pattern(" |")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.RUBY_HOE.get(), 1)
+                .define('#', material)
+                .define('|', stick)
+                .pattern("##")
+                .pattern(" |")
+                .pattern(" |")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.RUBY_PICKAXE.get(), 1)
+                .define('#', material)
+                .define('|', stick)
+                .pattern("###")
+                .pattern(" | ")
+                .pattern(" | ")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.RUBY_SHOVEL.get(), 1)
+                .define('#', material)
+                .define('|', stick)
+                .pattern("#")
+                .pattern("|")
+                .pattern("|")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.RUBY_SWORD.get(), 1)
+                .define('#', material)
+                .define('|', stick)
+                .pattern("#")
+                .pattern("#")
+                .pattern("|")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+    }
+
+    private static void createRubyArmor(Consumer<IFinishedRecipe> consumer, Item material) {
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.RUBY_HELMET.get(), 1)
+                .define('#', material)
+                .pattern("###")
+                .pattern("# #")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.RUBY_CHESTPLATE.get(), 1)
+                .define('#', material)
+                .pattern("# #")
+                .pattern("###")
+                .pattern("###")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.RUBY_LEGGINGS.get(), 1)
+                .define('#', material)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("# #")
+                .unlockedBy("has_item", has(material))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(VanillaTweaksItems.RUBY_BOOTS.get(), 1)
                 .define('#', material)
                 .pattern("# #")
                 .pattern("# #")

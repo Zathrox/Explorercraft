@@ -12,7 +12,11 @@ public class ExplorerTags {
 
     public static final class Blocks {
         public static final ITag.INamedTag<Block> ORES_JADE = forge("ores/jade");
+        public static final ITag.INamedTag<Block> ORES_AMETHYST = forge("ores/amethyst");
+        public static final ITag.INamedTag<Block> ORES_RUBY = forge("ores/ruby");
         public static final ITag.INamedTag<Block> STORAGE_BLOCKS_JADE = forge("storage_blocks/jade");
+        public static final ITag.INamedTag<Block> STORAGE_BLOCKS_AMETHYST = forge("storage_blocks/amethyst");
+        public static final ITag.INamedTag<Block> STORAGE_BLOCKS_RUBY = forge("storage_blocks/ruby");
         public static final ITag.INamedTag<Block> FENCES_WOODEN = minecraft("wooden_fences");
         public static final ITag.INamedTag<Block> BUTTONS_WOODEN = minecraft("wooden_buttons");
         public static final ITag.INamedTag<Block> BUTTONS = minecraft("buttons");
@@ -45,8 +49,12 @@ public class ExplorerTags {
     }
 
     public static final class Items {
-        public static final ITag.INamedTag<Item> ORES_JADE = forge("ores/adamantite");
+        public static final ITag.INamedTag<Item> ORES_JADE = forge("ores/jade");
         public static final ITag.INamedTag<Item> STORAGE_BLOCKS_JADE = forge("storage_blocks/jade");
+        public static final ITag.INamedTag<Item> ORES_AMETHYST = forge("ores/amethyst");
+        public static final ITag.INamedTag<Item> STORAGE_BLOCKS_AMETHYST = forge("storage_blocks/amethyst");
+        public static final ITag.INamedTag<Item> ORES_RUBY = forge("ores/ruby");
+        public static final ITag.INamedTag<Item> STORAGE_BLOCKS_RUBY = forge("storage_blocks/ruby");
         public static final ITag.INamedTag<Item> FENCES_WOODEN = minecraft("wooden_fences");
         public static final ITag.INamedTag<Item> BUTTONS_WOODEN = minecraft("wooden_buttons");
         public static final ITag.INamedTag<Item> DOORS_WOODEN = minecraft("wooden_doors");
@@ -63,6 +71,8 @@ public class ExplorerTags {
         public static final ITag.INamedTag<Item> MAPLE_LOGS = explorercraft("maple_logs");
 
         public static final ITag.INamedTag<Item> JADE = forge("gems/jade");
+        public static final ITag.INamedTag<Item> AMETHYST = forge("gems/amethyst");
+        public static final ITag.INamedTag<Item> RUBY = forge("gems/ruby");
 
         private static ITag.INamedTag<Item> forge(String path) {
             return ItemTags.bind(new ResourceLocation("forge", path).toString());

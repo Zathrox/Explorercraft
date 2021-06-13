@@ -20,6 +20,8 @@ public class VanillaTweaksConfig {
     public static ForgeConfigSpec.BooleanValue spawnBasaltInOverworld;
     public static ForgeConfigSpec.IntValue basaltVeinSizeInOverworld;
     public static ForgeConfigSpec.IntValue basaltChanceInOverworld;
+    public static ForgeConfigSpec.BooleanValue spawnRuby;
+    public static ForgeConfigSpec.BooleanValue spawnAmethyst;
 
     public static void init(ForgeConfigSpec.Builder common, ForgeConfigSpec.Builder client) {
 
@@ -99,6 +101,16 @@ public class VanillaTweaksConfig {
           .comment("Chance of spawning Basalt in the Overworld")
           .translation(Explorercraft.MOD_ID + ".config.basaltChanceInOverworld")
           .defineInRange("basaltChanceInOverworld", 10, 0, 100);
+
+        spawnRuby = common
+                            .comment("Spawn Ruby in the Forested Mountains")
+                            .translation(Explorercraft.MOD_ID + ".config.spawnRuby")
+                            .define("spawnRuby", true);
+
+        spawnAmethyst = common
+                            .comment("Spawn Amethysdt in the Overworld")
+                            .translation(Explorercraft.MOD_ID + ".config.spawnAmethyst")
+                            .define("spawnAmethyst", true);
 
         common.pop();
     }

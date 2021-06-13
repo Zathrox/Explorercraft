@@ -11,6 +11,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 
 public class BambooGroveBlocks {
@@ -113,7 +114,7 @@ public class BambooGroveBlocks {
     public static final RegistryObject<ExplorerSigns.CustomWallSignBlock> MAPLE_WALL_SIGN = BlockUtils.registerNoItem("maple_wall_sign", () -> new ExplorerSigns.CustomWallSignBlock(AbstractBlock.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), MAPLE_WOODTYPE));
 
     //== Rice, Jade
-    public static final RegistryObject<Block> JADE_ORE = BlockUtils.register("jade_ore", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(3, 10).harvestLevel(2).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> JADE_ORE = BlockUtils.register("jade_ore", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(3, 10).harvestLevel(3).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final RegistryObject<Block> JADE_BLOCK = BlockUtils.register("jade_block", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(3, 10).sound(SoundType.METAL)));
 
     public static final RegistryObject<Block> TATAMI = BlockUtils.register("tatami", () -> new TatamiBlock(AbstractBlock.Properties.of(Material.WOOD).strength(0.2F, 0.3F).sound(SoundType.WOOD)));

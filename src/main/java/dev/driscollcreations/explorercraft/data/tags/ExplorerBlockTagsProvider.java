@@ -21,6 +21,13 @@ public class ExplorerBlockTagsProvider extends BlockTagsProvider {
     protected void addTags() {
         tag(ExplorerTags.Blocks.STORAGE_BLOCKS_JADE).add(BambooGroveBlocks.JADE_BLOCK.get());
         tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ExplorerTags.Blocks.STORAGE_BLOCKS_JADE);
+
+        tag(ExplorerTags.Blocks.STORAGE_BLOCKS_AMETHYST).add(VanillaTweaksBlocks.AMETHYST_BLOCK.get());
+        tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ExplorerTags.Blocks.STORAGE_BLOCKS_AMETHYST);
+
+        tag(ExplorerTags.Blocks.STORAGE_BLOCKS_RUBY).add(VanillaTweaksBlocks.RUBY_BLOCK.get());
+        tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ExplorerTags.Blocks.STORAGE_BLOCKS_RUBY);
+
         tag(ExplorerTags.Blocks.BASE_STONE_OVERWORLD)
                 .add(VanillaTweaksBlocks.MARBLE.get())
                 .add(VanillaTweaksBlocks.BASALT.get());

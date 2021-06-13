@@ -2,18 +2,23 @@ CHANGELOG:
 
 --------// Explorercraft 1.16.5 // ----------------------------------------------------
 Patch 5.0.4:
-Add Enderreeper
-    Enderghast
+Added basalt
+Added Amethyst and all related tools, armors, etc
+Added Ruby and all related tools, armors, etc
+Implemented Enderreeper, not fully finished
+
+Add Enderghast
     Skeletaur
 
 TODO Loot-table injections for Jade and some other items
 TODO VanillaTweaks:
+    - Temple ruins: add void blocks into the corners and ceiling to create rounded curves when injected into a mountain
     - Temple ruins: Minataur spawn? or Skeletaur eventually?
     - Explorer Set, advancements, items, buffs, custom model
 
 TODO To Be Decided:
     - Amethyst
-    - Ruby - Spawns in marble?
+    - Ruby
 
 TODO - Create complicated models/blockstates in data generators:
     - Dissolved Slime

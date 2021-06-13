@@ -20,7 +20,7 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
     }
 
     List<String> treeTypes = Arrays.asList("bamboo", "cherry", "maple");
-    List<String> oreTypes = Arrays.asList("jade");
+    List<String> oreTypes = Arrays.asList("amethyst", "jade", "ruby");
 
     @Override
     protected void registerModels() {
@@ -28,6 +28,10 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
 
         withExistingParent("jade_block", modLoc("block/jade_block"));
         withExistingParent("jade_ore", modLoc("block/jade_ore"));
+        withExistingParent("ruby_block", modLoc("block/ruby_block"));
+        withExistingParent("ruby_ore", modLoc("block/ruby_ore"));
+        withExistingParent("amethyst_block", modLoc("block/amethyst_block"));
+        withExistingParent("amethyst_ore", modLoc("block/amethyst_ore"));
         withExistingParent("slimey_stone", modLoc("block/slimey_stone"));
         withExistingParent("dissolved_stone", modLoc("block/dissolved_stone"));
         withExistingParent("black_hole", modLoc("block/black_hole"));

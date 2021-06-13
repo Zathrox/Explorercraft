@@ -1,6 +1,7 @@
 package dev.driscollcreations.explorercraft.setup;
 
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
+import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksItems;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.Ingredient;
@@ -15,9 +16,9 @@ public enum ExplorerToolList implements IItemTier {
     GOLD(0, 32, 12.0F, 0.0F, 22
     */
 
-    //AMETHYST(2.0F, 6.0F, 550, 2, 5, ExplorerItems.AMETHYST),
-    JADE(3.0F, 6.0F, 1100, 3, 30, BambooGroveItems.JADE.get());
-    //RUBY(2.5F, 12.0F, 450, 3, 15, ExplorerItems.RUBY);
+    AMETHYST(2.0F, 6.0F, 550, 2, 5, BambooGroveItems.AMETHYST.get()),
+    JADE(3.0F, 6.0F, 1100, 3, 30, BambooGroveItems.JADE.get()),
+    RUBY(2.5F, 12.0F, 450, 3, 15, BambooGroveItems.RUBY.get());
 
     private final float attackDamage, efficiency;
     private final int durability, harvestLevel, enchantability;

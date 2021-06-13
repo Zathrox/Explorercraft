@@ -2,6 +2,7 @@ package dev.driscollcreations.explorercraft.setup;
 
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
+import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksItems;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.Item;
@@ -21,9 +22,9 @@ public enum ExplorerArmorList implements IArmorMaterial {
     NETHERITE("netherite", 37, new int[]{3, 6, 8, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F
     */
 
-    //AMETHYST_ARMOR("amethyst", 15, new int[]{2, 5, 6, 2}, 5, ExplorerItems.AMETHYST, "item.armor.equip_diamond", 0.0f),
-    JADE_ARMOR("jade", 25, new int[]{3, 6, 7, 2}, 30, BambooGroveItems.JADE.get(), "item.armor.equip_diamond", 0.0f, 0.0f);
-    //RUBY_ARMOR("ruby", 28, new int[]{3, 5, 6, 2}, 15, ExplorerItems.RUBY, "item.armor.equip_diamond", 0.0f),
+    AMETHYST_ARMOR("amethyst", 15, new int[]{2, 5, 6, 2}, 5, BambooGroveItems.AMETHYST.get(), "item.armor.equip_diamond", 0.0f, 0.0f),
+    JADE_ARMOR("jade", 25, new int[]{3, 6, 7, 2}, 30, BambooGroveItems.JADE.get(), "item.armor.equip_diamond", 0.0f, 0.0f),
+    RUBY_ARMOR("ruby", 28, new int[]{3, 5, 6, 2}, 15, BambooGroveItems.RUBY.get(), "item.armor.equip_diamond", 0.0f, 0.0f);
     //WIZARD_HAT("wizard_hat", 5, new int[]{1, 2, 3, 1}, 50, ExplorerItems.AMETHYST, "item.armor.equip_generic", 0.0f),
     //EXPLORER_SET("explorer", 10, new int[]{1, 2, 3, 1}, 5, null, "item.armor.equip_generic", 0.0f);
 

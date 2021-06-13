@@ -146,7 +146,15 @@ public class ExplorerBlockLootTables extends BlockLootTables {
         dropSelf(BambooGroveBlocks.JADE_BLOCK.get());
         add(BambooGroveBlocks.JADE_ORE.get(), createOreDrop(BambooGroveBlocks.JADE_ORE.get(), BambooGroveItems.JADE.get()));
 
+
+
         //======== Vanilla Tweaks
+        dropSelf(VanillaTweaksBlocks.RUBY_BLOCK.get());
+        add(VanillaTweaksBlocks.RUBY_ORE.get(), createOreDrop(VanillaTweaksBlocks.RUBY_ORE.get(), BambooGroveItems.RUBY.get()));
+
+        dropSelf(VanillaTweaksBlocks.AMETHYST_BLOCK.get());
+        add(VanillaTweaksBlocks.AMETHYST_ORE.get(), createOreDrop(VanillaTweaksBlocks.AMETHYST_ORE.get(), BambooGroveItems.AMETHYST.get()));
+
         dropSelf(VanillaTweaksBlocks.SLIMEY_STONE.get());
         dropSelf(VanillaTweaksBlocks.DISSOLVED_STONE.get());
         add(VanillaTweaksBlocks.LEATHER_SLEEPING_BAG.get(), block -> createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));

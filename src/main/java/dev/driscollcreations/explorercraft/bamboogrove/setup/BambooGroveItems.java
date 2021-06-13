@@ -30,6 +30,10 @@ public class BambooGroveItems {
     public static final RegistryObject<Item> CHERRY_BLOSSOM_SIGN = Registration.ITEMS.register("cherry_blossom_sign", () -> new SignItem((new Item.Properties()).stacksTo(16).tab(ExplorerItemGroups.EXPLORERCRAFT), BambooGroveBlocks.CHERRY_BLOSSOM_STANDING_SIGN.get(), BambooGroveBlocks.CHERRY_BLOSSOM_WALL_SIGN.get()));
     public static final RegistryObject<Item> MAPLE_SIGN = Registration.ITEMS.register("maple_sign", () -> new SignItem((new Item.Properties()).stacksTo(16).tab(ExplorerItemGroups.EXPLORERCRAFT), BambooGroveBlocks.MAPLE_STANDING_SIGN.get(), BambooGroveBlocks.MAPLE_WALL_SIGN.get()));
 
+    //========= Ores
+    public static final RegistryObject<Item> AMETHYST = Registration.ITEMS.register("amethyst", () -> new Item(basicItemProps));
+    public static final RegistryObject<Item> RUBY = Registration.ITEMS.register("ruby", () -> new Item(basicItemProps));
+
     ///======== Jade Misc
     public static final RegistryObject<Item> JADE = Registration.ITEMS.register("jade", () -> new Item(basicItemProps));
     public static final RegistryObject<Item> JADE_BOW = Registration.ITEMS.register("jade_bow", () -> new JadeBowItem(new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT).durability(684)));

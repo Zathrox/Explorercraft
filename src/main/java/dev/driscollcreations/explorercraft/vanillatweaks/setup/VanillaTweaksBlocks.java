@@ -11,6 +11,7 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.state.properties.BedPart;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 
 import java.util.function.Supplier;
@@ -97,6 +98,14 @@ public class VanillaTweaksBlocks {
     public static final RegistryObject<Block> BASALT_MOSSY_WALL                     = BlockUtils.register("basalt_mossy_wall", () -> new WallBlock(stoneBlockProps));
     public static final RegistryObject<Block> BASALT_COBBLESTONE_WALL               = BlockUtils.register("basalt_cobblestone_wall", () -> new WallBlock(stoneBlockProps));
     public static final RegistryObject<Block> BASALT_COBBLESTONE_MOSSY_WALL         = BlockUtils.register("basalt_cobblestone_mossy_wall", () -> new WallBlock(stoneBlockProps));
+
+    //========= Amethyst and Ruby
+    public static final RegistryObject<Block> AMETHYST_ORE = BlockUtils.register("amethyst_ore", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(3, 10).harvestLevel(2).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> AMETHYST_BLOCK = BlockUtils.register("amethyst_block", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(3, 10).sound(SoundType.METAL)));
+
+    public static final RegistryObject<Block> RUBY_ORE = BlockUtils.register("ruby_ore", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(3, 10).harvestLevel(3).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+    public static final RegistryObject<Block> RUBY_BLOCK = BlockUtils.register("ruby_block", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(3, 10).sound(SoundType.METAL)));
+
 
     //========== Black hole
     public static final RegistryObject<Block> BLACK_HOLE = BlockUtils.register("black_hole", () -> new BlackHoleBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).strength(-1.0F, 3600000.0F).noDrops().noCollission()));

@@ -39,6 +39,14 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         simpleBlock(BambooGroveBlocks.JADE_BLOCK.get());
         simpleBlock(BambooGroveBlocks.JADE_ORE.get());
 
+        //===== Ruby Blocks
+        simpleBlock(VanillaTweaksBlocks.RUBY_BLOCK.get());
+        simpleBlock(VanillaTweaksBlocks.RUBY_ORE.get());
+
+        //===== Amethyst Blocks
+        simpleBlock(VanillaTweaksBlocks.AMETHYST_BLOCK.get());
+        simpleBlock(VanillaTweaksBlocks.AMETHYST_ORE.get());
+
         //===== Rice
         axisBlock((RotatedPillarBlock) BambooGroveBlocks.RICE_STRAW_BLOCK.get());
 

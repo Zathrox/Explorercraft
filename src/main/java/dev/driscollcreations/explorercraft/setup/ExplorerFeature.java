@@ -82,6 +82,9 @@ public class ExplorerFeature {
             if(VanillaTweaksConfig.spawnTempleRuins.get()) {
                 event.getGeneration().getStructures().add(() -> ExplorerConfiguredStructures.CONFIGURED_TEMPLE_RUINS);
             }
+            if (VanillaTweaksConfig.spawnRuby.get()) {
+                generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Configured.RUBY_ORE);
+            }
         }
 
         if (BiomeDictionary.hasType(biomeRegistryKey, BiomeDictionary.Type.OVERWORLD)) {
@@ -90,6 +93,9 @@ public class ExplorerFeature {
             }
             if (VanillaTweaksConfig.spawnBasaltInOverworld.get()) {
                 generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Configured.BASALT_GENERAL);
+            }
+            if (VanillaTweaksConfig.spawnAmethyst.get()) {
+                generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Configured.AMETHYST_ORE);
             }
 
         }
@@ -152,6 +158,8 @@ public class ExplorerFeature {
                 new TwoLayerFeature(1, 0, 2))).ignoreVines().build();
 
         public static final OreFeatureConfig JADE_ORE_CONFIG = new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BambooGroveBlocks.JADE_ORE.get().defaultBlockState(), 8);
+        public static final OreFeatureConfig RUBY_ORE_CONFIG = new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, VanillaTweaksBlocks.RUBY_ORE.get().defaultBlockState(), 8);
+        public static final OreFeatureConfig AMETHYST_ORE_CONFIG = new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, VanillaTweaksBlocks.AMETHYST_ORE.get().defaultBlockState(), 8);
     }
 
 
@@ -161,6 +169,8 @@ public class ExplorerFeature {
         public static final ConfiguredFeature<?, ?> CHERRY_TREE = Feature.TREE.configured(Configs.CHERRY_TREE_CONFIG).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(10, 0.1F, 1)));
         public static final ConfiguredFeature<?, ?> MAPLE_TREE = ExplorerFeature.MAPLE_TREE.get().configured(Configs.MAPLE_TREE_CONFIG).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(10, 0.1F, 1)));
         public static final ConfiguredFeature<?, ?> JADE_ORE = Feature.ORE.configured(Configs.JADE_ORE_CONFIG).range(24).squared();
+        public static final ConfiguredFeature<?, ?> AMETHYST_ORE = Feature.ORE.configured(Configs.AMETHYST_ORE_CONFIG).range(40).squared();
+        public static final ConfiguredFeature<?, ?> RUBY_ORE = Feature.ORE.configured(Configs.RUBY_ORE_CONFIG).range(20).squared();
         public static final ConfiguredFeature<?, ?> RICE_PADDY = ExplorerFeature.RICE_PADDY.get().configured(IFeatureConfig.NONE).decorated(Placement.TOP_SOLID_HEIGHTMAP.configured(IPlacementConfig.NONE));
         public static final ConfiguredFeature<?, ?> SLIMEY_CHUNK_SWAMP = ExplorerFeature.SLIMEY_CHUNK.get().configured(IFeatureConfig.NONE).range(40).squared().count(33);
         public static final ConfiguredFeature<?, ?> SLIMEY_CHUNK_GLOBAL = ExplorerFeature.SLIMEY_CHUNK.get().configured(IFeatureConfig.NONE).range(40).squared().count(20);
@@ -175,6 +185,8 @@ public class ExplorerFeature {
             register("cherry_treee", CHERRY_TREE);
             register("maple_tree", MAPLE_TREE);
             register("jade_ore", JADE_ORE);
+            register("amethyst_ore", AMETHYST_ORE);
+            register("ruby_ore", RUBY_ORE);
             register("rice_paddy", RICE_PADDY);
             register("slimey_chunk_swamp", SLIMEY_CHUNK_SWAMP);
             register("slimey_chunk_global", SLIMEY_CHUNK_GLOBAL);

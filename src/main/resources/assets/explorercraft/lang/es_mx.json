@@ -1,6 +1,6 @@
 {
     "block.explorercraft.firstblock": "Primer bloque",
-    "_comment": "Pestañas del creativo",
+    "_comment": "Pestaï¿½as del creativo",
     "itemGroup.explorercraft": "Explorercraft",
     "//": "== Items",
     "item.explorercraft.ruby": "Rubi",
@@ -259,7 +259,7 @@
     "item.explorercraft.dried_fruits": "Frutos secos",
     "item.explorercraft.welsh_cakes": "Pastelillo Gales",
     "item.explorercraft.welsh_rarebit": "Pan con queso tostado de Gales",
-    "item.explorercraft.lamb_shank": "Pierna de cordero cruda",
+    "item.explorercraft.lamb_shank_raw": "Pierna de cordero cruda",
     "item.explorercraft.lamb_shank_cooked": "Pierna de cordero",
     "item.explorercraft.rice_bowl": "Tazon de arroz",
     "item.explorercraft.leek_bowl": "Sopa de puerros",

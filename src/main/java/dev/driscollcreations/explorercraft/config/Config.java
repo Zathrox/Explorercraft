@@ -19,6 +19,7 @@ public class Config {
 
         BambooGroveConfig.init(common_builder, client_builder);
         VanillaTweaksConfig.init(common_builder, client_builder);
+        CymruConfig.init(common_builder, client_builder);
 
         common_config = common_builder.build();
         client_config = client_builder.build();

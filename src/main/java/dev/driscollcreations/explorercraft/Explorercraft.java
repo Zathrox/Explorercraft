@@ -5,6 +5,7 @@ import dev.driscollcreations.explorercraft.bamboogrove.items.JadeBowItem;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
 import dev.driscollcreations.explorercraft.config.Config;
+import dev.driscollcreations.explorercraft.cymru.blocks.CymruBlocks;
 import dev.driscollcreations.explorercraft.setup.*;
 import dev.driscollcreations.explorercraft.util.EntityEvents;
 import dev.driscollcreations.explorercraft.util.ExplorerVanillaCompat;
@@ -36,6 +37,7 @@ import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.settings.DimensionStructuresSettings;
 import net.minecraft.world.gen.settings.StructureSeparationSettings;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -48,6 +50,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import software.bernie.example.client.renderer.entity.ExampleGeoRenderer;
@@ -76,13 +79,15 @@ public class Explorercraft
         ExplorerEntities.ENTITIES.register(modEventBus);
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::doClientStuff);
+        modEventBus.addListener(this::textureStitching);
+        ExplorerPlacement.DECORATORS.register(modEventBus);
         ExplorerFeature.FEATURES.register(modEventBus);
         ExplorerTileEntities.TILE_ENTITIES.register(modEventBus);
         ExplorerFeature.FOLIAGE_PLACER_TYPES.register(modEventBus);
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
         forgeBus.addListener(EventPriority.NORMAL, this::addDimensionalSpacing);
         Config.init();
-
+        ExplorerBannerPattern.init();
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -95,6 +100,8 @@ public class Explorercraft
             ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(BambooGroveBlocks.BAMBOO_SAPLING.getId(), BambooGroveBlocks.POTTED_BAMBOO_SAPLING::get);
             ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(BambooGroveBlocks.CHERRY_SAPLING.getId(), BambooGroveBlocks.POTTED_CHERRY_SAPLING::get);
             ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(BambooGroveBlocks.MAPLE_SAPLING.getId(), BambooGroveBlocks.POTTED_MAPLE_SAPLING::get);
+            ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(CymruBlocks.LEEK_WILD.getId(), CymruBlocks.POTTED_WILD_LEEK::get);
+            ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(CymruBlocks.DAFFODIL.getId(), CymruBlocks.POTTED_DAFFODIL::get);
             WoodType.register(BambooGroveBlocks.BAMBOO_WOODTYPE);
             WoodType.register(BambooGroveBlocks.CHERRY_WOODTYPE);
             WoodType.register(BambooGroveBlocks.CHERRY_BLOSSOM_WOODTYPE);
@@ -103,6 +110,21 @@ public class Explorercraft
         });
         EnchantmentType.BOW.canEnchant(BambooGroveItems.JADE_BOW.get());
         MinecraftForge.EVENT_BUS.register(new EntityEvents());
+    }
+
+    private void textureStitching(final TextureStitchEvent.Pre event) {
+        if (event.getMap().location() == Atlases.BANNER_SHEET) {
+            Explorercraft.LOGGER.log(Level.DEBUG, "Stitching banner textures");
+            event.addSprite(new ResourceLocation("entity/banner/wales"));
+            event.addSprite(new ResourceLocation("entity/banner/welshflag"));
+            Explorercraft.LOGGER.log(Level.DEBUG, "Finished stitching banner textures!");
+        }
+        if (event.getMap().location() == Atlases.SHIELD_SHEET) {
+            Explorercraft.LOGGER.log(Level.DEBUG, "Stitching shield textures");
+            event.addSprite(new ResourceLocation("entity/shield/wales"));
+            event.addSprite(new ResourceLocation("entity/shield/welshflag"));
+            Explorercraft.LOGGER.log(Level.DEBUG, "Finished stitching shield textures!");
+        }
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -121,6 +143,12 @@ public class Explorercraft
         RenderTypeLookup.setRenderLayer(BambooGroveBlocks.RICE_TOP.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VanillaTweaksBlocks.NOCTILUCAS.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VanillaTweaksBlocks.DISSOLVED_STONE.get(), RenderType.translucent());
+        RenderTypeLookup.setRenderLayer(CymruBlocks.DAFFODIL.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(CymruBlocks.LEEK_WILD.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(CymruBlocks.LEEKS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(CymruBlocks.POTTED_DAFFODIL.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(CymruBlocks.POTTED_DAFFODIL.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(CymruBlocks.POTTED_WILD_LEEK.get(), RenderType.cutout());
         ClientRegistry.bindTileEntityRenderer(ExplorerTileEntities.EXPLORER_SIGNS.get(), SignTileEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ExplorerEntities.ENDERREEPER.get(), EnderreeperRenderer::new);
         event.enqueueWork(() -> {

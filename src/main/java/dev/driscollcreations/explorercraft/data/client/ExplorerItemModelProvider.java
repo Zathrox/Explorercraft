@@ -44,6 +44,17 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
         builderMod(itemGenerated, "item/onigiri");
         builderMod(itemGenerated, "item/salmon_sushi");
         builderMod(itemGenerated, "item/tamago_sushi");
+        builderMod(itemGenerated, "item/leek");
+        builderMod(itemGenerated, "item/dried_fruits");
+        builderMod(itemGenerated, "item/cheese");
+        builderMod(itemGenerated, "item/welsh_cakes");
+        builderMod(itemGenerated, "item/welsh_rarebit");
+        builderMod(itemGenerated, "item/lamb_shank_raw");
+        builderMod(itemGenerated, "item/lamb_shank_cooked");
+        builderMod(itemGenerated, "item/leek_bowl");
+        builderMod(itemGenerated, "item/cawl_bowl");
+        builderMod(itemGenerated, "item/welshflag_banner_pattern");
+        builderMod(itemGenerated, "item/wales_banner_pattern");
 
         //-------- Sleeping bags
         List<String> sleepingBags = Arrays.asList("black", "blue", "brown", "cyan", "gray", "green", "leather", "light_blue", "light_gray", "lime", "magenta", "orange", "pink", "purple", "red", "white", "yellow");
@@ -162,9 +173,38 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
         wallInventory("basalt_mossy_wall", modLoc("block/basalt_mossy"));
         wallInventory("basalt_cobblestone_wall", modLoc("block/basalt_cobblestone"));
         wallInventory("basalt_cobblestone_mossy_wall", modLoc("block/basalt_cobblestone_mossy"));
+
+        //=== SLATE
+        withExistingParent("slate", modLoc("block/slate"));
+        withExistingParent("slate_bricks", modLoc("block/slate_bricks"));
+        withExistingParent("slate_polished", modLoc("block/slate_polished"));
+        withExistingParent("slate_mossy", modLoc("block/slate_mossy"));
+        withExistingParent("slate_tile", modLoc("block/slate_tile"));
+        withExistingParent("slate_chiseled", modLoc("block/slate_chiseled"));
+        withExistingParent("slate_pillar", modLoc("block/slate_pillar"));
+        withExistingParent("slate_welsh", modLoc("block/slate_welsh"));
+
+        withExistingParent("slate_slab", modLoc("block/slate_slab"));
+        withExistingParent("slate_brick_slab", modLoc("block/slate_brick_slab"));
+        withExistingParent("slate_polished_slab", modLoc("block/slate_polished_slab"));
+        withExistingParent("slate_mossy_slab", modLoc("block/slate_mossy_slab"));
+        withExistingParent("slate_tile_slab", modLoc("block/slate_tile_slab"));
+
+        withExistingParent("slate_stairs", modLoc("block/slate_stairs"));
+        withExistingParent("slate_brick_stairs", modLoc("block/slate_brick_stairs"));
+        withExistingParent("slate_polished_stairs", modLoc("block/slate_polished_stairs"));
+        withExistingParent("slate_mossy_stairs", modLoc("block/slate_mossy_stairs"));
+        withExistingParent("slate_tile_stairs", modLoc("block/slate_tile_stairs"));
+
+        wallInventory("slate_wall", modLoc("block/slate"));
+        wallInventory("slate_brick_wall", modLoc("block/slate_bricks"));
+        wallInventory("slate_mossy_wall", modLoc("block/slate_mossy"));
+
+        //=== CYMRU EXPANSION
+        withExistingParent("dragon_heart", modLoc("block/dragon_heart"));
+        builderMod(itemGenerated,"daffodil","block/daffodil");
+        builderMod(itemGenerated,"leek_wild", "block/leek_wild");
     }
-
-
 
     private ItemModelBuilder builderMod(ModelFile itemGenerated, String name) {
         return getBuilder(name).parent(itemGenerated).texture("layer0", modLoc(name));

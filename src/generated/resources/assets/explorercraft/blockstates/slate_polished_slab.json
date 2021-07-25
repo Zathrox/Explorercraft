@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "explorercraft:block/slate_polished_slab_top"
+    },
+    "type=bottom": {
+      "model": "explorercraft:block/slate_polished_slab"
+    },
+    "type=double": {
+      "model": "explorercraft:block/slate_polished"
+    }
+  }
+}

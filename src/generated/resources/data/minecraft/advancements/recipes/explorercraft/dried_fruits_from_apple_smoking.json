@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:dried_fruits_from_apple_smoking"
+    ]
+  },
+  "criteria": {
+    "has_apples": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:apple"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:dried_fruits_from_apple_smoking"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_apples",
+      "has_the_recipe"
+    ]
+  ]
+}

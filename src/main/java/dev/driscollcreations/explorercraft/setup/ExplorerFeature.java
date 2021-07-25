@@ -1,16 +1,25 @@
 package dev.driscollcreations.explorercraft.setup;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.world.feature.BambooFoliagePlacer;
 import dev.driscollcreations.explorercraft.bamboogrove.world.feature.BambooTruckPlacer;
 import dev.driscollcreations.explorercraft.bamboogrove.world.feature.RicePaddyFeature;
 import dev.driscollcreations.explorercraft.config.BambooGroveConfig;
+import dev.driscollcreations.explorercraft.config.CymruConfig;
 import dev.driscollcreations.explorercraft.config.VanillaTweaksConfig;
+import dev.driscollcreations.explorercraft.cymru.blocks.CymruBlocks;
+import dev.driscollcreations.explorercraft.cymru.world.AshTreeTrunkPlacer;
+import dev.driscollcreations.explorercraft.cymru.world.HigherThan100SurfacePlacement;
+import dev.driscollcreations.explorercraft.cymru.world.SnowdoniaFlowerBlockStateProvider;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
 import dev.driscollcreations.explorercraft.vanillatweaks.world.feature.NoctilucaFeature;
 import dev.driscollcreations.explorercraft.vanillatweaks.world.feature.SlimeBlockFeature;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -19,18 +28,20 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.Heightmap;
+import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
+import net.minecraft.world.gen.blockstateprovider.ForestFlowerBlockStateProvider;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliageplacer.AcaciaFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.FancyFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.FoliagePlacerType;
-import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
-import net.minecraft.world.gen.placement.IPlacementConfig;
-import net.minecraft.world.gen.placement.Placement;
-import net.minecraft.world.gen.placement.TopSolidRangeConfig;
-import net.minecraft.world.gen.trunkplacer.FancyTrunkPlacer;
-import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
+import net.minecraft.world.gen.placement.*;
+import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
+import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
+import net.minecraft.world.gen.trunkplacer.*;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -53,10 +64,11 @@ public class ExplorerFeature {
     //Register features here if we need new features registered and cant use vanilla
     public static final RegistryObject<Feature<BaseTreeFeatureConfig>> BAMBOO_TREE = FEATURES.register("bamboo_tree", () -> new TreeFeature(BaseTreeFeatureConfig.CODEC));
     public static final RegistryObject<Feature<BaseTreeFeatureConfig>> MAPLE_TREE = FEATURES.register("maple_tree", () -> new TreeFeature(BaseTreeFeatureConfig.CODEC));
+    public static final RegistryObject<Feature<BaseTreeFeatureConfig>> ASH_TREE = FEATURES.register("ash_tree", () -> new TreeFeature(BaseTreeFeatureConfig.CODEC));
     public static final RegistryObject<Feature<NoFeatureConfig>> RICE_PADDY = FEATURES.register("rice_paddy", RicePaddyFeature::new);
     public static final RegistryObject<Feature<NoFeatureConfig>> SLIMEY_CHUNK = FEATURES.register("slimey_chunk", SlimeBlockFeature::new) ;
     public static final RegistryObject<Feature<FeatureSpreadConfig>> NOCTILUCAS = FEATURES.register("noctilucas", () -> new NoctilucaFeature(FeatureSpreadConfig.CODEC)) ;
-
+    protected static final BlockState COAL_ORE = Blocks.COAL_ORE.defaultBlockState();
     public static final RegistryObject<FoliagePlacerType<BambooFoliagePlacer>> BAMBOO_FOLIAGE_TYPE = FOLIAGE_PLACER_TYPES.register("bamboo_foliage_placer", () -> new FoliagePlacerType<>(BambooFoliagePlacer.CODEC));
 
     @SubscribeEvent
@@ -104,6 +116,25 @@ public class ExplorerFeature {
             if (biome.equals(Biomes.DEEP_OCEAN.location().toString()) || biome.equals(Biomes.DEEP_COLD_OCEAN.location().toString()) || biome.equals(Biomes.DEEP_FROZEN_OCEAN.location().toString()) || biome.equals(Biomes.DEEP_LUKEWARM_OCEAN.location().toString()) || biome.equals(Biomes.DEEP_WARM_OCEAN.location().toString())) {
                 Explorercraft.LOGGER.log(Level.DEBUG, "Generating noctilucas in " + biome);
                 generation.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Configured.NOCTILUCAS);
+            }
+        }
+
+        if (biome.equals(ExplorerBiomes.SNOWDONIA.get().getRegistryName().toString()) ) {
+
+            generation.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Configured.SNOWDONIA_OAK);
+            generation.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Configured.SNOWDONIA_BIRCH);
+            generation.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Configured.ASH_TREE);
+            generation.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Configured.SNOWDONIA_FLOWERS);
+            generation.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Configured.SNOWDONIA_WILD_LEEKS);
+
+            if (CymruConfig.spawnSlateInSnowdonia.get()) {
+                generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Configured.SLATE_GEN);
+            }
+            if(CymruConfig.spawnExtraCoalOre.get()) {
+                generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ExplorerFeature.Configured.ORE_COAL_EXTRA);
+            }
+            if(CymruConfig.spawnExtraGoldOre.get()) {
+                generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Features.ORE_GOLD_EXTRA);
             }
         }
 
@@ -157,9 +188,19 @@ public class ExplorerFeature {
                 new ForkyTrunkPlacer(4, 2, 2),
                 new TwoLayerFeature(1, 0, 2))).ignoreVines().build();
 
+        public static final BaseTreeFeatureConfig ASH_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(
+                new SimpleBlockStateProvider(BambooGroveBlocks.CHERRY_LOG.get().defaultBlockState()),
+                new SimpleBlockStateProvider(BambooGroveBlocks.CHERRY_LEAVES.get().defaultBlockState()),
+                new FancyFoliagePlacer(FeatureSpread.fixed(3), FeatureSpread.fixed(4), 4),
+                new AshTreeTrunkPlacer(20, 2, 0),
+                new TwoLayerFeature(1, 0, 1, OptionalInt.of(4)))).ignoreVines().build();
+
         public static final OreFeatureConfig JADE_ORE_CONFIG = new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BambooGroveBlocks.JADE_ORE.get().defaultBlockState(), 8);
         public static final OreFeatureConfig RUBY_ORE_CONFIG = new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, VanillaTweaksBlocks.RUBY_ORE.get().defaultBlockState(), 8);
         public static final OreFeatureConfig AMETHYST_ORE_CONFIG = new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, VanillaTweaksBlocks.AMETHYST_ORE.get().defaultBlockState(), 8);
+        public static final BlockClusterFeatureConfig SNOWDONIA_FLOWER_CONFIG = (new BlockClusterFeatureConfig.Builder((new SnowdoniaFlowerBlockStateProvider(CymruBlocks.DAFFODIL.get().defaultBlockState())), SimpleBlockPlacer.INSTANCE)).tries(64).build();
+        public static final BlockClusterFeatureConfig SNOWDONIA_WILD_LEEKS_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(CymruBlocks.LEEK_WILD.get().defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(64).whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK.getBlock())).noProjection().build();
+
     }
 
 
@@ -178,11 +219,17 @@ public class ExplorerFeature {
         public static final ConfiguredFeature<?, ?> MARBLE_MOUNTAIN = Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, VanillaTweaksBlocks.MARBLE.get().defaultBlockState(), VanillaTweaksConfig.marbleVeinSizeInForestedMountains.get())).range(150).squared().count(VanillaTweaksConfig.marbleChanceInForestedMountains.get());
         public static final ConfiguredFeature<?, ?> MARBLE_GENERAL = Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, VanillaTweaksBlocks.MARBLE.get().defaultBlockState(), VanillaTweaksConfig.marbleVeinSizeInOverworld.get())).range(40).squared().count(VanillaTweaksConfig.marbleChanceInOverworld.get());
         public static final ConfiguredFeature<?, ?> BASALT_GENERAL = Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, VanillaTweaksBlocks.BASALT.get().defaultBlockState(), VanillaTweaksConfig.basaltVeinSizeInOverworld.get())).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(30, 0, 64))).squared().count(VanillaTweaksConfig.basaltChanceInOverworld.get());
-
+        public static final ConfiguredFeature<?, ?> ORE_COAL_EXTRA = Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, COAL_ORE, 9)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(32, 32, 80))).squared().count(20);
+        public static final ConfiguredFeature<?, ?> SLATE_GEN = Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, CymruBlocks.SLATE.get().defaultBlockState(), CymruConfig.slateVeinSizeInSnowdonia.get())).range(150).squared().count(CymruConfig.slateChanceInSnowdonia.get());
+        public static final ConfiguredFeature<?, ?> SNOWDONIA_OAK = Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(Features.OAK_BEES_005.weighted(0.2F), Features.FANCY_OAK_BEES_002.weighted(0.1F)), Features.OAK_BEES_002)).decorated(Placements.WORLD_SURFACE_LOWER_THAN_100).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(15, 0.1F, 1)));
+        public static final ConfiguredFeature<?, ?> SNOWDONIA_BIRCH =  Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(Features.SUPER_BIRCH_BEES_0002.weighted(0.5F)), Features.BIRCH_BEES_0002)).decorated(Placements.WORLD_SURFACE_LOWER_THAN_100).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(10, 0.5F, 1)));
+        public static final ConfiguredFeature<?, ?> SNOWDONIA_FLOWERS = Feature.FLOWER.configured(Configs.SNOWDONIA_FLOWER_CONFIG).decorated(Features.Placements.ADD_32).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(2);
+        public static final ConfiguredFeature<?, ?> SNOWDONIA_WILD_LEEKS =  Feature.RANDOM_PATCH.configured(Configs.SNOWDONIA_WILD_LEEKS_CONFIG).decorated(Placements.WORLD_SURFACE_HIGHER_THAN_100).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE).chance(10);
+        public static final ConfiguredFeature<?, ?> ASH_TREE = ExplorerFeature.ASH_TREE.get().configured(Configs.ASH_TREE_CONFIG).decorated(Placements.WORLD_SURFACE_HIGHER_THAN_100).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(1, 0.1F, 1)));
 
         public static void registerConfiguredFeatures() {
             register("bamboo_tree", BAMBOO_TREE);
-            register("cherry_treee", CHERRY_TREE);
+            register("cherry_tree", CHERRY_TREE);
             register("maple_tree", MAPLE_TREE);
             register("jade_ore", JADE_ORE);
             register("amethyst_ore", AMETHYST_ORE);
@@ -194,12 +241,25 @@ public class ExplorerFeature {
             register("marble_mountain", MARBLE_MOUNTAIN);
             register("marble_general", MARBLE_GENERAL);
             register("basalt_general", BASALT_GENERAL);
+            register("ore_coal_extra", ORE_COAL_EXTRA);
+            register("slate_generation", SLATE_GEN);
+            register("snowdonia_flowers", SNOWDONIA_FLOWERS);
+            register("snowdonia_oak", SNOWDONIA_OAK);
+            register("snowdonia_birch", SNOWDONIA_BIRCH);
+            register("snowdonia_wild_leeks", SNOWDONIA_WILD_LEEKS);
+            register("ash_tree", ASH_TREE);
 
         }
 
         private static <FC extends IFeatureConfig> void register(String name, ConfiguredFeature<FC, ?> configuredFeature) {
             Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(Explorercraft.MOD_ID, name), configuredFeature);
         }
+
+    }
+
+    public static final class Placements {
+        public static final ConfiguredPlacement<NoPlacementConfig> WORLD_SURFACE_HIGHER_THAN_100 = ExplorerPlacement.HIGHER_THAN_100.get().configured(IPlacementConfig.NONE);
+        public static final ConfiguredPlacement<NoPlacementConfig> WORLD_SURFACE_LOWER_THAN_100 = ExplorerPlacement.LOWER_THAN_100.get().configured(IPlacementConfig.NONE);
     }
 
 }

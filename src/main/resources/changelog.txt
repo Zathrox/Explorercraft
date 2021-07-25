@@ -1,38 +1,73 @@
 CHANGELOG:
 
 --------// Explorercraft 1.16.5 // ----------------------------------------------------
-Patch 5.0.4:
-Added basalt
-Added Amethyst and all related tools, armors, etc
-Added Ruby and all related tools, armors, etc
-Implemented Enderreeper, not fully finished
+Patch 5.0.5:
+Created new data generated files for crops: Leeks, Noctilucas and Rice
+TODO - create configs for snowdonia, spawning biome + weight
+    - Add slate blocks - DONE
+        - Model generation files  - DONE
+        - Drops  - DONE
+        - Recipes - DONE
+        - Create slate feature for generation  - DONE
+    - Add daffodils  - DONE
+        - Model generation files  - DONE
+        - Drops   - DONE
+        - Potted  - DONE
+        - Create daffodil feature generation, used flower gen with custom config  - DONE
+    - Add leeks  - DONE
+        - Model generation files  - DONE
+        - Drops   - DONE
+        - Potted  - DONE
+        - CustomPottedTexture  - DONE
+        - create leek generation - above level 100 (this was adding in feature, then used basic grass placement)  - DONE
+    - re-create red rarity text - DONE
+    - Add welsh shield item
+        - Add textures  - DONE
+        - Add model  - DONE
+    - Re add, welsh food, cawl, rarebit, etc  - DONE
+        - add recipes for these   - DONE
+        - Made it stackable to 16 - its meant to be a good end game food, as it requires 4 ingredients - DONE
+        - Made configs for it
+    - Re-add achievements for Snowdonia  - DONE
+    - Add custom banner item patterns + special banner generation  - DONE
+    - Add extra gold/coal to custom biome generation
+        - Add config options for above - DONE
+    - Add ash tree blocks
+        - Model generation files
+        - Drops
+        - Textures
+        - Cry profusely at trying to re-add or recreate the Ash tree generation feature! - DONE
+    - Re-add wizard tower
+    - Re-add wizard (see wizard notes in work note book)
+    - Add wizard staff (try adding new spell affect or recharge mechanic)
+    - Add slate dungeon (remake from scratch with jigsaw pieces)
+    - Add adamantite knights
+    - Add adamantite armor / tool set - netherite upgrade or alternative diamond upgrade?
+    - Add adamantite ore/ingot - special crafting + smithing table
+    - Add Red dragon wings (new elytra update prehaps - use for the dragon heart)
 
-Add Enderghast
-    Skeletaur
+
 
 TODO Loot-table injections for Jade and some other items
 TODO VanillaTweaks:
     - Temple ruins: add void blocks into the corners and ceiling to create rounded curves when injected into a mountain
     - Temple ruins: Minataur spawn? or Skeletaur eventually?
     - Explorer Set, advancements, items, buffs, custom model
+    - Add Enderghast
+    - Add Skeletaur
 
-TODO To Be Decided:
-    - Amethyst
-    - Ruby
-
-TODO - Create complicated models/blockstates in data generators:
-    - Dissolved Slime
-    - Crops (Noctilucas, rice)
-    - Tatami mats (B, M, Im)
-    - Bamboo log models
-
-todo Have wizard sell "legacy" items such as ruby, amethyst and basalt?
+todo Have wizard sell "legacy" items such as ruby, amethyst and basalt? Post - 1.17
 todo livingentity.getType().is(EntityTypeTags.RAIDERS) - code for possibly checking a list of entities, can create enchantments off this.
 todo Adamantite knights, drop adamintite scrap, forge it like netherite scrape with another material, take it to Wizard for Ingots?
 todo Notes: Creating a dynamically sized and more interesting Slate dungeon is possible with jigsaw pieces
 todo all I need to do is create a large selection of rooms, give each jigsaw piece a corresponding and matching name/target
 todo so hallway, will look for hallway, etc. Could for example on certain rooms, have new pools to spawn new hallways or special rooms. See blackstone dungeon
 
+Patch 5.0.4:
+Added basalt
+Added Amethyst and all related tools, armors, etc
+Added Ruby and all related tools, armors, etc
+Implemented Enderreeper, not fully finished
 
 Patch 5.0.3:
 Fixed several forge tag related issues for the planks, logs, etc

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "explorercraft:block/leek_stage2"
+  }
+}

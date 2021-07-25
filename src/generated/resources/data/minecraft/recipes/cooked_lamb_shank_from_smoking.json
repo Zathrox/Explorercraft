@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "explorercraft:lamb_shank_raw"
+  },
+  "result": "explorercraft:lamb_shank_cooked",
+  "experience": 0.35,
+  "cookingtime": 100
+}

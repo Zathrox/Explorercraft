@@ -2,6 +2,7 @@ package dev.driscollcreations.explorercraft.data.tags;
 
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
+import dev.driscollcreations.explorercraft.cymru.blocks.CymruBlocks;
 import dev.driscollcreations.explorercraft.setup.ExplorerTags;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
 import net.minecraft.data.BlockTagsProvider;
@@ -30,7 +31,8 @@ public class ExplorerBlockTagsProvider extends BlockTagsProvider {
 
         tag(ExplorerTags.Blocks.BASE_STONE_OVERWORLD)
                 .add(VanillaTweaksBlocks.MARBLE.get())
-                .add(VanillaTweaksBlocks.BASALT.get());
+                .add(VanillaTweaksBlocks.BASALT.get())
+                .add(CymruBlocks.SLATE.get());
 
         tag(Tags.Blocks.FENCES_WOODEN)
                 .add(BambooGroveBlocks.BAMBOO_FENCE.get())
@@ -123,7 +125,10 @@ public class ExplorerBlockTagsProvider extends BlockTagsProvider {
                 .add(VanillaTweaksBlocks.BASALT_BRICK_WALL.get())
                 .add(VanillaTweaksBlocks.BASALT_MOSSY_WALL.get())
                 .add(VanillaTweaksBlocks.BASALT_COBBLESTONE_WALL.get())
-                .add(VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_WALL.get());
+                .add(VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_WALL.get())
+                .add(CymruBlocks.SLATE_WALL.get())
+                .add(CymruBlocks.SLATE_BRICK_WALL.get())
+                .add(CymruBlocks.SLATE_MOSSY_WALL.get());
 
         tag(ExplorerTags.Blocks.BAMBOO_LOGS)
                 .add(BambooGroveBlocks.BAMBOO_LOG.get());

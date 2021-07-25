@@ -76,8 +76,8 @@ public class ToriiGateStructure extends Structure<NoFeatureConfig>
                     false,
                     true);
 
-            this.pieces.forEach(piece -> piece.move(0, 2, 0));
-            this.pieces.forEach(piece -> piece.getBoundingBox().y0 -= 2);
+            //this.pieces.forEach(piece -> piece.move(0, 0, 0));
+            this.pieces.forEach(piece -> piece.getBoundingBox().y0 -= 1);
 
 
             this.calculateBoundingBox();

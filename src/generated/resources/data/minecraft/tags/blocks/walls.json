@@ -8,6 +8,9 @@
     "explorercraft:basalt_brick_wall",
     "explorercraft:basalt_mossy_wall",
     "explorercraft:basalt_cobblestone_wall",
-    "explorercraft:basalt_cobblestone_mossy_wall"
+    "explorercraft:basalt_cobblestone_mossy_wall",
+    "explorercraft:slate_wall",
+    "explorercraft:slate_brick_wall",
+    "explorercraft:slate_mossy_wall"
   ]
 }

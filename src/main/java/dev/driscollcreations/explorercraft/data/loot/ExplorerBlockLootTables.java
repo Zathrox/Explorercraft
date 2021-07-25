@@ -1,8 +1,12 @@
 package dev.driscollcreations.explorercraft.data.loot;
 
 import dev.driscollcreations.explorercraft.bamboogrove.blocks.PanelBlock;
+import dev.driscollcreations.explorercraft.bamboogrove.blocks.RiceBlock;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
+import dev.driscollcreations.explorercraft.cymru.blocks.CymruBlocks;
+import dev.driscollcreations.explorercraft.cymru.blocks.LeekBlock;
+import dev.driscollcreations.explorercraft.cymru.items.CymruItems;
 import dev.driscollcreations.explorercraft.setup.Registration;
 import dev.driscollcreations.explorercraft.vanillatweaks.blocks.NoctilucaBlock;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
@@ -15,14 +19,12 @@ import net.minecraft.block.*;
 import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
-import net.minecraft.loot.ConstantRange;
-import net.minecraft.loot.ItemLootEntry;
-import net.minecraft.loot.LootPool;
-import net.minecraft.loot.RandomValueRange;
+import net.minecraft.loot.*;
 import net.minecraft.loot.conditions.BlockStateProperty;
 import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraft.loot.conditions.MatchTool;
 import net.minecraft.loot.conditions.TableBonus;
+import net.minecraft.loot.functions.ApplyBonus;
 import net.minecraft.loot.functions.SetCount;
 import net.minecraft.state.properties.BedPart;
 import net.minecraft.state.properties.DoubleBlockHalf;
@@ -140,7 +142,7 @@ public class ExplorerBlockLootTables extends BlockLootTables {
         dropSelf(BambooGroveBlocks.RICE_STRAW_BLOCK.get());
         add(BambooGroveBlocks.RICE_BASE.get(), noDrop());
 
-        ILootCondition.IBuilder riceLootCondition = BlockStateProperty.hasBlockStateProperties(BambooGroveBlocks.RICE_TOP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropsBlock.AGE, 7));
+        ILootCondition.IBuilder riceLootCondition = BlockStateProperty.hasBlockStateProperties(BambooGroveBlocks.RICE_TOP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(RiceBlock.AGE, 7));
         this.add(BambooGroveBlocks.RICE_TOP.get(), createCropDrops(BambooGroveBlocks.RICE_TOP.get(), BambooGroveItems.RICE_STRAW.get(), BambooGroveItems.RICE.get(), riceLootCondition));
 
         dropSelf(BambooGroveBlocks.JADE_BLOCK.get());
@@ -226,6 +228,42 @@ public class ExplorerBlockLootTables extends BlockLootTables {
         dropSelf(VanillaTweaksBlocks.BASALT_MOSSY_WALL.get());
         dropSelf(VanillaTweaksBlocks.BASALT_COBBLESTONE_WALL.get());
         dropSelf(VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_WALL.get());
+
+        //================================ CYMRU EXPANSION
+        dropSelf(CymruBlocks.DRAGON_HEART.get());
+        dropSelf(CymruBlocks.DAFFODIL.get());
+        dropSelf(CymruBlocks.LEEK_WILD.get());
+        add(CymruBlocks.LEEK_WILD.get(), (block) -> {
+            return createShearsDispatchTable(block, applyExplosionDecay(block, ItemLootEntry.lootTableItem(CymruBlocks.LEEKS.get()).apply(SetCount.setCount(RandomValueRange.between(1.0F, 3.0F)))));
+        });
+        ILootCondition.IBuilder leekLootCondition = BlockStateProperty.hasBlockStateProperties(CymruBlocks.LEEKS.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(LeekBlock.AGE, 7));
+        add(CymruBlocks.LEEKS.get(), applyExplosionDecay(CymruBlocks.LEEKS.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(ItemLootEntry.lootTableItem(CymruItems.LEEK.get()))).withPool(LootPool.lootPool().when(leekLootCondition).add(ItemLootEntry.lootTableItem(CymruItems.LEEK.get()).apply(ApplyBonus.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3))))));
+        dropPottedContents(CymruBlocks.POTTED_DAFFODIL.get());
+        dropPottedContents(CymruBlocks.POTTED_WILD_LEEK.get());
+
+
+        //======= SLATE
+        dropSelf(CymruBlocks.SLATE.get());
+        dropSelf(CymruBlocks.SLATE_POLISHED.get());
+        dropSelf(CymruBlocks.SLATE_BRICKS.get());
+        dropSelf(CymruBlocks.SLATE_MOSSY.get());
+        dropSelf(CymruBlocks.SLATE_TILE.get());
+        dropSelf(CymruBlocks.SLATE_CHISELED.get());
+        dropSelf(CymruBlocks.SLATE_WELSH.get());
+        dropSelf(CymruBlocks.SLATE_PILLAR.get());
+        add(CymruBlocks.SLATE_SLAB.get(), BlockLootTables::createSlabItemTable);
+        add(CymruBlocks.SLATE_POLISHED_SLAB.get(), BlockLootTables::createSlabItemTable);
+        add(CymruBlocks.SLATE_BRICK_SLAB.get(), BlockLootTables::createSlabItemTable);
+        add(CymruBlocks.SLATE_MOSSY_SLAB.get(), BlockLootTables::createSlabItemTable);
+        add(CymruBlocks.SLATE_TILE_SLAB.get(), BlockLootTables::createSlabItemTable);
+        dropSelf(CymruBlocks.SLATE_STAIRS.get());
+        dropSelf(CymruBlocks.SLATE_POLISHED_STAIRS.get());
+        dropSelf(CymruBlocks.SLATE_BRICK_STAIRS.get());
+        dropSelf(CymruBlocks.SLATE_MOSSY_STAIRS.get());
+        dropSelf(CymruBlocks.SLATE_TILE_STAIRS.get());
+        dropSelf(CymruBlocks.SLATE_WALL.get());
+        dropSelf(CymruBlocks.SLATE_BRICK_WALL.get());
+        dropSelf(CymruBlocks.SLATE_MOSSY_WALL.get());
 
     }
 

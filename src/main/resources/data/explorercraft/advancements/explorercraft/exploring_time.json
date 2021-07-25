@@ -27,6 +27,12 @@
             "conditions": {
                 "biome": "explorercraft:forested_mountain"
             }
+        },
+        "snowdonia": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "explorercraft:snowdonia"
+            }
         }
     }
 }

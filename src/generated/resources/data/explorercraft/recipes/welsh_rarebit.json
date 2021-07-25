@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "explorercraft:leek"
+    },
+    {
+      "item": "explorercraft:cheese"
+    },
+    {
+      "item": "minecraft:bread"
+    }
+  ],
+  "result": {
+    "item": "explorercraft:welsh_rarebit"
+  }
+}

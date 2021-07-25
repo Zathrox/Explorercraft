@@ -3,12 +3,15 @@ package dev.driscollcreations.explorercraft.data.recipes;
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
+import dev.driscollcreations.explorercraft.cymru.blocks.CymruBlocks;
+import dev.driscollcreations.explorercraft.cymru.items.CymruItems;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
@@ -33,6 +36,8 @@ public class ExplorerRecipeProvider extends RecipeProvider {
         createVanillaTweakRecipes(consumer);
         createVanillaTweakMarbleRecipes(consumer);
         createVanillaTweakBasaltRecipes(consumer);
+        createCymruExpansionSlateRecipes(consumer);
+        createCymruExpansionRecipes(consumer);
     }
 
     private static void createVanillaTweakRecipes(Consumer<IFinishedRecipe> consumer) {
@@ -158,6 +163,104 @@ public class ExplorerRecipeProvider extends RecipeProvider {
         ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_SLAB.get(), 6).define('#', VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY.get()).pattern("###").unlockedBy("has_basalt_cobblestone_mossy", has(VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY.get())).save(consumer);
         ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_STAIRS.get(), 4).define('#', VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY.get()).pattern("#  ").pattern("## ").pattern("###").unlockedBy("has_basalt_cobblestone_mossy", has(VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY.get())).save(consumer);
         ShapedRecipeBuilder.shaped(VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_WALL.get(), 6).define('#', VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY.get()).pattern("###").pattern("###").unlockedBy("has_basalt_cobblestone_mossy", has(VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY.get())).save(consumer);
+
+    }
+
+    private static void createCymruExpansionSlateRecipes(Consumer<IFinishedRecipe> consumer) {
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE.get()), CymruBlocks.SLATE_SLAB.get(), 2).unlocks("has_slate", has(CymruBlocks.SLATE.get())).save(consumer, "slate_slab_from_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE.get()), CymruBlocks.SLATE_STAIRS.get()).unlocks("has_slate", has(CymruBlocks.SLATE.get())).save(consumer, "slate_stairs_from_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE.get()), CymruBlocks.SLATE_WALL.get()).unlocks("has_slate", has(CymruBlocks.SLATE.get())).save(consumer, "slate_walls_from_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE.get()), CymruBlocks.SLATE_PILLAR.get()).unlocks("has_slate", has(CymruBlocks.SLATE.get())).save(consumer, "slate_pillar_from_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE.get()), CymruBlocks.SLATE_CHISELED.get()).unlocks("has_slate", has(CymruBlocks.SLATE.get())).save(consumer, "chiseled_slate_from_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE.get()), CymruBlocks.SLATE_BRICKS.get()).unlocks("has_slate", has(CymruBlocks.SLATE.get())).save(consumer, "slate_bricks_from_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE.get()), CymruBlocks.SLATE_BRICK_SLAB.get(), 2).unlocks("has_slate", has(CymruBlocks.SLATE.get())).save(consumer, "slate_brick_slab_from_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE.get()), CymruBlocks.SLATE_BRICK_STAIRS.get()).unlocks("has_slate", has(CymruBlocks.SLATE.get())).save(consumer, "slate_brick_stairs_from_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE.get()), CymruBlocks.SLATE_BRICK_WALL.get()).unlocks("has_slate", has(CymruBlocks.SLATE.get())).save(consumer, "slate_brick_wall_from_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE.get()), CymruBlocks.SLATE_POLISHED.get()).unlocks("has_slate", has(CymruBlocks.SLATE.get())).save(consumer, "slate_polished_from_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE.get()), CymruBlocks.SLATE_POLISHED_SLAB.get(), 2).unlocks("has_slate", has(CymruBlocks.SLATE.get())).save(consumer, "slate_polished_slab_from_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE.get()), CymruBlocks.SLATE_POLISHED_STAIRS.get()).unlocks("has_slate", has(CymruBlocks.SLATE.get())).save(consumer, "slate_polished_stairs_from_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE.get()), CymruBlocks.SLATE_TILE.get()).unlocks("has_slate", has(CymruBlocks.SLATE.get())).save(consumer, "slate_tile_from_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE.get()), CymruBlocks.SLATE_TILE_SLAB.get(), 2).unlocks("has_slate", has(CymruBlocks.SLATE.get())).save(consumer, "slate_tile_slab_from_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE.get()), CymruBlocks.SLATE_TILE_STAIRS.get()).unlocks("has_slate", has(CymruBlocks.SLATE.get())).save(consumer, "slate_tile_stairs_from_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE_BRICKS.get()), CymruBlocks.SLATE_BRICK_SLAB.get(), 2).unlocks("has_slate_bricks", has(CymruBlocks.SLATE_BRICKS.get())).save(consumer, "slate_brick_slab_from_slate_bricks_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE_BRICKS.get()), CymruBlocks.SLATE_BRICK_STAIRS.get()).unlocks("has_slate_bricks", has(CymruBlocks.SLATE_BRICKS.get())).save(consumer, "slate_brick_stairs_from_slate_bricks_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE_BRICKS.get()), CymruBlocks.SLATE_BRICK_WALL.get()).unlocks("has_slate_bricks", has(CymruBlocks.SLATE_BRICKS.get())).save(consumer, "slate_brick_wall_from_slate_bricks_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE_BRICKS.get()), CymruBlocks.SLATE_CHISELED.get()).unlocks("has_slate_bricks", has(CymruBlocks.SLATE_BRICKS.get())).save(consumer, "chiseled_slate_from_slate_bricks_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE_POLISHED.get()), CymruBlocks.SLATE_POLISHED_SLAB.get(), 2).unlocks("has_slate_polished", has(CymruBlocks.SLATE_POLISHED.get())).save(consumer, "slate_polished_slab_from_slate_polished_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE_POLISHED.get()), CymruBlocks.SLATE_POLISHED_STAIRS.get()).unlocks("has_slate_polished", has(CymruBlocks.SLATE_POLISHED.get())).save(consumer, "slate_polished_stairs_from_slate_polished_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE_POLISHED.get()), CymruBlocks.SLATE_PILLAR.get()).unlocks("has_slate_polished", has(CymruBlocks.SLATE_POLISHED.get())).save(consumer, "slate_pillar_from_polished_slate_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE_POLISHED.get()), CymruBlocks.SLATE_TILE.get()).unlocks("has_slate_polished", has(CymruBlocks.SLATE_POLISHED.get())).save(consumer, "slate_tile_from_slate_polished_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE_MOSSY.get()), CymruBlocks.SLATE_MOSSY_SLAB.get(), 2).unlocks("has_slate_mossy", has(CymruBlocks.SLATE_MOSSY.get())).save(consumer, "slate_mossy_slab_from_slate_mossy_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE_MOSSY.get()), CymruBlocks.SLATE_MOSSY_STAIRS.get()).unlocks("has_slate_mossy", has(CymruBlocks.SLATE_MOSSY.get())).save(consumer, "slate_mossy_stairs_from_slate_mossy_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE_MOSSY.get()), CymruBlocks.SLATE_MOSSY_WALL.get()).unlocks("has_slate_mossy", has(CymruBlocks.SLATE_MOSSY.get())).save(consumer, "slate_mossy_wall_from_slate_mossy_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE_TILE.get()), CymruBlocks.SLATE_TILE_SLAB.get(), 2).unlocks("has_slate_tile", has(CymruBlocks.SLATE_TILE.get())).save(consumer, "slate_tile_slab_from_slate_tile_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(CymruBlocks.SLATE_TILE.get()), CymruBlocks.SLATE_TILE_STAIRS.get()).unlocks("has_slate_tile", has(CymruBlocks.SLATE_TILE.get())).save(consumer, "slate_tile_stairs_from_slate_tile_stonecutting");
+
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_SLAB.get(), 6).define('#', CymruBlocks.SLATE.get()).pattern("###").unlockedBy("has_slate", has(CymruBlocks.SLATE.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_STAIRS.get(), 4).define('#', CymruBlocks.SLATE.get()).pattern("#  ").pattern("## ").pattern("###").unlockedBy("has_slate", has(CymruBlocks.SLATE.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_WALL.get(), 6).define('#', CymruBlocks.SLATE.get()).pattern("###").pattern("###").unlockedBy("has_slate", has(CymruBlocks.SLATE.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_CHISELED.get()).define('#', CymruBlocks.SLATE_BRICK_SLAB.get()).pattern("#").pattern("#").unlockedBy("has_slate_bricks", has(CymruBlocks.SLATE_BRICKS.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_PILLAR.get(), 2).define('#', CymruBlocks.SLATE_POLISHED.get()).pattern("#").pattern("#").unlockedBy("has_slate", has(CymruBlocks.SLATE.get())).unlockedBy("has_slate_polished", has(CymruBlocks.SLATE_POLISHED.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_BRICKS.get(), 4).define('#', CymruBlocks.SLATE.get()).pattern("##").pattern("##").unlockedBy("has_slate", has(CymruBlocks.SLATE.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_BRICK_SLAB.get(), 6).define('#', CymruBlocks.SLATE_BRICKS.get()).pattern("###").unlockedBy("has_slate_bricks", has(CymruBlocks.SLATE_BRICKS.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_BRICK_STAIRS.get(), 4).define('#', CymruBlocks.SLATE_BRICKS.get()).pattern("#  ").pattern("## ").pattern("###").unlockedBy("has_slate_bricks", has(CymruBlocks.SLATE_BRICKS.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_BRICK_WALL.get(), 6).define('#', CymruBlocks.SLATE_BRICKS.get()).pattern("###").pattern("###").unlockedBy("has_slate_bricks", has(CymruBlocks.SLATE_BRICKS.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_POLISHED.get(), 4).define('#', CymruBlocks.SLATE.get()).pattern("##").pattern("##").unlockedBy("has_slate", has(CymruBlocks.SLATE.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_POLISHED_SLAB.get(), 6).define('#', CymruBlocks.SLATE_POLISHED.get()).pattern("###").unlockedBy("has_slate_polished", has(CymruBlocks.SLATE_POLISHED.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_POLISHED_STAIRS.get(), 4).define('#', CymruBlocks.SLATE_POLISHED.get()).pattern("#  ").pattern("## ").pattern("###").unlockedBy("has_slate_polished", has(CymruBlocks.SLATE_POLISHED.get())).save(consumer);
+        ShapelessRecipeBuilder.shapeless(CymruBlocks.SLATE_MOSSY.get()).requires(CymruBlocks.SLATE.get()).requires(Blocks.VINE).unlockedBy("has_vine", has(Blocks.VINE)).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_MOSSY_SLAB.get(), 6).define('#', CymruBlocks.SLATE_MOSSY.get()).pattern("###").unlockedBy("has_slate_mossy", has(CymruBlocks.SLATE_MOSSY.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_MOSSY_STAIRS.get(), 4).define('#', CymruBlocks.SLATE_MOSSY.get()).pattern("#  ").pattern("## ").pattern("###").unlockedBy("has_slate_mossy", has(CymruBlocks.SLATE_MOSSY.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_MOSSY_WALL.get(), 6).define('#', CymruBlocks.SLATE_MOSSY.get()).pattern("###").pattern("###").unlockedBy("has_slate_mossy", has(CymruBlocks.SLATE_MOSSY.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_TILE.get(), 4).define('#', CymruBlocks.SLATE_POLISHED.get()).pattern("##").pattern("##").unlockedBy("has_slate_polished", has(CymruBlocks.SLATE_POLISHED.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_TILE_SLAB.get(), 6).define('#', CymruBlocks.SLATE_TILE.get()).pattern("###").unlockedBy("has_slate_tile", has(CymruBlocks.SLATE_TILE.get())).save(consumer);
+        ShapedRecipeBuilder.shaped(CymruBlocks.SLATE_TILE_STAIRS.get(), 4).define('#', CymruBlocks.SLATE_TILE.get()).pattern("#  ").pattern("## ").pattern("###").unlockedBy("has_slate_tile", has(CymruBlocks.SLATE_TILE.get())).save(consumer);
+    }
+
+    private static void createCymruExpansionRecipes(Consumer<IFinishedRecipe> consumer) {
+        ShapelessRecipeBuilder.shapeless(Items.YELLOW_DYE).requires(CymruBlocks.DAFFODIL.get()).unlockedBy("has_daffodil", has(CymruBlocks.DAFFODIL.get())).save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(CymruItems.WELSH_RAREBIT.get(), 1)
+                .requires(CymruItems.LEEK.get())
+                .requires(CymruItems.CHEESE.get())
+                .requires(Items.BREAD)
+                .unlockedBy("has_item", has(CymruItems.WELSH_RAREBIT.get()))
+                .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(CymruItems.WELSH_CAKES.get(), 1)
+                .requires(CymruItems.DRIED_FRUIT.get())
+                .requires(Items.WHEAT)
+                .requires(Items.SUGAR)
+                .requires(Items.EGG)
+                .unlockedBy("has_item", has(CymruItems.WELSH_CAKES.get()))
+                .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(CymruItems.LEEK_STEW.get(), 1)
+                .requires(Items.BOWL)
+                .requires(CymruItems.LEEK.get())
+                .requires(CymruItems.LEEK.get())
+                .requires(CymruItems.LEEK.get())
+                .requires(CymruItems.LEEK.get())
+                .requires(CymruItems.LEEK.get())
+                .requires(CymruItems.LEEK.get())
+                .unlockedBy("has_item", has(CymruItems.LEEK_STEW.get()))
+                .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(CymruItems.CAWL_STEW.get(), 1)
+                .requires(Items.BOWL)
+                .requires(CymruItems.LEEK.get())
+                .requires(CymruItems.COOKED_LAMB_SHANK.get())
+                .requires(Items.CARROT)
+                .requires(Items.POTATO)
+                .unlockedBy("has_item", has(CymruItems.CAWL_STEW.get()))
+                .save(consumer);
+
+        CookingRecipeBuilder.smelting(Ingredient.of(CymruItems.LAMB_SHANK.get()), CymruItems.COOKED_LAMB_SHANK.get(), 0.35F, 200).unlockedBy("has_lamb_shank", has(CymruItems.LAMB_SHANK.get())).save(consumer);
+        CookingRecipeBuilder.cooking(Ingredient.of(CymruItems.LAMB_SHANK.get()), CymruItems.COOKED_LAMB_SHANK.get(), 0.35F, 100,  IRecipeSerializer.SMOKING_RECIPE).unlockedBy("has_lamb_shank", has(CymruItems.LAMB_SHANK.get())).save(consumer, "cooked_lamb_shank_from_smoking");
+        CookingRecipeBuilder.cooking(Ingredient.of(CymruItems.LAMB_SHANK.get()), CymruItems.COOKED_LAMB_SHANK.get(), 0.35F, 600,  IRecipeSerializer.CAMPFIRE_COOKING_RECIPE).unlockedBy("has_lamb_shank", has(CymruItems.LAMB_SHANK.get())).save(consumer, "cooked_lamb_shank_from_campfire");
+        CookingRecipeBuilder.cooking(Ingredient.of(Items.APPLE), CymruItems.DRIED_FRUIT.get(), 0.55F, 100,  IRecipeSerializer.SMOKING_RECIPE).unlockedBy("has_apples", has(Items.APPLE)).save(consumer, "dried_fruits_from_apple_smoking");
+        CookingRecipeBuilder.cooking(Ingredient.of(Items.SWEET_BERRIES), CymruItems.DRIED_FRUIT.get(), 0.15F, 100,  IRecipeSerializer.SMOKING_RECIPE).unlockedBy("has_sweet_berries", has(Items.SWEET_BERRIES)).save(consumer, "sweet_berry");
+
 
     }
 

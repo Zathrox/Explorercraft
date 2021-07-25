@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:slate_mossy_wall_from_slate_mossy_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_slate_mossy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "explorercraft:slate_mossy"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:slate_mossy_wall_from_slate_mossy_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_slate_mossy",
+      "has_the_recipe"
+    ]
+  ]
+}

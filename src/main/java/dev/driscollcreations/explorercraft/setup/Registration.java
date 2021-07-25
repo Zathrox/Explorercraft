@@ -3,6 +3,8 @@ package dev.driscollcreations.explorercraft.setup;
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
+import dev.driscollcreations.explorercraft.cymru.blocks.CymruBlocks;
+import dev.driscollcreations.explorercraft.cymru.items.CymruItems;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksItems;
 import net.minecraft.block.Block;
@@ -36,8 +38,10 @@ public class Registration {
 
         BambooGroveBlocks.register();
         VanillaTweaksBlocks.register();
+        CymruBlocks.register();
         BambooGroveItems.register();
         VanillaTweaksItems.register();
+        CymruItems.register();
 
         SURFACE_BUILDERS.register(modEventBus);
         ExplorerSurfaceBuilders.register();

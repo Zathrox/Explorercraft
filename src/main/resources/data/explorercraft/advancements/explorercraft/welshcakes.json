@@ -1,0 +1,27 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:welsh_cakes"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.welshcakes.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.welshcakes.description"
+        },
+        "hidden": false
+    },
+    "parent": "explorercraft:explorercraft/snowdonia",
+    "criteria": {
+        "rice": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "explorercraft:welsh_cakes"
+                    }
+                ]
+            }
+        }
+    }
+}

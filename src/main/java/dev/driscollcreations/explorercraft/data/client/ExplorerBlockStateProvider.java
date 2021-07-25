@@ -3,18 +3,24 @@ package dev.driscollcreations.explorercraft.data.client;
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.blocks.BambooLogBlock;
 import dev.driscollcreations.explorercraft.bamboogrove.blocks.PanelBlock;
+import dev.driscollcreations.explorercraft.bamboogrove.blocks.RiceBlock;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
+import dev.driscollcreations.explorercraft.cymru.blocks.CymruBlocks;
+import dev.driscollcreations.explorercraft.cymru.blocks.LeekBlock;
+import dev.driscollcreations.explorercraft.vanillatweaks.blocks.NoctilucaBlock;
 import dev.driscollcreations.explorercraft.vanillatweaks.blocks.SleepingBagBlock;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
 import net.minecraft.block.*;
 import net.minecraft.client.renderer.model.Model;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.properties.*;
 import net.minecraft.util.Direction;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Arrays;
@@ -227,9 +233,66 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         wallBlock((WallBlock) VanillaTweaksBlocks.BASALT_COBBLESTONE_WALL.get(), modLoc("block/basalt_cobblestone"));
         wallBlock((WallBlock) VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_WALL.get(), modLoc("block/basalt_cobblestone_mossy"));
 
+        //==== SLATE
+        simpleBlock(CymruBlocks.SLATE.get());
+        getVariantBuilder(CymruBlocks.SLATE_POLISHED.get()).partialState().setModels(new ConfiguredModel(models().withExistingParent("slate_polished", mcLoc("block/cube_column")).texture("end", "block/slate_polished_top").texture("side", "block/slate_polished_side")));
+        simpleBlock(CymruBlocks.SLATE_BRICKS.get());
+        simpleBlock(CymruBlocks.SLATE_MOSSY.get());
+        simpleBlock(CymruBlocks.SLATE_TILE.get());
+        getVariantBuilder(CymruBlocks.SLATE_CHISELED.get()).partialState().setModels(new ConfiguredModel(models().withExistingParent("slate_chiseled", mcLoc("block/cube_column")).texture("end", "block/slate_polished_top").texture("side", "block/slate_chiseled")));
+        getVariantBuilder(CymruBlocks.SLATE_WELSH.get()).partialState().setModels(new ConfiguredModel(models().withExistingParent("slate_welsh", mcLoc("block/cube_column")).texture("end", "block/slate_polished_top").texture("side", "block/slate_chiseled_red")));
+        axisBlock((RotatedPillarBlock) CymruBlocks.SLATE_PILLAR.get(), modLoc("block/slate_pillar"), modLoc("block/slate_polished_top"));
+
+        slabBlock((SlabBlock) CymruBlocks.SLATE_SLAB.get(), modLoc("block/slate"), modLoc("block/slate"));
+        //SlabBlock, then Block which becomes the full block, then texture for single slab
+        slabBlock((SlabBlock) CymruBlocks.SLATE_POLISHED_SLAB.get(), modLoc("block/slate_polished"), modLoc("block/slate_polished_top"));
+        slabBlock((SlabBlock) CymruBlocks.SLATE_BRICK_SLAB.get(), modLoc("block/slate_bricks"), modLoc("block/slate_bricks"));
+        slabBlock((SlabBlock) CymruBlocks.SLATE_MOSSY_SLAB.get(), modLoc("block/slate_mossy"), modLoc("block/slate_mossy"));
+        slabBlock((SlabBlock) CymruBlocks.SLATE_TILE_SLAB.get(), modLoc("block/slate_tile"), modLoc("block/slate_tile"));
+
+        stairsBlock((StairsBlock) CymruBlocks.SLATE_STAIRS.get(), modLoc("block/slate"));
+        stairsBlock((StairsBlock) CymruBlocks.SLATE_POLISHED_STAIRS.get(), modLoc("block/slate_polished_top"));
+        stairsBlock((StairsBlock) CymruBlocks.SLATE_BRICK_STAIRS.get(), modLoc("block/slate_bricks"));
+        stairsBlock((StairsBlock) CymruBlocks.SLATE_MOSSY_STAIRS.get(), modLoc("block/slate_mossy"));
+        stairsBlock((StairsBlock) CymruBlocks.SLATE_TILE_STAIRS.get(), modLoc("block/slate_tile"));
+
+        wallBlock((WallBlock) CymruBlocks.SLATE_WALL.get(), modLoc("block/slate"));
+        wallBlock((WallBlock) CymruBlocks.SLATE_BRICK_WALL.get(), modLoc("block/slate_bricks"));
+        wallBlock((WallBlock) CymruBlocks.SLATE_MOSSY_WALL.get(), modLoc("block/slate_mossy"));
+
+
+        getVariantBuilder(CymruBlocks.DAFFODIL.get()).partialState().setModels(new ConfiguredModel(models().withExistingParent("daffodil", mcLoc("block/cross")).texture("cross", "block/daffodil")));
+        getVariantBuilder(CymruBlocks.LEEK_WILD.get()).partialState().setModels(new ConfiguredModel(models().withExistingParent("leek_wild", mcLoc("block/cross")).texture("cross", "block/leek_wild")));
+        getVariantBuilder(CymruBlocks.POTTED_DAFFODIL.get()).partialState().setModels(new ConfiguredModel(models().withExistingParent("potted_daffodil", mcLoc("block/flower_pot_cross")).texture("plant", "block/daffodil")));
+        getVariantBuilder(CymruBlocks.POTTED_WILD_LEEK.get()).partialState().setModels(new ConfiguredModel(models().withExistingParent("potted_wild_leek", mcLoc("block/flower_pot_cross")).texture("plant", "block/potted_wild_leek")));
+
+
+
+        getVariantBuilder(BambooGroveBlocks.RICE_BASE.get()).partialState().setModels(new ConfiguredModel(models().withExistingParent("rice_base", mcLoc("block/crop")).texture("crop", "block/rice_base")));
+        cropModel(BambooGroveBlocks.RICE_TOP.get(), RiceBlock.AGE, "rice_stage");
+        cropModel(VanillaTweaksBlocks.NOCTILUCAS.get(), NoctilucaBlock.AGE, "noctiluca_stage");
+        cropModel(CymruBlocks.LEEKS.get(), LeekBlock.AGE, "leek_stage");
+
         sleepingBagModels();
 
     }
+
+    public void cropModel(Block block, IntegerProperty ageProp, String name) {
+
+        getVariantBuilder(block).forAllStates(state -> {
+            int age = state.getValue(ageProp);
+            if (age == 0 || age == 1) {
+                return ConfiguredModel.builder().modelFile(models().withExistingParent(name+0, mcLoc("block/crop")).texture("crop", "block/"+name+0)).build();
+            } else if (age == 2 || age == 3) {
+                return ConfiguredModel.builder().modelFile(models().withExistingParent(name+1, mcLoc("block/crop")).texture("crop", "block/"+name+1)).build();
+            } else if (age == 4 || age == 5 || age == 6) {
+                return ConfiguredModel.builder().modelFile(models().withExistingParent(name+2, mcLoc("block/crop")).texture("crop", "block/"+name+2)).build();
+            } else {
+                return ConfiguredModel.builder().modelFile(models().withExistingParent(name+3, mcLoc("block/crop")).texture("crop", "block/"+name+3)).build();
+            }
+        });
+    }
+
     public void sleepingBag(String color, ResourceLocation head, ResourceLocation foot) {
         ModelFile headModel = models().getExistingFile(head);
         ModelFile footModel = models().getExistingFile(foot);
@@ -377,5 +440,15 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
                            .build();
         });
     }
+
+            /*getVariantBuilder(CymruBlocks.LEEKS.get())
+                .partialState().with(LeekBlock.AGE, 0).setModels(new ConfiguredModel(models().withExistingParent("leek_stage0", mcLoc("block/crop")).texture("crop", "block/leek_stage0")))
+                .partialState().with(LeekBlock.AGE, 1).setModels(new ConfiguredModel(models().withExistingParent("leek_stage0", mcLoc("block/crop")).texture("crop", "block/leek_stage0")))
+                .partialState().with(LeekBlock.AGE, 2).setModels(new ConfiguredModel(models().withExistingParent("leek_stage1", mcLoc("block/crop")).texture("crop", "block/leek_stage1")))
+                .partialState().with(LeekBlock.AGE, 3).setModels(new ConfiguredModel(models().withExistingParent("leek_stage1", mcLoc("block/crop")).texture("crop", "block/leek_stage1")))
+                .partialState().with(LeekBlock.AGE, 4).setModels(new ConfiguredModel(models().withExistingParent("leek_stage2", mcLoc("block/crop")).texture("crop", "block/leek_stage2")))
+                .partialState().with(LeekBlock.AGE, 5).setModels(new ConfiguredModel(models().withExistingParent("leek_stage2", mcLoc("block/crop")).texture("crop", "block/leek_stage2")))
+                .partialState().with(LeekBlock.AGE, 6).setModels(new ConfiguredModel(models().withExistingParent("leek_stage2", mcLoc("block/crop")).texture("crop", "block/leek_stage2")))
+                .partialState().with(LeekBlock.AGE, 7).setModels(new ConfiguredModel(models().withExistingParent("leek_stage3", mcLoc("block/crop")).texture("crop", "block/leek_stage3")));*/
 
 }

@@ -7,10 +7,10 @@ issueTrackerURL="https://github.com/Zathrox/explorercraft/issues"
 modId="explorercraft"
 version="${version}"
 displayName="Explorercraft"
-updateJSONURL="https://raw.githubusercontent.com/Zathrox/explorercraft/1.16/update.json"
+updateJSONURL="https://raw.githubusercontent.com/Zathrox/Explorercraft/1.16.5/src/main/resources/update.json"
 displayURL="https://minecraft.curseforge.com/projects/explorercraft"
 logoFile="logo.png"
-credits="TheVertExplorer - Created some art assets for the Cymru Expansion, Chiren Chen - for the Chinese Translations, EvilMinecraft Team of Yesteryear for ancient assets/code!, BronGhast014 - Models from Creatures++ Datapack" #optional
+credits="TheVertExplorer - Created some art assets for the Cymru Expansion, Chiren Chen - for the Chinese Translations, EvilMinecraft Team of Yesteryear for ancient assets/code! BronGhast014 - Models from Creatures++ Datapack" #optional
 authors="Zathrox"
 description='''
 A core mod based on adding new Exploration and Adventures.

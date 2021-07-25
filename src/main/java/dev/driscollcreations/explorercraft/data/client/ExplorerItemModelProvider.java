@@ -19,7 +19,7 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
         super(generator, Explorercraft.MOD_ID, existingFileHelper);
     }
 
-    List<String> treeTypes = Arrays.asList("bamboo", "cherry", "maple");
+    List<String> treeTypes = Arrays.asList("bamboo", "cherry", "maple", "ash");
     List<String> oreTypes = Arrays.asList("amethyst", "jade", "ruby");
 
     @Override

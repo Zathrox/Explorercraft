@@ -34,6 +34,7 @@ public class ExplorerTags {
         public static final ITag.INamedTag<Block> BAMBOO_LOGS = explorercraft("bamboo_logs");
         public static final ITag.INamedTag<Block> CHERRY_LOGS = explorercraft("cherry_logs");
         public static final ITag.INamedTag<Block> MAPLE_LOGS = explorercraft("maple_logs");
+        public static final ITag.INamedTag<Block> ASH_LOGS = explorercraft("ash_logs");
 
         private static ITag.INamedTag<Block> forge(String path) {
             return BlockTags.bind(new ResourceLocation("forge", path).toString());
@@ -69,6 +70,7 @@ public class ExplorerTags {
         public static final ITag.INamedTag<Item> BAMBOO_LOGS = explorercraft("bamboo_logs");
         public static final ITag.INamedTag<Item> CHERRY_LOGS = explorercraft("cherry_logs");
         public static final ITag.INamedTag<Item> MAPLE_LOGS = explorercraft("maple_logs");
+        public static final ITag.INamedTag<Item> ASH_LOGS = explorercraft("ash_logs");
 
         public static final ITag.INamedTag<Item> JADE = forge("gems/jade");
         public static final ITag.INamedTag<Item> AMETHYST = forge("gems/amethyst");

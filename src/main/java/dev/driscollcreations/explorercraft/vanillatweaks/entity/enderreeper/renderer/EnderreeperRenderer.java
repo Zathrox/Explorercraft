@@ -18,7 +18,7 @@ public class EnderreeperRenderer extends MobRenderer<EnderreeperEntity, Enderree
     private static final ResourceLocation ENDERREEPER_TEXTURES = new ResourceLocation(Explorercraft.MOD_ID + ":textures/entity/creeper/enderreeper.png");
 
     public EnderreeperRenderer(EntityRendererManager renderManagerIn) {
-        super(renderManagerIn, new EnderreeperModel(), 0.5F);
+        super(renderManagerIn, new EnderreeperModel<>(), 0.5F);
     }
 
     @Override

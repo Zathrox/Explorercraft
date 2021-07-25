@@ -37,6 +37,7 @@ public class ExplorerRecipeProvider extends RecipeProvider {
         createVanillaTweakMarbleRecipes(consumer);
         createVanillaTweakBasaltRecipes(consumer);
         createCymruExpansionSlateRecipes(consumer);
+        createCymruExpansionAshRecipes(consumer);
         createCymruExpansionRecipes(consumer);
     }
 
@@ -1119,6 +1120,104 @@ public class ExplorerRecipeProvider extends RecipeProvider {
                 .pattern("# #")
                 .pattern("# #")
                 .unlockedBy("has_item", has(material))
+                .save(consumer);
+    }
+
+    private static void createCymruExpansionAshRecipes(Consumer<IFinishedRecipe> consumer) {
+        //===== Ash Blocks
+        ShapelessRecipeBuilder.shapeless(CymruBlocks.ASH_PLANKS.get(), 4)
+                .requires(CymruBlocks.ASH_LOG.get())
+                .unlockedBy("has_item", has(CymruBlocks.ASH_LOG.get()))
+                .group("planks")
+                .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(CymruBlocks.ASH_BUTTON.get(), 1)
+                .requires(CymruBlocks.ASH_PLANKS.get()).unlockedBy("has_planks", has(CymruBlocks.ASH_PLANKS.get()))
+                .group("wooden_button")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(CymruBlocks.ASH_DOOR.get(), 3)
+                .define('#', CymruBlocks.ASH_PLANKS.get())
+                .pattern("##")
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy("has_planks", has(CymruBlocks.ASH_PLANKS.get()))
+                .group("wooden_door")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(CymruBlocks.ASH_FENCE.get(), 1)
+                .define('#', CymruBlocks.ASH_PLANKS.get())
+                .define('X', Tags.Items.RODS_WOODEN)
+                .pattern("#X#")
+                .pattern("#X#")
+                .unlockedBy("has_item", has(CymruBlocks.ASH_PLANKS.get()))
+                .group("wooden_fence")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(CymruBlocks.ASH_FENCE_GATE.get(), 1)
+                .define('#', CymruBlocks.ASH_PLANKS.get())
+                .define('X', Tags.Items.RODS_WOODEN)
+                .pattern("X#X")
+                .pattern("X#X")
+                .unlockedBy("has_item", has(CymruBlocks.ASH_PLANKS.get()))
+                .group("wooden_fence_gate")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(CymruBlocks.ASH_PRESSURE_PLATE.get(), 1)
+                .define('#', CymruBlocks.ASH_PLANKS.get())
+                .pattern("##")
+                .unlockedBy("has_item", has(CymruBlocks.ASH_PLANKS.get()))
+                .group("wooden_pressure_plate")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(CymruBlocks.ASH_SLAB.get(), 6)
+                .define('#', CymruBlocks.ASH_PLANKS.get())
+                .pattern("###")
+                .unlockedBy("has_item", has(CymruBlocks.ASH_PLANKS.get()))
+                .group("wooden_slab")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(CymruBlocks.ASH_STAIRS.get(), 4)
+                .define('#', CymruBlocks.ASH_PLANKS.get())
+                .pattern("#  ")
+                .pattern("## ")
+                .pattern("###")
+                .unlockedBy("has_item", has(CymruBlocks.ASH_PLANKS.get()))
+                .group("wooden_stairs")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(CymruBlocks.ASH_TRAPDOOR.get(), 2)
+                .define('#', CymruBlocks.ASH_PLANKS.get())
+                .pattern("###")
+                .pattern("###")
+                .unlockedBy("has_item", has(CymruBlocks.ASH_PLANKS.get()))
+                .group("wooden_trapdoor")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(CymruBlocks.ASH_WOOD.get(), 3)
+                .define('#', CymruBlocks.ASH_LOG.get())
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy("has_item", has(CymruBlocks.ASH_LOG.get()))
+                .group("bark")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(CymruBlocks.ASH_STRIPPED_WOOD.get(), 3)
+                .define('#', CymruBlocks.ASH_STRIPPED_LOG.get())
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy("has_item", has(CymruBlocks.ASH_LOG.get()))
+                .group("bark")
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(CymruItems.ASH_SIGN.get(), 3)
+                .define('#', CymruBlocks.ASH_PLANKS.get())
+                .define('X', Tags.Items.RODS_WOODEN)
+                .pattern("###")
+                .pattern("###")
+                .pattern(" X ")
+                .unlockedBy("has_item", has(CymruBlocks.ASH_PLANKS.get()))
+                .group("sign")
                 .save(consumer);
     }
 }

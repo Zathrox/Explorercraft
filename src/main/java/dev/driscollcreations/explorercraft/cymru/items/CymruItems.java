@@ -1,5 +1,6 @@
 package dev.driscollcreations.explorercraft.cymru.items;
 
+import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.config.CymruConfig;
 import dev.driscollcreations.explorercraft.cymru.blocks.CymruBlocks;
 import dev.driscollcreations.explorercraft.setup.*;
@@ -18,6 +19,9 @@ public class CymruItems {
     public static final RegistryObject<Item> WELSH_RAREBIT = Registration.ITEMS.register("welsh_rarebit", () -> new Item(new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT).rarity(ExplorerRarity.WELSH).food(ExplorerFoods.WELSH_RAREBIT)));
     public static final RegistryObject<Item> LAMB_SHANK = Registration.ITEMS.register("lamb_shank_raw", () -> new Item(new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT).food(ExplorerFoods.LAMB_SHANK)));
     public static final RegistryObject<Item> COOKED_LAMB_SHANK = Registration.ITEMS.register("lamb_shank_cooked", () -> new Item(new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT).food(ExplorerFoods.COOKED_LAMB_SHANK)));
+
+    // Ash
+    public static final RegistryObject<Item> ASH_SIGN = Registration.ITEMS.register("ash_sign", () -> new SignItem((new Item.Properties()).stacksTo(16).tab(ExplorerItemGroups.EXPLORERCRAFT), CymruBlocks.ASH_STANDING_SIGN.get(), CymruBlocks.ASH_WALL_SIGN.get()));
 
     //==== Cymru mystic items
     public static final RegistryObject<Item> WELSH_SHIELD = Registration.ITEMS.register("welsh_shield", () -> new ShieldItem(new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT).rarity(ExplorerRarity.WELSH).durability(336)));

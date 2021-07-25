@@ -48,6 +48,7 @@ public class ExplorerItemTagsProvider extends ItemTagsProvider {
         copy(ExplorerTags.Blocks.BAMBOO_LOGS, ExplorerTags.Items.BAMBOO_LOGS);
         copy(ExplorerTags.Blocks.CHERRY_LOGS, ExplorerTags.Items.CHERRY_LOGS);
         copy(ExplorerTags.Blocks.MAPLE_LOGS, ExplorerTags.Items.MAPLE_LOGS);
+        copy(ExplorerTags.Blocks.ASH_LOGS, ExplorerTags.Items.ASH_LOGS);
 
         tag(ExplorerTags.Items.JADE).add(BambooGroveItems.JADE.get());
         tag(Tags.Items.GEMS).addTag(ExplorerTags.Items.JADE);

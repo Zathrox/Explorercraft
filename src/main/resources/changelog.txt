@@ -27,17 +27,22 @@ TODO - create configs for snowdonia, spawning biome + weight
     - Re add, welsh food, cawl, rarebit, etc  - DONE
         - add recipes for these   - DONE
         - Made it stackable to 16 - its meant to be a good end game food, as it requires 4 ingredients - DONE
-        - Made configs for it
+        - Made configs for it - DONE
     - Re-add achievements for Snowdonia  - DONE
     - Add custom banner item patterns + special banner generation  - DONE
-    - Add extra gold/coal to custom biome generation
+    - Add extra gold/coal to custom biome generation - DONE
         - Add config options for above - DONE
-    - Add ash tree blocks
-        - Model generation files
-        - Drops
-        - Textures
+    - Add ash tree blocks - DONE
+        - Model generation files - DONE
+        - Drops - DONE
+        - Textures - DONE
         - Cry profusely at trying to re-add or recreate the Ash tree generation feature! - DONE
-    - Re-add wizard tower
+        - Vanilla compat - DONE
+    - Redo textures -
+        - Slate bricks/tiles
+        - Add custom daffodil flower pot texture
+        -
+    - Re-add wizard tower - DONE
     - Re-add wizard (see wizard notes in work note book)
     - Add wizard staff (try adding new spell affect or recharge mechanic)
     - Add slate dungeon (remake from scratch with jigsaw pieces)
@@ -51,7 +56,7 @@ TODO - create configs for snowdonia, spawning biome + weight
 TODO Loot-table injections for Jade and some other items
 TODO VanillaTweaks:
     - Temple ruins: add void blocks into the corners and ceiling to create rounded curves when injected into a mountain
-    - Temple ruins: Minataur spawn? or Skeletaur eventually?
+    - Temple ruins: Skeletaur eventually?
     - Explorer Set, advancements, items, buffs, custom model
     - Add Enderghast
     - Add Skeletaur

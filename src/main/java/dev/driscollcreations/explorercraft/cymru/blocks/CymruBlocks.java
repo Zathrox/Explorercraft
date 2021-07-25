@@ -1,17 +1,19 @@
 package dev.driscollcreations.explorercraft.cymru.blocks;
 
-import dev.driscollcreations.explorercraft.bamboogrove.blocks.RiceBlock;
-import dev.driscollcreations.explorercraft.bamboogrove.blocks.trees.BambooTree;
+import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.cymru.blocks.trees.AshTree;
+import dev.driscollcreations.explorercraft.setup.ExplorerSigns;
 import dev.driscollcreations.explorercraft.util.BlockUtils;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.RegistryObject;
 
 public class CymruBlocks {
 
+    public static final WoodType ASH_WOODTYPE = WoodType.create(new ResourceLocation(Explorercraft.MOD_ID, "ash").toString());
     public static final AbstractBlock.Properties stoneBlockProps = AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).strength(1.5F, 6.0F);
 
     //=========== SLATE BLOCKS ============//
@@ -54,8 +56,33 @@ public class CymruBlocks {
     public static final RegistryObject<Block> POTTED_DAFFODIL = BlockUtils.registerNoItem("potted_daffodil",
             () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, LEEK_WILD::get, AbstractBlock.Properties.of(Material.DECORATION).instabreak()));
 
+    //== Ash Tree
+    public static final RegistryObject<Block> ASH_LEAVES = BlockUtils.register("ash_leaves", BlockUtils::createLeavesBlock);
+    public static final RegistryObject<RotatedPillarBlock> ASH_LOG = BlockUtils.register("ash_log",
+            () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD).strength(2, 10).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> ASH_BUTTON = BlockUtils.register("ash_button", BlockUtils::createWoodButton);
+    public static final RegistryObject<Block> ASH_DOOR = BlockUtils.register("ash_door", BlockUtils::createWoodDoor);
+    public static final RegistryObject<Block> ASH_FENCE = BlockUtils.register("ash_fence", BlockUtils::createWoodFence);
+    public static final RegistryObject<Block> ASH_FENCE_GATE = BlockUtils.register("ash_fence_gate", BlockUtils::createWoodFenceGate);
+    public static final RegistryObject<Block> ASH_PLANKS = BlockUtils.register("ash_planks", BlockUtils::createWoodBlock);
+    public static final RegistryObject<Block> ASH_PRESSURE_PLATE = BlockUtils.register("ash_pressure_plate", BlockUtils::createWoodPressurePlate);
     public static final RegistryObject<Block> ASH_SAPLING = BlockUtils.register("ash_sapling",
             () -> new SaplingBlock(new AshTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+    public static final RegistryObject<Block> POTTED_ASH_SAPLING = BlockUtils.registerNoItem("potted_ash_sapling",
+            () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, ASH_SAPLING::get, AbstractBlock.Properties.of(Material.DECORATION).instabreak()));
+    public static final RegistryObject<Block> ASH_SLAB = BlockUtils.register("ash_slab", BlockUtils::createWoodSlab);
+    public static final RegistryObject<Block> ASH_STAIRS = BlockUtils.register("ash_stairs",
+            () -> new StairsBlock(() -> ASH_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(ASH_PLANKS.get())));
+    public static final RegistryObject<Block> ASH_TRAPDOOR = BlockUtils.register("ash_trapdoor", BlockUtils::createWoodTrapdoor);
+    public static final RegistryObject<RotatedPillarBlock> ASH_WOOD = BlockUtils.register("ash_wood",
+            () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD).strength(2, 10).sound(SoundType.WOOD)));
+    public static final RegistryObject<RotatedPillarBlock> ASH_STRIPPED_LOG = BlockUtils.register("ash_stripped_log",
+            () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD).strength(2, 10).sound(SoundType.WOOD)));
+    public static final RegistryObject<RotatedPillarBlock> ASH_STRIPPED_WOOD = BlockUtils.register("ash_stripped_wood",
+            () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD).strength(2, 10).sound(SoundType.WOOD)));
+    public static final RegistryObject<ExplorerSigns.CustomStandingSignBlock> ASH_STANDING_SIGN = BlockUtils.registerNoItem("ash_sign", () -> new ExplorerSigns.CustomStandingSignBlock(AbstractBlock.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), ASH_WOODTYPE));
+    public static final RegistryObject<ExplorerSigns.CustomWallSignBlock> ASH_WALL_SIGN = BlockUtils.registerNoItem("ash_wall_sign", () -> new ExplorerSigns.CustomWallSignBlock(AbstractBlock.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD), ASH_WOODTYPE));
+
 
     public static void register() {}
 

@@ -45,6 +45,15 @@ public class AshTreeTrunkPlacer  extends AbstractTrunkPlacer {
             setDirtAt(reader, dirtPos.east());
             setDirtAt(reader, dirtPos.south());
             setDirtAt(reader, dirtPos.south().east());
+
+            /*setDirtAt(reader, dirtPos.north());
+            setDirtAt(reader, dirtPos.north().east());
+            setDirtAt(reader, dirtPos.east(2));
+            setDirtAt(reader, dirtPos.east(2).south());
+            setDirtAt(reader, dirtPos.west());
+            setDirtAt(reader, dirtPos.west().south());
+            setDirtAt(reader, dirtPos.south(2));
+            setDirtAt(reader, dirtPos.south(2).east());*/
         }
 
         int l = Math.min(1, MathHelper.floor(1.382D + Math.pow(1.0D * (double)j / 13.0D, 2.0D)));
@@ -98,6 +107,8 @@ public class AshTreeTrunkPlacer  extends AbstractTrunkPlacer {
                     if ((l2 != -1 && i3 != -1) || (l2 != 2 && i3 != 2) ) {
                         if ((i3 != -1 && l2 != 2) || (i3 != 2 && l2 != -1)) {
                             int j3 = random.nextInt(4) + 2;
+                            BlockPos dirtPos = new BlockPos(x + l2, y, z + i3).below();
+                            setDirtAt(reader, dirtPos);
                             for(int k2 = 0; k2 < j3; ++k2) {
                                 placeLog(reader, random, new BlockPos(x + l2, y + k2, z + i3), blockPosSet, boundingBox, featureConfig);
                             }

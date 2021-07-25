@@ -265,6 +265,29 @@ public class ExplorerBlockLootTables extends BlockLootTables {
         dropSelf(CymruBlocks.SLATE_BRICK_WALL.get());
         dropSelf(CymruBlocks.SLATE_MOSSY_WALL.get());
 
+        //========= Ash tree
+        dropSelf(CymruBlocks.ASH_BUTTON.get());
+        add(CymruBlocks.ASH_DOOR.get(),
+                block -> createSinglePropConditionTable(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
+        dropSelf(CymruBlocks.ASH_FENCE.get());
+        dropSelf(CymruBlocks.ASH_FENCE_GATE.get());
+        dropSelf(CymruBlocks.ASH_LOG.get());
+        add(CymruBlocks.ASH_LEAVES.get(), (leaves) -> {
+            return  createLeavesDrops(CymruBlocks.ASH_LEAVES.get(), CymruBlocks.ASH_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES);
+        });
+        dropSelf(CymruBlocks.ASH_PLANKS.get());
+        dropSelf(CymruBlocks.ASH_SAPLING.get());
+        add(CymruBlocks.ASH_SLAB.get(), BlockLootTables::createSlabItemTable);
+
+        dropSelf(CymruBlocks.ASH_STAIRS.get());
+        dropPottedContents(CymruBlocks.POTTED_ASH_SAPLING.get());
+        dropSelf(CymruBlocks.ASH_PRESSURE_PLATE.get());
+        dropSelf(CymruBlocks.ASH_TRAPDOOR.get());
+        dropSelf(CymruBlocks.ASH_WOOD.get());
+        dropSelf(CymruBlocks.ASH_STRIPPED_LOG.get());
+        dropSelf(CymruBlocks.ASH_STRIPPED_WOOD.get());
+        dropSelf(CymruBlocks.ASH_WALL_SIGN.get());
+        dropSelf(CymruBlocks.ASH_STANDING_SIGN.get());
     }
 
     @Override

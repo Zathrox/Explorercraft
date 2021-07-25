@@ -20,6 +20,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = Explorercraft.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EntityEvents {
 
+
     @SubscribeEvent
     public void onPlayerSetSpawn(PlayerSetSpawnEvent evt) {
         PlayerEntity player = evt.getPlayer();

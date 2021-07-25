@@ -6,6 +6,7 @@ import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
 import dev.driscollcreations.explorercraft.config.Config;
 import dev.driscollcreations.explorercraft.cymru.blocks.CymruBlocks;
+import dev.driscollcreations.explorercraft.cymru.entity.renderer.WizardRenderer;
 import dev.driscollcreations.explorercraft.setup.*;
 import dev.driscollcreations.explorercraft.util.EntityEvents;
 import dev.driscollcreations.explorercraft.util.ExplorerVanillaCompat;
@@ -13,21 +14,17 @@ import dev.driscollcreations.explorercraft.util.ExplorercraftResourceLocation;
 import dev.driscollcreations.explorercraft.vanillatweaks.client.ClientEvents;
 import dev.driscollcreations.explorercraft.vanillatweaks.entity.enderreeper.renderer.EnderreeperRenderer;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
-import dev.driscollcreations.explorercraft.vanillatweaks.tileentities.SleepingBagTileEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.WoodType;
 import net.minecraft.client.renderer.Atlases;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.client.renderer.tileentity.BedTileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
 import net.minecraft.enchantment.EnchantmentType;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
-import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
@@ -39,6 +36,7 @@ import net.minecraft.world.gen.settings.StructureSeparationSettings;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -53,8 +51,6 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import software.bernie.example.client.renderer.entity.ExampleGeoRenderer;
-import software.bernie.example.registry.EntityRegistry;
 import software.bernie.geckolib3.GeckoLib;
 
 import java.lang.reflect.Method;
@@ -78,6 +74,7 @@ public class Explorercraft
         ExplorerStructures.STRUCTURES.register(modEventBus);
         ExplorerEntities.ENTITIES.register(modEventBus);
         modEventBus.addListener(this::setup);
+        modEventBus.addListener(this::entitySetup);
         modEventBus.addListener(this::doClientStuff);
         modEventBus.addListener(this::textureStitching);
         ExplorerPlacement.DECORATORS.register(modEventBus);
@@ -90,6 +87,11 @@ public class Explorercraft
         ExplorerBannerPattern.init();
     }
 
+    private void entitySetup(final EntityAttributeCreationEvent event) {
+        event.put(ExplorerEntities.ENDERREEPER.get(), MobEntity.createMobAttributes().build());
+        event.put(ExplorerEntities.WIZARD.get(), MobEntity.createMobAttributes().add(Attributes.MAX_HEALTH, 40.0D).add(Attributes.MOVEMENT_SPEED, 0.5D).add(Attributes.FOLLOW_RANGE, 48.0D).build());
+    }
+
     private void setup(final FMLCommonSetupEvent event)
     {
         event.enqueueWork(() -> {
@@ -100,13 +102,16 @@ public class Explorercraft
             ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(BambooGroveBlocks.BAMBOO_SAPLING.getId(), BambooGroveBlocks.POTTED_BAMBOO_SAPLING::get);
             ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(BambooGroveBlocks.CHERRY_SAPLING.getId(), BambooGroveBlocks.POTTED_CHERRY_SAPLING::get);
             ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(BambooGroveBlocks.MAPLE_SAPLING.getId(), BambooGroveBlocks.POTTED_MAPLE_SAPLING::get);
+            ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(CymruBlocks.ASH_SAPLING.getId(), CymruBlocks.POTTED_ASH_SAPLING::get);
             ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(CymruBlocks.LEEK_WILD.getId(), CymruBlocks.POTTED_WILD_LEEK::get);
             ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(CymruBlocks.DAFFODIL.getId(), CymruBlocks.POTTED_DAFFODIL::get);
             WoodType.register(BambooGroveBlocks.BAMBOO_WOODTYPE);
             WoodType.register(BambooGroveBlocks.CHERRY_WOODTYPE);
             WoodType.register(BambooGroveBlocks.CHERRY_BLOSSOM_WOODTYPE);
             WoodType.register(BambooGroveBlocks.MAPLE_WOODTYPE);
-            GlobalEntityTypeAttributes.put(ExplorerEntities.ENDERREEPER.get(), MobEntity.createMobAttributes().build());
+            WoodType.register(CymruBlocks.ASH_WOODTYPE);
+            //GlobalEntityTypeAttributes.put(ExplorerEntities.ENDERREEPER.get(), MobEntity.createMobAttributes().build());
+            //GlobalEntityTypeAttributes.put(ExplorerEntities.WIZARD.get(), MobEntity.createMobAttributes().build());
         });
         EnchantmentType.BOW.canEnchant(BambooGroveItems.JADE_BOW.get());
         MinecraftForge.EVENT_BUS.register(new EntityEvents());
@@ -149,13 +154,17 @@ public class Explorercraft
         RenderTypeLookup.setRenderLayer(CymruBlocks.POTTED_DAFFODIL.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(CymruBlocks.POTTED_DAFFODIL.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(CymruBlocks.POTTED_WILD_LEEK.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(CymruBlocks.ASH_SAPLING.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(CymruBlocks.POTTED_ASH_SAPLING.get(), RenderType.cutout());
         ClientRegistry.bindTileEntityRenderer(ExplorerTileEntities.EXPLORER_SIGNS.get(), SignTileEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ExplorerEntities.ENDERREEPER.get(), EnderreeperRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(ExplorerEntities.WIZARD.get(), WizardRenderer::new);
         event.enqueueWork(() -> {
             Atlases.addWoodType(BambooGroveBlocks.BAMBOO_WOODTYPE);
             Atlases.addWoodType(BambooGroveBlocks.CHERRY_WOODTYPE);
             Atlases.addWoodType(BambooGroveBlocks.CHERRY_BLOSSOM_WOODTYPE);
             Atlases.addWoodType(BambooGroveBlocks.MAPLE_WOODTYPE);
+            Atlases.addWoodType(CymruBlocks.ASH_WOODTYPE);
         });
     }
 
@@ -189,6 +198,7 @@ public class Explorercraft
             tempMap.putIfAbsent(ExplorerStructures.SAKURA_TREE.get(), DimensionStructuresSettings.DEFAULTS.get(ExplorerStructures.SAKURA_TREE.get()));
             tempMap.putIfAbsent(ExplorerStructures.TORII_GATE.get(), DimensionStructuresSettings.DEFAULTS.get(ExplorerStructures.TORII_GATE.get()));
             tempMap.putIfAbsent(ExplorerStructures.TEMPLE_RUINS.get(), DimensionStructuresSettings.DEFAULTS.get(ExplorerStructures.TEMPLE_RUINS.get()));
+            tempMap.putIfAbsent(ExplorerStructures.WIZARD_TOWER.get(), DimensionStructuresSettings.DEFAULTS.get(ExplorerStructures.WIZARD_TOWER.get()));
             serverWorld.getChunkSource().generator.getSettings().structureConfig = tempMap;
         }
     }

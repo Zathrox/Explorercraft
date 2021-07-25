@@ -2,6 +2,7 @@ package dev.driscollcreations.explorercraft.setup;
 
 import com.google.common.collect.Lists;
 import dev.driscollcreations.explorercraft.Explorercraft;
+import dev.driscollcreations.explorercraft.cymru.entity.WizardEntity;
 import dev.driscollcreations.explorercraft.vanillatweaks.entity.enderreeper.EnderreeperEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
@@ -18,6 +19,7 @@ public class ExplorerEntities {
 
     public static final DeferredRegister<EntityType<?>> ENTITIES;
     public static final RegistryObject<EntityType<EnderreeperEntity>> ENDERREEPER;
+    public static final RegistryObject<EntityType<WizardEntity>> WIZARD;
     private static List<Item> spawnEggs = Lists.newArrayList();
 
     public ExplorerEntities() {
@@ -34,6 +36,7 @@ public class ExplorerEntities {
     static {
         ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, Explorercraft.MOD_ID);
         ENDERREEPER = buildEntity(EnderreeperEntity::new, "enderreeper", EntityClassification.MONSTER, 0.7F, 1.3F, 3801171, 7078066);
+        WIZARD = buildEntity(WizardEntity::new, "wizard", EntityClassification.MONSTER, 0.6F, 1.99F, 4869992, 16433238);
     }
 
 }

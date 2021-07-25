@@ -10,11 +10,11 @@ displayName="Explorercraft"
 updateJSONURL="https://raw.githubusercontent.com/Zathrox/Explorercraft/1.16.5/src/main/resources/update.json"
 displayURL="https://minecraft.curseforge.com/projects/explorercraft"
 logoFile="logo.png"
-credits="TheVertExplorer - Created some art assets for the Cymru Expansion, Chiren Chen - for the Chinese Translations, EvilMinecraft Team of Yesteryear for ancient assets/code! BronGhast014 - Models from Creatures++ Datapack" #optional
+credits="All the players who download and play the mod! You're the best!" #optional
 authors="Zathrox"
 description='''
 A core mod based on adding new Exploration and Adventures.
-Grab yourself a sleeping bag, campfire and a map and venture into the world!/
+Grab yourself a sleeping bag, campfire, a map and venture into the world!/
 '''
 
 [[dependencies.explorercraft_core]]
@@ -27,6 +27,6 @@ Grab yourself a sleeping bag, campfire and a map and venture into the world!/
 [[dependencies.explorercraft_core]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.3,1.17]"
+    versionRange="[1.16.1,1.16.2,1.16.3,1.17]"
     ordering="NONE"
     side="BOTH"

@@ -1,0 +1,33 @@
+{
+  "name": "explorercraft:library_chests",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 80,
+      "element": {
+        "location": "explorercraft:library_basic",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 15,
+      "element": {
+        "location": "explorercraft:library_rare",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 5,
+      "element": {
+        "location": "minecraft:empty",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

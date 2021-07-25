@@ -3,6 +3,9 @@ package dev.driscollcreations.explorercraft.util;
 import com.google.common.collect.Maps;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
+import dev.driscollcreations.explorercraft.cymru.blocks.CymruBlocks;
+import dev.driscollcreations.explorercraft.cymru.items.CymruItems;
+import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ComposterBlock;
@@ -26,16 +29,16 @@ public class ExplorerVanillaCompat {
         registerFlammable(BambooGroveBlocks.BAMBOO_FENCE_GATE.get(), 5, 20);
 
 
-        /*registerFlammable(BambooGroveBlocks.ASH_LEAVES, 30, 60);
-        registerFlammable(BambooGroveBlocks.ASH_LOG, 5, 5);
-        registerFlammable(BambooGroveBlocks.ASH_WOOD, 5, 5);
-        registerFlammable(BambooGroveBlocks.ASH_STRIPPED_LOG, 5, 5);
-        registerFlammable(BambooGroveBlocks.ASH_STRIPPED_WOOD, 5, 5);
-        registerFlammable(BambooGroveBlocks.ASH_PLANKS, 5, 20);
-        registerFlammable(BambooGroveBlocks.ASH_SLAB, 5, 20);
-        registerFlammable(BambooGroveBlocks.ASH_STAIRS, 5, 20);
-        registerFlammable(BambooGroveBlocks.ASH_FENCE, 5, 20);
-        registerFlammable(BambooGroveBlocks.ASH_FENCE_GATE, 5, 20);*/
+        registerFlammable(CymruBlocks.ASH_LEAVES.get(), 30, 60);
+        registerFlammable(CymruBlocks.ASH_LOG.get(), 5, 5);
+        registerFlammable(CymruBlocks.ASH_WOOD.get(), 5, 5);
+        registerFlammable(CymruBlocks.ASH_STRIPPED_LOG.get(), 5, 5);
+        registerFlammable(CymruBlocks.ASH_STRIPPED_WOOD.get(), 5, 5);
+        registerFlammable(CymruBlocks.ASH_PLANKS.get(), 5, 20);
+        registerFlammable(CymruBlocks.ASH_SLAB.get(), 5, 20);
+        registerFlammable(CymruBlocks.ASH_STAIRS.get(), 5, 20);
+        registerFlammable(CymruBlocks.ASH_FENCE.get(), 5, 20);
+        registerFlammable(CymruBlocks.ASH_FENCE_GATE.get(), 5, 20);
 
         registerFlammable(BambooGroveBlocks.CHERRY_LEAVES.get(), 30, 60);
         registerFlammable(BambooGroveBlocks.CHERRY_LOG.get(), 5, 5);
@@ -96,21 +99,18 @@ public class ExplorerVanillaCompat {
         registerFlammable(ExplorerBlocks.INFECTED_WILLOW_PINK_FENCE_GATE, 5, 20);*/
 
 
+        registerFlammable(CymruBlocks.DAFFODIL.get(), 60, 100);
+        registerFlammable(CymruBlocks.LEEK_WILD.get(), 60, 100);
+        /*registerFlammable(ExplorerBlocks.LUPINE.get(), 60, 100);
+        registerFlammable(ExplorerBlocks.CATTAIL.get(), 60, 100);
+        registerFlammable(ExplorerBlocks.TALL_CATTAIL.get(), 60, 100);*/
 
-/*
-
-        registerFlammable(ExplorerBlocks.DAFFODIL, 60, 100);
-        registerFlammable(ExplorerBlocks.LEEK_WILD, 60, 100);
-        registerFlammable(ExplorerBlocks.LUPINE, 60, 100);
-        registerFlammable(ExplorerBlocks.CATTAIL, 60, 100);
-        registerFlammable(ExplorerBlocks.TALL_CATTAIL, 60, 100);
-*/
 
 
 
         //Log Stripping
-/*        registerStrippable(ExplorerBlocks.ASH_LOG, ExplorerBlocks.ASH_STRIPPED_LOG);
-        registerStrippable(ExplorerBlocks.ASH_WOOD, ExplorerBlocks.ASH_STRIPPED_WOOD);*/
+        registerStrippable(CymruBlocks.ASH_LOG.get(), CymruBlocks.ASH_STRIPPED_LOG.get());
+        registerStrippable(CymruBlocks.ASH_WOOD.get(), CymruBlocks.ASH_STRIPPED_WOOD.get());
         registerStrippable(BambooGroveBlocks.CHERRY_LOG.get(), BambooGroveBlocks.CHERRY_STRIPPED_LOG.get());
         registerStrippable(BambooGroveBlocks.CHERRY_WOOD.get(), BambooGroveBlocks.CHERRY_STRIPPED_WOOD.get());
         registerStrippable(BambooGroveBlocks.MAPLE_LOG.get(), BambooGroveBlocks.MAPLE_STRIPPED_LOG.get());
@@ -133,24 +133,24 @@ public class ExplorerVanillaCompat {
         registerCompostable(0.65F, BambooGroveItems.RICE_STEW.get());
         registerCompostable(0.3F, BambooGroveItems.RICE.get());
 
-        /*registerCompostable(0.3F, ExplorerBlocks.LEEKS);
-        registerCompostable(0.3F, ExplorerBlocks.DAFFODIL);
-        registerCompostable(0.3F, ExplorerBlocks.LUPINE);
-        registerCompostable(0.3F, ExplorerBlocks.ASH_LEAVES);
+        registerCompostable(0.3F, CymruBlocks.LEEKS.get());
+        registerCompostable(0.3F, CymruBlocks.DAFFODIL.get());
+        registerCompostable(0.3F, CymruBlocks.ASH_LEAVES.get());
 
+        /*registerCompostable(0.3F, ExplorerBlocks.LUPINE);
         registerCompostable(0.3F, ExplorerBlocks.WILLOW_LEAVES);
         registerCompostable(0.65F, ExplorerBlocks.GREEN_MUSHROOM);
         registerCompostable(0.65F, ExplorerBlocks.PINK_MUSHROOM);
-        registerCompostable(0.65F, ExplorerItems.LEEK_BOWL);
-        registerCompostable(0.65F, ExplorerItems.CAWL_BOWL);
-        registerCompostable(0.65F, ExplorerItems.WELSH_CAKES);
-        registerCompostable(0.65F, ExplorerItems.WELSH_RAREBIT);
-        registerCompostable(0.65F, ExplorerBlocks.WILLOW);
-        registerCompostable(0.65F, ExplorerBlocks.CATTAIL);
-        registerCompostable(0.65F, ExplorerBlocks.NOCTILUCAS);
         registerCompostable(0.65F, ExplorerBlocks.TALL_CATTAIL);
-        registerCompostable(0.65F, ExplorerItems.CHEESE);
-        registerCompostable(0.65F, ExplorerItems.DRIED_FRUITS);*/
+        registerCompostable(0.65F, ExplorerBlocks.WILLOW);
+        registerCompostable(0.65F, ExplorerBlocks.CATTAIL);*/
+        registerCompostable(0.65F, CymruItems.LEEK_STEW.get());
+        registerCompostable(0.65F, CymruItems.CAWL_STEW.get());
+        registerCompostable(0.65F, CymruItems.WELSH_CAKES.get());
+        registerCompostable(0.65F, CymruItems.WELSH_RAREBIT.get());
+        registerCompostable(0.65F, VanillaTweaksBlocks.NOCTILUCAS.get());
+        registerCompostable(0.65F, CymruItems.CHEESE.get());
+        registerCompostable(0.65F, CymruItems.DRIED_FRUIT.get());
 
 
     }

@@ -79,6 +79,8 @@ public class ExplorerFeature {
         BiomeGenerationSettingsBuilder generation = event.getGeneration();
         final RegistryKey<Biome> biomeRegistryKey = RegistryKey.create(ForgeRegistries.Keys.BIOMES, Objects.requireNonNull(event.getName(), "Biome registry name was null"));
 
+        event.getGeneration().getStructures().add(() -> ExplorerConfiguredStructures.CONFIGURED_WIZARD_TOWER);
+
         if (VanillaTweaksConfig.spawnSlimeChunkCaves.get()) {
             if (biome.equals(Biomes.SWAMP.location().toString()) || biome.equals(Biomes.SWAMP_HILLS.location().toString()) || event.getCategory() == Biome.Category.SWAMP) {
                 generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ExplorerFeature.Configured.SLIMEY_CHUNK_SWAMP);
@@ -189,8 +191,8 @@ public class ExplorerFeature {
                 new TwoLayerFeature(1, 0, 2))).ignoreVines().build();
 
         public static final BaseTreeFeatureConfig ASH_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(
-                new SimpleBlockStateProvider(BambooGroveBlocks.CHERRY_LOG.get().defaultBlockState()),
-                new SimpleBlockStateProvider(BambooGroveBlocks.CHERRY_LEAVES.get().defaultBlockState()),
+                new SimpleBlockStateProvider(CymruBlocks.ASH_LOG.get().defaultBlockState()),
+                new SimpleBlockStateProvider(CymruBlocks.ASH_LEAVES.get().defaultBlockState()),
                 new FancyFoliagePlacer(FeatureSpread.fixed(3), FeatureSpread.fixed(4), 4),
                 new AshTreeTrunkPlacer(20, 2, 0),
                 new TwoLayerFeature(1, 0, 1, OptionalInt.of(4)))).ignoreVines().build();
@@ -208,7 +210,7 @@ public class ExplorerFeature {
     public static final class Configured {
         public static final ConfiguredFeature<?, ?> BAMBOO_TREE = ExplorerFeature.BAMBOO_TREE.get().configured(Configs.BAMBOO_TREE_CONFIG).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(10, 0.1F, 1)));
         public static final ConfiguredFeature<?, ?> CHERRY_TREE = Feature.TREE.configured(Configs.CHERRY_TREE_CONFIG).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(10, 0.1F, 1)));
-        public static final ConfiguredFeature<?, ?> MAPLE_TREE = ExplorerFeature.MAPLE_TREE.get().configured(Configs.MAPLE_TREE_CONFIG).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(10, 0.1F, 1)));
+        public static final ConfiguredFeature<?, ?> MAPLE_TREE = ExplorerFeature.MAPLE_TREE.get().configured(Configs.MAPLE_TREE_CONFIG).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(10, 0.01F, 1)));
         public static final ConfiguredFeature<?, ?> JADE_ORE = Feature.ORE.configured(Configs.JADE_ORE_CONFIG).range(24).squared();
         public static final ConfiguredFeature<?, ?> AMETHYST_ORE = Feature.ORE.configured(Configs.AMETHYST_ORE_CONFIG).range(40).squared();
         public static final ConfiguredFeature<?, ?> RUBY_ORE = Feature.ORE.configured(Configs.RUBY_ORE_CONFIG).range(20).squared();
@@ -225,7 +227,7 @@ public class ExplorerFeature {
         public static final ConfiguredFeature<?, ?> SNOWDONIA_BIRCH =  Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(Features.SUPER_BIRCH_BEES_0002.weighted(0.5F)), Features.BIRCH_BEES_0002)).decorated(Placements.WORLD_SURFACE_LOWER_THAN_100).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(10, 0.5F, 1)));
         public static final ConfiguredFeature<?, ?> SNOWDONIA_FLOWERS = Feature.FLOWER.configured(Configs.SNOWDONIA_FLOWER_CONFIG).decorated(Features.Placements.ADD_32).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(2);
         public static final ConfiguredFeature<?, ?> SNOWDONIA_WILD_LEEKS =  Feature.RANDOM_PATCH.configured(Configs.SNOWDONIA_WILD_LEEKS_CONFIG).decorated(Placements.WORLD_SURFACE_HIGHER_THAN_100).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE).chance(10);
-        public static final ConfiguredFeature<?, ?> ASH_TREE = ExplorerFeature.ASH_TREE.get().configured(Configs.ASH_TREE_CONFIG).decorated(Placements.WORLD_SURFACE_HIGHER_THAN_100).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(1, 0.1F, 1)));
+        public static final ConfiguredFeature<?, ?> ASH_TREE = ExplorerFeature.ASH_TREE.get().configured(Configs.ASH_TREE_CONFIG).decorated(Placements.WORLD_SURFACE_HIGHER_THAN_100).decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(0, 0.1F, 1)));
 
         public static void registerConfiguredFeatures() {
             register("bamboo_tree", BAMBOO_TREE);

@@ -235,7 +235,7 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
 
         //==== SLATE
         simpleBlock(CymruBlocks.SLATE.get());
-        getVariantBuilder(CymruBlocks.SLATE_POLISHED.get()).partialState().setModels(new ConfiguredModel(models().withExistingParent("slate_polished", mcLoc("block/cube_column")).texture("end", "block/slate_polished_top").texture("side", "block/slate_polished_side")));
+        getVariantBuilder(CymruBlocks.SLATE_POLISHED.get()).partialState().setModels(new ConfiguredModel(models().withExistingParent("slate_polished", mcLoc("block/cube_column")).texture("end", "block/slate_polished_top").texture("side", "block/slate_polished_top")));
         simpleBlock(CymruBlocks.SLATE_BRICKS.get());
         simpleBlock(CymruBlocks.SLATE_MOSSY.get());
         simpleBlock(CymruBlocks.SLATE_TILE.get());
@@ -272,6 +272,38 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         cropModel(BambooGroveBlocks.RICE_TOP.get(), RiceBlock.AGE, "rice_stage");
         cropModel(VanillaTweaksBlocks.NOCTILUCAS.get(), NoctilucaBlock.AGE, "noctiluca_stage");
         cropModel(CymruBlocks.LEEKS.get(), LeekBlock.AGE, "leek_stage");
+
+        //===== Ash Tree Blocks
+        buttonBlock(CymruBlocks.ASH_BUTTON.get(),
+                models().withExistingParent("ash_button", mcLoc("block/button"))
+                        .texture("texture", "block/ash_planks"),
+                models().withExistingParent("ash_button_pressed", mcLoc("block/button_pressed"))
+                        .texture("texture", "block/ash_planks"));
+        new ConfiguredModel(models().withExistingParent("ash_button_inventory", mcLoc("block/button_inventory")).texture("texture", "block/ash_planks"));
+        doorBlock((DoorBlock) CymruBlocks.ASH_DOOR.get(), modLoc("block/ash_door_bottom"), modLoc("block/ash_door_top"));
+        fenceBlock((FenceBlock) CymruBlocks.ASH_FENCE.get(), modLoc("block/ash_planks"));
+        fenceGateBlock((FenceGateBlock) CymruBlocks.ASH_FENCE_GATE.get(), modLoc("block/ash_planks"));
+        simpleBlock(CymruBlocks.ASH_LEAVES.get());
+        logBlock(CymruBlocks.ASH_LOG.get());
+        logBlock(CymruBlocks.ASH_STRIPPED_LOG.get());
+        simpleBlock(CymruBlocks.ASH_PLANKS.get());
+        pressurePlateBlock(CymruBlocks.ASH_PRESSURE_PLATE.get(),
+                models().withExistingParent("ash_pressure_plate", mcLoc("block/pressure_plate_up"))
+                        .texture("texture", "block/ash_planks"),
+                models().withExistingParent("ash_pressure_plate_down", mcLoc("block/pressure_plate_down"))
+                        .texture("texture", "block/ash_planks"));
+        simpleBlock(CymruBlocks.ASH_SAPLING.get());
+        new ConfiguredModel(models().withExistingParent("ash_sapling", mcLoc("block/cross")).texture("cross", "block/ash_sapling"));
+        new ConfiguredModel(models().withExistingParent("potted_ash_sapling", mcLoc("block/flower_pot_cross")).texture("plant", "block/ash_sapling"));
+        simpleBlock(CymruBlocks.POTTED_ASH_SAPLING.get(), models().getBuilder("block/potted_ash_sapling"));
+        slabBlock((SlabBlock) CymruBlocks.ASH_SLAB.get(), modLoc("block/ash_planks"), modLoc("block/ash_planks"));
+        stairsBlock((StairsBlock) CymruBlocks.ASH_STAIRS.get(), modLoc("block/ash_planks"));
+        trapdoorBlock((TrapDoorBlock) CymruBlocks.ASH_TRAPDOOR.get(), modLoc("block/ash_trapdoor"), true);
+        woodBlock(CymruBlocks.ASH_WOOD.get(), modLoc("block/ash_log"));
+        woodBlock(CymruBlocks.ASH_STRIPPED_WOOD.get(), modLoc("block/ash_stripped_log"));
+        new ConfiguredModel(models().getBuilder("ash_sign").texture("particle", "block/ash_planks"));
+        simpleBlock(CymruBlocks.ASH_STANDING_SIGN.get(), models().getExistingFile( modLoc("block/ash_sign")));
+        simpleBlock(CymruBlocks.ASH_WALL_SIGN.get(), models().getExistingFile( modLoc("block/ash_sign")));
 
         sleepingBagModels();
 

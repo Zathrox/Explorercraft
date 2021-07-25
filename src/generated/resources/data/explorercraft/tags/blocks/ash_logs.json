@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "explorercraft:ash_log",
+    "explorercraft:ash_stripped_log",
+    "explorercraft:ash_wood",
+    "explorercraft:ash_stripped_wood"
+  ]
+}

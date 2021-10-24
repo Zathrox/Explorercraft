@@ -15,6 +15,8 @@ import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.merchant.IMerchant;
 import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
+import net.minecraft.entity.monster.CreeperEntity;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.item.MerchantOffer;
@@ -56,7 +58,9 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant {
         this.goalSelector.addGoal(9, new LookAtWithoutMovingGoal(this, PlayerEntity.class, 3.0F, 1.0F));
         this.goalSelector.addGoal(10, new LookAtGoal(this, MobEntity.class, 8.0F));
         this.targetSelector.addGoal(0, (new HurtByTargetGoal(this)));
-        this.targetSelector.addGoal(10, new NearestAttackableTargetGoal<>(this, MobEntity.class, true));
+        this.targetSelector.addGoal(10, new NearestAttackableTargetGoal<>(this, MobEntity.class, 5, false, false, (p_234199_0_) -> {
+            return p_234199_0_ instanceof IMob && !(p_234199_0_ instanceof CreeperEntity);
+        }));
     }
 
     protected void defineSynchedData() {
@@ -79,6 +83,10 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant {
                 return ActionResultType.sidedSuccess(this.level.isClientSide);
             } else {
                 if (!this.level.isClientSide) {
+                    if (random.nextInt(5) == 0) {
+                        this.offers = null;
+                        this.setUnhappy();
+                    }
                     this.setTradingPlayer(player);
                     this.openTradingScreen(player, this.getDisplayName(), 1);
                 }
@@ -98,28 +106,16 @@ public class WizardEntity extends AbstractVillagerEntity implements IMerchant {
         }
     }
 
-
-
     @Override
     protected void updateTrades() {
-        VillagerTrades.ITrade[] avillagertrades$itrade = WizardTrades.WIZARD_TRADES.get(1);
-        VillagerTrades.ITrade[] avillagertrades$itrade1 = WizardTrades.WIZARD_TRADES.get(2);
-        VillagerTrades.ITrade[] avillagertrades$itrade2 = WizardTrades.WIZARD_TRADES.get(3);
-        if (avillagertrades$itrade != null && avillagertrades$itrade1 != null && avillagertrades$itrade2 != null) {
+        VillagerTrades.ITrade[] itemsForScales = WizardTrades.WIZARD_TRADES.get(1);
+        VillagerTrades.ITrade[] scalesForItems = WizardTrades.WIZARD_TRADES.get(2);
+        VillagerTrades.ITrade[] scalesForWelshItems = WizardTrades.WIZARD_TRADES.get(3);
+        if (itemsForScales != null && scalesForItems != null && scalesForWelshItems != null) {
             MerchantOffers merchantoffers = this.getOffers();
-            this.addOffersFromItemListings(merchantoffers, avillagertrades$itrade, 5);
-            int i = this.random.nextInt(avillagertrades$itrade1.length);
-            VillagerTrades.ITrade villagertrades$itrade = avillagertrades$itrade1[i];
-            MerchantOffer merchantoffer = villagertrades$itrade.getOffer(this, this.random);
-            if (merchantoffer != null) {
-                merchantoffers.add(merchantoffer);
-            }
-            int j = this.random.nextInt(avillagertrades$itrade2.length);
-            VillagerTrades.ITrade villagertrades$itrade1 = avillagertrades$itrade2[j];
-            MerchantOffer merchantoffer1 = villagertrades$itrade1.getOffer(this, this.random);
-            if (merchantoffer1 != null) {
-                merchantoffers.add(merchantoffer1);
-            }
+            this.addOffersFromItemListings(merchantoffers, itemsForScales, 5);
+            this.addOffersFromItemListings(merchantoffers, scalesForItems, 3);
+            this.addOffersFromItemListings(merchantoffers, scalesForWelshItems, 2);
         }
     }
 

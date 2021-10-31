@@ -8,6 +8,7 @@ import dev.driscollcreations.explorercraft.bamboogrove.world.structures.RunDownH
 import dev.driscollcreations.explorercraft.bamboogrove.world.structures.SakuraTreeStructure;
 import dev.driscollcreations.explorercraft.bamboogrove.world.structures.ToriiGateStructure;
 import dev.driscollcreations.explorercraft.config.BambooGroveConfig;
+import dev.driscollcreations.explorercraft.cymru.world.SlateDungeonStructure;
 import dev.driscollcreations.explorercraft.cymru.world.WizardTowerStructure;
 import dev.driscollcreations.explorercraft.vanillatweaks.structures.TempleRuinStructure;
 import net.minecraft.util.registry.WorldGenRegistries;
@@ -36,6 +37,7 @@ public class ExplorerStructures {
     public static final RegistryObject<Structure<NoFeatureConfig>> TORII_GATE = registerStructure("torii_gate", () -> (new ToriiGateStructure(NoFeatureConfig.CODEC)));
     public static final RegistryObject<Structure<NoFeatureConfig>> TEMPLE_RUINS = registerStructure("temple_ruins", () -> (new TempleRuinStructure(NoFeatureConfig.CODEC)));
     public static final RegistryObject<Structure<NoFeatureConfig>> WIZARD_TOWER = registerStructure("wizard_tower", () -> (new WizardTowerStructure(NoFeatureConfig.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> SLATE_DUNGEON = registerStructure("slate_dungeon", () -> (new SlateDungeonStructure(NoFeatureConfig.CODEC)));
 
 
     private static <T extends Structure<?>> RegistryObject<T> registerStructure(String name, Supplier<T> structure) {
@@ -55,6 +57,7 @@ public class ExplorerStructures {
         setupMapSpacingAndLand(TORII_GATE.get(), new StructureSeparationSettings(40,20,539272656),true);
         setupMapSpacingAndLand(TEMPLE_RUINS.get(), new StructureSeparationSettings(40,20,76345737),true);
         setupMapSpacingAndLand(WIZARD_TOWER.get(), new StructureSeparationSettings(10,5,564574345),true);
+        setupMapSpacingAndLand(SLATE_DUNGEON.get(), new StructureSeparationSettings(20,8,564574345),false);
 
     }
 

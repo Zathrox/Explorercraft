@@ -122,7 +122,7 @@ public class ExplorerFeature {
         }
 
         if (biome.equals(ExplorerBiomes.SNOWDONIA.get().getRegistryName().toString()) ) {
-
+            event.getGeneration().getStructures().add(() -> ExplorerConfiguredStructures.CONFIGURED_SLATE_DUNGEON);
             generation.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Configured.SNOWDONIA_OAK);
             generation.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Configured.SNOWDONIA_BIRCH);
             generation.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Configured.ASH_TREE);

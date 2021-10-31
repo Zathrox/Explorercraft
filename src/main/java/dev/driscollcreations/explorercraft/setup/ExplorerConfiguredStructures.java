@@ -21,6 +21,7 @@ public class ExplorerConfiguredStructures {
     public static StructureFeature<?, ?> CONFIGURED_TORII_GATE = ExplorerStructures.TORII_GATE.get().configured(IFeatureConfig.NONE);
     public static StructureFeature<?, ?> CONFIGURED_TEMPLE_RUINS = ExplorerStructures.TEMPLE_RUINS.get().configured(IFeatureConfig.NONE);
     public static StructureFeature<?, ?> CONFIGURED_WIZARD_TOWER = ExplorerStructures.WIZARD_TOWER.get().configured(IFeatureConfig.NONE);
+    public static StructureFeature<?, ?> CONFIGURED_SLATE_DUNGEON = ExplorerStructures.SLATE_DUNGEON.get().configured(IFeatureConfig.NONE);
     /*public static StructureFeature<?, ?> TEST_VILLAGE = Structure.VILLAGE.configured(new VillageConfig(() -> {
         return SavannaVillagePools.START;
     }, 6));*/
@@ -33,11 +34,13 @@ public class ExplorerConfiguredStructures {
         Registry.register(registry, new ResourceLocation(Explorercraft.MOD_ID, "configured_torii_gate"), CONFIGURED_TORII_GATE);
         Registry.register(registry, new ResourceLocation(Explorercraft.MOD_ID, "configured_temple_ruins"), CONFIGURED_TEMPLE_RUINS);
         Registry.register(registry, new ResourceLocation(Explorercraft.MOD_ID, "configured_wizard_tower"), CONFIGURED_WIZARD_TOWER);
+        Registry.register(registry, new ResourceLocation(Explorercraft.MOD_ID, "configured_slate_dungeon"), CONFIGURED_SLATE_DUNGEON);
 
 
         FlatGenerationSettings.STRUCTURE_FEATURES.put(ExplorerStructures.BLACKSTONE_DUNGEON.get(), CONFIGURED_BLACKSTONE_DUNGEON);
         FlatGenerationSettings.STRUCTURE_FEATURES.put(ExplorerStructures.SAKURA_TREE.get(), CONFIGURED_SAKURA_TREE);
         FlatGenerationSettings.STRUCTURE_FEATURES.put(ExplorerStructures.TORII_GATE.get(), CONFIGURED_TORII_GATE);
         FlatGenerationSettings.STRUCTURE_FEATURES.put(ExplorerStructures.WIZARD_TOWER.get(), CONFIGURED_WIZARD_TOWER);
+        FlatGenerationSettings.STRUCTURE_FEATURES.put(ExplorerStructures.SLATE_DUNGEON.get(), CONFIGURED_SLATE_DUNGEON);
     }
 }

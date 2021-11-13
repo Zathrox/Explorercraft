@@ -25,6 +25,10 @@ public class CymruItems {
 
     //==== Cymru mystic items
     public static final RegistryObject<Item> WELSH_SHIELD = Registration.ITEMS.register("welsh_shield", () -> new ShieldItem(new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT).rarity(ExplorerRarity.WELSH).durability(336)));
+    public static final RegistryObject<Item> WIZARD_SPAWN_EGG = Registration.ITEMS.register("wizard_spawn_egg",
+            () -> new ExplorerSpawnEggItem(ExplorerEntities.WIZARD, 4869992, 16433238, new Item.Properties().stacksTo(1).tab(ExplorerItemGroups.EXPLORERCRAFT)));
+
+
 /*
     public static final RegistryObject<BannerPatternItem> WELSHFLAG_BANNER_ITEM = Registration.ITEMS.register("welshflag_banner_pattern", () -> new BannerPatternItem(ExplorerBannerPattern.WELSH_FLAG, (new Item.Properties().stacksTo(1).tab(ExplorerItemGroups.EXPLORERCRAFT).rarity(ExplorerRarity.WELSH))));
     public static final RegistryObject<BannerPatternItem> WALES_BANNER_ITEM = Registration.ITEMS.register("wales_banner_pattern", () -> new BannerPatternItem(ExplorerBannerPattern.WALES, (new Item.Properties().stacksTo(1).tab(ExplorerItemGroups.EXPLORERCRAFT).rarity(ExplorerRarity.WELSH))));

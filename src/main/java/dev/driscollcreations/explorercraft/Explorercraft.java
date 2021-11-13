@@ -22,6 +22,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
 import net.minecraft.enchantment.EnchantmentType;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
@@ -34,12 +35,15 @@ import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.settings.DimensionStructuresSettings;
 import net.minecraft.world.gen.settings.StructureSeparationSettings;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -51,6 +55,7 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.w3c.dom.Attr;
 import software.bernie.geckolib3.GeckoLib;
 
 import java.lang.reflect.Method;
@@ -74,9 +79,8 @@ public class Explorercraft
         ExplorerStructures.STRUCTURES.register(modEventBus);
         ExplorerEntities.ENTITIES.register(modEventBus);
         modEventBus.addListener(this::setup);
-        modEventBus.addListener(this::entitySetup);
         modEventBus.addListener(this::doClientStuff);
-        modEventBus.addListener(this::textureStitching);
+        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> ClientEvents::initClient);
         ExplorerPlacement.DECORATORS.register(modEventBus);
         ExplorerFeature.FEATURES.register(modEventBus);
         ExplorerTileEntities.TILE_ENTITIES.register(modEventBus);
@@ -85,11 +89,21 @@ public class Explorercraft
         forgeBus.addListener(EventPriority.NORMAL, this::addDimensionalSpacing);
         Config.init();
         ExplorerBannerPattern.init();
+        modEventBus.addListener(this::entitySetup);
     }
 
     private void entitySetup(final EntityAttributeCreationEvent event) {
-        event.put(ExplorerEntities.ENDERREEPER.get(), MobEntity.createMobAttributes().build());
-        event.put(ExplorerEntities.WIZARD.get(), MobEntity.createMobAttributes().add(Attributes.MAX_HEALTH, 40.0D).add(Attributes.MOVEMENT_SPEED, 0.5D).add(Attributes.FOLLOW_RANGE, 48.0D).build());
+        event.put(ExplorerEntities.ENDERREEPER.get(), MobEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 40.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.3F)
+                .add(Attributes.FOLLOW_RANGE, 48.0D)
+                .add(Attributes.ATTACK_DAMAGE, 7.0D)
+                .build());
+        event.put(ExplorerEntities.WIZARD.get(), MobEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 40.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.5D)
+                .add(Attributes.FOLLOW_RANGE, 48.0D)
+                .build());
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -110,26 +124,9 @@ public class Explorercraft
             WoodType.register(BambooGroveBlocks.CHERRY_BLOSSOM_WOODTYPE);
             WoodType.register(BambooGroveBlocks.MAPLE_WOODTYPE);
             WoodType.register(CymruBlocks.ASH_WOODTYPE);
-            //GlobalEntityTypeAttributes.put(ExplorerEntities.ENDERREEPER.get(), MobEntity.createMobAttributes().build());
-            //GlobalEntityTypeAttributes.put(ExplorerEntities.WIZARD.get(), MobEntity.createMobAttributes().build());
         });
         EnchantmentType.BOW.canEnchant(BambooGroveItems.JADE_BOW.get());
         MinecraftForge.EVENT_BUS.register(new EntityEvents());
-    }
-
-    private void textureStitching(final TextureStitchEvent.Pre event) {
-        if (event.getMap().location() == Atlases.BANNER_SHEET) {
-            Explorercraft.LOGGER.log(Level.DEBUG, "Stitching banner textures");
-            event.addSprite(new ResourceLocation("entity/banner/wales"));
-            event.addSprite(new ResourceLocation("entity/banner/welshflag"));
-            Explorercraft.LOGGER.log(Level.DEBUG, "Finished stitching banner textures!");
-        }
-        if (event.getMap().location() == Atlases.SHIELD_SHEET) {
-            Explorercraft.LOGGER.log(Level.DEBUG, "Stitching shield textures");
-            event.addSprite(new ResourceLocation("entity/shield/wales"));
-            event.addSprite(new ResourceLocation("entity/shield/welshflag"));
-            Explorercraft.LOGGER.log(Level.DEBUG, "Finished stitching shield textures!");
-        }
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {

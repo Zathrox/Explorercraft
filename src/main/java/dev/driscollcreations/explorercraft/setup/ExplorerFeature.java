@@ -166,6 +166,7 @@ public class ExplorerFeature {
                 event.getGeneration().getStructures().add(() -> ExplorerConfiguredStructures.CONFIGURED_TORII_GATE);
             }
         }
+        ExplorerEntities.onEntitySpawn(event);
     }
     //Create the configurations here
     public static final class Configs {

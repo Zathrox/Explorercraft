@@ -1,6 +1,11 @@
 CHANGELOG:
 
 --------// Explorercraft 1.16.5 // ----------------------------------------------------
+Patch 5.0.6:
+Fixed server crashing issue
+Added spawn eggs for Wizard and Enderreeper
+Added rare enderreeper spawns into end biomes
+
 Patch 5.0.5:
 Created new data generated files for crops: Leeks, Noctilucas and Rice
 - create configs for snowdonia, spawning biome + weight

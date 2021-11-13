@@ -8,22 +8,41 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.RemoteClientPlayerEntity;
 import net.minecraft.client.renderer.Atlases;
-import net.minecraft.client.renderer.texture.AtlasTexture;
 import net.minecraft.entity.Pose;
 import net.minecraft.entity.passive.horse.AbstractHorseEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.Level;
 
 @Mod.EventBusSubscriber(modid = Explorercraft.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class ClientEvents {
+
+    public static void initClient()
+    {
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientEvents::textureStitching);
+    }
+
+    public static void textureStitching(final TextureStitchEvent.Pre event) {
+        if (event.getMap().location() == Atlases.BANNER_SHEET) {
+            Explorercraft.LOGGER.log(Level.DEBUG, "Stitching banner textures");
+            event.addSprite(new ResourceLocation("entity/banner/wales"));
+            event.addSprite(new ResourceLocation("entity/banner/welshflag"));
+            Explorercraft.LOGGER.log(Level.DEBUG, "Finished stitching banner textures!");
+        }
+        if (event.getMap().location() == Atlases.SHIELD_SHEET) {
+            Explorercraft.LOGGER.log(Level.DEBUG, "Stitching shield textures");
+            event.addSprite(new ResourceLocation("entity/shield/wales"));
+            event.addSprite(new ResourceLocation("entity/shield/welshflag"));
+            Explorercraft.LOGGER.log(Level.DEBUG, "Finished stitching shield textures!");
+        }
+    }
 
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {

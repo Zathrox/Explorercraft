@@ -69,6 +69,8 @@ public class VanillaTweaksItems {
     public static final RegistryObject<Item> RUBY_BOOTS = Registration.ITEMS.register("ruby_boots",
             () -> new ArmorItem(ExplorerArmorList.RUBY_ARMOR, EquipmentSlotType.FEET, new Item.Properties().tab(ExplorerItemGroups.EXPLORERCRAFT)));
 
+    public static final RegistryObject<Item> ENDERREEPER_SPAWN_EGG = Registration.ITEMS.register("enderreeper_spawn_egg",
+            () -> new ExplorerSpawnEggItem(ExplorerEntities.ENDERREEPER, 3801171, 7078066, new Item.Properties().stacksTo(1).tab(ExplorerItemGroups.EXPLORERCRAFT)));
 
 
     public static void register() {}

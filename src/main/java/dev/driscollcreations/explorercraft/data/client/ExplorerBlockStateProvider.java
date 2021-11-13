@@ -10,22 +10,18 @@ import dev.driscollcreations.explorercraft.cymru.blocks.LeekBlock;
 import dev.driscollcreations.explorercraft.vanillatweaks.blocks.NoctilucaBlock;
 import dev.driscollcreations.explorercraft.vanillatweaks.blocks.SleepingBagBlock;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
-import net.minecraft.block.*;
-import net.minecraft.client.renderer.model.Model;
+import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.properties.*;
-import net.minecraft.util.Direction;
-import net.minecraft.util.RegistryKey;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Function;
 
 public class ExplorerBlockStateProvider extends BlockStateProvider {
@@ -82,7 +78,7 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         new ConfiguredModel(models().withExistingParent("potted_bamboo_sapling", mcLoc("block/flower_pot_cross")).texture("plant", "block/bamboo_sapling"));
         simpleBlock(BambooGroveBlocks.POTTED_BAMBOO_SAPLING.get(), models().getBuilder("block/potted_bamboo_sapling"));
         slabBlock((SlabBlock) BambooGroveBlocks.BAMBOO_SLAB.get(), modLoc("block/bamboo_planks"), modLoc("block/bamboo_planks"));
-        stairsBlock((StairsBlock) BambooGroveBlocks.BAMBOO_STAIRS.get(), modLoc("block/bamboo_planks"));
+        stairsBlock((StairBlock) BambooGroveBlocks.BAMBOO_STAIRS.get(), modLoc("block/bamboo_planks"));
         trapdoorBlock((TrapDoorBlock) BambooGroveBlocks.BAMBOO_TRAPDOOR.get(), modLoc("block/bamboo_trapdoor"), true);
         panelBlock((PanelBlock) BambooGroveBlocks.BAMBOO_PANEL.get(), modLoc("block/bamboo_panel_bottom"), modLoc("block/bamboo_panel_top"));
         new ConfiguredModel(models().getBuilder("bamboo_sign").texture("particle", "block/bamboo_planks"));
@@ -114,7 +110,7 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         new ConfiguredModel(models().withExistingParent("potted_cherry_sapling", mcLoc("block/flower_pot_cross")).texture("plant", "block/cherry_sapling"));
         simpleBlock(BambooGroveBlocks.POTTED_CHERRY_SAPLING.get(), models().getBuilder("block/potted_cherry_sapling"));
         slabBlock((SlabBlock) BambooGroveBlocks.CHERRY_SLAB.get(), modLoc("block/cherry_planks"), modLoc("block/cherry_planks"));
-        stairsBlock((StairsBlock) BambooGroveBlocks.CHERRY_STAIRS.get(), modLoc("block/cherry_planks"));
+        stairsBlock((StairBlock) BambooGroveBlocks.CHERRY_STAIRS.get(), modLoc("block/cherry_planks"));
         trapdoorBlock((TrapDoorBlock) BambooGroveBlocks.CHERRY_TRAPDOOR.get(), modLoc("block/cherry_trapdoor"), true);
         woodBlock(BambooGroveBlocks.CHERRY_WOOD.get(), modLoc("block/cherry_log"));
         woodBlock(BambooGroveBlocks.CHERRY_STRIPPED_WOOD.get(), modLoc("block/cherry_stripped_log"));
@@ -141,7 +137,7 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
                 models().withExistingParent("cherry_blossom_pressure_plate_down", mcLoc("block/pressure_plate_down"))
                         .texture("texture", "block/cherry_blossom_planks"));
         slabBlock((SlabBlock) BambooGroveBlocks.CHERRY_BLOSSOM_SLAB.get(), modLoc("block/cherry_blossom_planks"), modLoc("block/cherry_blossom_planks"));
-        stairsBlock((StairsBlock) BambooGroveBlocks.CHERRY_BLOSSOM_STAIRS.get(), modLoc("block/cherry_blossom_planks"));
+        stairsBlock((StairBlock) BambooGroveBlocks.CHERRY_BLOSSOM_STAIRS.get(), modLoc("block/cherry_blossom_planks"));
         trapdoorBlock((TrapDoorBlock) BambooGroveBlocks.CHERRY_BLOSSOM_TRAPDOOR.get(), modLoc("block/cherry_blossom_trapdoor"), true);
         new ConfiguredModel(models().getBuilder("cherry_blossom_sign").texture("particle", "block/cherry_blossom_planks"));
         simpleBlock(BambooGroveBlocks.CHERRY_BLOSSOM_STANDING_SIGN.get(), models().getExistingFile( modLoc("block/cherry_blossom_sign")));
@@ -171,7 +167,7 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         new ConfiguredModel(models().withExistingParent("potted_maple_sapling", mcLoc("block/flower_pot_cross")).texture("plant", "block/maple_sapling"));
         simpleBlock(BambooGroveBlocks.POTTED_MAPLE_SAPLING.get(), models().getBuilder("block/potted_maple_sapling"));
         slabBlock((SlabBlock) BambooGroveBlocks.MAPLE_SLAB.get(), modLoc("block/maple_planks"), modLoc("block/maple_planks"));
-        stairsBlock((StairsBlock) BambooGroveBlocks.MAPLE_STAIRS.get(), modLoc("block/maple_planks"));
+        stairsBlock((StairBlock) BambooGroveBlocks.MAPLE_STAIRS.get(), modLoc("block/maple_planks"));
         trapdoorBlock((TrapDoorBlock) BambooGroveBlocks.MAPLE_TRAPDOOR.get(), modLoc("block/maple_trapdoor"), true);
         woodBlock(BambooGroveBlocks.MAPLE_WOOD.get(), modLoc("block/maple_log"));
         woodBlock(BambooGroveBlocks.MAPLE_STRIPPED_WOOD.get(), modLoc("block/maple_stripped_log"));
@@ -193,10 +189,10 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         slabBlock((SlabBlock) VanillaTweaksBlocks.MARBLE_BRICK_SLAB.get(), modLoc("block/marble_bricks"), modLoc("block/marble_bricks"));
         slabBlock((SlabBlock) VanillaTweaksBlocks.MARBLE_MOSSY_SLAB.get(), modLoc("block/marble_mossy"), modLoc("block/marble_mossy"));
 
-        stairsBlock((StairsBlock) VanillaTweaksBlocks.MARBLE_STAIRS.get(), modLoc("block/marble"));
-        stairsBlock((StairsBlock) VanillaTweaksBlocks.MARBLE_POLISHED_STAIRS.get(), modLoc("block/marble_polished"));
-        stairsBlock((StairsBlock) VanillaTweaksBlocks.MARBLE_BRICK_STAIRS.get(), modLoc("block/marble_bricks"));
-        stairsBlock((StairsBlock) VanillaTweaksBlocks.MARBLE_MOSSY_STAIRS.get(), modLoc("block/marble_mossy"));
+        stairsBlock((StairBlock) VanillaTweaksBlocks.MARBLE_STAIRS.get(), modLoc("block/marble"));
+        stairsBlock((StairBlock) VanillaTweaksBlocks.MARBLE_POLISHED_STAIRS.get(), modLoc("block/marble_polished"));
+        stairsBlock((StairBlock) VanillaTweaksBlocks.MARBLE_BRICK_STAIRS.get(), modLoc("block/marble_bricks"));
+        stairsBlock((StairBlock) VanillaTweaksBlocks.MARBLE_MOSSY_STAIRS.get(), modLoc("block/marble_mossy"));
 
         wallBlock((WallBlock) VanillaTweaksBlocks.MARBLE_WALL.get(), modLoc("block/marble"));
         wallBlock((WallBlock) VanillaTweaksBlocks.MARBLE_BRICK_WALL.get(), modLoc("block/marble_bricks"));
@@ -220,12 +216,12 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         slabBlock((SlabBlock) VanillaTweaksBlocks.BASALT_COBBLESTONE_SLAB.get(), modLoc("block/basalt_cobblestone"), modLoc("block/basalt_cobblestone"));
         slabBlock((SlabBlock) VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_SLAB.get(), modLoc("block/basalt_cobblestone_mossy"), modLoc("block/basalt_cobblestone_mossy"));
 
-        stairsBlock((StairsBlock) VanillaTweaksBlocks.BASALT_STAIRS.get(), modLoc("block/basalt"));
-        stairsBlock((StairsBlock) VanillaTweaksBlocks.BASALT_POLISHED_STAIRS.get(), modLoc("block/basalt_polished"));
-        stairsBlock((StairsBlock) VanillaTweaksBlocks.BASALT_BRICK_STAIRS.get(), modLoc("block/basalt_bricks"));
-        stairsBlock((StairsBlock) VanillaTweaksBlocks.BASALT_MOSSY_STAIRS.get(), modLoc("block/basalt_mossy"));
-        stairsBlock((StairsBlock) VanillaTweaksBlocks.BASALT_COBBLESTONE_STAIRS.get(), modLoc("block/basalt_cobblestone"));
-        stairsBlock((StairsBlock) VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_STAIRS.get(), modLoc("block/basalt_cobblestone_mossy"));
+        stairsBlock((StairBlock) VanillaTweaksBlocks.BASALT_STAIRS.get(), modLoc("block/basalt"));
+        stairsBlock((StairBlock) VanillaTweaksBlocks.BASALT_POLISHED_STAIRS.get(), modLoc("block/basalt_polished"));
+        stairsBlock((StairBlock) VanillaTweaksBlocks.BASALT_BRICK_STAIRS.get(), modLoc("block/basalt_bricks"));
+        stairsBlock((StairBlock) VanillaTweaksBlocks.BASALT_MOSSY_STAIRS.get(), modLoc("block/basalt_mossy"));
+        stairsBlock((StairBlock) VanillaTweaksBlocks.BASALT_COBBLESTONE_STAIRS.get(), modLoc("block/basalt_cobblestone"));
+        stairsBlock((StairBlock) VanillaTweaksBlocks.BASALT_COBBLESTONE_MOSSY_STAIRS.get(), modLoc("block/basalt_cobblestone_mossy"));
 
         wallBlock((WallBlock) VanillaTweaksBlocks.BASALT_WALL.get(), modLoc("block/basalt"));
         wallBlock((WallBlock) VanillaTweaksBlocks.BASALT_BRICK_WALL.get(), modLoc("block/basalt_bricks"));
@@ -250,11 +246,11 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         slabBlock((SlabBlock) CymruBlocks.SLATE_MOSSY_SLAB.get(), modLoc("block/slate_mossy"), modLoc("block/slate_mossy"));
         slabBlock((SlabBlock) CymruBlocks.SLATE_TILE_SLAB.get(), modLoc("block/slate_tile"), modLoc("block/slate_tile"));
 
-        stairsBlock((StairsBlock) CymruBlocks.SLATE_STAIRS.get(), modLoc("block/slate"));
-        stairsBlock((StairsBlock) CymruBlocks.SLATE_POLISHED_STAIRS.get(), modLoc("block/slate_polished_top"));
-        stairsBlock((StairsBlock) CymruBlocks.SLATE_BRICK_STAIRS.get(), modLoc("block/slate_bricks"));
-        stairsBlock((StairsBlock) CymruBlocks.SLATE_MOSSY_STAIRS.get(), modLoc("block/slate_mossy"));
-        stairsBlock((StairsBlock) CymruBlocks.SLATE_TILE_STAIRS.get(), modLoc("block/slate_tile"));
+        stairsBlock((StairBlock) CymruBlocks.SLATE_STAIRS.get(), modLoc("block/slate"));
+        stairsBlock((StairBlock) CymruBlocks.SLATE_POLISHED_STAIRS.get(), modLoc("block/slate_polished_top"));
+        stairsBlock((StairBlock) CymruBlocks.SLATE_BRICK_STAIRS.get(), modLoc("block/slate_bricks"));
+        stairsBlock((StairBlock) CymruBlocks.SLATE_MOSSY_STAIRS.get(), modLoc("block/slate_mossy"));
+        stairsBlock((StairBlock) CymruBlocks.SLATE_TILE_STAIRS.get(), modLoc("block/slate_tile"));
 
         wallBlock((WallBlock) CymruBlocks.SLATE_WALL.get(), modLoc("block/slate"));
         wallBlock((WallBlock) CymruBlocks.SLATE_BRICK_WALL.get(), modLoc("block/slate_bricks"));
@@ -297,7 +293,7 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         new ConfiguredModel(models().withExistingParent("potted_ash_sapling", mcLoc("block/flower_pot_cross")).texture("plant", "block/ash_sapling"));
         simpleBlock(CymruBlocks.POTTED_ASH_SAPLING.get(), models().getBuilder("block/potted_ash_sapling"));
         slabBlock((SlabBlock) CymruBlocks.ASH_SLAB.get(), modLoc("block/ash_planks"), modLoc("block/ash_planks"));
-        stairsBlock((StairsBlock) CymruBlocks.ASH_STAIRS.get(), modLoc("block/ash_planks"));
+        stairsBlock((StairBlock) CymruBlocks.ASH_STAIRS.get(), modLoc("block/ash_planks"));
         trapdoorBlock((TrapDoorBlock) CymruBlocks.ASH_TRAPDOOR.get(), modLoc("block/ash_trapdoor"), true);
         woodBlock(CymruBlocks.ASH_WOOD.get(), modLoc("block/ash_log"));
         woodBlock(CymruBlocks.ASH_STRIPPED_WOOD.get(), modLoc("block/ash_stripped_log"));
@@ -391,7 +387,7 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
     }
 
     public void fourWayMultipart(MultiPartBlockStateBuilder builder, ModelFile side, ModelFile side2 ) {
-        SixWayBlock.PROPERTY_BY_DIRECTION.entrySet().forEach(e -> {
+        PipeBlock.PROPERTY_BY_DIRECTION.entrySet().forEach(e -> {
             Direction dir = e.getKey();
             if (dir.getAxis().isHorizontal()) {
                 builder.part().modelFile(side).rotationY((((int) dir.toYRot()) + 180) % 360).uvLock(true).weight(5).nextModel().modelFile(side2).rotationY((((int) dir.toYRot()) + 180) % 360).uvLock(true).weight(5).addModel()

@@ -1,12 +1,11 @@
 package dev.driscollcreations.explorercraft.data.tags;
 
 import dev.driscollcreations.explorercraft.Explorercraft;
-import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
 import dev.driscollcreations.explorercraft.setup.ExplorerTags;
-import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.ItemTagsProvider;
+import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 

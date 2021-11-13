@@ -1,72 +1,75 @@
 package dev.driscollcreations.explorercraft.bamboogrove.blocks;
 
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
-import net.minecraft.block.*;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
-public class RiceBaseBlock extends BushBlock implements IWaterLoggable {
+public class RiceBaseBlock extends BushBlock implements SimpleWaterloggedBlock {
     public static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
 
 
-    public RiceBaseBlock(Properties properties) {
+    public RiceBaseBlock(BlockBehaviour.Properties properties) {
         super(properties);
     }
 
     @Override
-    public void setPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+    public void setPlacedBy(Level worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
         worldIn.setBlockAndUpdate(pos.above(), BambooGroveBlocks.RICE_TOP.get().defaultBlockState());
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
     @Override
-    public boolean mayPlaceOn(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    public boolean mayPlaceOn(BlockState state, BlockGetter worldIn, BlockPos pos) {
         return state.isFaceSturdy(worldIn, pos, Direction.UP) && state.getBlock() != Blocks.MAGMA_BLOCK;
     }
 
-    public boolean isRiceAboveWater(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    public boolean isRiceAboveWater(BlockState state, BlockGetter worldIn, BlockPos pos) {
         return state.getBlock() == BambooGroveBlocks.RICE_TOP.get();
     }
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockPos blockpos = context.getClickedPos();
         FluidState ifluidstate = context.getLevel().getFluidState(context.getClickedPos());
         return ifluidstate.is(FluidTags.WATER) && ifluidstate.getAmount() == 8 && context.getLevel().isEmptyBlock(blockpos.above()) ? super.getStateForPlacement(context) : null;
     }
 
     @Override
-    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos) {
+    public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
         BlockPos blockpos = pos.below();
         return this.mayPlaceOn(worldIn.getBlockState(blockpos), worldIn, blockpos);
     }
 
     @Override
-    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
 
         if (facing == Direction.UP && facingState.getBlock() != BambooGroveBlocks.RICE_TOP.get()) {
             worldIn.getBlockTicks().scheduleTick(currentPos, this, 1);
@@ -80,7 +83,7 @@ public class RiceBaseBlock extends BushBlock implements IWaterLoggable {
     }
 
     @Override
-    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
+    public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
         if (!this.isRiceAboveWater(state, worldIn, pos.above())) {
             worldIn.destroyBlock(pos, false);
         }
@@ -92,12 +95,12 @@ public class RiceBaseBlock extends BushBlock implements IWaterLoggable {
     }
 
     @Override
-    public boolean canPlaceLiquid(IBlockReader worldIn, BlockPos pos, BlockState state, Fluid fluidIn) {
+    public boolean canPlaceLiquid(BlockGetter worldIn, BlockPos pos, BlockState state, Fluid fluidIn) {
         return false;
     }
 
     @Override
-    public boolean placeLiquid(IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
+    public boolean placeLiquid(LevelAccessor worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
         return false;
     }
 }

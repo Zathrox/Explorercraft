@@ -2,14 +2,12 @@ package dev.driscollcreations.explorercraft.data.client;
 
 import dev.driscollcreations.explorercraft.Explorercraft;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

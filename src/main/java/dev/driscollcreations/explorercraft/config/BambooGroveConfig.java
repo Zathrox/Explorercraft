@@ -13,7 +13,7 @@ public class BambooGroveConfig {
     public static ForgeConfigSpec.BooleanValue spawnToriiGates;
 
     public static void init(ForgeConfigSpec.Builder common, ForgeConfigSpec.Builder client) {
-        common.push("Bamboo Grove World Generation");
+        common.push("Bamboo Grove Level Generation");
         common.comment("Control the various world generation that spawns in the Bamboo Grove, DISABLING these may affect Advancement progression");
         spawnBambooGroves = common
             .comment("Spawn Bamboo Groves in Overworld")

@@ -3,7 +3,7 @@ package dev.driscollcreations.explorercraft.setup;
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.util.EmptyTrigger;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = Explorercraft.MOD_ID)

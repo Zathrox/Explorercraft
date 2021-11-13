@@ -1,12 +1,11 @@
 package dev.driscollcreations.explorercraft.setup;
 
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
-import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksItems;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.Item;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.crafting.Ingredient;
 
-public enum ExplorerToolList implements IItemTier {
+public enum ExplorerToolList implements Tier {
 
     /* Harvest Level, Durability, Efficiency, Damage and then Enchantability
     WOOD(0, 59, 2.0F, 0.0F, 15

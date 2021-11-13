@@ -1,7 +1,7 @@
 package dev.driscollcreations.explorercraft.util;
 
 import dev.driscollcreations.explorercraft.Explorercraft;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 
 public class ExplorercraftResourceLocation extends ResourceLocation {
     public ExplorercraftResourceLocation(String resourceName) {

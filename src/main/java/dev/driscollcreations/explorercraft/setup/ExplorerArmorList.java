@@ -2,15 +2,14 @@ package dev.driscollcreations.explorercraft.setup;
 
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
-import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksItems;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.Item;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Ingredient;
 
-public enum ExplorerArmorList implements IArmorMaterial {
+public enum ExplorerArmorList implements ArmorMaterial {
 
     /*
     LEATHER("leather", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F
@@ -48,12 +47,12 @@ public enum ExplorerArmorList implements IArmorMaterial {
     }
 
     @Override
-    public int getDurabilityForSlot(EquipmentSlotType slot) {
+    public int getDurabilityForSlot(EquipmentSlot slot) {
         return MAX_DAMAGE_ARRAY[slot.getIndex()] * this.durability;
     }
 
     @Override
-    public int getDefenseForSlot(EquipmentSlotType slot) {
+    public int getDefenseForSlot(EquipmentSlot slot) {
         return this.damageReductionAmounts[slot.getIndex()];
     }
 

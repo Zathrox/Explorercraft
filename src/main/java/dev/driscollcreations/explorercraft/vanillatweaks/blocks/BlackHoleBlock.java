@@ -1,21 +1,13 @@
 package dev.driscollcreations.explorercraft.vanillatweaks.blocks;
 
-import dev.driscollcreations.explorercraft.vanillatweaks.tileentities.BlackHoleTileEntity;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
-
-import net.minecraft.block.AbstractBlock.Properties;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class BlackHoleBlock extends Block {
 
@@ -24,7 +16,7 @@ public class BlackHoleBlock extends Block {
     }
 
     @Override
-    public void entityInside(BlockState state, World world, BlockPos blockPos, Entity entity) {
+    public void entityInside(BlockState state, Level world, BlockPos blockPos, Entity entity) {
         if (entity instanceof LivingEntity) {
             entity.hurt(DamageSource.MAGIC, (float)5);
         }
@@ -33,18 +25,8 @@ public class BlackHoleBlock extends Block {
     }
 
     @Override
-    public BlockRenderType getRenderShape(BlockState state) {
-        return BlockRenderType.MODEL;
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
     }
 
-    @Nullable
-    @Override
-    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return new BlackHoleTileEntity();
-    }
-
-    @Override
-    public boolean hasTileEntity(BlockState state) {
-        return true;
-    }
 }

@@ -46,7 +46,7 @@ Build: 1.16.3-34.1.3 - Fri Oct 02 23:28:31 GMT 2020
 =========
 Build: 1.16.3-34.1.2 - Fri Oct 02 22:06:59 GMT 2020
 	dev:
-		Fix modded EntityClassifications not being useable in the codec. (#7337)
+		Fix modded MobCategorys not being useable in the codec. (#7337)
 
 =========
 Build: 1.16.3-34.1.1 - Mon Sep 28 18:02:11 GMT 2020
@@ -137,7 +137,7 @@ Build: 1.16.3-34.0.7 - Tue Sep 15 20:07:25 GMT 2020
 =========
 Build: 1.16.3-34.0.6 - Tue Sep 15 19:47:08 GMT 2020
 	cyborgmas18:
-		Add MatrixStack-aware alternatives to the methods in GuiUtils (#7127)
+		Add PoseStack-aware alternatives to the methods in GuiUtils (#7127)
 
 =========
 Build: 1.16.3-34.0.5 - Tue Sep 15 16:51:58 GMT 2020
@@ -328,7 +328,7 @@ Build: 1.16.2-33.0.32 - Tue Sep 01 18:36:21 GMT 2020
 	cpw:
 		Move the "modloading" thread activity onto _our_ worker pool. It turns out that the vanilla worker pool can deadlock during stitching if it's insufficiently large, if modloader "waitForTransition" is also a worker member of that pool.
 		
-		Closes #7293 (to reproduce issue easily, modify Util.func_240979_a_ and change the values in the MathHelper.clamp call). I've verified that 3 and below for "max" cause the problem. (I didn't test a whole range of values, just sufficient to reproduce problem and verify fix). Note that setting it to zero (and using the "direct executor" that's inaccessible in normal operation) works as well with this fix.
+		Closes #7293 (to reproduce issue easily, modify Util.func_240979_a_ and change the values in the Math.clamp call). I've verified that 3 and below for "max" cause the problem. (I didn't test a whole range of values, just sufficient to reproduce problem and verify fix). Note that setting it to zero (and using the "direct executor" that's inaccessible in normal operation) works as well with this fix.
 		
 		Signed-off-by: cpw <cpw+github@weeksfamily.ca>
 
@@ -644,7 +644,7 @@ Build: 1.16.1-32.0.82 - Mon Jul 27 21:14:02 GMT 2020
 =========
 Build: 1.16.1-32.0.81 - Mon Jul 27 21:08:23 GMT 2020
 	christ.klinge:
-		Added EntityLeaveWorldEvent (#6984)
+		Added EntityLeaveLevelEvent (#6984)
 
 =========
 Build: 1.16.1-32.0.80 - Mon Jul 27 21:02:53 GMT 2020
@@ -737,7 +737,7 @@ Build: 1.16.1-32.0.64 - Mon Jul 13 22:17:58 GMT 2020
 	lex:
 		Fix checkPatches task. Closes #6956
 		Fix patched in method using srg name. Closes #6965
-		Fix capabilities not being collected for ClientWorld. Closes #6966
+		Fix capabilities not being collected for ClientLevel. Closes #6966
 		Fix TagEmptyCondition using client side copy of tags instead of server. Closes #6949
 		Fix ExtendedButton using narrator text. Closes #6958, Closes #6959
 		Fix misaligned patch in RepairContainer. Closes #6950, Closes #6953
@@ -997,7 +997,7 @@ Build: 1.16.1-32.0.17 - Fri Jun 26 15:20:37 GMT 2020
 =========
 Build: 1.16.1-32.0.16 - Fri Jun 26 14:43:19 GMT 2020
 	David Quintana:
-		Reintroduce missed patch in EntityClassification.
+		Reintroduce missed patch in MobCategory.
 
 =========
 Build: 1.16.1-32.0.15 - Fri Jun 26 13:55:42 GMT 2020
@@ -1031,9 +1031,9 @@ Build: 1.16.1-32.0.12 - Fri Jun 26 12:59:19 GMT 2020
 =========
 Build: 1.16.1-32.0.10 - Fri Jun 26 12:36:59 GMT 2020
 	curle:
-		Retarget Block.Properties patch to the new AbstractBlock, reintroduce harvestLevel and harvestTool fields (#6819)
+		Retarget Block.Properties patch to the new BlockBehaviour, reintroduce harvestLevel and harvestTool fields (#6819)
 		
-		* Retarget Block.Properties patch to the new AbstractBlock, reintroduces the harvestLevel and harvestTool fields.
+		* Retarget Block.Properties patch to the new BlockBehaviour, reintroduces the harvestLevel and harvestTool fields.
 		
 		* Slight adjustment to fix the lootTableSupplier.
 

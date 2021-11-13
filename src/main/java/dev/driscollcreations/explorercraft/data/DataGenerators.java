@@ -1,8 +1,9 @@
 package dev.driscollcreations.explorercraft.data;
 
 import dev.driscollcreations.explorercraft.Explorercraft;
-import dev.driscollcreations.explorercraft.data.client.*;
-import dev.driscollcreations.explorercraft.data.loot.*;
+import dev.driscollcreations.explorercraft.data.client.ExplorerBlockStateProvider;
+import dev.driscollcreations.explorercraft.data.client.ExplorerItemModelProvider;
+import dev.driscollcreations.explorercraft.data.loot.ExplorerLootTables;
 import dev.driscollcreations.explorercraft.data.recipes.ExplorerRecipeProvider;
 import dev.driscollcreations.explorercraft.data.tags.ExplorerBlockTagsProvider;
 import dev.driscollcreations.explorercraft.data.tags.ExplorerItemTagsProvider;
@@ -10,7 +11,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 @Mod.EventBusSubscriber(modid = Explorercraft.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataGenerators {

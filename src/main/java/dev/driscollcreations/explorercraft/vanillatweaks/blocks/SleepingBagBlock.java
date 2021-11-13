@@ -1,28 +1,25 @@
 package dev.driscollcreations.explorercraft.vanillatweaks.blocks;
 
-import dev.driscollcreations.explorercraft.vanillatweaks.tileentities.SleepingBagTileEntity;
-import net.minecraft.block.BedBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.item.DyeColor;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BedPart;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityMerger;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import dev.driscollcreations.explorercraft.vanillatweaks.tileentities.SleepingBagBlockEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BedBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BedPart;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-
-import net.minecraft.block.AbstractBlock.Properties;
 
 public class SleepingBagBlock extends BedBlock {
     public static final EnumProperty<BedPart> PART = BlockStateProperties.BED_PART;
@@ -37,23 +34,18 @@ public class SleepingBagBlock extends BedBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
     @Override
-    public void fallOn(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
-        super.fallOn(worldIn, pos, entityIn, fallDistance * 0.2F);
+    public void fallOn(Level p_152169_, BlockState p_152170_, BlockPos p_152171_, Entity p_152172_, float p_152173_) {
+        super.fallOn(p_152169_, p_152170_, p_152171_, p_152172_, p_152173_ * 0.2F);
     }
 
     @Override
-    public TileEntity newBlockEntity(IBlockReader worldIn) {
-        return new SleepingBagTileEntity(this.color);
-    }
-
-    @Override
-    public boolean hasTileEntity(BlockState state) {
-        return true;
+    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        return new SleepingBagBlockEntity(blockPos, blockState);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -62,13 +54,13 @@ public class SleepingBagBlock extends BedBlock {
     }
 
     @Override
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, PART, OCCUPIED);
     }
 
     @Override
-    public BlockRenderType getRenderShape(BlockState state) {
-        return BlockRenderType.MODEL;
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
     }
 
 }

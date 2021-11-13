@@ -2,47 +2,46 @@ package dev.driscollcreations.explorercraft.bamboogrove.blocks;
 
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.CropsBlock;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
-public class RiceBlock extends CropsBlock {
+public class RiceBlock extends CropBlock {
 
     private static final VoxelShape[] SHAPES = new VoxelShape[]{Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 5.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D)};
 
-    public RiceBlock(Properties properties) {
+    public RiceBlock(BlockBehaviour.Properties properties) {
         super(properties);
     }
 
     @OnlyIn(Dist.CLIENT)
-    protected IItemProvider getBaseSeedId() {
+    protected ItemLike getBaseSeedId() {
         return BambooGroveItems.RICE.get();
     }
 
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
         return SHAPES[state.getValue(this.getAgeProperty())];
     }
 
     @Override
-    public boolean mayPlaceOn(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    public boolean mayPlaceOn(BlockState state, BlockGetter worldIn, BlockPos pos) {
         return state.getBlock() == BambooGroveBlocks.RICE_BASE.get();
     }
 
     @Override
-    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-        super.tick(state, worldIn, pos, random);
+    public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, Random random) {
+        super.randomTick(state, worldIn, pos, random);
         if (!worldIn.isAreaLoaded(pos, 1))
             return; // Forge: prevent loading unloaded chunks when checking neighbor's light
         if (worldIn.getRawBrightness(pos, 0) >= 9) {
@@ -58,7 +57,7 @@ public class RiceBlock extends CropsBlock {
 
     }
 
-    protected static float getGrowthChance(Block blockIn, IBlockReader worldIn, BlockPos pos) {
+    protected static float getGrowthChance(Block blockIn, BlockGetter worldIn, BlockPos pos) {
         float f = 1.0F;
         BlockPos blockpos = pos.below();
 
@@ -66,7 +65,7 @@ public class RiceBlock extends CropsBlock {
             for (int j = -1; j <= 1; ++j) {
                 float f1 = 0.0F;
                 BlockState blockstate = worldIn.getBlockState(blockpos.offset(i, 0, j));
-                if (blockstate.canSustainPlant(worldIn, blockpos.offset(i, 0, j), net.minecraft.util.Direction.UP, (net.minecraftforge.common.IPlantable) blockIn)) {
+                if (blockstate.canSustainPlant(worldIn, blockpos.offset(i, 0, j), net.minecraft.core.Direction.UP, (net.minecraftforge.common.IPlantable) blockIn)) {
                     f1 = 3.0F;
                 }
 

@@ -7,24 +7,13 @@ import dev.driscollcreations.explorercraft.cymru.blocks.CymruBlocks;
 import dev.driscollcreations.explorercraft.cymru.items.CymruItems;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksItems;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.util.RegistryKey;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
-import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.common.BiomeManager;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.Objects;
-
-import static net.minecraftforge.common.BiomeDictionary.Type.*;
 
 public class Registration {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Explorercraft.MOD_ID);

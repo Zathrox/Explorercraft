@@ -5,19 +5,20 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply from: 'https://raw.githubusercontent.com/SizableShrimp/Forge-Class-Remapper/main/classremapper.gradle'
 
 version = modVersion
 group = modGroup
 archivesBaseName = modFileName
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '16' // Need this here so eclipse task generates correctly.
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
@@ -79,8 +80,6 @@ sourceSets.main.resources {
 }
 
 repositories {
-    maven { url 'https://repo.repsy.io/mvn/gandiber/geckolib' }
-
     maven {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"
@@ -96,14 +95,13 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:' + modMinecraftVersion + "-" + modForgeVersion
 
-    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.16.5:3.0.15')
     // JEI
-    if (project.hasProperty('jei_version')) {
-        // compile against the JEI API but do not include it at runtime
-        compileOnly fg.deobf("mezz.jei:jei-${project.jei_version}:api")
-        // at runtime, use the full JEI jar
-        runtimeOnly fg.deobf("mezz.jei:jei-${project.jei_version}")
-    }
+//    if (project.hasProperty('jei_version')) {
+//        // compile against the JEI API but do not include it at runtime
+//        compileOnly fg.deobf("mezz.jei:jei-${project.jei_version}:api")
+//        // at runtime, use the full JEI jar
+//        runtimeOnly fg.deobf("mezz.jei:jei-${project.jei_version}")
+//    }
 }
 
 
@@ -116,7 +114,7 @@ jar {
             "Specification-Vendor": modGroup,
             "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
+            "Implementation-Version": project.jar.archiveVersion,
             "Implementation-Vendor" : modGroup,
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
@@ -139,19 +137,19 @@ publishing {
 }
 
 // Process resources on build
-processResources {
-    // This will ensure that this task is redone when the versions change.
-    inputs.property 'version', project.version
-
-    // Replace stuff in mods.toml, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'META-INF/mods.toml'
-        // Replace version
-        expand 'version': project.version
-    }
-
-    // Copy everything else except the mods.toml
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'META-INF/mods.toml'
-    }
-}
+//processResources {
+//    // This will ensure that this task is redone when the versions change.
+//    inputs.property 'version', project.version
+//
+//    // Replace stuff in mods.toml, nothing else
+//    from(sourceSets.main.resources.srcDirs) {
+//        include 'META-INF/mods.toml'
+//        // Replace version
+//        expand 'version': project.version
+//    }
+//
+//    // Copy everything else except the mods.toml
+//    from(sourceSets.main.resources.srcDirs) {
+//        exclude 'META-INF/mods.toml'
+//    }
+//}

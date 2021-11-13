@@ -1,19 +1,20 @@
 package dev.driscollcreations.explorercraft.cymru.blocks.trees;
 
 import dev.driscollcreations.explorercraft.setup.ExplorerFeature;
-import net.minecraft.block.trees.Tree;
-import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.data.worldgen.Features;
+import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class AshTree extends Tree {
+public class AshTree extends AbstractTreeGrower {
 
     @Nullable
     @Override
-    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random randomIn, boolean largeHive) {
-        return ExplorerFeature.ASH_TREE.get().configured(ExplorerFeature.Configs.ASH_TREE_CONFIG);
+    protected ConfiguredFeature<TreeConfiguration, ?> getConfiguredFeature(Random randomIn, boolean largeHive) {
+        return ExplorerFeature.ASH_TREE.get().configured(Features.JUNGLE_TREE.config);
     }
 
 }

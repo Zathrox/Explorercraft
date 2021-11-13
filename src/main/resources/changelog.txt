@@ -164,7 +164,7 @@ Patch 4.0.1:
 + Added a localised translation string for the description of the Wizard Hat - can now change it to your local languages!
 
 Patch 4.0.0:
-+ Initial port of mod, with several fixes to get working on this version (All World Gen is Broken)
++ Initial port of mod, with several fixes to get working on this version (All Level Gen is Broken)
 + Fixed rendering issues on plants
 + Wooden Trapdoors + Doors are now flammable!
 + Ash tree saplings now require 9 saplings to spawn, to make it fair on the logs > sapling ratio

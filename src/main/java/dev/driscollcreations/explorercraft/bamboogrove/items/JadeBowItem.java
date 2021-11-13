@@ -1,19 +1,15 @@
 package dev.driscollcreations.explorercraft.bamboogrove.items;
 
-import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.AbstractArrowEntity;
-import net.minecraft.item.*;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.Level;
 
 public class JadeBowItem extends BowItem {
 
@@ -30,29 +26,29 @@ public class JadeBowItem extends BowItem {
     }
 
 
-    @OnlyIn(Dist.CLIENT)
-    public static void initPropertyOverride() {
-        ItemModelsProperties.register(BambooGroveItems.JADE_BOW.get(),new ResourceLocation("pull"),(itemStack, world, livingEntity) -> {
-            if (livingEntity == null) {
-                return 0.0F;
-            } else {
-                return !(livingEntity.getUseItem().getItem() instanceof BowItem) ? 0.0F : (float)(itemStack.getUseDuration() - livingEntity.getUseItemRemainingTicks()) / 20.0F;
-            }
-        });
-
-        ItemModelsProperties.register(BambooGroveItems.JADE_BOW.get(), new ResourceLocation("pulling"), (itemStack, world, livingEntity) -> {
-            return livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1.0F : 0.0F;
-        });
-    }
+//    @OnlyIn(Dist.CLIENT)
+//    public static void initPropertyOverride() {
+//        ItemModelsProperties.register(BambooGroveItems.JADE_BOW.get(),new ResourceLocation("pull"),(itemStack, world, livingEntity) -> {
+//            if (livingEntity == null) {
+//                return 0.0F;
+//            } else {
+//                return !(livingEntity.getUseItem().getItem() instanceof BowItem) ? 0.0F : (float)(itemStack.getUseDuration() - livingEntity.getUseItemRemainingTicks()) / 20.0F;
+//            }
+//        });
+//
+//        ItemModelsProperties.register(BambooGroveItems.JADE_BOW.get(), new ResourceLocation("pulling"), (itemStack, world, livingEntity) -> {
+//            return livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1.0F : 0.0F;
+//        });
+//    }
 
     /**
      * Called when the player stops using an Item (stops holding the right mouse button).
      */
     @Override
-    public void releaseUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft) {
-        if (entityLiving instanceof PlayerEntity) {
-            PlayerEntity playerentity = (PlayerEntity) entityLiving;
-            boolean flag = playerentity.abilities.instabuild || EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0;
+    public void releaseUsing(ItemStack stack, Level worldIn, LivingEntity entityLiving, int timeLeft) {
+        if (entityLiving instanceof Player) {
+            Player playerentity = (Player) entityLiving;
+            boolean flag = playerentity.getAbilities().instabuild || EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0;
             ItemStack itemstack = playerentity.getProjectile(stack);
 
             int i = this.getUseDuration(stack) - timeLeft;
@@ -66,12 +62,12 @@ public class JadeBowItem extends BowItem {
 
                 float f = getPowerForTime(i);
                 if (!((double) f < 0.1D)) {
-                    boolean flag1 = playerentity.abilities.instabuild || (itemstack.getItem() instanceof ArrowItem && ((ArrowItem) itemstack.getItem()).isInfinite(itemstack, stack, playerentity));
+                    boolean flag1 = playerentity.getAbilities().instabuild || (itemstack.getItem() instanceof ArrowItem && ((ArrowItem) itemstack.getItem()).isInfinite(itemstack, stack, playerentity));
                     if (!worldIn.isClientSide) {
                         ArrowItem arrowitem = (ArrowItem) (itemstack.getItem() instanceof ArrowItem ? itemstack.getItem() : Items.ARROW);
-                        AbstractArrowEntity abstractarrowentity = arrowitem.createArrow(worldIn, itemstack, playerentity);
+                        AbstractArrow abstractarrowentity = arrowitem.createArrow(worldIn, itemstack, playerentity);
                         abstractarrowentity = customArrow(abstractarrowentity);
-                        abstractarrowentity.shootFromRotation(playerentity, playerentity.xRot, playerentity.yRot, 0.0F, f * 4.5F, 0.2F); //shoot method
+                        abstractarrowentity.shootFromRotation(playerentity, playerentity.getXRot(), playerentity.getYRot(), 0.0F, f * 4.5F, 0.2F); //shoot method
                         if (f == 1.0F) {
                             abstractarrowentity.setCritArrow(true);
                         }
@@ -93,18 +89,18 @@ public class JadeBowItem extends BowItem {
                         stack.hurtAndBreak(1, playerentity, (player) -> {
                             player.broadcastBreakEvent(playerentity.getUsedItemHand());
                         });
-                        if (flag1 || playerentity.abilities.instabuild && (itemstack.getItem() == Items.SPECTRAL_ARROW || itemstack.getItem() == Items.TIPPED_ARROW)) {
-                            abstractarrowentity.pickup = AbstractArrowEntity.PickupStatus.CREATIVE_ONLY;
+                        if (flag1 || playerentity.getAbilities().instabuild && (itemstack.getItem() == Items.SPECTRAL_ARROW || itemstack.getItem() == Items.TIPPED_ARROW)) {
+                            abstractarrowentity.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                         }
 
                         worldIn.addFreshEntity(abstractarrowentity);
                     }
 
-                    worldIn.playSound(null, playerentity.getX(), playerentity.getY(), playerentity.getZ(), SoundEvents.ARROW_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
-                    if (!flag1 && !playerentity.abilities.instabuild) {
+                    worldIn.playSound(null, playerentity.getX(), playerentity.getY(), playerentity.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (worldIn.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                    if (!flag1 && !playerentity.getAbilities().instabuild) {
                         itemstack.shrink(1);
                         if (itemstack.isEmpty()) {
-                            playerentity.inventory.removeItem(itemstack);
+                            playerentity.getInventory().removeItem(itemstack);
                         }
                     }
 

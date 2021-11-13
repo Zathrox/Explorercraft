@@ -1,27 +1,26 @@
 package dev.driscollcreations.explorercraft.util;
 
-import com.google.common.collect.ImmutableMap;
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
 import dev.driscollcreations.explorercraft.cymru.items.CymruItems;
-import dev.driscollcreations.explorercraft.setup.ExplorerStructures;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksItems;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.merchant.villager.VillagerProfession;
-import net.minecraft.entity.merchant.villager.VillagerTrades;
-import net.minecraft.entity.passive.horse.AbstractHorseEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.gen.feature.structure.Structure;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraft.world.storage.MapData;
-import net.minecraft.world.storage.MapDecoration;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
+import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.MapItem;
+import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.level.levelgen.feature.StructureFeature;
+import net.minecraft.world.level.saveddata.maps.MapDecoration;
+import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 import net.minecraftforge.common.BasicTrade;
 import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
@@ -43,9 +42,9 @@ public final class ExplorerTrades {
     public static void onPlayerMount(EntityMountEvent event) {
         Entity mountingEntity = event.getEntityMounting();
         Entity entityBeingMounted = event.getEntityBeingMounted();
-        if (mountingEntity instanceof PlayerEntity && entityBeingMounted instanceof AbstractHorseEntity) {
-            PlayerEntity player = (PlayerEntity) mountingEntity;
-            AbstractHorseEntity horse = (AbstractHorseEntity) entityBeingMounted;
+        if (mountingEntity instanceof Player && entityBeingMounted instanceof AbstractHorse) {
+            Player player = (Player) mountingEntity;
+            AbstractHorse horse = (AbstractHorse) entityBeingMounted;
             if (!horse.isTamed() && player.isCreative()) {
                 Explorercraft.LOGGER.error("Horse was tamed instantly");
                 horse.setOwnerUUID(player.getUUID());
@@ -84,9 +83,9 @@ public final class ExplorerTrades {
                 new ExplorerTrades.ExplorerTrade(VanillaTweaksItems.NOCTILUCA.get(), 5, 1, 8, 5)
         );
 
-        ExplorerTrades.addVillagerTrades(event, VillagerProfession.CARTOGRAPHER, ExplorerTrades.MASTER,
-                new ExplorerTrades.EmeraldForMapTrade(32, ExplorerStructures.TEMPLE_RUINS.get(), MapDecoration.Type.TARGET_X, 12, 10)
-        );
+//        ExplorerTrades.addVillagerTrades(event, VillagerProfession.CARTOGRAPHER, ExplorerTrades.MASTER,
+//                new ExplorerTrades.EmeraldForMapTrade(32, ExplorerStructures.TEMPLE_RUINS.get(), MapDecoration.Type.TARGET_X, 12, 10)
+//        );
     }
 
     public static final int NOVICE = 1;
@@ -125,14 +124,14 @@ public final class ExplorerTrades {
         }
     }
 
-    public static class EmeraldForMapTrade implements VillagerTrades.ITrade {
+    public static class EmeraldForMapTrade implements VillagerTrades.ItemListing {
         private final int emeraldCost;
-        private final Structure<?> destination;
+        private final StructureFeature<?> destination;
         private final MapDecoration.Type destinationType;
         private final int maxUses;
         private final int villagerXp;
 
-        public EmeraldForMapTrade(int emeraldCost, Structure<?> structure, MapDecoration.Type decoration, int maxUsesIn, int xpValueIn) {
+        public EmeraldForMapTrade(int emeraldCost, StructureFeature<?> structure, MapDecoration.Type decoration, int maxUsesIn, int xpValueIn) {
             this.emeraldCost = emeraldCost;
             this.destination = structure;
             this.destinationType = decoration;
@@ -142,16 +141,16 @@ public final class ExplorerTrades {
 
         @Nullable
         public MerchantOffer getOffer(Entity trader, Random random) {
-            if (!(trader.level instanceof ServerWorld)) {
+            if (!(trader.level instanceof ServerLevel)) {
                 return null;
             } else {
-                ServerWorld serverworld = (ServerWorld)trader.level;
-                BlockPos blockpos = serverworld.findNearestMapFeature(this.destination, trader.blockPosition(), 100, true);
+                ServerLevel serverlevel = (ServerLevel)trader.level;
+                BlockPos blockpos = serverlevel.findNearestMapFeature(this.destination, trader.blockPosition(), 100, true);
                 if (blockpos != null) {
-                    ItemStack itemstack = FilledMapItem.create(serverworld, blockpos.getX(), blockpos.getZ(), (byte)2, true, true);
-                    FilledMapItem.renderBiomePreviewMap(serverworld, itemstack);
-                    MapData.addTargetDecoration(itemstack, blockpos, "+", this.destinationType);
-                    itemstack.setHoverName(new TranslationTextComponent("filled_map." + this.destination.getFeatureName().toLowerCase(Locale.ROOT)));
+                    ItemStack itemstack = MapItem.create(serverlevel, blockpos.getX(), blockpos.getZ(), (byte)2, true, true);
+                    MapItem.renderBiomePreviewMap(serverlevel, itemstack);
+                    MapItemSavedData.addTargetDecoration(itemstack, blockpos, "+", this.destinationType);
+                    itemstack.setHoverName(new TranslatableComponent("filled_map." + this.destination.getFeatureName().toLowerCase(Locale.ROOT)));
                     return new MerchantOffer(new ItemStack(Items.EMERALD, this.emeraldCost), new ItemStack(Items.COMPASS), itemstack, this.maxUses, this.villagerXp, 0.2F);
                 } else {
                     return null;
@@ -160,35 +159,35 @@ public final class ExplorerTrades {
         }
     }
 
-    public static void addVillagerTrades(VillagerTradesEvent event, int level, VillagerTrades.ITrade... trades) {
-        for (VillagerTrades.ITrade trade : trades) event.getTrades().get(level).add(trade);
+    public static void addVillagerTrades(VillagerTradesEvent event, int level, VillagerTrades.ItemListing... trades) {
+        for (VillagerTrades.ItemListing trade : trades) event.getTrades().get(level).add(trade);
     }
 
-    public static void addVillagerTrades(VillagerTradesEvent event, VillagerProfession profession, int level, VillagerTrades.ITrade... trades) {
+    public static void addVillagerTrades(VillagerTradesEvent event, VillagerProfession profession, int level, VillagerTrades.ItemListing... trades) {
         if (event.getType() == profession) addVillagerTrades(event, level, trades);
     }
 
-    public static void addWandererTrades(WandererTradesEvent event, VillagerTrades.ITrade... trades) {
-        for (VillagerTrades.ITrade trade : trades) event.getGenericTrades().add(trade);
+    public static void addWandererTrades(WandererTradesEvent event, VillagerTrades.ItemListing... trades) {
+        for (VillagerTrades.ItemListing trade : trades) event.getGenericTrades().add(trade);
     }
 
-    public static void addRareWandererTrades(WandererTradesEvent event, VillagerTrades.ITrade... trades) {
-        for (VillagerTrades.ITrade trade : trades) event.getRareTrades().add(trade);
+    public static void addRareWandererTrades(WandererTradesEvent event, VillagerTrades.ItemListing... trades) {
+        for (VillagerTrades.ItemListing trade : trades) event.getRareTrades().add(trade);
     }
 
-    public static void addCompatVillagerTrades(VillagerTradesEvent event, String modid, int level, VillagerTrades.ITrade... trades) {
+    public static void addCompatVillagerTrades(VillagerTradesEvent event, String modid, int level, VillagerTrades.ItemListing... trades) {
         if (ModList.get().isLoaded(modid)) addVillagerTrades(event, level, trades);
     }
 
-    public static void addCompatVillagerTrades(VillagerTradesEvent event, String modid, VillagerProfession profession, int level, VillagerTrades.ITrade... trades) {
+    public static void addCompatVillagerTrades(VillagerTradesEvent event, String modid, VillagerProfession profession, int level, VillagerTrades.ItemListing... trades) {
         if (ModList.get().isLoaded(modid)) addVillagerTrades(event, profession, level, trades);
     }
 
-    public static void addCompatWandererTrades(WandererTradesEvent event, String modid, VillagerTrades.ITrade... trades) {
+    public static void addCompatWandererTrades(WandererTradesEvent event, String modid, VillagerTrades.ItemListing... trades) {
         if (ModList.get().isLoaded(modid)) addWandererTrades(event, trades);
     }
 
-    public static void addCompatRareWandererTrades(WandererTradesEvent event, String modid, VillagerTrades.ITrade... trades) {
+    public static void addCompatRareWandererTrades(WandererTradesEvent event, String modid, VillagerTrades.ItemListing... trades) {
         if (ModList.get().isLoaded(modid)) addRareWandererTrades(event, trades);
     }
 }

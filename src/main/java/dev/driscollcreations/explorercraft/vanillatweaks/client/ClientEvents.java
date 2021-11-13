@@ -1,26 +1,21 @@
 package dev.driscollcreations.explorercraft.vanillatweaks.client;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.config.VanillaTweaksConfig;
 import dev.driscollcreations.explorercraft.vanillatweaks.blocks.SleepingBagBlock;
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.player.RemoteClientPlayerEntity;
-import net.minecraft.client.renderer.Atlases;
-import net.minecraft.client.renderer.texture.AtlasTexture;
-import net.minecraft.entity.Pose;
-import net.minecraft.entity.passive.horse.AbstractHorseEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.player.RemotePlayer;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
-import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.apache.logging.log4j.Level;
 
 @Mod.EventBusSubscriber(modid = Explorercraft.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class ClientEvents {
@@ -32,9 +27,9 @@ public class ClientEvents {
                 return;
             }
 
-            PlayerEntity player = Minecraft.getInstance().player;
-            if (player != null && player.getVehicle() instanceof AbstractHorseEntity) {
-                AbstractHorseEntity horse = (AbstractHorseEntity) player.getVehicle();
+            Player player = Minecraft.getInstance().player;
+            if (player != null && player.getVehicle() instanceof AbstractHorse) {
+                AbstractHorse horse = (AbstractHorse) player.getVehicle();
                 if ((horse.isInWater())) {
                     horse.setDeltaMovement(horse.getDeltaMovement().add(0.0D, 0.0125f, 0.0D));
                 }
@@ -43,12 +38,18 @@ public class ClientEvents {
     }
 
     @SubscribeEvent
-    public void onPlayerRenderPre(RenderPlayerEvent.Pre evt) {
-        final PlayerEntity player = evt.getPlayer();
+    public static void onRegisterRenderer(EntityRenderersEvent.RegisterRenderers event) {
+        //event.registerEntityRenderer(ExplorerEntities.ENDERREEPER.get(), EnderreeperRenderer::new);
+        //event.registerEntityRenderer(ExplorerEntities.WIZARD.get(), WizardRenderer::new);
+    }
 
-        if (player instanceof RemoteClientPlayerEntity && player.getPose() == Pose.SLEEPING) {
+    @SubscribeEvent
+    public void onPlayerRenderPre(RenderPlayerEvent.Pre evt) {
+        final Player player = evt.getPlayer();
+
+        if (player instanceof RemotePlayer && player.getPose() == Pose.SLEEPING) {
             player.getSleepingPos().ifPresent(bedPos -> {
-                MatrixStack matrixStack = evt.getMatrixStack();
+                PoseStack matrixStack = evt.getMatrixStack();
                 Block bed = player.level.getBlockState(bedPos).getBlock();
                 if (bed instanceof SleepingBagBlock) {
                     matrixStack.translate(0.0f, -0.375F, 0.0f);
@@ -59,11 +60,11 @@ public class ClientEvents {
 
     @SubscribeEvent
     public void onPlayerRenderPost(RenderPlayerEvent.Post evt) {
-        final PlayerEntity player = evt.getPlayer();
+        final Player player = evt.getPlayer();
 
-        if (player instanceof RemoteClientPlayerEntity && player.getPose() == Pose.SLEEPING) {
+        if (player instanceof RemotePlayer && player.getPose() == Pose.SLEEPING) {
             player.getSleepingPos().ifPresent(bedPos -> {
-                MatrixStack matrixStack = evt.getMatrixStack();
+                PoseStack matrixStack = evt.getMatrixStack();
                 Block bed = player.level.getBlockState(bedPos).getBlock();
                 if (bed instanceof SleepingBagBlock) {
                     matrixStack.translate(0.0f, 0.375F, 0.0f);

@@ -1,16 +1,16 @@
 package dev.driscollcreations.explorercraft.setup;
 
 import com.google.common.collect.Maps;
-import net.minecraft.item.BannerPatternItem;
-import net.minecraft.item.Item;
-import net.minecraft.tileentity.BannerPattern;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.item.BannerPatternItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.entity.BannerPattern;
+import net.minecraftforge.fmllegacy.RegistryObject;
 
 import java.util.Map;
 
 public class ExplorerBannerPattern {
 
-    private static final Item.Properties PATTERN_PROPS = new Item.Properties().stacksTo(1).tab(ExplorerItemGroups.EXPLORERCRAFT).rarity(ExplorerRarity.WELSH);
+    private static final Item.Properties PATTERN_PROPS = new Item.Properties().stacksTo(1).tab(ExplorerCreativeModeTabs.EXPLORERCRAFT).rarity(ExplorerRarity.WELSH);
     public static final Map<BannerPattern, RegistryObject<BannerPatternItem>> PATTERN_ITEMS = Maps.newHashMap();
     public static BannerPattern WELSH_FLAG;
     public static BannerPattern WALES;
@@ -37,7 +37,7 @@ public class ExplorerBannerPattern {
       ListNBT listnbt = (new BannerPattern.Builder()).addPattern(BannerPattern.RHOMBUS_MIDDLE, DyeColor.CYAN).addPattern(BannerPattern.STRIPE_BOTTOM, DyeColor.LIGHT_GRAY).addPattern(BannerPattern.STRIPE_CENTER, DyeColor.GRAY).addPattern(BannerPattern.BORDER, DyeColor.LIGHT_GRAY).addPattern(BannerPattern.STRIPE_MIDDLE, DyeColor.BLACK).addPattern(BannerPattern.HALF_HORIZONTAL, DyeColor.LIGHT_GRAY).addPattern(BannerPattern.CIRCLE_MIDDLE, DyeColor.LIGHT_GRAY).addPattern(BannerPattern.BORDER, DyeColor.BLACK).toListTag();
       compoundnbt.put("Patterns", listnbt);
       itemstack.hideTooltipPart(ItemStack.TooltipDisplayFlags.ADDITIONAL);
-      itemstack.setHoverName((new TranslationTextComponent("block.minecraft.ominous_banner")).withStyle(TextFormatting.GOLD));
+      itemstack.setHoverName((new TranslatableComponent("block.minecraft.ominous_banner")).withStyle(TextFormatting.GOLD));
       ret
      */
 

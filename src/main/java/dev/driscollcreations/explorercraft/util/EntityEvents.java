@@ -1,17 +1,14 @@
 package dev.driscollcreations.explorercraft.util;
 
 import dev.driscollcreations.explorercraft.Explorercraft;
-import dev.driscollcreations.explorercraft.setup.ExplorerBannerPattern;
 import dev.driscollcreations.explorercraft.setup.ExplorerCriteriaTriggers;
 import dev.driscollcreations.explorercraft.vanillatweaks.blocks.SleepingBagBlock;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.event.AddReloadListenerEvent;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.entity.player.PlayerSetSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,8 +20,8 @@ public class EntityEvents {
 
     @SubscribeEvent
     public void onPlayerSetSpawn(PlayerSetSpawnEvent evt) {
-        PlayerEntity player = evt.getPlayer();
-        World world = player.getCommandSenderWorld();
+        Player player = evt.getPlayer();
+        Level world = player.getCommandSenderWorld();
         BlockPos pos = evt.getNewSpawn();
 
         if (pos != null && !world.isClientSide()) {
@@ -38,11 +35,11 @@ public class EntityEvents {
 
     @SubscribeEvent
     public static void onPlayerSleep(PlayerSleepInBedEvent event) {
-        PlayerEntity player = event.getPlayer();
+        Player player = event.getPlayer();
         BlockState state = player.getCommandSenderWorld().getBlockState(event.getPos());
         if (event.getResultStatus() == null && state.getBlock() instanceof SleepingBagBlock) {
-            if (player instanceof ServerPlayerEntity && player.isAlive()) {
-                ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
+            if (player instanceof ServerPlayer && player.isAlive()) {
+                ServerPlayer serverPlayer = (ServerPlayer) player;
                 if (!player.getCommandSenderWorld().isClientSide()) {
                     ExplorerCriteriaTriggers.SLEEP_IN_BAG.trigger(serverPlayer);
                 }

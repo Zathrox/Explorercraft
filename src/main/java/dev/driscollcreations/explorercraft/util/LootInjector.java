@@ -1,13 +1,14 @@
 package dev.driscollcreations.explorercraft.util;
 
 import dev.driscollcreations.explorercraft.Explorercraft;
-import net.minecraft.loot.LootPool;
-import net.minecraft.loot.LootTables;
-import net.minecraft.loot.TableLootEntry;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.entries.LootTableReference;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,12 +19,12 @@ public final class LootInjector {
     public static final class Tables {
         private static final Map<ResourceLocation, ResourceLocation> MAP = new HashMap<>();
 
-        public static final ResourceLocation CHESTS_NETHER_BRIDGE = inject(LootTables.NETHER_BRIDGE);
-        public static final ResourceLocation CHESTS_BASTION_TREASURE = inject(LootTables.BASTION_TREASURE);
-        public static final ResourceLocation CHESTS_BASTION_OTHER = inject(LootTables.BASTION_OTHER);
-        public static final ResourceLocation CHESTS_BASTION_BRIDGE = inject(LootTables.BASTION_BRIDGE);
-        public static final ResourceLocation CHESTS_RUINED_PORTAL = inject(LootTables.RUINED_PORTAL);
-        public static final ResourceLocation CHESTS_SIMPLY_DUNGEON = inject(LootTables.SIMPLE_DUNGEON);
+        public static final ResourceLocation CHESTS_NETHER_BRIDGE = inject(BuiltInLootTables.NETHER_BRIDGE);
+        public static final ResourceLocation CHESTS_BASTION_TREASURE = inject(BuiltInLootTables.BASTION_TREASURE);
+        public static final ResourceLocation CHESTS_BASTION_OTHER = inject(BuiltInLootTables.BASTION_OTHER);
+        public static final ResourceLocation CHESTS_BASTION_BRIDGE = inject(BuiltInLootTables.BASTION_BRIDGE);
+        public static final ResourceLocation CHESTS_RUINED_PORTAL = inject(BuiltInLootTables.RUINED_PORTAL);
+        public static final ResourceLocation CHESTS_SIMPLY_DUNGEON = inject(BuiltInLootTables.SIMPLE_DUNGEON);
 
         /*
         public static final ResourceLocation ENTITIES_CAVE_SPIDER = inject(new ResourceLocation("entities/cave_spider"));
@@ -55,7 +56,7 @@ public final class LootInjector {
             event.getTable().addPool(
                     LootPool.lootPool()
                             .name("explorercraft_injected")
-                            .add(TableLootEntry.lootTableReference(injectorName))
+                            .add(LootTableReference.lootTableReference(injectorName))
                             .build()
             );
         });

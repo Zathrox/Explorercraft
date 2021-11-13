@@ -1,11 +1,10 @@
 modLoader="javafml"
-loaderVersion="[35,)"
+loaderVersion="[37,)"
 license="All rights reserved"
 issueTrackerURL="https://github.com/Zathrox/explorercraft/issues"
 
 [[mods]]
 modId="explorercraft"
-version="${version}"
 displayName="Explorercraft"
 updateJSONURL="https://raw.githubusercontent.com/Zathrox/Explorercraft/1.16.5/src/main/resources/update.json"
 displayURL="https://minecraft.curseforge.com/projects/explorercraft"
@@ -20,13 +19,13 @@ Grab yourself a sleeping bag, campfire, a map and venture into the world!/
 [[dependencies.explorercraft_core]]
     modId="forge"
     mandatory=true
-    versionRange="[35,)"
+    versionRange="[37,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.explorercraft_core]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.1,1.16.2,1.16.3,1.17]"
+    versionRange="[1.17.1,1.18)"
     ordering="NONE"
     side="BOTH"

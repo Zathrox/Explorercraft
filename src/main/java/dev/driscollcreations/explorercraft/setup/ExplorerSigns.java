@@ -1,15 +1,15 @@
 package dev.driscollcreations.explorercraft.setup;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.StandingSignBlock;
-import net.minecraft.block.WallSignBlock;
-import net.minecraft.block.WoodType;
-import net.minecraft.tileentity.SignTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.world.IBlockReader;
 
-import net.minecraft.block.AbstractBlock.Properties;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.StandingSignBlock;
+import net.minecraft.world.level.block.WallSignBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.SignBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.WoodType;
 
 public class ExplorerSigns {
 
@@ -22,15 +22,8 @@ public class ExplorerSigns {
         }
 
         @Override
-        public boolean hasTileEntity(BlockState stateIn)
-        {
-            return true;
-        }
-
-        @Override
-        public TileEntity newBlockEntity(IBlockReader worldIn)
-        {
-            return new CustomSignTileEntity();
+        public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+            return new CustomSignBlockEntity(blockPos, blockState);
         }
     }
 
@@ -43,22 +36,19 @@ public class ExplorerSigns {
         }
 
         @Override
-        public boolean hasTileEntity(BlockState stateIn)
-        {
-            return true;
-        }
-
-        @Override
-        public TileEntity newBlockEntity(IBlockReader worldIn)
-        {
-            return new CustomSignTileEntity();
+        public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+            return new CustomSignBlockEntity(blockPos, blockState);
         }
     }
 
-    public static class CustomSignTileEntity extends SignTileEntity
+    public static class CustomSignBlockEntity extends SignBlockEntity
     {
+        public CustomSignBlockEntity(BlockPos blockPos, BlockState blockState) {
+            super(blockPos, blockState);
+        }
+
         @Override
-        public TileEntityType<CustomSignTileEntity> getType()
+        public BlockEntityType<CustomSignBlockEntity> getType()
         {
             return ExplorerTileEntities.EXPLORER_SIGNS.get();
         }

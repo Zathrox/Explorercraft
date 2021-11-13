@@ -1,7 +1,4 @@
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 package dev.driscollcreations.explorercraft.bamboogrove.blocks;
-
-import mcp.MethodsReturnNonnullByDefault;
 
 import javax.annotation.ParametersAreNonnullByDefault;

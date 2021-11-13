@@ -1,17 +1,13 @@
 package dev.driscollcreations.explorercraft.util;
 
-import com.google.common.collect.Maps;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveBlocks;
 import dev.driscollcreations.explorercraft.bamboogrove.setup.BambooGroveItems;
 import dev.driscollcreations.explorercraft.cymru.blocks.CymruBlocks;
 import dev.driscollcreations.explorercraft.cymru.items.CymruItems;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ComposterBlock;
-import net.minecraft.block.FireBlock;
-import net.minecraft.item.AxeItem;
-import net.minecraft.util.IItemProvider;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ComposterBlock;
 
 public class ExplorerVanillaCompat {
 
@@ -156,17 +152,17 @@ public class ExplorerVanillaCompat {
     }
 
     public static void registerStrippable(Block LOG, Block stripped_LOG) {
-        AxeItem.STRIPABLES = Maps.newHashMap(AxeItem.STRIPABLES);
-        AxeItem.STRIPABLES.put(LOG, stripped_LOG);
+//        AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
+//        AxeItem.STRIPPABLES.put(LOG, stripped_LOG);
     }
 
-    public static void registerCompostable(float chance, IItemProvider itemIn) {
+    public static void registerCompostable(float chance, ItemLike itemIn) {
         ComposterBlock.COMPOSTABLES.put(itemIn.asItem(), chance);
     }
 
     public static void registerFlammable(Block blockIn, int encouragement, int flammability) {
-        FireBlock fireblock = (FireBlock) Blocks.FIRE;
-        fireblock.setFlammable(blockIn, encouragement, flammability);
+        //FireBlock fireblock = (FireBlock) Blocks.FIRE;
+        //fireblock.setFlammable(blockIn, encouragement, flammability);
     }
 
 }

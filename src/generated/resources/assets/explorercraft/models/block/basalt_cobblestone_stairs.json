@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "side": "explorercraft:block/basalt_cobblestone",
-    "bottom": "explorercraft:block/basalt_cobblestone",
-    "top": "explorercraft:block/basalt_cobblestone"
-  }
-}

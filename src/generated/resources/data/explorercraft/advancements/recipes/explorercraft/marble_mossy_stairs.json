@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "explorercraft:marble_mossy"
+            "items": [
+              "explorercraft:marble_mossy"
+            ]
           }
         ]
       }

@@ -24,7 +24,9 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "explorercraft:marble"
+                        "items": [
+                            "explorercraft:marble"
+                        ]
                     }
                 ]
             }

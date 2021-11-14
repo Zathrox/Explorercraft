@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "explorercraft:slate_bricks"
+            "items": [
+              "explorercraft:slate_bricks"
+            ]
           }
         ]
       }

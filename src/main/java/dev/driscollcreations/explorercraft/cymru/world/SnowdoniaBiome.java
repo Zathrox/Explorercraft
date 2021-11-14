@@ -3,6 +3,7 @@ package dev.driscollcreations.explorercraft.cymru.world;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.Features;
 import net.minecraft.data.worldgen.StructureFeatures;
+import net.minecraft.data.worldgen.SurfaceBuilders;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -31,7 +32,7 @@ public class SnowdoniaBiome {
         BiomeDefaultFeatures.commonSpawns(spawns);
 
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder();
-        //gen.surfaceBuilder(ConfiguredSurfaceBuilders.GRASS);
+        gen.surfaceBuilder(SurfaceBuilders.GRASS);
 
         BiomeDefaultFeatures.addDefaultOverworldLandStructures(gen);
         gen.addStructureStart(StructureFeatures.RUINED_PORTAL_STANDARD);

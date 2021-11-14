@@ -18,7 +18,9 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "explorercraft:welsh_shield"
+                        "items": [
+                            "explorercraft:welsh_shield"
+                        ]
                     }
                 ]
             }

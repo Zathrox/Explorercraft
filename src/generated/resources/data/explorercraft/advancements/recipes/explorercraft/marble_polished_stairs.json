@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "explorercraft:marble_polished"
+            "items": [
+              "explorercraft:marble_polished"
+            ]
           }
         ]
       }

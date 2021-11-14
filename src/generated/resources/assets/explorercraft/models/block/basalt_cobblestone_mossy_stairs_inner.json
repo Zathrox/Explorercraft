@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "side": "explorercraft:block/basalt_cobblestone_mossy",
-    "bottom": "explorercraft:block/basalt_cobblestone_mossy",
-    "top": "explorercraft:block/basalt_cobblestone_mossy"
-  }
-}

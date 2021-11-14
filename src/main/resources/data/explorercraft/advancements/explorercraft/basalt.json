@@ -24,7 +24,9 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "explorercraft:basalt"
+                        "items": [
+                            "explorercraft:basalt"
+                        ]
                     }
                 ]
             }

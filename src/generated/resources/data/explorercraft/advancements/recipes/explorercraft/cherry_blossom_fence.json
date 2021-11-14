@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "explorercraft:cherry_blossom_planks"
+            "items": [
+              "explorercraft:cherry_blossom_planks"
+            ]
           }
         ]
       }

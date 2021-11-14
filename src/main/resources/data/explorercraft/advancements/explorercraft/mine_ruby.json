@@ -1,0 +1,29 @@
+{
+    "display": {
+        "icon": {
+            "item": "explorercraft:ruby"
+        },
+        "title": {
+            "translate": "advancements.explorercraft.mine_ruby.title"
+        },
+        "description": {
+            "translate": "advancements.explorercraft.mine_ruby.description"
+        },
+        "hidden": true
+    },
+    "parent": "explorercraft:explorercraft/gem_hunting",
+    "criteria": {
+        "ruby_gem": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "explorercraft:ruby"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

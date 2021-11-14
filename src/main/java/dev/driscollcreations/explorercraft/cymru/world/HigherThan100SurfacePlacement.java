@@ -1,16 +1,17 @@
 //package dev.driscollcreations.explorercraft.cymru.world;
 //
 //import com.mojang.serialization.Codec;
-//import net.minecraft.world.gen.Heightmap;
-//import net.minecraft.world.gen.placement.NoneFeatureConfiguration;
+//import net.minecraft.world.level.levelgen.Heightmap;
+//import net.minecraft.world.level.levelgen.feature.configurations.HeightmapConfiguration;
+//import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 //
-//public class HigherThan100SurfacePlacement extends HigherThan100Placement<NoneFeatureConfiguration> {
+//public class HigherThan100SurfacePlacement extends HigherThan100Placement<HeightmapConfiguration> {
 //
-//    public HigherThan100SurfacePlacement(Codec<NoneFeatureConfiguration> codec) {
+//    public HigherThan100SurfacePlacement(Codec<HeightmapConfiguration> codec) {
 //        super(codec);
 //    }
 //
-//    protected Heightmap.Type type(NoneFeatureConfiguration p_241858_1_) {
-//        return Heightmap.Type.WORLD_SURFACE_WG;
+//    protected Heightmap.Types type(HeightmapConfiguration p_241858_1_) {
+//        return Heightmap.Types.WORLD_SURFACE_WG;
 //    }
 //}

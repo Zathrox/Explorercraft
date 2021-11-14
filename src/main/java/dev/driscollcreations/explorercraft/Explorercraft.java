@@ -17,10 +17,12 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -44,8 +46,7 @@ public class Explorercraft
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::entitySetup);
         modEventBus.addListener(this::doClientStuff);
-        modEventBus.addListener(this::textureStitching);
-        //ExplorerPlacement.DECORATORS.register(modEventBus);
+        ExplorerPlacement.DECORATORS.register(modEventBus);
         ExplorerFeature.FEATURES.register(modEventBus);
         ExplorerTileEntities.TILE_ENTITIES.register(modEventBus);
         ExplorerFeature.FOLIAGE_PLACER_TYPES.register(modEventBus);
@@ -83,23 +84,9 @@ public class Explorercraft
         MinecraftForge.EVENT_BUS.register(new EntityEvents());
     }
 
-    private void textureStitching(final TextureStitchEvent.Pre event) {
-        if (event.getMap().location() == Sheets.BANNER_SHEET) {
-            Explorercraft.LOGGER.log(Level.DEBUG, "Stitching banner textures");
-            event.addSprite(new ResourceLocation("entity/banner/wales"));
-            event.addSprite(new ResourceLocation("entity/banner/welshflag"));
-            Explorercraft.LOGGER.log(Level.DEBUG, "Finished stitching banner textures!");
-        }
-        if (event.getMap().location() == Sheets.SHIELD_SHEET) {
-            Explorercraft.LOGGER.log(Level.DEBUG, "Stitching shield textures");
-            event.addSprite(new ResourceLocation("entity/shield/wales"));
-            event.addSprite(new ResourceLocation("entity/shield/welshflag"));
-            Explorercraft.LOGGER.log(Level.DEBUG, "Finished stitching shield textures!");
-        }
-    }
-
     private void doClientStuff(final FMLClientSetupEvent event) {
         MinecraftForge.EVENT_BUS.register(new ClientEvents());
+        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> ClientEvents::initClient);
         //JadeBowItem.initPropertyOverride(); - overrides textures, for pulling back animation
         ItemBlockRenderTypes.setRenderLayer(BambooGroveBlocks.BAMBOO_SAPLING.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BambooGroveBlocks.CHERRY_SAPLING.get(), RenderType.cutout());

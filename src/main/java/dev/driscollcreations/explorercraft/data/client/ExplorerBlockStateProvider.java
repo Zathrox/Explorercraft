@@ -300,7 +300,6 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
         new ConfiguredModel(models().getBuilder("ash_sign").texture("particle", "block/ash_planks"));
         simpleBlock(CymruBlocks.ASH_STANDING_SIGN.get(), models().getExistingFile( modLoc("block/ash_sign")));
         simpleBlock(CymruBlocks.ASH_WALL_SIGN.get(), models().getExistingFile( modLoc("block/ash_sign")));
-
         sleepingBagModels();
 
     }
@@ -356,9 +355,9 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
 
         List<String> sleepingBags = Arrays.asList("black", "blue", "brown", "cyan", "gray", "green", "leather", "light_blue", "light_gray", "lime", "magenta", "orange", "pink", "purple", "red", "white", "yellow");
         for (String color : sleepingBags) {
-            sleepingBag(color, modLoc("block/sleeping_bag/sleeping_bag_"+color+"_head"), modLoc("block/sleeping_bag/sleeping_bag_"+color+"_foot"));
             new ConfiguredModel(models().withExistingParent("block/sleeping_bag/sleeping_bag_"+color+"_head", modLoc("block/sleeping_bag/sleeping_bag_head")).texture("sleeping_bag", modLoc("block/sleeping_bag/sleeping_bag_"+color)).texture("particle", modLoc("block/sleeping_bag/sleeping_bag_"+color)));
             new ConfiguredModel(models().withExistingParent("block/sleeping_bag/sleeping_bag_"+color+"_foot", modLoc("block/sleeping_bag/sleeping_bag_foot")).texture("sleeping_bag", modLoc("block/sleeping_bag/sleeping_bag_"+color)).texture("particle", modLoc("block/sleeping_bag/sleeping_bag_"+color)));
+            sleepingBag(color, modLoc("block/sleeping_bag/sleeping_bag_"+color+"_head"), modLoc("block/sleeping_bag/sleeping_bag_"+color+"_foot"));
         }
     }
 
@@ -387,11 +386,10 @@ public class ExplorerBlockStateProvider extends BlockStateProvider {
     }
 
     public void fourWayMultipart(MultiPartBlockStateBuilder builder, ModelFile side, ModelFile side2 ) {
-        PipeBlock.PROPERTY_BY_DIRECTION.entrySet().forEach(e -> {
-            Direction dir = e.getKey();
+        PipeBlock.PROPERTY_BY_DIRECTION.forEach((dir, value) -> {
             if (dir.getAxis().isHorizontal()) {
                 builder.part().modelFile(side).rotationY((((int) dir.toYRot()) + 180) % 360).uvLock(true).weight(5).nextModel().modelFile(side2).rotationY((((int) dir.toYRot()) + 180) % 360).uvLock(true).weight(5).addModel()
-                        .condition(e.getValue(), true);
+                        .condition(value, true);
             }
         });
     }

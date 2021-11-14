@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "explorercraft:slate_mossy"
+            "items": [
+              "explorercraft:slate_mossy"
+            ]
           }
         ]
       }

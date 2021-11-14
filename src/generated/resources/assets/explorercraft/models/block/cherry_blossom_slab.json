@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "side": "explorercraft:block/cherry_blossom_planks",
-    "bottom": "explorercraft:block/cherry_blossom_planks",
-    "top": "explorercraft:block/cherry_blossom_planks"
-  }
-}

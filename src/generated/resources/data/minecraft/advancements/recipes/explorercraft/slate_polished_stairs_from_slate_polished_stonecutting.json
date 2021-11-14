@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "explorercraft:slate_polished"
+            "items": [
+              "explorercraft:slate_polished"
+            ]
           }
         ]
       }

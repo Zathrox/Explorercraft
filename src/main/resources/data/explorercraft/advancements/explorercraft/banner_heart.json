@@ -2,7 +2,7 @@
     "display": {
         "icon": {
             "item": "minecraft:white_banner",
-            "nbt": "{BlockEntityTag:{Patterns:[{Color:5,Pattern:\"vh\"},{Color:14,Pattern:\"flag\"}]}}"
+            "nbt": "{BlockEntityTag:{Patterns:[{Color:5,Pattern:\"vh\"},{Color:14,Pattern:\"welshflag\"}]}}"
         },
         "title": {
             "translate": "advancements.explorercraft.banner_heart.title"
@@ -19,8 +19,10 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "minecraft:white_banner",
-                        "nbt": "{BlockEntityTag:{Patterns:[{Color:5,Pattern:\"vh\"},{Color:14,Pattern:\"flag\"}]}}"
+                        "items": [
+                            "explorercraft:cawl_bowl"
+                        ],
+                        "nbt": "{BlockEntityTag:{Patterns:[{Color:5,Pattern:\"vh\"},{Color:14,Pattern:\"welshflag\"}]}}"
                     }
                 ]
             }

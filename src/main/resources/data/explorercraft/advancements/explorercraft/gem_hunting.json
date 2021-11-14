@@ -21,7 +21,33 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "explorercraft:jade"
+                        "items": [
+                            "explorercraft:jade"
+                        ]
+                    }
+                ]
+            }
+        },
+        "ruby": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "explorercraft:ruby"
+                        ]
+                    }
+                ]
+            }
+        },
+        "amethyst": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "explorercraft:amethyst"
+                        ]
                     }
                 ]
             }

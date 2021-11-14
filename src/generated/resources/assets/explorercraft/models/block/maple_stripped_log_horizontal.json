@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column_horizontal",
-  "textures": {
-    "side": "explorercraft:block/maple_stripped_log",
-    "end": "explorercraft:block/maple_stripped_log_top"
-  }
-}

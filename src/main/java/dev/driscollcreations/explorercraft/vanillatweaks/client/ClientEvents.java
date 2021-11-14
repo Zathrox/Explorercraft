@@ -6,6 +6,8 @@ import dev.driscollcreations.explorercraft.config.VanillaTweaksConfig;
 import dev.driscollcreations.explorercraft.vanillatweaks.blocks.SleepingBagBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.RemotePlayer;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
@@ -13,12 +15,35 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.apache.logging.log4j.Level;
 
 @Mod.EventBusSubscriber(modid = Explorercraft.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class ClientEvents {
+
+    public static void initClient()
+    {
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientEvents::textureStitching);
+    }
+
+    private static void textureStitching(final TextureStitchEvent.Pre event) {
+        if (event.getMap().location() == Sheets.BANNER_SHEET) {
+            Explorercraft.LOGGER.log(Level.DEBUG, "Stitching banner textures");
+            event.addSprite(new ResourceLocation("entity/banner/wales"));
+            event.addSprite(new ResourceLocation("entity/banner/welshflag"));
+            Explorercraft.LOGGER.log(Level.DEBUG, "Finished stitching banner textures!");
+        }
+        if (event.getMap().location() == Sheets.SHIELD_SHEET) {
+            Explorercraft.LOGGER.log(Level.DEBUG, "Stitching shield textures");
+            event.addSprite(new ResourceLocation("entity/shield/wales"));
+            event.addSprite(new ResourceLocation("entity/shield/welshflag"));
+            Explorercraft.LOGGER.log(Level.DEBUG, "Finished stitching shield textures!");
+        }
+    }
 
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {

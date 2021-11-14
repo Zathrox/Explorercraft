@@ -18,7 +18,9 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "explorercraft:dragon_heart"
+                        "items": [
+                            "explorercraft:dragon_heart"
+                        ]
                     }
                 ]
             }

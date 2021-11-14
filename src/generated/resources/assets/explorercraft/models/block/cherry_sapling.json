@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "all": "explorercraft:block/cherry_sapling",
-    "cross": "explorercraft:block/cherry_sapling"
-  }
-}

@@ -18,7 +18,9 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "explorercraft:cherry_blossom"
+                        "items": [
+                            "explorercraft:cherry_blossom"
+                        ]
                     }
                 ]
             }

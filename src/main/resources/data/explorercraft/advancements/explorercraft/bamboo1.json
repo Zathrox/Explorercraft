@@ -18,7 +18,9 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "explorercraft:bamboo_planks"
+                        "items": [
+                            "explorercraft:bamboo_planks"
+                        ]
                     }
                 ]
             }

@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "explorercraft:cherry_log"
+            "items": [
+              "explorercraft:cherry_log"
+            ]
           }
         ]
       }

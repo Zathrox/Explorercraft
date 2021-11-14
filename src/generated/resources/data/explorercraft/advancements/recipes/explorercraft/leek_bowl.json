@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "explorercraft:leek_bowl"
+            "items": [
+              "explorercraft:leek_bowl"
+            ]
           }
         ]
       }

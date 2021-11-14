@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "explorercraft:item/jade_pickaxe"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "explorercraft:block/ash_stripped_log",
+    "end": "explorercraft:block/ash_stripped_log"
+  }
+}

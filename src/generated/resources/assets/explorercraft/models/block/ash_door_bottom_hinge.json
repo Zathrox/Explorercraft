@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_rh",
+  "textures": {
+    "bottom": "explorercraft:block/ash_door_bottom",
+    "top": "explorercraft:block/ash_door_top"
+  }
+}

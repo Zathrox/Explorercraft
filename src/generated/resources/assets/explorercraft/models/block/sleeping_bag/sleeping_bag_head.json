@@ -1,0 +1,69 @@
+{
+  "parent": "minecraft:block/thin_block",
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        2,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#sleeping_bag",
+          "uv": [
+            4.0,
+            0.0,
+            8.0,
+            4.0
+          ],
+          "rotation": 180
+        },
+        "up": {
+          "texture": "#sleeping_bag",
+          "uv": [
+            0.0,
+            0.0,
+            4.0,
+            4.0
+          ],
+          "rotation": 180
+        },
+        "south": {
+          "texture": "#sleeping_bag",
+          "uv": [
+            10.0,
+            0.5,
+            14.0,
+            1.0
+          ],
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#sleeping_bag",
+          "uv": [
+            12.0,
+            1.0,
+            16.0,
+            1.5
+          ],
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#sleeping_bag",
+          "uv": [
+            12.0,
+            1.5,
+            16.0,
+            2.0
+          ],
+          "cullface": "east"
+        }
+      }
+    }
+  ]
+}

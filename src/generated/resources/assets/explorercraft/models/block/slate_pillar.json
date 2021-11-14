@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "explorercraft:block/slate_pillar",
+    "end": "explorercraft:block/slate_polished_top"
+  }
+}

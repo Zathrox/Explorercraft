@@ -9,7 +9,7 @@
         "description": {
             "translate": "advancements.explorercraft.root.description"
         },
-        "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+        "background": "explorercraft:textures/block/slate.png",
         "show_toast": true
     },
     "criteria": {

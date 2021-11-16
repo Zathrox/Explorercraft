@@ -1,7 +1,11 @@
 CHANGELOG:
 
 --------// Explorercraft 1.16.5 // ----------------------------------------------------
+Release 6.0.1:
+small advancement tweaks
+
 Release 6.0.0:
+Initial port to 1.17.1
 
 
 Patch 5.0.6:

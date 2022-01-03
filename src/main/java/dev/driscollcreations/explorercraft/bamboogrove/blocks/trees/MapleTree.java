@@ -14,7 +14,7 @@ public class MapleTree extends AbstractTreeGrower {
     @Nullable
     @Override
     protected ConfiguredFeature<TreeConfiguration, ?> getConfiguredFeature(Random randomIn, boolean largeHive) {
-        return ExplorerFeature.MAPLE_TREE.get().configured(Features.BIRCH.config);
+        return ExplorerFeature.MAPLE_TREE.get().configured(ExplorerFeature.Configs.MAPLE_TREE_CONFIG);
     }
 
 }

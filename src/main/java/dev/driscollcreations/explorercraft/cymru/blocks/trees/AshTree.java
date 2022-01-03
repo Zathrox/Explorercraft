@@ -14,7 +14,7 @@ public class AshTree extends AbstractTreeGrower {
     @Nullable
     @Override
     protected ConfiguredFeature<TreeConfiguration, ?> getConfiguredFeature(Random randomIn, boolean largeHive) {
-        return ExplorerFeature.ASH_TREE.get().configured(Features.JUNGLE_TREE.config);
+        return ExplorerFeature.ASH_TREE.get().configured(ExplorerFeature.Configs.ASH_TREE_CONFIG);
     }
 
 }

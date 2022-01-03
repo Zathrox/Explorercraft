@@ -14,7 +14,7 @@ public class BambooTree extends AbstractTreeGrower {
     @Nullable
     @Override
     protected ConfiguredFeature<TreeConfiguration, ?> getConfiguredFeature(Random randomIn, boolean largeHive) {
-        return ExplorerFeature.BAMBOO_TREE.get().configured(Features.ACACIA.config);
+        return ExplorerFeature.BAMBOO_TREE.get().configured(ExplorerFeature.Configs.BAMBOO_TREE_CONFIG);
     }
 
 }

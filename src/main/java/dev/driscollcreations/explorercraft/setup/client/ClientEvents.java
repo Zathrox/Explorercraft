@@ -1,12 +1,19 @@
-package dev.driscollcreations.explorercraft.vanillatweaks.client;
+package dev.driscollcreations.explorercraft.setup.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.driscollcreations.explorercraft.Explorercraft;
 import dev.driscollcreations.explorercraft.config.VanillaTweaksConfig;
+import dev.driscollcreations.explorercraft.setup.ExplorerEntities;
+import dev.driscollcreations.explorercraft.setup.ExplorerTileEntities;
 import dev.driscollcreations.explorercraft.vanillatweaks.blocks.SleepingBagBlock;
+import dev.driscollcreations.explorercraft.vanillatweaks.entity.enderreeper.model.EnderreeperTestModel;
+import dev.driscollcreations.explorercraft.vanillatweaks.entity.enderreeper.renderer.EnderreeperRenderer;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.player.RemotePlayer;
 import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
@@ -60,12 +67,6 @@ public class ClientEvents {
                 }
             }
         }
-    }
-
-    @SubscribeEvent
-    public static void onRegisterRenderer(EntityRenderersEvent.RegisterRenderers event) {
-        //event.registerEntityRenderer(ExplorerEntities.ENDERREEPER.get(), EnderreeperRenderer::new);
-        //event.registerEntityRenderer(ExplorerEntities.WIZARD.get(), WizardRenderer::new);
     }
 
     @SubscribeEvent

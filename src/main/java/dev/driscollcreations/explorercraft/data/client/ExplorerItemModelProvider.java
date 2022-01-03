@@ -24,6 +24,11 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));
         ModelFile itemHandheld = getExistingFile(mcLoc("item/handheld"));
+        ModelFile spawnEgg = getExistingFile(mcLoc("item/template_spawn_egg"));
+
+
+        buildSpawnEgg(spawnEgg, "enderreeper_spawn_egg");
+        buildSpawnEgg(spawnEgg, "wizard_spawn_egg");
 
         withExistingParent("jade_block", modLoc("block/jade_block"));
         withExistingParent("jade_ore", modLoc("block/jade_ore"));
@@ -209,6 +214,10 @@ public class ExplorerItemModelProvider extends ItemModelProvider {
     }
     private ItemModelBuilder builderMc(ModelFile itemGenerated, String name) {
         return getBuilder(name).parent(itemGenerated).texture("layer0", mcLoc(name));
+    }
+
+    private ItemModelBuilder buildSpawnEgg(ModelFile itemGenerated, String name) {
+        return getBuilder(name).parent(itemGenerated);
     }
 
     private ItemModelBuilder builderMod(ModelFile itemGenerated, String name, String textureLoc) {

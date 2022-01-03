@@ -15,7 +15,7 @@ public class CherryTree extends AbstractTreeGrower {
     @Nullable
     @Override
     protected ConfiguredFeature<TreeConfiguration, ?> getConfiguredFeature(Random randomIn, boolean largeHive) {
-        return Feature.TREE.configured(Features.OAK.config);
+        return Feature.TREE.configured(ExplorerFeature.Configs.CHERRY_TREE_CONFIG);
     }
 
 }

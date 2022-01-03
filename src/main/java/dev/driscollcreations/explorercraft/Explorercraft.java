@@ -7,18 +7,19 @@ import dev.driscollcreations.explorercraft.cymru.blocks.CymruBlocks;
 import dev.driscollcreations.explorercraft.setup.*;
 import dev.driscollcreations.explorercraft.util.EntityEvents;
 import dev.driscollcreations.explorercraft.util.ExplorerVanillaCompat;
-import dev.driscollcreations.explorercraft.vanillatweaks.client.ClientEvents;
+import dev.driscollcreations.explorercraft.setup.client.ClientEvents;
 import dev.driscollcreations.explorercraft.vanillatweaks.setup.VanillaTweaksBlocks;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -27,7 +28,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -42,7 +42,7 @@ public class Explorercraft
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         Registration.register();
         //ExplorerStructures.STRUCTURES.register(modEventBus);
-        //ExplorerEntities.ENTITIES.register(modEventBus);
+        ExplorerEntities.ENTITIES.register(modEventBus);
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::entitySetup);
         modEventBus.addListener(this::doClientStuff);
@@ -57,7 +57,12 @@ public class Explorercraft
     }
 
     private void entitySetup(final EntityAttributeCreationEvent event) {
-        //event.put(ExplorerEntities.ENDERREEPER.get(), Mob.createMobAttributes().build());
+        event.put(ExplorerEntities.ENDERREEPER.get(), Mob.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 40.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.3F)
+                .add(Attributes.FOLLOW_RANGE, 48.0D)
+                .add(Attributes.ATTACK_DAMAGE, 7.0D)
+                .build());
         //event.put(ExplorerEntities.WIZARD.get(), Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 40.0D).add(Attributes.MOVEMENT_SPEED, 0.5D).add(Attributes.FOLLOW_RANGE, 48.0D).build());
     }
 
@@ -109,9 +114,6 @@ public class Explorercraft
         ItemBlockRenderTypes.setRenderLayer(CymruBlocks.POTTED_WILD_LEEK.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(CymruBlocks.ASH_SAPLING.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(CymruBlocks.POTTED_ASH_SAPLING.get(), RenderType.cutout());
-        //ClientRegistry.registerEntityShader(ExplorerTileEntities.EXPLORER_SIGNS.get(), SignRenderer::new);
-        //RenderingRegistry.registerEntityRenderingHandler(ExplorerEntities.ENDERREEPER.get(), EnderreeperRenderer::new);
-        //RenderingRegistry.registerEntityRenderingHandler(ExplorerEntities.WIZARD.get(), WizardRenderer::new);
         event.enqueueWork(() -> {
             Sheets.addWoodType(BambooGroveBlocks.BAMBOO_WOODTYPE);
             Sheets.addWoodType(BambooGroveBlocks.CHERRY_WOODTYPE);

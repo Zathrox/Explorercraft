@@ -5,6 +5,7 @@ import dev.driscollcreations.explorercraft.setup.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fmllegacy.RegistryObject;
 
 public class VanillaTweaksItems {
@@ -67,7 +68,8 @@ public class VanillaTweaksItems {
     public static final RegistryObject<Item> RUBY_BOOTS = Registration.ITEMS.register("ruby_boots",
             () -> new ArmorItem(ExplorerArmorList.RUBY_ARMOR, EquipmentSlot.FEET, new Item.Properties().tab(ExplorerCreativeModeTabs.EXPLORERCRAFT)));
 
-
+    public static final RegistryObject<ForgeSpawnEggItem> ENDERREEPER_SPAWN_EGG = Registration.ITEMS.register("enderreeper_spawn_egg",
+            () -> new ForgeSpawnEggItem(ExplorerEntities.ENDERREEPER, 3801171, 7078066, new Item.Properties().stacksTo(1).tab(ExplorerCreativeModeTabs.EXPLORERCRAFT)));
 
     public static void register() {}
 }
